@@ -1,0 +1,20 @@
+{
+  "name": "CEFiTI",
+  "version": "1.0.0",
+  "description": "Catálogo de Exigências Fitossanitárias para o Trânstio Interestadual",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cefiti/cefiti.git"
+  },
+  "keywords": [],
+  "author": "Dalci de Jesus Bagolin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cefiti/cefiti/issues"
+  },
+  "homepage": "https://github.com/cefiti/cefiti#readme"
+}
