@@ -4,7 +4,7 @@
   "description": "Catálogo de Exigências Fitossanitárias para o Trânstio Interestadual",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -r mocha-clean -r ts-node/register -r dist/db.js test/**/*.* src -w --watch-extensions ts,tsx -R min"
   },
   "repository": {
     "type": "git",
