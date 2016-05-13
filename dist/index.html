@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -16,9 +16,6 @@
         ga('create', 'UA-60679065-1', 'auto');
         ga('send', 'pageview');
       </script>-->
-      <script src="./node_modules/react/dist/react.min.js"></script>
-      <script src="db.js"></script>
-      <script src="app.js"></script>
     <link rel="stylesheet" type="text/css" href="http://sistemasweb.agricultura.gov.br/styles_java/css/estilo-template.css"></link>
     <link rel="stylesheet" type="text/css" href="http://sistemasweb.agricultura.gov.br/styles_java/css/estilo-menu.css"></link>
     <link rel="stylesheet" type="text/css" href="http://sistemasweb.agricultura.gov.br/styles_java/css/estilo-tabela.css"></link>
@@ -66,15 +63,10 @@
 
 
     <div id="corpo">
-      <div id="conteudo">
-        
-
-
-
-
-
-       
+      <div id="conteúdo">
+        <div id="app"></div>
       </div>
+    </div>
       <br>
       <p class="small red center ">
         Este Sistema está em fase de HOMOLOGAÇÃO, devido a isso as informações obtidas devem ser verificadas na legislação pertinente.
@@ -93,8 +85,11 @@
       <div>
         <h5 class="center">Desenvolvido pelo SSV-MT - <a href="mailto:ssv-mt@agricultura.gov.br">ssv-mt@agricultura.gov.br</a></h5></div>
     </div>
-  </div>
 
+      <script src="react.js"></script>
+      <script src="react-dom.js"></script>
+      <script src="db.js"></script>
+      <script src="bundle.js"></script>
 </body>
   
 </html>

@@ -11,10 +11,11 @@ interface Array<T> {
   sum(field?: string | ((value: T, index: number, array: T[]) => Array<any>)): number;
   average(field?: string | ((value: T, index: number, array: T[]) => Array<any>)): number;
   unique(field?: string | ((value: T, index: number, array: T[]) => Array<any>) | string): T[];
-  by(field?:  (value: T, index: number, array: T[]) => Array<any> | string): T[];
+  by(field?: string |  ((value: T, index: number, array: T[]) => Array<any>)): T[];
   flatten(depth?: number): T[];
   flatMap<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];
   take(number?: number): T[];
+  includes(searchElement?: any): boolean;
 }
 
 
@@ -174,4 +175,29 @@ Array.prototype.take = function(number) {
   return this.slice(begin, end)
 };
   
-  
+Array.prototype.includes = function(searchElement /*, fromIndex*/ ) {
+  'use strict';
+  var O = Object(this);
+  var len = parseInt(O.length) || 0;
+  if (len === 0) {
+    return false;
+  }
+  var n = parseInt(arguments[1]) || 0;
+  var k;
+  if (n >= 0) {
+    k = n;
+  } else {
+    k = len + n;
+    if (k < 0) {k = 0;}
+  }
+  var currentElement;
+  while (k < len) {
+    currentElement = O[k];
+    if (searchElement === currentElement ||
+        (searchElement !== searchElement && currentElement !== currentElement)) { // NaN !== NaN
+      return true;
+    }
+    k++;
+  }
+  return false;
+};  
