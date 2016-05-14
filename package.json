@@ -4,8 +4,9 @@
   "description": "Catálogo de Exigências Fitossanitárias para o Trânstio Interestadual",
   "main": "index.js",
   "scripts": {
+    "build": "webpack -w",
     "test": "mocha -r mocha-clean -r ts-node/register -r dist/db.js test/**/*.* src -w --watch-extensions ts,tsx -R min",
-    "ilink": "npm link react react-dom mobx mobx-react mocha mocha-clean ts-node"
+    "ilink": "npm link react react-dom mobx mobx-react mocha mocha-clean ts-node ts-loader source-map-loader"
   },
   "repository": {
     "type": "git",

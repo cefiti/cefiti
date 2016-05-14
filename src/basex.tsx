@@ -1,12 +1,11 @@
 import * as React from 'react'
-
-var item: any = {}
+import store from './store'
+import {observer} from 'mobx-react'
 
 var Base = ({db}) => {
   return (
-     <div ng-hide="cat.base">
+     store.exibeBase ? (<div>
           <br/>
-
           <table style={{"width": "100%"}} class="table-grid">
             <caption>Exigências</caption>
             <thead>
@@ -53,10 +52,11 @@ var Base = ({db}) => {
               </tr>
             </tfoot>
           </table>
-        </div>
-  )
+        </div>) : null
+  ) 
 }
 
-export default Base
+
+export default observer(Base)
 
 //ng-class-even="'linha-alternada'"

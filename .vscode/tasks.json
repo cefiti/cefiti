@@ -26,7 +26,7 @@
 	"problemMatcher": "$tsc",
   
   "tasks": [ 
-    { "taskName": "start" },
+    { "taskName": "build" },
     { "taskName": "test"	},
     { "taskName": "ilink"	}
   ]

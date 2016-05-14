@@ -1,7 +1,7 @@
 /*jshint maxlen: false, unused: false, quotmark: true, -W097 */ 
 "use strict";
 
-var db: exig[] = [ 
+var db = [ 
 {desc:"DE UF com ocorrência de Vespa-da-madeira PARA UF reconhecida pelo MAPA como livre da ocorrência de Vespa-da-madeira", hosp:["Pinus spp."],part:["madeira"],orig:["MG","SP","PR","SC","RS"],dest:["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MS","MT","PA","PB","PE","PI","RJ","RN","RO","RR","SE","TO"],prag:"Sirex noctilio",pragc:"VESPA-DA-MADEIRA",exig:["Estão isentos desta exigência fitossanitária: compensados ou cavacos de 2,5 cm de espessura ou menores, móveis e pequenos objetos de madeira; ","PTV com declaração adicional constando que o material está livre de Sirex noctilio, tanto na fase adulta como na imatura."],proib:false,leg:"Portaria SDA/MAPA nº 125, de 03 de agosto de 1998",link:"leg/PORT125-1998.pdf"}, 
 {desc:"DE UF com ocorrência de Ácaro-vermelho-das-palmeiras PARA UF reconhecida pelo MAPA como livre da ocorrência de Ácaro-vermelho-das-palmeiras", hosp:["Euterpe oleracea","Euterpe precatoria","Alpínia purpurata","Alpínia zerumbet","Syagrus schizophylla","Ravenala madagascariensis","Musa spp.","Etlingera alatior","Mauritia flexuosa","Canna indica","Cocos nucifera","Butia capitata","Corypha umbraculifera","Elaeis guineensis","Strelitzia reginae","Heliconia spp.","Syagrus romanzoffianum","Licuala grandis","Coccothrinax miraguama","Microcycas calocoma","Coccothrinax barbadensis","Aiphanes spp.","Pseudophoenix vinifera","Dypsis lutescens","Veitchia arecina","Chamaedora spp.","Veitchia maerrillii","Phoenix roebelenii","Acoelorraphe wrightii","Wodyetia bifurcata","Archontophoenix alexandrae","Cycas spp.","Areca sp.","Bismarckia nobilis","Washingtonia robusta","Ptychosperma macarthurii","Beccariophoenix madagascariensis","Bactris plumeriana","Washingtonia filifera","Pseudophoenix sargentii","Roystonea borinquena","Schippia concolor","Thrinax radiata","Livistona chinensis","Pritchardia pacifica","Coccothrinax argentata","Dictyosperma album","Caryota mitis","Caryota urens","Raphis excelsa","Roystonia regia","Ptychosperma elegans","Dypsis decaryi","Pritchardia vuylstekeana","Bactris gasipaes","Bactris plumeriana","Phoenix dactylifera","Phoenix canariensis","Phoenix reclinata","Arecaceae (espécies desta família)","Heliconiaceae (espécies desta família)","Musaceae (espécies desta família)","Pandanaceae (espécies desta família)","Strelitziaceae (espécies desta família)","Zingiberaceae (espécies desta família)"],part:["plantas","mudas","raízes","caules","ramos","folhas","flores","frutos"],orig:["RR","AM"],dest:["AC","AL","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RS","SC","SE","SP","TO"],prag:"Raoiella indica",pragc:"ÁCARO-VERMELHO-DAS-PALMEIRAS",exig:["PTV com a seguinte declaração adicional: \"Não se observou a presença de Raoiella indica no local de produção e a partida foi inspecionada e encontra-se livre da praga\"; ","A partida deve ser transportada em caminhão lonado ou tipo baú, e lacrado; ","A PTV deve conter o(s) número(s) do(s) lacre(s);","Estas exigências fitossanitárias não se aplicam a material in vitro."],proib:false,leg:"Instrução Normativa MAPA nº 14, de 6 de abril de 2010",link:"leg/IN14-2010.pdf"}, 
 {desc:"DE UF com ocorrência de Mosca-da-carambola PARA UF reconhecida pelo MAPA como livre da ocorrência de Mosca-da-carambola", hosp:["Averrhoa carambola","Psidium guajava","Syzygium malaccense","Citrus aurantium","Manilkara zapota","Mangifera indica","Malpighia punicifolia","Terminalia catappa","Garcinia dulcis","Chrysophyllum cainito","Spondias lutea","Anacardium occidentale","Artocarpus altilis","Arenga pinnata","Artocarpus integrifolia","Syzygium samarangense","Syzygium aqueum","Syzygium jambos","Ziziphus mauritiana","Ziziphus jujuba","Citrus sinensis","Averrhoa bilimbi","Capsicum annuum","Eugenia uniflora","Citrus paradisi","Citrus reticulata","Licopersicum esculentum"],part:["frutos"],orig:["AP","RR"],dest:["AC","AL","AM","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RS","SC","SE","SP","TO"],prag:"Bactrocera carambolae",pragc:"MOSCA-DA-CARAMBOLA",exig:["TRÂNSITO PROIBIDO"],proib:false,leg:"Portaria SDA/MAPA nº 21, de 25 de março de 1999",link:"leg/PORT21-1999.pdf"}, 
@@ -56,7 +56,7 @@ var db: exig[] = [
 {desc:"DE UF com ocorrência de Anthonomus tomentosus PARA UF sem a ocorrência de Anthonomus tomentosus", hosp:["Malpighia spp."],part:["frutos"],orig:["AM","RR"],dest:["AC","AL","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RS","SC","SE","SP","TO"],prag:"Anthonomus tomentosus",pragc:"ANTHONOMUS TOMENTOSUS",exig:["Se a partida for proveniente de todos os municípios de RR, exceto de Boa Vista, Mucajaí e Pacaraima, ou dos municípios de Presidente Figueiredo, Rio Preto da Eva e Manaus, no AM: PTV com a seguinte declaração adicional: A partida foi inspecionada e encontra-se livre de Anthonomus tomentosus;","Se a partida for proveniente de Boa Vista, Mucajaí e Pacaraima, em RR: TRÂNSITO PROIBIDO.","Estas exigências fitossanitárias só se aplicam a frutos frescos;"],proib:false,leg:"Instrução Normativa MAPA/SDA nº. 19, de 16 de setembro de 2014",link:"leg/IN19-2014.pdf.pdf"} 
 ]; 
 
-var hospedeiros: hospedeiro[] = [ 
+var hospedeiros = [ 
 {nomeVul:"Abacate (Persea gratissima)",nomeSci:"Persea gratissima"}, 
 {nomeVul:"Abeto Europeu",nomeSci:"Picea abies"}, 
 {nomeVul:"Abeto Vermelho Comum",nomeSci:"Picea abies"}, 
@@ -370,24 +370,5 @@ var hospedeiros: hospedeiro[] = [
 {nomeVul:"Zingiberaceae (espécies desta família)",nomeSci:"Zingiberaceae (espécies desta família)"} 
 ]; 
 
-interface exig {
-  desc: string;
-  hosp: string[];
-  part: string[];
-  orig: string[];
-  dest: string[];
-  prag: string;
-  pragc: string;
-  exig: string[];
-  proib: boolean;
-  leg: string;
-  link: string;
-}
 
-interface hospedeiro {
-  nomeVul: string;
-  nomeSci: string;
-}
-
-
-export {db, hospedeiros, hospedeiro, exig}
+export {db, hospedeiros}

@@ -1,25 +1,17 @@
-import { observable, computed } from 'mobx';
+import { observable, computed, autorun } from 'mobx';
 import './ArrayPlus'
-import {db, hospedeiros, exig} from './db'
+import {db, hospedeiros} from './db'
+import {exig,dados, estados } from './cefiti'
 
-interface estados {
-  estado: string;
-  UF: string;
-}
-
-
-interface dados {
-  hospSci: string;
-  hospVul: string;
-  prod: string;
-  orig: string;
-  dest: string
-}
+autorun(()=>{console.log('autorun')})
 
 class Store {
   db = db;
   hospedeiros = hospedeiros;
   listaNomesSci = hospedeiros.unique('nomeSci')
+  
+  @observable exibeBase: boolean = false;
+  @observable exibeMapa: boolean = false;
   
   @observable dados:dados = {
     hospSci: null,
