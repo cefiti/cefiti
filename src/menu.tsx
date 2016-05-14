@@ -5,7 +5,7 @@ import {observer} from 'mobx-react'
 var handleClick = (i, event) => {
   if (i === 'Base') {store.exibeBase = !store.exibeBase};
   if (i === 'Mapa') {store.exibeMapa = !store.exibeMapa};
-  console.log( i, store.exibeBase)
+  console.log('this:',this, 'iii:', i, 'event:',event.target, event.type, store.exibeBase)
 }
 
 var Menu = () => { return (

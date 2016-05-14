@@ -1,81 +1,102 @@
 import * as React from 'react';
+import store from './store';
+import {observer} from 'mobx-react';
 
 var cat:any={};
+
+var msgFamilias = 'Se a espécie pertencer à uma destas Famílias: "Arecaceae", "Heliconiaceae", "Musaceae",';
+msgFamilias += ' "Pandanaceae", "Strelitziaceae" ou "Zingiberaceae", fazer a consulta para a Espécie e';
+msgFamilias += ' para a Família, ou só para a Família se a espécie não estiver relacionada';
+
+var handleChanges = (event) => {
+  console.log(event.target,name, event.target.value);
+  store.dados[event.target.name] = event.target.value;
+}
+
+var handleSubmit = (event) => {
+  console.log(event, event.target,name, event.target.value);
+  
+}
 
 function Form() {
         return ( 
           <form >
-          <table class="table-form no-print">
-            <tr title={cat.msgFamilias}>
-              <td class="col30">
+          <table className="table-form no-print">
+          <tbody>
+            <tr title={msgFamilias}>
+              <td className="col30">
                 <label>Espécie Vegetal (nome científico):</label>
               </td>
               <td>
-                <select title={`Se a espécie vegetal não constar destas duas listas, descubra a família da espécie vegetal.
-Se a família for Arecaceae, ou Heliconiaceae, ou Pandanaceae, ou Strelitziaceae, ou Zingiberaceae, consulte, novamente, uma das duas listas pelo nome da família.
-Se a espécie vegetal ou a família da espécie vegetal não constar da lista consultada, então não há nenhuma exigência fitossanitária para o trânsito nacional da planta ou do produto vegetal.`}
-                class="italic form-select" ng-model="cat.select.hosp" ng-options="hosp as hosp.nomeSci for hosp in cat.hospedeiros | orderBy:'nomeSci' | unique:cat.select.hosp"
-                ng-change="cat.changes()">
-                  <option value=""></option>
+                <select title={msgFamilias} className="italic form-select" value={store.dados.hospSci} name="hospSci" onChange={handleChanges.bind(this)}>
+
+                  {store.listaNomesSci.map((option, i)=>{ return (
+                    <option value={option} key={i}>{option}</option>
+                  )})}
                 </select>
               </td>
             </tr>
-            <tr title={cat.msgFamilias}>
-              <td class="col30">
+            <tr title={msgFamilias}>
+              <td className="col30">
                 <label>Espécie Vegetal (nome vulgar):</label>
               </td>
               <td>
-                <select title= {`Se a espécie vegetal não constar destas duas listas, descubra a família da espécie vegetal.
-Se a família for Arecaceae, ou Heliconiaceae, ou Pandanaceae, ou Strelitziaceae, ou Zingiberaceae, consulte, novamente, uma das duas listas pelo nome da família.
-Se a espécie vegetal ou a família da espécie vegetal não constar da lista consultada, então não há nenhuma exigência fitossanitária para o trânsito nacional da planta ou do produto vegetal.`}
-                class="form-select" ng-model="cat.select.hosp" ng-options="hosp as hosp.nomeVul for hosp in cat.hospedeiros | orderBy:normalizedName:'nomeVul'"
-                ng-change="cat.changes()">
-                  <option value=""></option>
+                <select title= {msgFamilias} className="form-select" name="hospVul" value={store.dados.hospVul} onChange={handleChanges.bind(this)}>
+                  {store.hospedeiros.map((option, i)=>{ return (
+                    <option value={option.nomeSci} key={i}>{option.nomeVul}</option>
+                  )})}
                 </select>
               </td>
             </tr>
             <tr>
-              <td class="col30">
+              <td className="col30">
                 <label>Parte da Planta:</label>
               </td>
               <td>
-                <select class="form-select" ng-model="cat.select.part" ng-options="part as part for part in cat.part | orderBy | unique:'part'">
-                  <option value="cat.clear()"></option>
+                <select className="form-select" name="prod" value={store.dados.prod} onChange={handleChanges.bind(this)}>
+                  {store.partes.map((option, i)=>{ return (
+                    <option value={option} key={i}>{option}</option>
+                  )})}
                 </select>
               </td>
             </tr>
             <tr>
-              <td class="col30">
+              <td className="col30">
                 <label>Origem:</label>
               </td>
               <td>
-                <select class="form-select" ng-model="cat.select.orig" ng-options="est.UF as est.estado for est in cat.estados | same:cat.select.dest"
-                ng-change="cat.clear()">
-                  <option value=""></option>
+                <select className="form-select"  name="orig" value={store.dados.orig}  onChange={handleChanges.bind(this)}>
+                  {store.origem.map((option, i)=>{ return (
+                    <option value={option.UF} key={i}>{option.estado}</option>
+                  )})}
                 </select>
               </td>
             </tr>
             <tr>
-              <td class="col30">
+              <td className="col30">
                 <label>Destino:</label>
               </td>
               <td>
-                <select class="form-select" ng-model="cat.select.dest" ng-options="est.UF as est.estado for est in cat.estados | same:cat.select.orig"
-                ng-change="cat.clear()">
-                  <option value=""></option>
+                <select className="form-select"  name="destt" value={store.dados.dest}  onChange={handleChanges.bind(this)}>
+                  {store.destino.map((option, i)=>{ return (
+                    <option value={option.UF} key={i}>{option.estado}</option>
+                  )})}
                 </select>
               </td>
             </tr>
             <tr>
-              <td class="col30"><a target="_blank" href="https://www.google.com.br/search?site=imghp&tbm=isch&q={cat.select.hosp.nomeSci}+plant+OR+planta">Fotos da Espécie Vegetal</a></td>
+              <td className="col30"><a target="_blank" href={"https://www.google.com.br/search?site=imghp&tbm=isch&q="+store.dados.hospSci+"plant+OR+planta"}>Fotos da Espécie Vegetal}</a></td>
               <td align="center">
-                <button ng-click="cat.search()" class="form-button">Pesquisar</button>
+                <button onClick={handleSubmit.bind(this)} className="form-button">Pesquisar</button>
                 <br/>
               </td>
             </tr>
+            </tbody>
           </table>
         </form> )
 }
 
+
+export default observer(Form);
 
 

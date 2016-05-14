@@ -8,23 +8,24 @@ autorun(()=>{console.log('autorun')})
 class Store {
   db = db;
   hospedeiros = hospedeiros;
-  listaNomesSci = hospedeiros.unique('nomeSci')
+  listaNomesSci:string[] = hospedeiros.unique('nomeSci')
   
   @observable exibeBase: boolean = false;
   @observable exibeMapa: boolean = false;
-  
   @observable dados:dados = {
-    hospSci: null,
+    hospSci: 'Musa spp.',
     hospVul: null,
-    prod: null,
-    orig: null,
-    dest: null
+    prod: 'frutos',
+    orig: 'MG',
+    dest: 'MT'
   }
   
-  @computed get origem() { return this.estados.filter((estado)=> estado.UF !== this.dados.dest )};
-  
-  @computed get destino() { return this.estados.filter((estado)=> estado.UF !== this.dados.orig )}; 
-  
+  @computed get proib():boolean { return this.result.by('proib').includes(true) } 
+  @computed get exigProib(): exig { return this.result.find(ex=>ex.proib === true)}
+  @computed get empty():boolean { return (this.result.length === 0)}
+  @computed get origem():estados[] { return this.estados.filter((estado)=> estado.UF !== this.dados.dest )};
+  @computed get destino():estados[] { return this.estados.filter((estado)=> estado.UF !== this.dados.orig )}; 
+  @computed get gender():string { return this.dados.hospSci.split(' ')[0] }
   @computed get partes() {
     return db
       .filter((exig:exig) => exig.hosp.includes(this.dados.hospSci))
@@ -32,9 +33,6 @@ class Store {
       .flatten()
       .unique();
   }
-  
-  @computed get gender():string { return this.dados.hospSci.split(' ')[0] }
-  
   @computed get result():exig[] {return db.filter((exig:exig) => {return (
         (
           exig.hosp.includes(this.dados.hospSci) ||

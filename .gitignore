@@ -26,6 +26,7 @@ build/Release
 # Dependency directory
 node_modules
 build
+.vscode
 
 # Optional npm cache directory
 .npm

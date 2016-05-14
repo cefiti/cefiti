@@ -82,3 +82,4 @@
           div#moldura-topo #topo #identificacao-sistema h2 { margin :0 0 10px 3px; }
           span {line-height   :120%;}
       }
+      .hidden { display:none; }

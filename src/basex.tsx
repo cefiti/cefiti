@@ -6,7 +6,7 @@ var Base = ({db}) => {
   return (
      store.exibeBase ? (<div>
           <br/>
-          <table style={{"width": "100%"}} class="table-grid">
+          <table style={{"width": "100%"}} className="table-grid">
             <caption>Exigências</caption>
             <thead>
               <tr>
@@ -24,7 +24,7 @@ var Base = ({db}) => {
             {db.map((item, i)=>{ return (
               <tr key={i}>
                 <td style={{"width": "10%"}}><span>{item.desc}</span></td>
-                <td style={{"width": "20%"}} class="italic"><span>{item.hosp}</span></td>
+                <td style={{"width": "20%"}} className="italic"><span>{item.hosp}</span></td>
                 <td style={{"width": "10%"}}><span>{item.part}</span></td>
                 <td style={{"width": "10%"}}><span>{item.orig}</span></td>
                 <td style={{"width": "10%"}}><span>{item.dest}</span></td>
@@ -35,7 +35,7 @@ var Base = ({db}) => {
                   <span>{item.pragc}</span>
                   <br/>
                   <br/>
-                  <span class="italic">{item.prag}</span>
+                  <span className="italic">{item.prag}</span>
                 </td>
                 <td style={{"width": "30%"}}>
                   <div ng-repeat="exig in item.exig track by $index" style={{"margin":"6px"}}><span>{"$index+1"} - {"exig"}</span></div>
@@ -46,7 +46,7 @@ var Base = ({db}) => {
               </tr>
             )})}
             </tbody>
-            <tfoot class="form-barra-botoes">
+            <tfoot className="form-barra-botoes">
               <tr>
                 <td></td>
               </tr>
