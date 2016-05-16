@@ -1,9 +1,12 @@
 import { observable, computed, autorun } from 'mobx';
 import './ArrayPlus'
-import {db, hospedeiros} from './db'
-import {exig,dados, estados } from './cefiti'
+//import {db, hospedeiros} from './db'
+import {exig,dados, estados, hospedeiro } from './cefiti'
 
-autorun(()=>{console.log('autorun')})
+//autorun(()=>{console.log('autorun')})
+declare var db:exig[];
+declare var hospedeiros:hospedeiro[];
+
 
 class Store {
   db = db;

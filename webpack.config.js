@@ -1,7 +1,13 @@
+var path = require("path");
+
 module.exports = {
-    entry: "./src/index.tsx",
+    entry: [
+      "./src/index.tsx",
+    ],
     output: {
-        filename: "./dist/bundle.js",
+      path: path.resolve(__dirname, "dist"),
+      publicPath: '/',
+      filename: 'bundle.js'
     },
 
     // Enable sourcemaps for debugging webpack's output.
@@ -30,6 +36,10 @@ module.exports = {
     // dependencies, which allows browsers to cache those libraries between builds.
     externals: {
         "react": "React",
-        "react-dom": "ReactDOM"
+        "react-dom": "ReactDOM",
+        "mobx": "mobx"
     },
+    devServer: {
+      contentBase: "./dist"
+    }
 };
