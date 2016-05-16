@@ -4,34 +4,35 @@ import {observer} from 'mobx-react';
 
 function Result() {
   return (
-    <div>
-      <div className={store.empty ? '' : 'hidden'}>
-          <span className="empty"><div>SEM EXIGÊNCIAS PARA O TRÂNSITO</div></span>
-      </div>
-      <div className={store.empty ? 'hidden' : ''}>
-          <p className="center no-print">Se a espécie vegetal ou a parte da planta buscada não constar das respectivas listas, e a espécie não pertencer às
-            famílias Arecaceae, ou Heliconiaceae, ou Pandanaceae, ou Strelitziaceae, ou Zingiberaceae, então conclui-se que
-            não há nenhuma exigência fitossanitária para o trânsito interestadual</p>
+    <div  className={store.completed ? '' : 'hidden'}>
+      <div >
           <br/>
           <h3 >Exigências Fitossanitárias para o trânsito de {store.dados.prod} de {store.dados.hospVul} <i>({store.dados.hospSci})</i> do {store.dados.orig} para {store.dados.dest}</h3>
+          <div className={store.empty ? '' : 'hidden'}>
+              <br />
+              <p className="center no-print">Se a espécie vegetal ou a parte da planta buscada não constar das respectivas listas, e a espécie não pertencer às
+                famílias Arecaceae, ou Heliconiaceae, ou Pandanaceae, ou Strelitziaceae, ou Zingiberaceae, então conclui-se que
+                não há nenhuma exigência fitossanitária para o trânsito interestadual</p>
+              <span className="empty"><div>SEM EXIGÊNCIAS PARA O TRÂNSITO</div></span>
+          </div>
           
           {store.result.map((item, i)=>{ return (
-              <div key={i} className={store.proib ? 'hidden' : ''}>
-                <hr/>
-                <h4 className="h4"><i>{item.prag}</i> - {item.pragc}</h4> <a target="_blank" href={item.link}>{item.leg}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a className="small" target="_blank" href="https://www.google.com.br/search?site=imghp&tbm=isch&q={item.prag}">[FOTOS DA PRAGA]</a>
-                <br/>
-                <br/>
-                <span className="small underline">{item.desc}</span>
-                {item.exig.map((exig, i)=>{ return (
-                  <div style={{"margin":"6px"}} key={i}>
-                    <span title={"De: "+item.orig+" para "+item.dest}>{i+1} - {exig}</span>
-                  </div>
-                )})}
-              </div>
+              <div key={i}> 
+                    <hr/>
+                    <h4 className="h4"><i>{item.prag}</i> - {item.pragc}</h4> <a target="_blank" href={item.link}>{item.leg}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a className="small" target="_blank" href="https://www.google.com.br/search?site=imghp&tbm=isch&q={item.prag}">[FOTOS DA PRAGA]</a>
+                    <br/>
+                    <br/>
+                    <span className="small underline">{item.desc}</span>
+                    {item.exig.map((exig, ii)=>{ return (
+                        <div style={{"margin":"6px"}} key={ii}>
+                          <span title={"De: "+item.orig+" para "+item.dest}>{i+1} - {exig}</span>
+                        </div>
+                    )})}
+                    {item.proib ? (<span className="alert"><div>TRÂNSITO PROIBIDO</div></span>) : ''}
+             </div>
           )})}
           
-
         
           <div>
             <hr/>
@@ -63,9 +64,3 @@ function Result() {
 
 export default observer(Result)
 
-/*
-          <div className={store.proib ? '' : 'hidden'}>
-            <h4><i>{store.exigProib.prag}</i> - {store.exigProib.pragc} - <a target="_blank" href={store.exigProib.link}>{store.exigProib.leg}</a></h4>
-            <span className="alert"><div>TRÂNSITO PROIBIDO</div></span>
-          </div>
-          */

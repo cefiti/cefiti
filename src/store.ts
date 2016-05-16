@@ -8,32 +8,35 @@ autorun(()=>{console.log('autorun')})
 class Store {
   db = db;
   hospedeiros = hospedeiros;
-  listaNomesSci:string[] = hospedeiros.unique('nomeSci')
+  listaNomesSci:string[] = hospedeiros.unique('nomeSci').sort()
   
   @observable exibeBase: boolean = false;
   @observable exibeMapa: boolean = false;
   @observable dados:dados = {
-    hospSci: 'Musa spp.',
-    hospVul: null,
-    prod: 'frutos',
-    orig: 'MG',
-    dest: 'MT'
+    hospSci: '',
+    hospVul: '',
+    prod: '',
+    orig: '',
+    dest: ''
   }
   
-  @computed get proib():boolean { return this.result.by('proib').includes(true) } 
-  @computed get exigProib(): exig { return this.result.find(ex=>ex.proib === true)}
+  //@computed get proib():boolean { return this.result.by('proib').includes(true) } 
+  //@computed get exigProib(): exig { return this.result.find(ex=>ex.proib === true)}
   @computed get empty():boolean { return (this.result.length === 0)}
   @computed get origem():estados[] { return this.estados.filter((estado)=> estado.UF !== this.dados.dest )};
   @computed get destino():estados[] { return this.estados.filter((estado)=> estado.UF !== this.dados.orig )}; 
   @computed get gender():string { return this.dados.hospSci.split(' ')[0] }
+  @computed get completed():boolean { return (Boolean(this.dados.hospSci) && Boolean(this.dados.hospVul) && Boolean(this.dados.prod) && 
+    Boolean(this.dados.orig) && Boolean(this.dados.dest))}
   @computed get partes() {
     return db
       .filter((exig:exig) => exig.hosp.includes(this.dados.hospSci))
       .by('part')
       .flatten()
-      .unique();
+      .unique()
+      .sort();
   }
-  @computed get result():exig[] {return db.filter((exig:exig) => {return (
+  @computed get result():exig[] { let result = db.filter((exig:exig) => {return (
         (
           exig.hosp.includes(this.dados.hospSci) ||
           exig.hosp.includes(this.gender + ' sp.') ||
@@ -43,7 +46,13 @@ class Store {
       exig.dest.includes(this.dados.dest) &&
       exig.part.includes(this.dados.prod)
       );
-    })
+    });
+    let proib = result.filter(res=>res.proib)
+    if (proib.count()) { 
+      return proib
+    } else {
+      return result
+    }
   } 
   
   

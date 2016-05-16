@@ -9,11 +9,29 @@ msgFamilias += ' "Pandanaceae", "Strelitziaceae" ou "Zingiberaceae", fazer a con
 msgFamilias += ' para a Família, ou só para a Família se a espécie não estiver relacionada';
 
 var handleChanges = (event) => {
-  console.log(event.target,name, event.target.value);
+  /*if (event.target.name === 'hospSci') {
+    let hosp = store.hospedeiros.find(hosp=> hosp.nomeSci === event.target.value);
+    store.dados.hospVul = hosp.nomeVul;
+  }*/
+  switch (event.target.name) {
+    case 'hospSci':
+      //let hosp = store.hospedeiros.find(hosp=> hosp.nomeSci === event.target.value);
+      //console.log(name, event.target.value, hosp.nomeVul);
+      store.dados.hospVul = store.hospedeiros.find(hosp=> hosp.nomeSci === event.target.value).nomeVul;   
+      break;
+    case 'hospVul':
+      store.dados.hospSci = store.hospedeiros.find(hosp=> hosp.nomeVul === event.target.value).nomeSci;   
+      break;  
+    default:
+      break;
+  }
+  
   store.dados[event.target.name] = event.target.value;
 }
 
 var handleSubmit = (event) => {
+  event.preventDefault(); 
+  event.stopPropagation(); 
   console.log(event, event.target,name, event.target.value);
   
 }
@@ -29,7 +47,7 @@ function Form() {
               </td>
               <td>
                 <select title={msgFamilias} className="italic form-select" value={store.dados.hospSci} name="hospSci" onChange={handleChanges.bind(this)}>
-
+                  <option value={''}></option>
                   {store.listaNomesSci.map((option, i)=>{ return (
                     <option value={option} key={i}>{option}</option>
                   )})}
@@ -42,8 +60,9 @@ function Form() {
               </td>
               <td>
                 <select title= {msgFamilias} className="form-select" name="hospVul" value={store.dados.hospVul} onChange={handleChanges.bind(this)}>
+                  <option value={''}></option>
                   {store.hospedeiros.map((option, i)=>{ return (
-                    <option value={option.nomeSci} key={i}>{option.nomeVul}</option>
+                    <option value={option.nomeVul} key={i}>{option.nomeVul}</option>
                   )})}
                 </select>
               </td>
@@ -54,6 +73,7 @@ function Form() {
               </td>
               <td>
                 <select className="form-select" name="prod" value={store.dados.prod} onChange={handleChanges.bind(this)}>
+                  <option value={''}></option>
                   {store.partes.map((option, i)=>{ return (
                     <option value={option} key={i}>{option}</option>
                   )})}
@@ -66,6 +86,7 @@ function Form() {
               </td>
               <td>
                 <select className="form-select"  name="orig" value={store.dados.orig}  onChange={handleChanges.bind(this)}>
+                  <option value={''}></option>
                   {store.origem.map((option, i)=>{ return (
                     <option value={option.UF} key={i}>{option.estado}</option>
                   )})}
@@ -77,7 +98,8 @@ function Form() {
                 <label>Destino:</label>
               </td>
               <td>
-                <select className="form-select"  name="destt" value={store.dados.dest}  onChange={handleChanges.bind(this)}>
+                <select className="form-select"  name="dest" value={store.dados.dest}  onChange={handleChanges.bind(this)}>
+                  <option value={''}></option>
                   {store.destino.map((option, i)=>{ return (
                     <option value={option.UF} key={i}>{option.estado}</option>
                   )})}
