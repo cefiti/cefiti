@@ -40,6 +40,7 @@ module.exports = {
         "mobx": "mobx"
     },
     devServer: {
-      contentBase: "./dist"
+      contentBase: "./dist",
+      inline: true
     }
 };

@@ -1,0 +1,9 @@
+[
+	{ "key": "ctrl+shift+d", "command": "editor.action.copyLinesDownAction"},
+	{ "key": "ctrl+shift+q", "command": "workbench.action.tasks.terminate"},
+	{ "key": "ctrl+shift+r", "command": "workbench.action.tasks.runTask"},
+	{ "key": "ctrl+shift+up", "command": "editor.action.moveLinesUpAction",
+                                     "when": "editorTextFocus" },
+	{ "key": "ctrl+shift+down", "command": "editor.action.moveLinesDownAction",
+                                     "when": "editorTextFocus" }
+]
