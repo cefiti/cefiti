@@ -1,30 +1,22 @@
 import { observable, computed, autorun } from 'mobx';
 import './ArrayPlus'
-//import {db, hospedeiros} from './db'
 import {exig,dados, estados, hospedeiro } from './cefiti'
+//import {db, hospedeiros} from './db'
 
-//autorun(()=>{console.log('autorun')})
 declare var db:exig[];
 declare var hospedeiros:hospedeiro[];
 
+//autorun(()=>{console.log('autorun')})
 
 class Store {
   db = db;
   hospedeiros = hospedeiros;
-  listaNomesSci:string[] = hospedeiros.unique('nomeSci').sort()
+  listaNomesSci:string[] = hospedeiros.unique('nomeSci').sort((a, b) => a.localeCompare(b));
   
   @observable exibeBase: boolean = false;
   @observable exibeMapa: boolean = false;
-  @observable dados:dados = {
-    hospSci: '',
-    hospVul: '',
-    prod: '',
-    orig: '',
-    dest: ''
-  }
+  @observable dados:dados = {hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
   
-  //@computed get proib():boolean { return this.result.by('proib').includes(true) } 
-  //@computed get exigProib(): exig { return this.result.find(ex=>ex.proib === true)}
   @computed get empty():boolean { return (this.result.length === 0)}
   @computed get origem():estados[] { return this.estados.filter((estado)=> estado.UF !== this.dados.dest )};
   @computed get destino():estados[] { return this.estados.filter((estado)=> estado.UF !== this.dados.orig )}; 
@@ -37,25 +29,14 @@ class Store {
       .by('part')
       .flatten()
       .unique()
-      .sort();
+      .sort((a, b) => a.localeCompare(b));
   }
-  @computed get result():exig[] { let result = db.filter((exig:exig) => {return (
-        (
-          exig.hosp.includes(this.dados.hospSci) ||
-          exig.hosp.includes(this.gender + ' sp.') ||
-          exig.hosp.includes(this.gender + ' spp.')
-        ) &&
+  @computed get result():exig[] { return db.filter((exig:exig) => {return (
+      (exig.hosp.includes(this.dados.hospSci) || exig.hosp.includes(this.gender + ' sp.') || exig.hosp.includes(this.gender + ' spp.')) &&
       exig.orig.includes(this.dados.orig) &&
       exig.dest.includes(this.dados.dest) &&
-      exig.part.includes(this.dados.prod)
-      );
+      exig.part.includes(this.dados.prod));
     });
-    let proib = result.filter(res=>res.proib)
-    if (proib.count()) { 
-      return proib
-    } else {
-      return result
-    }
   } 
   
   handleChanges = (event) => {
@@ -109,3 +90,15 @@ export default store;
   this.normalizedName = function(item) {
     return normalize(item.name);
   };*/
+  
+  
+    /*let proib = result.filter(res=>res.proib)
+    if (proib.count()) { 
+      return proib
+    } else {
+      return result
+    }*/
+    
+
+  //@computed get proib():boolean { return this.result.by('proib').includes(true) } 
+  //@computed get exigProib(): exig { return this.result.find(ex=>ex.proib === true)}
