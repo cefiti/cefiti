@@ -12,7 +12,7 @@ msgFamilias += ' para a Família, ou só para a Família se a espécie não esti
 var handleSubmit = (event) => {
   event.preventDefault(); 
   event.stopPropagation(); 
-  console.log(event, event.target,name, event.target.value);
+  //console.log(event, event.target,name, event.target.value);
   
 }
 
@@ -87,7 +87,7 @@ function Form() {
               </td>
             </tr>
             <tr>
-              <td className="col30"><a target="_blank" href={"https://www.google.com.br/search?site=imghp&tbm=isch&q="+store.dados.hospSci+"plant+OR+planta"}>Fotos da Espécie Vegetal}</a></td>
+              <td className="col30"><a target="_blank" href={"https://www.google.com.br/search?site=imghp&tbm=isch&q="+store.dados.hospSci+"plant+OR+planta"}>Fotos da Espécie Vegetal</a></td>
               <td align="center">
                 <button onClick={handleSubmit.bind(this)} className="form-button">Pesquisar</button>
                 <br/>

@@ -7,17 +7,18 @@ import expect from 'expect';
     {estado: 'Distrito Federal', UF: 'DF'},{estado: 'Espirito Santo', UF: 'ES'},{estado: 'Goiás', UF: 'GO'}, 
     {estado: 'Maranhão', UF: 'MA'},{estado: 'Minas Gerais', UF: 'MG'},{estado: 'Mato Grosso do Sul', UF: 'MS'},
     {estado: 'Mato Grosso', UF: 'MT'},{estado: 'Pará', UF: 'PA'},{estado: 'Paraíba', UF: 'PB'},
-    {estado: 'Pernanbuco', UF: 'PE'},{estado: 'Piauí', UF: 'PI'},{estado: 'Paraná', UF: 'PR'},
+    {estado: 'Pernambuco', UF: 'PE'},{estado: 'Piauí', UF: 'PI'},{estado: 'Paraná', UF: 'PR'},
     {estado: 'Rio de janeiro', UF: 'RJ'},{estado: 'Rio Grande do Norte', UF: 'RN'},
     {estado: 'Rondônia', UF: 'RO'},{estado: 'Roraima', UF: 'RR'},{estado: 'Rio Grande do Sul', UF: 'RS'},
     {estado: 'Santa Catarina', UF: 'SC'},{estado: 'Sergipe', UF: 'SE'},{estado: 'São Paulo', UF: 'SP'},
     {estado: 'Tocantins', UF: 'TO'}
   ]; 
   
-  var hosp10 =["Persea gratissima", "Picea abies", "Chrysophyllum cainito", "Acacia sp.", "Euterpe oleracea", "Euterpe precatoria",
-   "Malpighia punicifolia", "Malpighia spp.", "Populus spp.", "Tilia americana"]
-  var hosp_10 = ["Citrus reticulata", "Tectona grandis", "Tilia cordata", "Tilia sp.", "Licopersicum esculentum", 
-  "Sorbus aucuparia", "Liriodendron tulipifera", "Vitis spp. e seus híbridos", "Viola sp.", "Zingiberaceae (espécies desta família)"]
+  var hosp10 = ["Acacia sp.", "Acer circinatum", "Acer macrophyllum", "Acer mono subsp. Heterophyllum", "Acer negundo",
+   "Acer palmatum", "Acer pennsylvanicum", "Acer pseudoplatanus", "Acer rubrum", "Acer saccharum"]
+  var hosp_20 = ["Tectona grandis", "Terminalia catappa",  "Thrinax radiata", "Tilia americana", "Tilia cordata", "Tilia sp.", "Ulmus americana", "Ulmus glabra (syn. montana)",
+   "Ulmus sp.", "Umbelluraria californica", "Veitchia arecina", "Veitchia maerrillii", "Viola sp.", "Vitis spp. e seus híbridos", 
+   "Washingtonia filifera", "Washingtonia robusta", "Wodyetia bifurcata", "Zingiberaceae (espécies desta família)", "Ziziphus jujuba", "Ziziphus mauritiana"]
 
 describe('Store origem e destino', ()=>{
   
@@ -46,8 +47,8 @@ describe('Store hospedeiros nomeSci', ()=>{
   
   it('unique values', ()=>{
     expect(store.listaNomesSci.take(10)).toEqual(hosp10);
-    expect(store.listaNomesSci.take(-10)).toEqual(hosp_10);
-    expect(store.listaNomesSci.length).toBe(249);
+    expect(store.listaNomesSci.take(-20)).toEqual(hosp_20);
+    expect(store.listaNomesSci.length).toBe(246);
   })
 })
 
@@ -60,12 +61,12 @@ describe('Store partes', ()=>{
   
   it('de Banana', ()=>{
     store.dados.hospSci = 'Musa spp.';
-    expect(store.partes).toEqual(["plantas", "mudas", "raízes", "caules", "ramos", "folhas", "flores", "frutos", "material para pesquisa", "rizomas"])
+    expect(store.partes).toEqual([ "caules",  "flores",  "folhas", "frutos", "material para pesquisa", "mudas", "plantas", "raízes", "ramos", "rizomas"])
   })
   
   it('de Mandioca', ()=>{
     store.dados.hospSci = 'Manihot esculenta';
-    expect(store.partes).toEqual(["madeira", "maniva", "estaca"])
+    expect(store.partes).toEqual([ "estaca", "madeira", "maniva"])
   })
   
 })
