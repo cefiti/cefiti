@@ -1,4 +1,4 @@
-import { observable, computed, autorun } from 'mobx';
+import { observable, computed, autorun, useStrict, action} from 'mobx';
 import './ArrayPlus'
 import {exig,dados, estados, hospedeiro } from './cefiti'
 //import {db, hospedeiros} from './db'
@@ -7,6 +7,7 @@ declare var db:exig[];
 declare var hospedeiros:hospedeiro[];
 
 //autorun(()=>{console.log('autorun')})
+useStrict(true)
 
 class Store {
   db = db;
@@ -39,7 +40,7 @@ class Store {
     });
   } 
   
-  handleChanges = (event) => {
+  @action handleChanges = (event) => {
   switch (event.target.name) {
     case 'hospSci':
       store.dados.hospVul = store.hospedeiros.find(hosp=> hosp.nomeSci === event.target.value).nomeVul;   

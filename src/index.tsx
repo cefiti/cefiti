@@ -21,7 +21,7 @@ class App extends React.Component<{store:any},{}> {
             </div>
             <div id="identificacao-sistema" style={{"float":"none"}}>
               <br/>
-              <div style={{"float":"right","color":"#fff","padding":"5px 10px 5px 15px"}}>Versão 2.0.0</div>
+              <div style={{"float":"right","color":"#fff","padding":"5px 10px 5px 15px"}}>Versão 2.1.0</div>
               <h1>CEFiTI</h1>
               <div style={{"float":"right","color":"#fff","padding":"5px 10px 5px 15px"}}>Data: {(new Date()).toLocaleDateString()}</div>
               <h2>Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual</h2>
