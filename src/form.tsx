@@ -10,6 +10,7 @@ msgFamilias += ' para a Família, ou só para a Família se a espécie não esti
 
 
 var handleSubmit = (event) => {
+  store.searched = true;
   event.preventDefault(); 
   event.stopPropagation(); 
   //console.log(event, event.target,name, event.target.value);
@@ -18,6 +19,7 @@ var handleSubmit = (event) => {
 
 function Form() {
         return ( 
+          (store.searched ? null : 
           <form >
           <table className="table-form no-print">
           <tbody>
@@ -96,6 +98,7 @@ function Form() {
             </tbody>
           </table>
         </form> )
+        )
 }
 
 

@@ -11,6 +11,7 @@ var handleClick = (i, event) => {
     store.dados.prod = '';
     store.dados.orig = '';
     store.dados.dest = '';
+    store.searched = false;
    };
   //console.log('this:',this, 'iii:', i, 'event:',event.target, event.type, store.exibeBase)
 }
@@ -22,7 +23,7 @@ var Menu = () => { return (
           <span title="Para salvar o resultado como PDF, utilize o navegador Chrome, e altere a impressora para 'Salvar como PDF' na página de impressão">
               <a href="#" onClick={handleClick.bind(this)}>Imprimir</a></span>
           <span ><a href="#">Para baixar o Sistema: CTRL + S </a></span>
-          <span ><a href="#" onClick={handleClick.bind(this, 'Nova')}>NOVA CONSULTA</a></span>
+          <span ><a href="#" onClick={handleClick.bind(this, 'Nova')}>Nova Consulta</a></span>
         </p>)
 }
 

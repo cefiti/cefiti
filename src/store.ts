@@ -1,12 +1,13 @@
-import { observable, computed, autorun } from 'mobx';
+import { observable, computed, autorun, useStrict, action} from 'mobx';
 import './ArrayPlus'
 import {exig,dados, estados, hospedeiro } from './cefiti'
-//import {db, hospedeiros} from './db'
+import {db, hospedeiros} from './db'
 
-declare var db:exig[];
-declare var hospedeiros:hospedeiro[];
+//declare var db:exig[];
+//declare var hospedeiros:hospedeiro[];
 
 //autorun(()=>{console.log('autorun')})
+useStrict(true)
 
 class Store {
   db = db;
@@ -15,6 +16,7 @@ class Store {
   
   @observable exibeBase: boolean = false;
   @observable exibeMapa: boolean = false;
+  @observable searched:boolean = false;
   @observable dados:dados = {hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
   
   @computed get empty():boolean { return (this.result.length === 0)}
@@ -39,7 +41,7 @@ class Store {
     });
   } 
   
-  handleChanges = (event) => {
+  @action handleChanges = (event) => {
   switch (event.target.name) {
     case 'hospSci':
       store.dados.hospVul = store.hospedeiros.find(hosp=> hosp.nomeSci === event.target.value).nomeVul;   

@@ -4,6 +4,7 @@ import {observer} from 'mobx-react';
 
 function Result() {
   return (
+   (store.searched ?
     <div  className={store.completed ? '' : 'hidden'}>
       <div >
           <br/>
@@ -67,6 +68,7 @@ function Result() {
 
         </div>
       </div>
+      : null)
   )
 }
 
