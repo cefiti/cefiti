@@ -1,25 +1,15 @@
 import * as React from 'react';
 import store from './store';
+import uiStore from './uistore';
 import {observer} from 'mobx-react';
-
-var cat:any={};
 
 var msgFamilias = 'Se a espécie pertencer à uma destas Famílias: "Arecaceae", "Heliconiaceae", "Musaceae",';
 msgFamilias += ' "Pandanaceae", "Strelitziaceae" ou "Zingiberaceae", fazer a consulta para a Espécie e';
 msgFamilias += ' para a Família, ou só para a Família se a espécie não estiver relacionada';
 
-
-var handleSubmit = (event) => {
-  store.searched = true;
-  event.preventDefault(); 
-  event.stopPropagation(); 
-  //console.log(event, event.target,name, event.target.value);
-  
-}
-
 function Form() {
         return ( 
-          (store.searched ? null : 
+          (uiStore.searched ? null : 
           <form >
           <table className="table-form no-print">
           <tbody>
@@ -91,7 +81,7 @@ function Form() {
             <tr>
               <td className="col30"><a target="_blank" href={"https://www.google.com.br/search?site=imghp&tbm=isch&q="+store.dados.hospSci+"plant+OR+planta"}>Fotos da Espécie Vegetal</a></td>
               <td align="center">
-                <button onClick={handleSubmit.bind(this)} className="form-button">Pesquisar</button>
+                <button onClick={uiStore.handleSearch.bind(this)} className="form-button">Pesquisar</button>
                 <br/>
               </td>
             </tr>

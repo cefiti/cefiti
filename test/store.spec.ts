@@ -1,5 +1,8 @@
 import store from './../src/store'
 import expect from 'expect';
+import {useStrict} from 'mobx'
+
+useStrict(false)
 
   var estadosSemAC = [
     /*{estado: 'Acre', UF: 'AC'},*/{estado: 'Alagoas', UF: 'AL'},{estado: 'Amazonas', UF: 'AM'},

@@ -6,6 +6,8 @@ import Base from './basex';
 import Menu from './menu';
 import Result from './result';
 import Form from './form';
+//import DevTools from 'mobx-react-devtools'
+//        <DevTools />
 
 class App extends React.Component<{store:any},{}> {  
   render() {

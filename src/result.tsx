@@ -1,12 +1,14 @@
 import * as React from 'react';
 import store from './store';
+import uiStore from './uistore';
 import {observer} from 'mobx-react';
 
 function Result() {
+  console.log('asdfasdas',(store.completed && uiStore.searched) , store.completed, uiStore.searched )
   return (
-   (store.searched ?
-    <div  className={store.completed ? '' : 'hidden'}>
-      <div >
+   //((store.completed && uiStore.searched) ?
+    <div  >
+      <div className={(store.completed && uiStore.searched) ? '' : 'hidden'} >
           <br/>
           <h3 >Exigências Fitossanitárias para o trânsito de {store.dados.prod} de {store.dados.hospVul} <i>({store.dados.hospSci})</i> do {store.dados.orig} para {store.dados.dest}</h3>
           <div className={store.empty ? '' : 'hidden'}>
@@ -18,6 +20,7 @@ function Result() {
               <span className="empty"><div>SEM EXIGÊNCIAS PARA O TRÂNSITO</div></span>
               <br/>
           </div>
+          <span>{uiStore.searched}</span>
           
           {store.result.map((item, i)=>{ return (
               <div key={i}> 
@@ -68,7 +71,7 @@ function Result() {
 
         </div>
       </div>
-      : null)
+      //: null)
   )
 }
 

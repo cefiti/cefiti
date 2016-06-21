@@ -1,12 +1,11 @@
-import { observable, computed, autorun, useStrict, action} from 'mobx';
+import { observable, computed, autorun, useStrict, action, toJS} from 'mobx';
 import './ArrayPlus'
 import {exig,dados, estados, hospedeiro } from './cefiti'
-import {db, hospedeiros} from './db'
+//import {db, hospedeiros} from './db'
 
-//declare var db:exig[];
-//declare var hospedeiros:hospedeiro[];
+declare var db:exig[];
+declare var hospedeiros:hospedeiro[];
 
-//autorun(()=>{console.log('autorun')})
 useStrict(true)
 
 class Store {
@@ -14,9 +13,6 @@ class Store {
   hospedeiros = hospedeiros;
   listaNomesSci:string[] = hospedeiros.unique('nomeSci').sort((a, b) => a.localeCompare(b));
   
-  @observable exibeBase: boolean = false;
-  @observable exibeMapa: boolean = false;
-  @observable searched:boolean = false;
   @observable dados:dados = {hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
   
   @computed get empty():boolean { return (this.result.length === 0)}
@@ -42,20 +38,28 @@ class Store {
   } 
   
   @action handleChanges = (event) => {
-  switch (event.target.name) {
-    case 'hospSci':
-      store.dados.hospVul = store.hospedeiros.find(hosp=> hosp.nomeSci === event.target.value).nomeVul;   
-      break;
-    case 'hospVul':
-      store.dados.hospSci = store.hospedeiros.find(hosp=> hosp.nomeVul === event.target.value).nomeSci;   
-      break;  
-    default:
-      break;
+    switch (event.target.name) {
+      case 'hospSci':
+        store.dados.hospVul = store.hospedeiros.find(hosp=> hosp.nomeSci === event.target.value).nomeVul;   
+        break;
+      case 'hospVul':
+        store.dados.hospSci = store.hospedeiros.find(hosp=> hosp.nomeVul === event.target.value).nomeSci;   
+        break;  
+      default:
+        break;
+    }
+    store.dados[event.target.name] = event.target.value;
   }
-  store.dados[event.target.name] = event.target.value;
-}
-  
-  estados:Array<estados> = [
+
+  @action clean () {
+    this.dados.hospSci = '';
+    this.dados.hospVul = '';
+    this.dados.prod = '';
+    this.dados.orig = '';
+    this.dados.dest = '';
+  };
+
+   estados:Array<estados> = [
     {estado: 'Acre', UF: 'AC'},{estado: 'Alagoas', UF: 'AL'},{estado: 'Amazonas', UF: 'AM'},
     {estado: 'Amapá', UF: 'AP'},{estado: 'Bahia', UF: 'BA'},{estado: 'Ceará', UF: 'CE'},
     {estado: 'Distrito Federal', UF: 'DF'},{estado: 'Espirito Santo', UF: 'ES'},{estado: 'Goiás', UF: 'GO'}, 
@@ -67,40 +71,8 @@ class Store {
     {estado: 'Santa Catarina', UF: 'SC'},{estado: 'Sergipe', UF: 'SE'},{estado: 'São Paulo', UF: 'SP'},
     {estado: 'Tocantins', UF: 'TO'}
   ];
+
 }
 
 export var store = new Store();
 export default store;
-
-
-/*  var normalize = function(str) {
-    return str.toLowerCase().
-               replace(/\\s/g, "").
-               replace(/[àáâãäå]/g, "a").
-               replace(/æ/g, "ae").
-               replace(/ç/g, "c").
-               replace(/[èéêë]/g, "e").
-               replace(/[ìíîï]/g, "i").
-               replace(/ñ/g, "n").
-               replace(/[òóôõö]/g, "o").
-               replace(/œ/g, "oe").
-               replace(/[ùúûü]/g, "u").
-               replace(/[ýÿ]/g, "y").
-               replace(/\\W/g, "");
-  };  
-  
-  this.normalizedName = function(item) {
-    return normalize(item.name);
-  };*/
-  
-  
-    /*let proib = result.filter(res=>res.proib)
-    if (proib.count()) { 
-      return proib
-    } else {
-      return result
-    }*/
-    
-
-  //@computed get proib():boolean { return this.result.by('proib').includes(true) } 
-  //@computed get exigProib(): exig { return this.result.find(ex=>ex.proib === true)}

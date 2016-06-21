@@ -1,10 +1,10 @@
 import * as React from 'react'
-import store from './store'
+import uiStore from './uistore'
 import {observer} from 'mobx-react'
 
 var Base = ({db}) => {
   return (
-     store.exibeBase ? (<div>
+     uiStore.exibeBase ? (<div>
           <br/>
           <table style={{"width": "100%"}} className="table-grid">
             <caption>Exigências</caption>

@@ -378,3 +378,28 @@ if (typeof module === 'object') {
   exports.db = db;
   exports.hospedeiros = hospedeiros;
 }
+
+
+/*
+{nomeVul:"Laranja",nomeSci:"Citrus sinensis"}, 
+Citrus reticulata - tangerina
+Citrus medica - cidra
+Citrus maxima - cimboa
+Citrus x sinensis - Laranja-doce
+Citrus × aurantium - Laranja-amarga
+Citrus × paradisi - Toranja
+Citrus × limon - Limão (Pt)
+Limas (Pt) ou Limões (Br)
+Citrus × latifolia - Limão taiti[2] [3]
+Citrus aurantiifolia[3] [4]
+Citrus x limonia - Limão-cravo
+Citrus x hystrix - Combava ou Lima cafre
+Citrus x limetta - Lima doce
+Citrus x limettioides - lima-da-pérsia[3] [5]
+
+Citrus reticulata : mexerica, pokan, tangerina
+Citrus aurantium: laranja
+Citrus aurantiifolia: lima
+Citrus limon: limão
+Citrus latifolia: limão tahiti
+*/
