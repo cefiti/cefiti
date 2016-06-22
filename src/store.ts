@@ -1,5 +1,5 @@
 import { observable, computed, autorun, useStrict, action, toJS} from 'mobx';
-import './ArrayPlus'
+import './arrayplus'
 import {exig,dados, estados, hospedeiro } from './cefiti'
 //import {db, hospedeiros} from './db'
 
