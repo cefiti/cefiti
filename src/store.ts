@@ -16,8 +16,8 @@ class Store {
   @observable dados:dados = {hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
   
   @computed get empty():boolean { return (this.result.length === 0)}
-  @computed get origem():estados[] { return this.estados.filter((estado)=> estado.UF !== this.dados.dest )};
-  @computed get destino():estados[] { return this.estados.filter((estado)=> estado.UF !== this.dados.orig )}; 
+  @computed get origem():estados[] { return this.estados.filter((estado)=> (estado.UF !== this.dados.dest || estado.UF === ''))};
+  @computed get destino():estados[] { return this.estados.filter((estado)=> (estado.UF !== this.dados.orig || estado.UF === ''))}; 
   @computed get gender():string { return this.dados.hospSci.split(' ')[0] }
   @computed get completed():boolean { return (Boolean(this.dados.hospSci) && Boolean(this.dados.hospVul) && Boolean(this.dados.prod) && 
     Boolean(this.dados.orig) && Boolean(this.dados.dest))}
@@ -27,6 +27,7 @@ class Store {
       .by('part')
       .flatten()
       .unique()
+      .concat([''])
       .sort((a, b) => a.localeCompare(b));
   }
   @computed get result():exig[] { return db.filter((exig:exig) => {return (
@@ -60,6 +61,7 @@ class Store {
   };
 
    estados:Array<estados> = [
+    {estado:'', UF:''},
     {estado: 'Acre', UF: 'AC'},{estado: 'Alagoas', UF: 'AL'},{estado: 'Amazonas', UF: 'AM'},
     {estado: 'Amapá', UF: 'AP'},{estado: 'Bahia', UF: 'BA'},{estado: 'Ceará', UF: 'CE'},
     {estado: 'Distrito Federal', UF: 'DF'},{estado: 'Espirito Santo', UF: 'ES'},{estado: 'Goiás', UF: 'GO'}, 

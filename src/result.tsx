@@ -4,9 +4,7 @@ import uiStore from './uistore';
 import {observer} from 'mobx-react';
 
 function Result() {
-  console.log('asdfasdas',(store.completed && uiStore.searched) , store.completed, uiStore.searched )
   return (
-   //((store.completed && uiStore.searched) ?
     <div  >
       <div className={(store.completed && uiStore.searched) ? '' : 'hidden'} >
           <br/>
@@ -71,7 +69,6 @@ function Result() {
 
         </div>
       </div>
-      //: null)
   )
 }
 

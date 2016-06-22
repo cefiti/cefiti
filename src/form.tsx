@@ -45,7 +45,7 @@ function Form() {
               </td>
               <td>
                 <select className="form-select" name="prod" value={store.dados.prod} onChange={store.handleChanges.bind(this)}>
-                  <option value={''}></option>
+
                   {store.partes.map((option, i)=>{ return (
                     <option value={option} key={i}>{option}</option>
                   )})}
@@ -58,7 +58,7 @@ function Form() {
               </td>
               <td>
                 <select className="form-select"  name="orig" value={store.dados.orig}  onChange={store.handleChanges.bind(this)}>
-                  <option value={''}></option>
+
                   {store.origem.map((option, i)=>{ return (
                     <option value={option.UF} key={i}>{option.estado}</option>
                   )})}
@@ -71,7 +71,7 @@ function Form() {
               </td>
               <td>
                 <select className="form-select"  name="dest" value={store.dados.dest}  onChange={store.handleChanges.bind(this)}>
-                  <option value={''}></option>
+
                   {store.destino.map((option, i)=>{ return (
                     <option value={option.UF} key={i}>{option.estado}</option>
                   )})}
