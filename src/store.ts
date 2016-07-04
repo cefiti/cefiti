@@ -12,6 +12,7 @@ class Store {
   db = db;
   hospedeiros = hospedeiros;
   listaNomesSci:string[] = hospedeiros.unique('nomeSci').sort((a, b) => a.localeCompare(b));
+  listaNomesVul:string[] = hospedeiros.unique('nomeVul').sort((a, b) => a.localeCompare(b)); 
   
   @observable dados:dados = {hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
   

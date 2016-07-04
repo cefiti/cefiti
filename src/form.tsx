@@ -81,7 +81,7 @@ function Form() {
             <tr>
               <td className="col30"><a target="_blank" href={"https://www.google.com.br/search?site=imghp&tbm=isch&q="+store.dados.hospSci+"plant+OR+planta"}>Fotos da Espécie Vegetal</a></td>
               <td align="center">
-                <button onClick={uiStore.handleSearch.bind(this)} className="form-button">Pesquisar</button>
+                <button onClick={uiStore.handleSearch.bind(this)} className="form-button" disabled={!store.completed}>Pesquisar</button>
                 <br/>
               </td>
             </tr>

@@ -24,12 +24,12 @@ var Base = ({db}) => {
             {db.map((item, i)=>{ return (
               <tr key={i}>
                 <td style={{"width": "10%"}}><span>{item.desc}</span></td>
-                <td style={{"width": "20%"}} className="italic"><span>{item.hosp}</span></td>
-                <td style={{"width": "10%"}}><span>{item.part}</span></td>
-                <td style={{"width": "10%"}}><span>{item.orig}</span></td>
-                <td style={{"width": "10%"}}><span>{item.dest}</span></td>
+                <td style={{"width": "20%"}} className="italic"><span>{item.hosp.toString()}</span></td>
+                <td style={{"width": "10%"}}><span>{item.part.toString()}</span></td>
+                <td style={{"width": "10%"}}><span>{item.orig.toString()}</span></td>
+                <td style={{"width": "10%"}}><span>{item.dest.toString()}</span></td>
                 <td style={{"width": "15%"}}>
-                  <a target="_blank" ng-href="{item.link}">{item.leg}</a>
+                  <a target="_blank" href="{item.link}">{item.leg}</a>
                   <br/>
                   <br/>
                   <span>{item.pragc}</span>
@@ -38,10 +38,14 @@ var Base = ({db}) => {
                   <span className="italic">{item.prag}</span>
                 </td>
                 <td style={{"width": "30%"}}>
-                  <div ng-repeat="exig in item.exig track by $index" style={{"margin":"6px"}}><span>{"$index+1"} - {"exig"}</span></div>
+                <div style={{"margin":"6px"}}>
+                  {item.exig.map((exig, i)=>{ return (
+                    <span key={i}>{i+1} - {exig}</span>
+                  )})}
+                </div>
                 </td>
                 <td style={{"width": "5%"}} align="center">
-                  <input type="checkbox" onclick="return false;" ng-model="item.proib"/>
+                  <input type="checkbox" onclick="return false;" selected={item.proib}/>
                 </td>
               </tr>
             )})}
