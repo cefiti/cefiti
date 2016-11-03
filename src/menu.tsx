@@ -1,19 +1,23 @@
 import * as React from 'react';
 import uiStore from './uistore';
-import {observer} from 'mobx-react'
+import {observer} from 'mobx-react';
 
-
-var Menu = () => { return (
+let Menu = () => { return (
         <p>
           <span><a href="#" onClick={uiStore.handleMenu.bind(this, 'Base')}>Ver Base de Dados</a></span>
-          <span><a href="#" onClick={uiStore.handleMenu.bind(this, 'Mapa')}><span>{uiStore.exibeMapa ? 'Fechar' : 'Ver'}</span>          Mapa de Área Livre</a>         </span>
           <span title="Para salvar o resultado como PDF, utilize o navegador Chrome, e altere a impressora para 'Salvar como PDF' na página de impressão">
               <a href="#" onClick={uiStore.handleMenu.bind(this)}>Imprimir</a></span>
           <span ><a href="#">Para baixar o Sistema: CTRL + S </a></span>
           <span ><a href="#" onClick={uiStore.handleMenu.bind(this, 'Nova')}>Nova Consulta</a></span>
-        </p>)
-}
+        </p>);
+};
 
-export default observer(Menu)
+export default observer(Menu);
 
 //style="float:right;color:#fff;padding:5px 10px 5px 15px;"
+/*          <span>
+            <a href="#" onClick={uiStore.handleMenu.bind(this, 'Mapa')}>
+              <span>{uiStore.exibeMapa ? 'Fechar' : 'Ver'}</span>          Mapa de Área Livre         .
+            </a>
+          </span>
+          */
