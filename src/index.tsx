@@ -9,7 +9,7 @@ import Form from './form';
 //import DevTools from 'mobx-react-devtools'
 //        <DevTools />
 
-class App extends React.Component<{store:any},{}> {  
+class App extends React.Component<{store: any}, {}> {
   render() {
     return (
     <div id="resolucao">
@@ -17,7 +17,7 @@ class App extends React.Component<{store:any},{}> {
           <div id="topo">
             <div id="identificacao-ministerio">
               <span>
-                    <div id="imagemGov"><a href="http://www.brasil.gov.br" target="_blank" id="brasilgov"></a></div>
+                    <div id="imagemGov"><a href="http://www.brasil.gov.br" target="_blank" id="brasilgov"/></div>
                   </span>
 
             </div>
@@ -28,7 +28,7 @@ class App extends React.Component<{store:any},{}> {
               <div style={{"float":"right","color":"#fff","padding":"5px 10px 5px 15px"}}>Data: {(new Date()).toLocaleDateString()}</div>
               <h2>Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual</h2>
             </div>
-            <div id="dados-login"></div>
+            <div id="dados-login"/>
           </div>
         </div>
         <div id="moldura-navegacao-global">
@@ -42,7 +42,7 @@ class App extends React.Component<{store:any},{}> {
             <Mapa />
             <Form />
             <Result />
-            <Base db={this.props.store.db}></Base>
+            <Base db={this.props.store.db}/>
 
           </div>
           <br/>
@@ -61,13 +61,15 @@ class App extends React.Component<{store:any},{}> {
           </p>
           <br/>
           <div>
-            <h5 className="center">Desenvolvido pelo SSV-MT - <a href="mailto:ssv-mt@agricultura.gov.br">ssv-mt@agricultura.gov.br</a></h5></div>
+            <h5 className="center">
+              Desenvolvido pelo SSV-MT - <a href="mailto:ssv-mt@agricultura.gov.br">ssv-mt@agricultura.gov.br</a>
+            </h5>
+          </div>
         </div>
       </div>
 
-    )
+    );
   }
 }
-
 
 ReactDom.render(<App store={store}/>, document.getElementById('app'));

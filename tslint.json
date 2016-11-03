@@ -67,7 +67,7 @@
     "no-trailing-whitespace": true,
     "no-unreachable": true,
     "no-unused-expression": true,
-    "no-unused-variable": true,
+    "no-unused-variable": [true, "react"],
     "no-use-before-declare": false,
     "no-var-keyword": true,
     "no-var-requires": false,
@@ -79,11 +79,7 @@
       "check-else",
       "check-whitespace"
     ],
-    "quotemark": [
-      true,
-      "single",
-      "jsx-double"  // add
-    ],
+    "quotemark": [false, "single", "jsx-double"],
     "radix": true,
     "semicolon": [true],  // false
     "switch-default": true,
@@ -93,10 +89,10 @@
     ],
     "typedef": [
       true,
-      "call-signature",
+      //"call-signature",
       "parameter",
-      "property-declaration",
-      "member-variable-declaration"
+      "property-declaration"//,
+      //"member-variable-declaration"
     ],
     "typedef-whitespace": [
       true,
@@ -122,7 +118,8 @@
       "check-separator",
       "check-type",
       "check-typecast"  //add
-    ]
+    ],
+    "jsx-no-multiline-js": false  //add
   },
   "rulesDirectory": [
     /*

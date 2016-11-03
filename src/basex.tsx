@@ -1,8 +1,8 @@
-import * as React from 'react'
-import uiStore from './uistore'
-import {observer} from 'mobx-react'
+import * as React from 'react';
+import uiStore from './uistore';
+import {observer} from 'mobx-react';
 
-var Base = ({db}) => {
+let Base = ({db}) => {
   return (
      uiStore.exibeBase ? (<div>
           <br/>
@@ -21,7 +21,7 @@ var Base = ({db}) => {
               </tr>
             </thead>
             <tbody>
-            {db.map((item, i)=>{ return (
+            {db.map((item, i) => { return (
               <tr key={i}>
                 <td style={{"width": "10%"}}><span>{item.desc}</span></td>
                 <td style={{"width": "20%"}} className="italic"><span>{item.hosp.toString()}</span></td>
@@ -39,28 +39,27 @@ var Base = ({db}) => {
                 </td>
                 <td style={{"width": "30%"}}>
                 <div style={{"margin":"6px"}}>
-                  {item.exig.map((exig, i)=>{ return (
-                    <span key={i}>{i+1} - {exig}</span>
-                  )})}
+                  {item.exig.map((exig, i) => { return (
+                    <span key={i}>{i + 1} - {exig}</span>
+                  );})}
                 </div>
                 </td>
                 <td style={{"width": "5%"}} align="center">
                   <input type="checkbox" onclick="return false;" selected={item.proib}/>
                 </td>
               </tr>
-            )})}
+            );})}
             </tbody>
             <tfoot className="form-barra-botoes">
               <tr>
-                <td></td>
+                <td/>
               </tr>
             </tfoot>
           </table>
         </div>) : null
-  ) 
-}
+  );
+};
 
-
-export default observer(Base)
+export default observer(Base);
 
 //ng-class-even="'linha-alternada'"

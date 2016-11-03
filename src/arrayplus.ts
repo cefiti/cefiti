@@ -2,7 +2,7 @@
 
 interface Array<T> {
   groupBy(prop: string /*| ((value: T, index: number, array: T[]) => Array<any>)*/, fields?: string | Function | any): T[];
-  aggregate(querys:any): T[];
+  aggregate(querys: any): T[];
   first(): T;
   last(): T;
   count(field?: (value: T, index: number, array: T[]) => Array<any>): number;
@@ -18,11 +18,11 @@ interface Array<T> {
   includes(searchElement?: any): boolean;
   find(callbackfn: (value: T, index: number, array: Array<T>) => boolean, thisArg?: any): T;
   findIndex(callbackfn: (value: T, index: number, array: Array<T>) => boolean, thisArg?: any): number;
-  fill(value:T, start?: number, end?: number): T[];
+  fill(value: T, start?: number, end?: number): T[];
   //static isArray(arg:any): boolean;
 }
 
-if (!Array.prototype.groupBy) { 
+if (!Array.prototype.groupBy) {
   Array.prototype.groupBy = function(prop, fields) {
     var key;
     var result = this.reduce((grouped: any, item: any) => {
@@ -62,9 +62,9 @@ if (!Array.prototype.groupBy) {
   }
 }
 
-if (!Array.prototype.aggregate) { 
+if (!Array.prototype.aggregate) {
   Array.prototype.aggregate = function(querys) {
-    return this.map(row=> {
+    return this.map(row => {
       for (var query in querys) {
         let func = querys[query];
         let data = row.group.map(group => group[query]);
@@ -85,19 +85,19 @@ if (!Array.prototype.aggregate) {
   };
 }
 
-if (!Array.prototype.first) { 
+if (!Array.prototype.first) {
   Array.prototype.first = function() {
     return this[0];
   };
 }
 
-if (!Array.prototype.last) { 
+if (!Array.prototype.last) {
   Array.prototype.last = function() {
     return this[this.length - 1];
   };
 }
 
-if (!Array.prototype.count) { 
+if (!Array.prototype.count) {
   Array.prototype.count = function() {
     return this.length;
   };
@@ -110,7 +110,7 @@ function typeArg(arg, arr) {
       that = arr.map(arg);
       break;
     case 'string':
-      that = arr.map(o=> o[arg]);
+      that = arr.map(o => o[arg]);
       break;
     default:
       that = arr;
@@ -119,19 +119,19 @@ function typeArg(arg, arr) {
   return that
 }
 
-if (!Array.prototype.min) { 
+if (!Array.prototype.min) {
   Array.prototype.min = function(field) {
     return Math.min.apply(null, this.by(field));
   };
 }
 
-if (!Array.prototype.max) { 
+if (!Array.prototype.max) {
   Array.prototype.max = function(field) {
     return Math.max.apply(null, this.by(field));
   };
 }
 
-if (!Array.prototype.sum) { 
+if (!Array.prototype.sum) {
   Array.prototype.sum = function(field) {
     return this.by(field).reduce((prev, current) => (+(current) + prev), 0); //parseFloat
   }
@@ -146,7 +146,7 @@ if (!Array.prototype.average) {
   }
 }
 
-if (!Array.prototype.unique) { 
+if (!Array.prototype.unique) {
   Array.prototype.unique = function(field) {
     var that = typeArg(field, this);
     var o = {}, i, l = that.length, r = [];
@@ -174,28 +174,28 @@ function flatten(list: Array<any>, depth?: number, mapperFn?: Function, mapperCt
   }, [])
 };
 
-if (!Array.prototype.flatten) { 
+if (!Array.prototype.flatten) {
   Array.prototype.flatten = function(depth = Infinity) {
     return flatten(this, depth)
   };
 }
 
-if (!Array.prototype.flatMap) { 
+if (!Array.prototype.flatMap) {
   Array.prototype.flatMap = function(fn, ctx) {
     return flatten(this, 1, fn, ctx)
   };
 }
 
-if (!Array.prototype.by) { 
+if (!Array.prototype.by) {
   Array.prototype.by = function(field) {
     return typeArg(field, this);
   };
 }
 
-if (!Array.prototype.take) { 
+if (!Array.prototype.take) {
   Array.prototype.take = function(number) {
     let begin, end;
-    if (number >= 0) { 
+    if (number >= 0) {
       begin = 0;
       end = number;
     } else {
@@ -205,8 +205,8 @@ if (!Array.prototype.take) {
     return this.slice(begin, end)
   };
 }
-  
-if (!Array.prototype.includes) {  
+
+if (!Array.prototype.includes) {
   Array.prototype.includes = function(searchElement /*, fromIndex*/ ) {
     'use strict';
     var O = Object(this);
@@ -220,7 +220,7 @@ if (!Array.prototype.includes) {
       k = n;
     } else {
       k = len + n;
-      if (k < 0) {k = 0;}
+      if (k < 0) {k = 0; }
     }
     var currentElement;
     while (k < len) {
@@ -232,8 +232,8 @@ if (!Array.prototype.includes) {
       k++;
     }
     return false;
-  }; 
-} 
+  };
+}
 
 if (!Array.prototype.find) {
   Array.prototype.find = function(predicate) {
