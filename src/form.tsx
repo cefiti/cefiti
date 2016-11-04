@@ -94,7 +94,7 @@ function Form() {
               <td className="col30">
                 <a
                   target="_blank"
-                  href={"https://www.google.com.br/search?site=imghp&tbm=isch&q=" + store.dados.hospSci + "plant+OR+planta"}
+                  href={"https://www.google.com.br/search?site=imghp&tbm=isch&q=" + store.dados.hospSci + "+plant+OR+planta+ORfruto+OR+fruit+OR+flor+OR+flower"}
                 >
                   Fotos da Espécie Vegetal
                 </a>
