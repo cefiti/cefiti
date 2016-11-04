@@ -24,7 +24,7 @@ class Store {
     Boolean(this.dados.orig) && Boolean(this.dados.dest)); }
   @computed get partes(): string[]  {
     return db
-      .filter((exig: exig) => exig.hosp.includes(this.dados.hospSci))
+      .filter((exig: exig) => (exig.hosp.includes(this.dados.hospSci) || exig.hosp.includes(this.gender + ' sp.') || exig.hosp.includes(this.gender + ' spp.')))
       .by('part')
       .flatten()
       .unique()
