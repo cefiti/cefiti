@@ -99,7 +99,7 @@ function Form() {
                   Fotos da Espécie Vegetal
                 </a>
               </td>
-              <td align="center">
+              <td style={{"text-align":"center"}}>
                 <button onClick={uiStore.handleSearch.bind(this)} className="form-button" disabled={!store.completed}>Pesquisar</button>
                 <br/>
               </td>

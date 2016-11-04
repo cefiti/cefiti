@@ -1,5 +1,5 @@
 import { observable, computed,  useStrict, action} from 'mobx';
-import './arrayplus';
+import 'js-plus';
 import {exig, dados, estados, hospedeiro } from './cefiti';
 //import {db, hospedeiros} from './db'
 
@@ -11,8 +11,8 @@ useStrict(true);
 class Store {
   db: exig[] = db;
   hospedeiros: hospedeiro[] = hospedeiros;
-  listaNomesSci: string[] = hospedeiros.unique('nomeSci').sort((a, b) => a.localeCompare(b));
-  listaNomesVul: string[] = hospedeiros.unique('nomeVul').sort((a, b) => a.localeCompare(b));
+  listaNomesSci: string[]  = hospedeiros.unique('nomeSci').sort((a, b) => a.localeCompare(b));
+  listaNomesVul: string[]  = hospedeiros.unique('nomeVul').sort((a, b) => a.localeCompare(b));
 
   @observable dados: dados = {hospSci: '', hospVul: '', prod: '', orig: '', dest: '' };
 
@@ -22,7 +22,7 @@ class Store {
   @computed get gender(): string { return this.dados.hospSci.split(' ')[0]; }
   @computed get completed(): boolean { return (Boolean(this.dados.hospSci) && Boolean(this.dados.hospVul) && Boolean(this.dados.prod) &&
     Boolean(this.dados.orig) && Boolean(this.dados.dest)); }
-  @computed get partes(): string[] {
+  @computed get partes(): string[]  {
     return db
       .filter((exig: exig) => exig.hosp.includes(this.dados.hospSci))
       .by('part')

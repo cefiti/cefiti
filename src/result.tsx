@@ -86,5 +86,4 @@ function Result() {
 
 export default observer(Result);
 
-
  //                   {item.proib ? (<span className="alert"><div>TRÂNSITO PROIBIDO</div></span>) : ''}

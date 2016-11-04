@@ -39,13 +39,13 @@ let Base = ({db}) => {
                 </td>
                 <td style={{"width": "30%"}}>
                 <div style={{"margin":"6px"}}>
-                  {item.exig.map((exig, i) => { return (
-                    <span key={i}>{i + 1} - {exig}</span>
+                  {item.exig.map((exig, ix) => { return (
+                    <span key={ix}>{ix + 1} - {exig}</span>
                   );})}
                 </div>
                 </td>
-                <td style={{"width": "5%"}} align="center">
-                  <input type="checkbox" onclick="return false;" selected={item.proib}/>
+                <td style={{"width": "5%", "text-align":"center"}}>
+                  <input type="checkbox"  disabled={true} selected={item.proib}/>
                 </td>
               </tr>
             );})}

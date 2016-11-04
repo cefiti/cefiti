@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import store from './store';
-import Mapa from './mapa';
+//import Mapa from './mapa';
 import Base from './basex';
 import Menu from './menu';
 import Result from './result';
@@ -39,7 +39,6 @@ class App extends React.Component<{store: any}, {}> {
 
         <div id="corpo">
           <div id="conteúdo">
-            <Mapa />
             <Form />
             <Result />
             <Base db={this.props.store.db}/>
