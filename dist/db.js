@@ -1,8 +1,8 @@
-/*jshint maxlen: false, unused: false, quotmark: true, -W097 */ 
+// CEFiTI db - Version: 6
 "use strict";
 
 var db = [ 
-{desc:"DE UF com ocorrência de Vespa-da-madeira PARA UF reconhecida pelo MAPA como livre da ocorrência de Vespa-da-madeira", hosp:["Pinus spp."],part:["madeira"],orig:["MG","SP","PR","SC","RS"],dest:["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MS","MT","PA","PB","PE","PI","RJ","RN","RO","RR","SE","TO"],prag:"Sirex noctilio",pragc:"VESPA-DA-MADEIRA",exig:["Estão isentos desta exigência fitossanitária: compensados ou cavacos de 2,5 cm de espessura ou menores, móveis e pequenos objetos de madeira; ","PTV com declaração adicional constando que o material está livre de Sirex noctilio, tanto na fase adulta como na imatura."],proib:false,leg:"Portaria SDA/MAPA nº 125, de 03 de agosto de 1998",link:"leg/PORT125-1998.pdf"}, 
+{desc:"DE UF com ocorrência de Vespa-da-madeira PARA UF reconhecida pelo MAPA como livre da ocorrência de Vespa-da-madeira", hosp:["Pinus spp."],part:["madeira"],orig:["MG","SP","PR","SC","RS"],dest:["MG","SP","PR","SC","RS","AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MS","MT","PA","PB","PE","PI","RJ","RN","RO","RR","SE","TO"],prag:"Sirex noctilio",pragc:"VESPA-DA-MADEIRA",exig:["Estão isentos desta exigência fitossanitária: compensados ou cavacos de 2,5 cm de espessura ou menores, móveis e pequenos objetos de madeira; ","PTV com declaração adicional constando que o material está livre de Sirex noctilio, tanto na fase adulta como na imatura."],proib:false,leg:"Portaria SDA/MAPA nº 125, de 03 de agosto de 1998",link:"leg/PORT125-1998.pdf"}, 
 {desc:"DE UF com ocorrência de Ácaro-vermelho-das-palmeiras PARA UF reconhecida pelo MAPA como livre da ocorrência de Ácaro-vermelho-das-palmeiras", hosp:["Euterpe oleracea","Euterpe precatoria","Alpínia purpurata","Alpínia zerumbet","Syagrus schizophylla","Ravenala madagascariensis","Musa spp.","Etlingera alatior","Mauritia flexuosa","Canna indica","Cocos nucifera","Butia capitata","Corypha umbraculifera","Elaeis guineensis","Strelitzia reginae","Heliconia spp.","Syagrus romanzoffianum","Licuala grandis","Coccothrinax miraguama","Microcycas calocoma","Coccothrinax barbadensis","Aiphanes spp.","Pseudophoenix vinifera","Dypsis lutescens","Veitchia arecina","Chamaedora spp.","Veitchia maerrillii","Phoenix roebelenii","Acoelorraphe wrightii","Wodyetia bifurcata","Archontophoenix alexandrae","Cycas spp.","Areca sp.","Bismarckia nobilis","Washingtonia robusta","Ptychosperma macarthurii","Beccariophoenix madagascariensis","Bactris plumeriana","Washingtonia filifera","Pseudophoenix sargentii","Roystonea borinquena","Schippia concolor","Thrinax radiata","Livistona chinensis","Pritchardia pacifica","Coccothrinax argentata","Dictyosperma album","Caryota mitis","Caryota urens","Raphis excelsa","Roystonia regia","Ptychosperma elegans","Dypsis decaryi","Pritchardia vuylstekeana","Bactris gasipaes","Bactris plumeriana","Phoenix dactylifera","Phoenix canariensis","Phoenix reclinata","Arecaceae (espécies desta família)","Heliconiaceae (espécies desta família)","Musaceae (espécies desta família)","Pandanaceae (espécies desta família)","Strelitziaceae (espécies desta família)","Zingiberaceae (espécies desta família)"],part:["plantas","mudas","raízes","caules","ramos","folhas","flores","frutos"],orig:["RR","AM"],dest:["AC","AL","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RS","SC","SE","SP","TO"],prag:"Raoiella indica",pragc:"ÁCARO-VERMELHO-DAS-PALMEIRAS",exig:["PTV com a seguinte declaração adicional: \"Não se observou a presença de Raoiella indica no local de produção e a partida foi inspecionada e encontra-se livre da praga\"; ","A partida deve ser transportada em caminhão lonado ou tipo baú, e lacrado; ","A PTV deve conter o(s) número(s) do(s) lacre(s);","Estas exigências fitossanitárias não se aplicam a material in vitro."],proib:false,leg:"Instrução Normativa MAPA nº 14, de 6 de abril de 2010",link:"leg/IN14-2010.pdf"}, 
 {desc:"DE UF com ocorrência de Mosca-da-carambola PARA UF reconhecida pelo MAPA como livre da ocorrência de Mosca-da-carambola", hosp:["Averrhoa carambola","Psidium guajava","Syzygium malaccense","Citrus aurantium","Manilkara zapota","Mangifera indica","Malpighia punicifolia","Terminalia catappa","Garcinia dulcis","Chrysophyllum cainito","Spondias lutea","Anacardium occidentale","Artocarpus altilis","Arenga pinnata","Artocarpus integrifolia","Syzygium samarangense","Syzygium aqueum","Syzygium jambos","Ziziphus mauritiana","Ziziphus jujuba","Citrus sinensis","Averrhoa bilimbi","Capsicum annuum","Eugenia uniflora","Citrus paradisi","Citrus reticulata","Licopersicum esculentum"],part:["frutos"],orig:["AP","RR"],dest:["AC","AL","AM","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RS","SC","SE","SP","TO"],prag:"Bactrocera carambolae",pragc:"MOSCA-DA-CARAMBOLA",exig:["TRÂNSITO PROIBIDO"],proib:false,leg:"Portaria SDA/MAPA nº 21, de 25 de março de 1999",link:"leg/PORT21-1999.pdf"}, 
 {desc:"DE UF com ocorrência de Ácaro-hindu-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Ácaro-hindu-dos-citros", hosp:["Citrus spp.","Cocos nucifera","Azadirachta indica","Sorghum bicolor","Acacia sp.","Melia azedarach"],part:["plantas","mudas","raízes","caules","ramos","folhas","flores","frutos"],orig:["RR"],dest:["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE","PI","PR","RJ","RN","RO","RS","SC","SE","SP","TO"],prag:"Schizotetranychus hindustanicus",pragc:"ÁCARO HINDU",exig:["PARA FRUTOS DE CITROS: \n\n1.1 - PTV com a declaração adicional: \"A partida atende às exigências constantes da Instrução Normativa MAPA nº 8, de 17 de abril de 2012, encontra-se livre do Ácaro Hindu dos Citros\";","PARA OUTRAS PLANTAS E DEMAIS PARTES de PLANTAS: TRÂNSITO PROIBIDO.","Estas exigências fitossanitárias não se aplicam a material in vitro, madeira serrada e, ainda, frutos de coco (Cocus nucifera) secos e descascados;"],proib:false,leg:"Instrução Normativa MAPA nº 8, de 17 de abril de 2012",link:"leg/IN08-2012.pdf"}, 
@@ -104,7 +104,7 @@ var hospedeiros = [
   {nomeVul:"Bálsamo",nomeSci:"Myroxylon balsamum"}, 
   {nomeVul:"Banana",nomeSci:"Musa spp."}, 
   {nomeVul:"Bastão-do-imperador",nomeSci:"Etlingera alatior"}, 
-  {nomeVul:"Bergamota",nomeSci:"Citrus spp."}, 
+  {nomeVul:"Bergamota",nomeSci:"Citrus reticulata"}, 
   {nomeVul:"Bétula Branca (B. papyrifera)",nomeSci:"Betula papyrifera"}, 
   {nomeVul:"Bétula Branca (B. pubescens)",nomeSci:"Betula pubescens"}, 
   {nomeVul:"Bétula Cinza",nomeSci:"Betula populifolia"}, 
@@ -178,7 +178,7 @@ var hospedeiros = [
   {nomeVul:"Choupo",nomeSci:"Populus spp."}, 
   {nomeVul:"Choupo-bálsamo",nomeSci:"Populus balsamifera"}, 
   {nomeVul:"Chuva-de-ouro",nomeSci:"Laburnum anagyrioides"}, 
-  {nomeVul:"Cidra",nomeSci:"Citrus spp."}, 
+  //{nomeVul:"Cidra",nomeSci:"Citrus spp."}, 
   {nomeVul:"Cinamomo",nomeSci:"Melia azedarach"}, 
   {nomeVul:"Cinza Japonês",nomeSci:"Fraxinus mandshurica var. Japonica"}, 
   {nomeVul:"Cinza-da-montanha",nomeSci:"Sorbus sp."}, 
@@ -226,11 +226,13 @@ var hospedeiros = [
   {nomeVul:"Jurema",nomeSci:"Acacia sp."}, 
   {nomeVul:"Karamu",nomeSci:"Coprosma lucida"}, 
   {nomeVul:"Kowhai",nomeSci:"Sophora microphylla"},  
-  {nomeVul:"Laranja",nomeSci:"Citrus spp."}, 
+  {nomeVul:"Laranja",nomeSci:"Citrus sinensis"}, 
+  {nomeVul:"Laranja Azeda",nomeSci:"Citrus aurantium"},
   {nomeVul:"Licuala",nomeSci:"Licuala grandis"}, 
-  {nomeVul:"Lima",nomeSci:"Citrus spp."}, 
+  {nomeVul:"Lima",nomeSci:"Citrus aurantiifolia"}, 
   {nomeVul:"Limão Cayena",nomeSci:"Averrhoa bilimbi"}, 
-  {nomeVul:"Limão",nomeSci:"Citrus spp."}, 
+  {nomeVul:"Limão Tahiti",nomeSci:"Citrus latifolia"}, 
+  {nomeVul:"Limão",nomeSci:"Citrus limon"}, 
   {nomeVul:"Linda-dos-jardins",nomeSci:"Rhus typhina"}, 
   {nomeVul:"Louro Califórnia",nomeSci:"Umbelluraria californica"}, 
   {nomeVul:"Louro-de-baiano",nomeSci:"Alpínia zerumbet"}, 
@@ -246,7 +248,7 @@ var hospedeiros = [
   {nomeVul:"Mandioca",nomeSci:"Manihot esculenta"}, 
   {nomeVul:"Manga",nomeSci:"Mangifera indica"}, 
   {nomeVul:"Mararaju",nomeSci:"Manilkara zapota"}, 
-  {nomeVul:"Mexerica",nomeSci:"Citrus spp."}, 
+  {nomeVul:"Mexerica",nomeSci:"Citrus reticulata"}, 
   {nomeVul:"Miraguama",nomeSci:"Coccothrinax miraguama"}, 
   {nomeVul:"Mogno Indiano Ocidental",nomeSci:"Swietenia mahagoni"}, 
   {nomeVul:"Mogno",nomeSci:"Switenia macrophyla"}, 
@@ -321,7 +323,7 @@ var hospedeiros = [
   {nomeVul:"Plátano",nomeSci:"Platanus orientalis"}, 
   {nomeVul:"Pomelo",nomeSci:"Citrus paradisi"}, 
   {nomeVul:"Poncirus",nomeSci:"Poncirus spp."}, 
-  {nomeVul:"Ponkan",nomeSci:"Citrus spp."}, 
+  {nomeVul:"Ponkan",nomeSci:"Citrus reticulata"}, 
   {nomeVul:"Pritchardia",nomeSci:"Pritchardia vuylstekeana"}, 
   {nomeVul:"Pupunha Silvestre",nomeSci:"Bactris plumeriana"}, 
   {nomeVul:"Pupunha",nomeSci:"Bactris gasipaes"}, 
@@ -350,7 +352,7 @@ var hospedeiros = [
   {nomeVul:"Tamareira",nomeSci:"Phoenix dactylifera"}, 
   {nomeVul:"Tamareira-das-canárias",nomeSci:"Phoenix canariensis"}, 
   {nomeVul:"Tamareira-do-Senegal",nomeSci:"Phoenix reclinata"}, 
-  {nomeVul:"Tangerina",nomeSci:"Citrus spp."}, 
+  {nomeVul:"Tangerina",nomeSci:"Citrus reticulata"}, 
   {nomeVul:"Taperebá",nomeSci:"Spondias lutea"}, 
   {nomeVul:"Teca",nomeSci:"Tectona grandis"}, 
   {nomeVul:"Teja",nomeSci:"Tilia cordata"}, 
@@ -381,7 +383,8 @@ if (typeof module === 'object') {
 
 
 /*
-{nomeVul:"Laranja",nomeSci:"Citrus sinensis"}, 
+
+Citrus aurantium: laranja
 Citrus reticulata - tangerina
 Citrus medica - cidra
 Citrus maxima - cimboa
@@ -398,8 +401,9 @@ Citrus x limetta - Lima doce
 Citrus x limettioides - lima-da-pérsia[3] [5]
 
 Citrus reticulata : mexerica, pokan, tangerina
-Citrus aurantium: laranja
+
 Citrus aurantiifolia: lima
 Citrus limon: limão
 Citrus latifolia: limão tahiti
 */
+
