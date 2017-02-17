@@ -23,7 +23,7 @@ class App extends React.Component<{store: any}, {}> {
             </div>
             <div id="identificacao-sistema" style={{"float":"none"}}>
               <br/>
-              <div style={{"float":"right","color":"#fff","padding":"5px 10px 5px 15px"}}>Versão 3.0-7</div>
+              <div style={{"float":"right","color":"#fff","padding":"5px 10px 5px 15px"}}>Versão 3.1-{store.version}</div>
               <h1>CEFiTI</h1>
               <div style={{"float":"right","color":"#fff","padding":"5px 10px 5px 15px"}}>Data: {(new Date()).toLocaleDateString()}</div>
               <h2>Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual</h2>
@@ -41,7 +41,7 @@ class App extends React.Component<{store: any}, {}> {
           <div id="conteúdo">
             <Form />
             <Result />
-            <Base db={this.props.store.db}/>
+            <Base db={store.db}/>
 
           </div>
           <br/>
