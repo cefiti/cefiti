@@ -11,7 +11,8 @@ useStrict(true);
 
 class Store {
   db: exig[] = db;
-  version = version;
+  dbVersion = version;
+  appVersion = "3.2";
   hospedeiros: hospedeiro[] = hospedeiros;
   listaNomesSci: string[]  = hospedeiros.unique('nomeSci').sort((a, b) => a.localeCompare(b));
   listaNomesVul: string[]  = hospedeiros.unique('nomeVul').sort((a, b) => a.localeCompare(b));
