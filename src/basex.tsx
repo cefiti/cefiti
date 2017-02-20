@@ -29,7 +29,7 @@ let Base = ({db}) => {
                 <td style={{"width": "10%"}}><span>{item.orig.toString()}</span></td>
                 <td style={{"width": "10%"}}><span>{item.dest.toString()}</span></td>
                 <td style={{"width": "15%"}}>
-                  <a target="_blank" href="{item.link}">{item.leg}</a>
+                  <a target="_blank" href={item.link}>{item.leg}</a>
                   <br/>
                   <br/>
                   <span>{item.pragc}</span>
