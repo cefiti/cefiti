@@ -1,7 +1,7 @@
-// CEFiTI db - Version: 8
+// CEFiTI db
 "use strict";
 
-var version = "8";
+var version = "9";
 
 var db = [
   
@@ -34,7 +34,7 @@ var db = [
   prag: "Bactrocera carambolae",
   pragc: "MOSCA-DA-CARAMBOLA",
   exig: [
-    "TRÂNSITO PROIBIDO"
+    "TRÂNSITO PROIBIDO. \nMotivo: Ausência de área livre de mosca-da-carambola, na origem da partida."
   ],
   leg: "Portaria SDA/MAPA nº 21, de 25 de março de 1999",
   link: "leg/PORT21-1999.pdf",
@@ -44,21 +44,35 @@ var db = [
 //ÁCARO HINDU
 {
   desc: "DE UF com ocorrência de Ácaro-hindu-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Ácaro-hindu-dos-citros",
-  hosp: ["Citrus spp.", "Cocos nucifera", "Azadirachta indica", "Sorghum bicolor", "Acacia sp.", "Melia azedarach"],
+  hosp: ["Citrus spp."],
   part: ["plantas", "mudas", "raízes", "caules", "ramos", "folhas", "flores", "frutos"],
   orig: ["RR"],
   dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RS", "SC", "SE", "SP", "TO"],
   prag: "Schizotetranychus hindustanicus",
   pragc: "ÁCARO HINDU",
   exig: [
-    "PARA FRUTOS DE CITROS: \n\n1.1 - PTV com a declaração adicional: \"A partida atende às exigências constantes da Instrução Normativa MAPA nº 8, de 17 de abril de 2012, encontra-se livre do Ácaro Hindu dos Citros\";",
-    "PARA OUTRAS PLANTAS E DEMAIS PARTES de PLANTAS: TRÂNSITO PROIBIDO.",
+    "PTV com a declaração adicional: \"A partida atende às exigências constantes da Instrução Normativa MAPA nº 8, de 17 de abril de 2012, encontra-se livre do Ácaro Hindu dos Citros\";",
     "Estas exigências fitossanitárias não se aplicam a material in vitro, madeira serrada e, ainda, frutos de coco (Cocus nucifera) secos e descascados;"
   ],
   leg: "Instrução Normativa MAPA nº 8, de 17 de abril de 2012",
   link: "leg/IN08-2012.pdf",
   proib: false
-}, 
+},{
+  desc: "DE UF com ocorrência de Ácaro-hindu-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Ácaro-hindu-dos-citros",
+  hosp: ["Cocos nucifera", "Azadirachta indica", "Sorghum bicolor", "Acacia sp.", "Melia azedarach"],
+  part: ["plantas", "mudas", "raízes", "caules", "ramos", "folhas", "flores", "frutos"],
+  orig: ["RR"],
+  dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RS", "SC", "SE", "SP", "TO"],
+  prag: "Schizotetranychus hindustanicus",
+  pragc: "ÁCARO HINDU",
+  exig: [
+    "TRÂNSITO PROIBIDO.\nMotivo: Ausência de área livre de ácaro-hindu-dos-citros, na origem da partida.",
+    "Estas exigências fitossanitárias não se aplicam a material in vitro, madeira serrada e, ainda, frutos de coco (Cocus nucifera) secos e descascados;"
+  ],
+  leg: "Instrução Normativa MAPA nº 8, de 17 de abril de 2012",
+  link: "leg/IN08-2012.pdf",
+  proib: false
+},
 
 //BANANA STREAK VIRUS e CUCUMBER MOSAIC VIRUS
 {
@@ -149,7 +163,7 @@ var db = [
   prag: "Neonectria galligena (=Nectria galligena)",
   pragc: "CANCRO EUROPEU DAS POMÁCEAS",
   exig: [
-    "PTV com a seguinte declaração adicional: \"Na unidade de produção e Unidade de Consolidação - UC foram adotados os procedimentos de controle e prevenção previstos nesta norma e os frutos não apresentam sintomas de Neonectria galligena\"."
+    "PTV com a seguinte declaração adicional: \"Na unidade de produção e Unidade de Consolidação - UC foram adotados os procedimentos de controle e prevenção previstos nesta norma (Instrução Normativa nº 20, de 20 de junho de 2013) e os frutos não apresentam sintomas de Neonectria galligena\"."
   ],
   leg: "Instrução Normativa nº 20, de 20 de junho de 2013",
   link: "leg/IN20-2013.pdf",
@@ -160,14 +174,13 @@ var db = [
 {
   desc: "DE UF com ocorrência de Greening PARA UF reconhecida pelo MAPA como livre da ocorrência de Greening",
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp.", "Murraya paniculata"],
-  part: ["mudas", "sementes", "estacas", "gemas", "ramas", "raízes"],
+  part: ["mudas", "estacas", "gemas", "ramas", "raízes"],
   orig: ["MG", "PR", "SP"],
   dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MS", "MT", "PA", "PB", "PE", "PI", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "TO"],
   prag: "Candidatus Liberibacter spp.",
   pragc: "GREENING",
   exig: [
-    "PTV;",
-    "Partida apreendida pela fiscalização de defesa sanitária vegetal, em\ndesacordo com o previsto nesta Instrução Normativa, será sumariamente destruída, não cabendo ao infrator qualquer tipo de indenização, sem prejuízo das demais sanções estabelecidas pela legislação estadual e federal de defesa sanitária vegetal, conforme o art. 5º, da Instrução Normativa MAPA nº. 53, de 16 de outubro de 2010."
+    "PTV; \n Obs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em\ndesacordo com o previsto nesta Instrução Normativa, será sumariamente destruída, não cabendo ao infrator qualquer tipo de indenização, sem prejuízo das demais sanções estabelecidas pela legislação estadual e federal de defesa sanitária vegetal, conforme o art. 5º, da Instrução Normativa MAPA nº. 53, de 16 de outubro de 2010."
   ],
   leg: "Instrução Normativa nº 53, de 16 de outubro de 2008",
   link: "leg/IN53-2008.pdf",
@@ -178,7 +191,7 @@ var db = [
 {
   desc: "DE UF com ocorrência de Pinta-preta-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Pinta-preta-dos-citros",
   hosp: ["Citrus spp."],
-  part: ["mudas", "sementes", "estacas", "gemas"],
+  part: ["mudas", "estacas", "gemas"],
   orig: ["AM", "ES", "MT", "MS", "MG", "PR", "RJ", "RS", "SC", "SP", "BA", "GO", "RO"],
   dest: ["AC", "AL", "AP", "CE", "DF", "MA", "PA", "PB", "PE", "PI", "RN", "RR", "SE", "TO"],
   prag: "Guignardia citricarpa (=Phyllosticta citricarpa)",
@@ -234,8 +247,7 @@ var db = [
   prag: "Dactylopius opuntiae",
   pragc: "COCHONILHA-DO-CARMIM",
   exig: [
-    "PTV;",
-    "Nas barreiras fitossanitárias interestaduais, caso seja constatada por meio de inspeção visual, infestação por cochonilha-do-carmim, independente da espécie, toda a partida será imediatamente apreendida e destruída de modo a impedir a sobrevivência da praga, conforme o art. 6º. da Instrução Normativa MAPA nº. 23 de maio de 2007."
+    "PTV; \nObs.: Nas barreiras fitossanitárias interestaduais, caso seja constatada por meio de inspeção visual, infestação por cochonilha-do-carmim, independente da espécie, toda a partida será imediatamente apreendida e destruída de modo a impedir a sobrevivência da praga, conforme o art. 6º. da Instrução Normativa MAPA nº. 23 de maio de 2007."
   ],
   leg: "Instrução Normativa MAPA nº 23, de 29 de maio de 2007",
   link: "leg/IN23-2007.pdf",
@@ -529,7 +541,7 @@ var db = [
   prag: "Mycosphaerella fijiensis",
   pragc: "SIGATOKA NEGRA",
   exig: [
-    "Partida isenta de PTV, mas é PROIBIDO o trânsito por AL, CE, DF, GO, PB, PE, PI, RN, SE, bem como pelos municípios livres de Sigatoka Negra de MG e de MS: \n\n1.1 -  Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\n1.2 - Municípios livres de Sigatoka Negra de MS: Água Clara, Anaurilândia, Aparecida do Taboado, Bataguassú, Batayporã, Brasilândia, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba, Ribas do Rio Pardo, Santa Rita do Pardo, Selvíria, Taquarussú e Três Lagoas;",
+    "Partida isenta de PTV, mas é PROIBIDO o trânsito por AL, CE, DF, GO, PB, PE, PI, RN, SE, bem como pelos municípios livres de Sigatoka Negra de MG e de MS: \n\na) Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\nb)Municípios livres de Sigatoka Negra de MS: Água Clara, Anaurilândia, Aparecida do Taboado, Bataguassú, Batayporã, Brasilândia, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba, Ribas do Rio Pardo, Santa Rita do Pardo, Selvíria, Taquarussú e Três Lagoas;",
     "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;"
   ],
   leg: "Instrução Normativa SDA/MAPA nº 17, de 31 de maio de 2005",
@@ -631,35 +643,57 @@ var db = [
   pragc: "SIGATOKA NEGRA",
   exig: [
     "TRÂNSITO PROIBIDO para mudas convencionais. Esta proibição não se aplica à mudas micropopagadas;",
-    "Esta proibição não se aplica a partida proveniente de município livre de Sigatoka Negra de MG e de MS: \n\n1.1 - Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\n1.2 -  Municípios livres de Sigatoka Negra de MS: Água Clara, Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Brasilândia, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba, Ribas do Rio Pardo, Santa Rita do Pardo, Selvíria, Taquarussú e Três Lagoas;",
+    "Esta proibição não se aplica a partida proveniente de município livre de Sigatoka Negra de MG e de MS: \n\na)Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\nb)Municípios livres de Sigatoka Negra de MS: Água Clara, Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Brasilândia, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba, Ribas do Rio Pardo, Santa Rita do Pardo, Selvíria, Taquarussú e Três Lagoas;",
     "Esta proibição não se aplica às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
     "Esta proibição só se aplica a mudas não micropopagadas;"
   ],
   leg: "Instrução Normativa SDA/MAPA nº 17, de 31 de maio de 2005",
   link: "leg/IN17-2005.pdf",
   proib: true
-}, {
+}, 
+
+//ANTHONOMUS TOMENTOSUS
+{
   desc: "DE UF com ocorrência de Anthonomus tomentosus PARA UF sem a ocorrência de Anthonomus tomentosus",
   hosp: ["Malpighia spp."],
   part: ["frutos"],
-  orig: ["AM", "RR"],
-  dest: ["AC", "AL", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RS", "SC", "SE", "SP", "TO"],
+  orig: ["AM"],
+  dest: ["AC", "AL", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Anthonomus tomentosus",
   pragc: "ANTHONOMUS TOMENTOSUS",
   exig: [
-    "Se a partida for proveniente de todos os municípios de RR, exceto de Boa Vista, Mucajaí e Pacaraima, ou dos municípios de Presidente Figueiredo, Rio Preto da Eva e Manaus, no AM: PTV com a seguinte declaração adicional: A partida foi inspecionada e encontra-se livre de Anthonomus tomentosus;",
-    "Se a partida for proveniente de Boa Vista, Mucajaí e Pacaraima, em RR: TRÂNSITO PROIBIDO.",
+    "Se a partida for proveniente dos municípios Presidente Figueiredo, Rio Preto da Eva e Manaus: PTV com a seguinte declaração adicional: \"A partida foi inspecionada e encontra-se livre de Anthonomus tomentosus\"; ",
+    "Para os demais municípios do Amazonas, trânsito livre",
     "Estas exigências fitossanitárias só se aplicam a frutos frescos;"
   ],
   leg: "Instrução Normativa MAPA/SDA nº. 19, de 16 de setembro de 2014",
   link: "leg/IN19-2014.pdf",
   proib: false
-}, {
-  desc: "DE Área com Cancro Cítrico Ausente PARA qualquer UF ou Área Livre de Cancro Cítrico",
+},{
+  desc: "DE UF com ocorrência de Anthonomus tomentosus PARA UF sem a ocorrência de Anthonomus tomentosus",
+  hosp: ["Malpighia spp."],
+  part: ["frutos"],
+  orig: ["RR"],
+  dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RS", "SC", "SE", "SP", "TO"],
+  prag: "Anthonomus tomentosus",
+  pragc: "ANTHONOMUS TOMENTOSUS",
+  exig: [
+    "Se a partida for proveniente de Boa Vista, Mucajaí e Pacaraima: TRÂNSITO PROIBIDO;",
+    "Se a partida não for proveniente dos municípios de Boa Vista, Mucajaí e Pacaraima: PTV com a seguinte declaração adicional: \"A partida foi inspecionada e encontra-se livre de Anthonomus tomentosus\"; ",
+    "Estas exigências fitossanitárias só se aplicam a frutos frescos;"
+  ],
+  leg: "Instrução Normativa MAPA/SDA nº. 19, de 16 de setembro de 2014",
+  link: "leg/IN19-2014.pdf",
+  proib: false
+},  
+
+//CANCRO CÍTRICO
+{
+  desc: "DE Área com Cancro Cítrico Ausente PARA qualquer UF",
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
   part: ["Frutos", "Material de propagação"],
   orig: [""],
-  dest: [""],
+  dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
   exig: [
@@ -669,11 +703,11 @@ var db = [
   link: "leg/IN37-2016.pdf",
   proib: undefined
 }, {
-  desc: "DE Área Livre de Cancro Cítrico PARA qualquer UF ou Área Livre de Cancro Cítrico",
+  desc: "DE Área Livre de Cancro Cítrico PARA qualquer UF",
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
   part: ["Frutos", "Material de propagação"],
   orig: [""],
-  dest: [""],
+  dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
   exig: ["PTV."],
@@ -681,26 +715,26 @@ var db = [
   link: "leg/IN37-016.pdf",
   proib: undefined
 }, {
-  desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF ou Área Livre de Cancro Cítrico",
+  desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF",
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
   part: ["Frutos"],
   orig: [""],
-  dest: [""],
+  dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
   exig: [
-    "SE OS FRUTOS FOREM PROCEDENTES DE IMÓVEL INTERDITADO POR MOTIVO DE OCORRÊNCIA DE CANCRO CÍTRICO:\n1,1 - PTV com a seguinte declaração adicional: \"Os frutos são provenientes de plantas sadias de imóvel sob supervisão oficial, foram higienizados com [produto, concentração, tempo de exposição] e encontram-se livres de Xanthomonas citri subsp. citri\"; e\n1.2 - Os frutos devem estar acondicionados em veículo fechado ou coberto, a granel, ou em embalagens descartáveis, ou em caixas retornáveis.",
-    "SE OS FRUTOS FOREM PROCEDENTES DE IMÓVEL SEM OCORRÊNCIA DE CANCRO CÍTRICO:\n2.1 - PTV com a seguinte declaração adicional: \"Os frutos são provenientes de imóvel sem ocorrência do cancro cítrico localizado em Área sob Erradicação ou Supressão\"."
+    "SE OS FRUTOS FOREM PROCEDENTES DE IMÓVEL INTERDITADO POR MOTIVO DE OCORRÊNCIA DE CANCRO CÍTRICO:\na)PTV com a seguinte declaração adicional: \"Os frutos são provenientes de plantas sadias de imóvel sob supervisão oficial, foram higienizados com [produto, concentração, tempo de exposição] e encontram-se livres de Xanthomonas citri subsp. citri\"; e\nb)Os frutos devem estar acondicionados em veículo fechado ou coberto, a granel, ou em embalagens descartáveis, ou em caixas retornáveis.",
+    "SE OS FRUTOS FOREM PROCEDENTES DE IMÓVEL SEM OCORRÊNCIA DE CANCRO CÍTRICO: PTV com a seguinte declaração adicional: \"Os frutos são provenientes de imóvel sem ocorrência do cancro cítrico localizado em Área sob Erradicação ou Supressão\"."
   ],
   leg: "Instrução Normativa nº 37, de 5 de setembro de 2016",
   link: "leg/IN37-2016.pdf",
   proib: undefined
 }, {
-  desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF ou Área Livre de Cancro Cítrico",
+  desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF",
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
   part: ["Material de propagação"],
   orig: [""],
-  dest: [""],
+  dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
   exig: [
@@ -710,11 +744,11 @@ var db = [
   link: "leg/IN37-2016.pdf",
   proib: undefined
 }, {
-  desc: "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF ou Área Livre de Cancro Cítrico",
+  desc: "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF",
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
   part: ["Frutos"],
   orig: [""],
-  dest: [""],
+  dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
   exig: [
@@ -726,14 +760,14 @@ var db = [
   link: "leg/IN37-2016.pdf",
   proib: undefined
 }, {
-  desc: "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA qualquer UF ou Área Livre de Cancro Cítrico",
+  desc: "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA qualquer UF",
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
   part: ["Frutos", "Material de propagação"],
   orig: [""],
-  dest: [""],
+  dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
-  exig: ["Trânsito proibido."],
+  exig: ["TRÂNSITO PROIBIDO."],
   leg: "Instrução Normativa nº 37, de 5 de setembro de 2016",
   link: "leg/IN37-2016.pdf",
   proib: undefined
@@ -1083,4 +1117,20 @@ Citrus reticulata : mexerica, pokan, tangerina
 Citrus aurantiifolia: lima
 Citrus limon: limão
 Citrus latifolia: limão tahiti
+*/
+
+/*       
+TRÂNSITO NACIONAL DE PARTIDA IMPORTADA
+
+  1 – SE A PARTIDA AINDA NÃO FOI INTERNALIZADA PELO MAPA E ESTIVER EM TRÂNSITO A UMA ÁREA ALFANDEGADA NO INTERIOR DO BRASIL:
+     - Certificado Fitossanitário ou Certificado Fitossanitário de Reexportação;
+  2 – SE A PARTIDA JÁ FOI INTERNALIZADA PELO MAPA E ESTIVER EM TRÂNSITO AO PONTO DE DESTINO DECLARADO NA IMPORTAÇÃO:
+     - Cópia autenticada do Certificado Fitossanitário ou do Certificado Fitossanitário de Reexportação; 
+     - Original ou cópia autenticada do Requerimento para Fiscalização de Produtos Agropecuários, emitido pelo MAPA;
+  3 – SE A PARTIDA JÁ FOI INTERNALIZADA PELO MAPA E ESTIVER SAINDO DO DESTINO DECLARADO NA IMPORTAÇÃO, EM DIREÇÃO A QUALQUER UF:
+     - Cumprir os requisitos fitossanitários para o trânsito interestadual.
+
+TRÂNSITO NACIONAL DE PARTIDA EXPORTADA
+  1 – SE A PARTIDA JÁ ESTIVER COM CERTIFICADO FITOSSANITÁRIO NO INTERIOR DO BRASIL, EM TRÂNSITO PARA PONTO DE EGRESSO:
+      - Certificado Fitossanitário.
 */
