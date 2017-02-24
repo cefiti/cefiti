@@ -69,9 +69,9 @@ function Result() {
             <h4 className="h4">TRÂNSITO NACIONAL DE PARTIDA EXPORTADA</h4>
             <div style={{"margin":"6px"}}>
               <span>
-                1 – SE A PARTIDA JÁ FOI EXPORTADA PELO MAPA EM ÁREA ALFANDEGADA NO INTERIOR DO BRASIL E ESTIVER EM TRÂNSITO A PONTO DE EGRESSO:
+                1 – SE A PARTIDA JÁ ESTIVER COM CERTIFICADO FITOSSANITÁRIO NO INTERIOR DO BRASIL, EM TRÂNSITO PARA PONTO DE EGRESSO:
               </span>
-              <span>- Não se aplicam as exigências para o trânsito interestadual.</span>
+              <span>- Certificado Fitossanitário.</span>
             </div>
             <hr/>
             <h4 className="h4">LEGISLAÇÃO GERAL</h4>
