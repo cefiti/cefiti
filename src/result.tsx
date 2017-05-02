@@ -75,7 +75,7 @@ function Result() {
             </div>
             <hr/>
             <h4 className="h4">LEGISLAÇÃO GERAL</h4>
-            <a target="_blank" href="leg/IN54-2007.pdf">Instrução Normativa MAPA Nº 54, de 4 de dezembro de 2007</a>
+            <a target="_blank" href="leg/IN28-2016.pdf">Instrução Normativa MAPA Nº 28, de 24 de agosto de 2016</a>
             <br/>
             <br/>
             <a target="_blank" href="leg/IN59-2013.pdf">Instrução Normativa MAPA Nº 59, de 18 de dezembro de 2013</a>
