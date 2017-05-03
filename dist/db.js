@@ -1,7 +1,7 @@
 // CEFiTI db
 "use strict";
 
-var version = "9";
+var version = "10";
 
 var db = [
   
@@ -688,11 +688,17 @@ var db = [
 },  
 
 //CANCRO CÍTRICO
+/*
+Área com Praga Ausente: BA, GO, TO
+Área sob Erradicação ou Supressão : MG, RR
+Área sob Sistema de Mitigação de Risco (SMR): MT,. MS, RS, SP
+Área Livre: PA (Ourém, Irituia, Garrafão do Norte, Capitão Poço, Nova Esperança do Piriá, Alenquer, Belterra, Mojuí dos Campos, Monte Alegre, Prainha, Santarém)
+*/
 {
   desc: "DE Área com Cancro Cítrico Ausente PARA qualquer UF",
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
   part: ["Frutos", "Material de propagação"],
-  orig: [""],
+  orig: ["BA", "GO", "TO"],
   dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
@@ -706,19 +712,22 @@ var db = [
   desc: "DE Área Livre de Cancro Cítrico PARA qualquer UF",
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
   part: ["Frutos", "Material de propagação"],
-  orig: [""],
+  orig: ["PA"],
   dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
-  exig: ["PTV."],
+  exig: [
+    "PTV.",
+    "Obs.: Estas exigências só se aplicam a partida proveniente do municípios pertencentes às Áreas Livres de Canco Cítrico do Estado do Pará: Ourém, Irituia, Garrafão do Norte, Capitão Poço, Nova Esperança do Piriá, Alenquer, Belterra, Mojuí dos Campos, Monte Alegre, Prainha e Santarém. Para os demais municípios TRÂNSITO PROIBIDO"
+    ],
   leg: "Instrução Normativa nº 37, de 5 de setembro de 2016",
   link: "leg/IN37-016.pdf",
   proib: undefined
 }, {
-  desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF",
+  desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF", //Arts. 39 e 40
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
   part: ["Frutos"],
-  orig: [""],
+  orig: ["MG", "RR"],
   dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
@@ -730,10 +739,10 @@ var db = [
   link: "leg/IN37-2016.pdf",
   proib: undefined
 }, {
-  desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF",
+  desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF",  //Art. 41
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
   part: ["Material de propagação"],
-  orig: [""],
+  orig: ["MG", "RR"],
   dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
@@ -744,10 +753,10 @@ var db = [
   link: "leg/IN37-2016.pdf",
   proib: undefined
 }, {
-  desc: "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF",
+  desc: "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF", //Arts. 61 a 63
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
   part: ["Frutos"],
-  orig: [""],
+  orig: ["MT", "MS", "RS", "SP"],
   dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
@@ -763,7 +772,7 @@ var db = [
   desc: "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA qualquer UF",
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
   part: ["Frutos", "Material de propagação"],
-  orig: [""],
+  orig: ["AC", "AL", "AM", "AP", "CE", "DF", "ES", "MA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "SC", "SE"],
   dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
