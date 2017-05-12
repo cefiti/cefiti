@@ -3,7 +3,7 @@ import store from './store';
 import uiStore from './uistore';
 import {observer} from 'mobx-react';
 
-const search: string = '+symptoms+OR+sintomas+OR+pest+OR+praga+OR+doença+OR+disease+OR+inseto+OR+insect+OR+fungi+OR+fungi+OR+bactéria';
+//const search: string = '+symptoms+OR+sintomas+OR+pest+OR+praga+OR+doença+OR+disease+OR+inseto+OR+insect+OR+fungi+OR+fungi+OR+bactéria';
 
 function Result() {
   return (
@@ -14,10 +14,7 @@ function Result() {
             Exigências Fitossanitárias para o trânsito de {store.dados.prod} de {store.dados.hospVul} <i>({store.dados.hospSci})</i> do {store.dados.orig} para {store.dados.dest}
           </h3>
           <div className={store.empty ? '' : 'hidden'}>
-              <br />
-              <p className="center no-print">Se a espécie vegetal ou a parte da planta buscada não constar das respectivas listas, e a espécie não pertencer às
-                famílias Arecaceae, ou Heliconiaceae, ou Pandanaceae, ou Strelitziaceae, ou Zingiberaceae, então conclui-se que
-                não há nenhuma exigência fitossanitária para o trânsito interestadual</p>
+              <br/>
               <br/>
               <span className="empty"><div>SEM EXIGÊNCIAS PARA O TRÂNSITO</div></span>
               <br/>
@@ -89,3 +86,7 @@ function Result() {
 export default observer(Result);
 
  //                   {item.proib ? (<span className="alert"><div>TRÂNSITO PROIBIDO</div></span>) : ''}
+
+/*              <p className="center no-print">Se a espécie vegetal ou a parte da planta buscada não constar das respectivas listas, e a espécie não pertencer às
+                famílias Arecaceae, ou Heliconiaceae, ou Pandanaceae, ou Strelitziaceae, ou Zingiberaceae, então conclui-se que
+                não há nenhuma exigência fitossanitária para o trânsito interestadual</p>*/

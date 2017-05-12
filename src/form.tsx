@@ -3,8 +3,8 @@ import store from './store';
 import uiStore from './uistore';
 import {observer} from 'mobx-react';
 
-let msgFamilias = 'Se a espécie pertencer à uma destas Famílias: "Arecaceae", "Heliconiaceae", "Musaceae",';
-msgFamilias += ' "Pandanaceae", "Strelitziaceae" ou "Zingiberaceae", fazer a consulta para a Espécie e';
+let msgFamilias = 'Se a espécie pertencer à família "Arecaceae", ou "Heliconiaceae", ou "Musaceae",';
+msgFamilias += ' ou "Pandanaceae", ou "Strelitziaceae" ou "Zingiberaceae", fazer a consulta para a Espécie e';
 msgFamilias += ' para a Família, ou só para a Família se a espécie não estiver relacionada';
 
 function Form() {
@@ -17,7 +17,7 @@ function Form() {
               <td className="col30">
                 <label>Espécie Vegetal (nome científico):</label>
               </td>
-              <td>
+              <td className="col30">
                 <select
                   title={msgFamilias}
                   className="italic form-select"
@@ -31,12 +31,13 @@ function Form() {
                   );})}
                 </select>
               </td>
+              <td className="col30" />
             </tr>
             <tr title={msgFamilias}>
               <td className="col30">
                 <label>Espécie Vegetal (nome vulgar):</label>
               </td>
-              <td>
+              <td className="col30">
                 <select
                   title= {msgFamilias}
                   className="form-select"
@@ -50,12 +51,13 @@ function Form() {
                   );})}
                 </select>
               </td>
+              <td rowSpan={4} className="col30">{msgFamilias}</td>
             </tr>
             <tr>
               <td className="col30">
                 <label>Parte da Planta:</label>
               </td>
-              <td>
+              <td className="col30">
                 <select className="form-select" name="prod" value={store.dados.prod} onChange={store.handleChanges.bind(this)}>
 
                   {store.partes.map((option, i) => { return (
@@ -63,12 +65,13 @@ function Form() {
                   );})}
                 </select>
               </td>
+              <td className="col30"/>
             </tr>
             <tr>
               <td className="col30">
                 <label>Origem:</label>
               </td>
-              <td>
+              <td className="col30">
                 <select className="form-select"  name="orig" value={store.dados.orig}  onChange={store.handleChanges.bind(this)}>
 
                   {store.origem.map((option, i) => { return (
@@ -76,12 +79,13 @@ function Form() {
                   );})}
                 </select>
               </td>
+              <td className="col30"/>
             </tr>
             <tr>
               <td className="col30">
                 <label>Destino:</label>
               </td>
-              <td>
+              <td className="col30">
                 <select className="form-select"  name="dest" value={store.dados.dest}  onChange={store.handleChanges.bind(this)}>
 
                   {store.destino.map((option, i) => { return (
@@ -89,6 +93,7 @@ function Form() {
                   );})}
                 </select>
               </td>
+              <td className="col30" />
             </tr>
             <tr>
               <td className="col30">
@@ -99,10 +104,11 @@ function Form() {
                   Fotos da Espécie Vegetal
                 </a>
               </td>
-              <td style={{"text-align":"center"}}>
+              <td style={{"text-align":"center"}} className="col30">
                 <button onClick={uiStore.handleSearch.bind(this)} className="form-button" disabled={!store.completed}>Pesquisar</button>
                 <br/>
               </td>
+              <td className="col30"/>
             </tr>
             </tbody>
           </table>

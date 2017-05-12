@@ -1,4 +1,5 @@
 import * as React from 'react';
+//import { component } from 'react';
 import * as ReactDom from 'react-dom';
 import store from './store';
 //import Mapa from './mapa';
@@ -9,8 +10,9 @@ import Form from './form';
 //import DevTools from 'mobx-react-devtools'
 //        <DevTools />
 
-class App extends React.Component<{store: any}, {}> {
-  render() {
+//class App extends React.component <{store: any}, {}> {
+//  render() {
+const App = ({store}) => {
     return (
     <div id="resolucao">
         <div id="moldura-topo">
@@ -68,7 +70,7 @@ class App extends React.Component<{store: any}, {}> {
       </div>
 
     );
-  }
-}
+  //}
+};
 
 ReactDom.render(<App store={store}/>, document.getElementById('app'));
