@@ -1,7 +1,7 @@
 // CEFiTI db
 "use strict";
 
-var version = "11";
+var version = "12";
 
 var db = [
   
@@ -719,7 +719,7 @@ var db = [
   desc: "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF", //Arts. 61 a 63
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
   part: ["frutos"],
-  orig: ["MT", "MS", "RS", "SP"],
+  orig: ["MT", "MS", "RS", "SP", "SC"],
   dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
@@ -735,7 +735,7 @@ var db = [
   desc: "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA qualquer UF",
   hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
   part: ["frutos", "material de propagação"],
-  orig: ["AC", "AL", "AM", "AP", "CE", "DF", "ES", "MA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "SC", "SE"],
+  orig: ["AC", "AL", "AM", "AP", "CE", "DF", "ES", "MA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "SE"],
   dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
   prag: "Xanthomonas citri subsp. citri",
   pragc: "CANCRO CÍTRICO",
@@ -1108,9 +1108,12 @@ TRÂNSITO NACIONAL DE PARTIDA EXPORTADA
 */
 
 /*
-MUDANÇAS DE VERSÃO: 
+#MUDANÇAS DE VERSÃO: 
 
- Versão 11:
+##Versão 11:
 - Alterou a regra de Sigatoka Negra excluindo as regras de "DE área de ocorrência PARA área livre de Sigatoka", substituindo a regra para "DE área de ocorrência de Sigatoka Negra PARA demais áreas", para atender ao art. 2º, VI, da IN nº 17/2007  
+
+##Versão 12:
+- Cancro Cítrico: Santa Catarina passa de Área de Risco Desconhecido para Área sob Mitigação de Risco, conforme a Resolução 12/2017
 
 */
