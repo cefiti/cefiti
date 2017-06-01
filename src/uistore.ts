@@ -9,8 +9,8 @@ class UiStore {
   //@observable exibeMapa: boolean = false;
   @observable searched: boolean = false;
 
-  @action handleMenu = (i: string, event: any): void => {
-    if (i === 'Base') {this.exibeBase = !this.exibeBase; };
+  @action handleMenu = (i: string): void  => {
+    if (i === 'Base') {this.exibeBase = !this.exibeBase; }
     //if (i === 'Mapa') {this.exibeMapa = !this.exibeMapa; };
     if (i === 'Nova') {
       store.clean();
@@ -25,5 +25,5 @@ class UiStore {
 
 }
 
-export var uiStore = new UiStore();
+export const uiStore = new UiStore();
 export default uiStore;

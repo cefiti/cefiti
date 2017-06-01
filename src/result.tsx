@@ -30,23 +30,23 @@ function Result() {
                     <br/>
                     <span className="small underline">{item.desc}</span>
                     {item.exig.map((exig, ii) => { return (
-                        <div style={{"margin":"6px"}} key={ii}>
+                        <div style={{margin: "6px"}} key={ii}>
                           <span title={"De: " + item.orig + " para " + item.dest}>{ii + 1} - {exig}</span>
                         </div>
-                    );})}
+                    ); })}
              </div>
-          );})}
+          ); })}
 
           <div className={store.empty ? 'hidden' : ''}>
             <hr/>
             <h4 className="h4">TRÂNSITO NACIONAL DE PARTIDA IMPORTADA</h4>
-            <div style={{"margin":"6px"}}>
+            <div style={{margin: "6px"}}>
               <span>
                 1 – SE A PARTIDA AINDA NÃO FOI INTERNALIZADA PELO MAPA E ESTIVER EM TRÂNSITO A UMA ÁREA ALFANDEGADA NO INTERIOR DO BRASIL:
               </span>
               <br/><span>- Certificado Fitossanitário ou Certificado Fitossanitário de Reexportação;</span>
             </div>
-            <div style={{"margin":"6px"}}>
+            <div style={{margin: "6px"}}>
               <span>
                 2 – SE A PARTIDA JÁ FOI INTERNALIZADA PELO MAPA E ESTIVER EM TRÂNSITO AO PONTO DE DESTINO DECLARADO NA IMPORTAÇÃO:
               </span>
@@ -56,7 +56,7 @@ function Result() {
                 - Original ou cópia autenticada do Requerimento para Fiscalização de Produtos Agropecuários, emitido pelo MAPA;
               </span>
             </div>
-            <div style={{"margin":"6px"}}>
+            <div style={{margin: "6px"}}>
               <span>
                 3 – SE A PARTIDA JÁ FOI INTERNALIZADA PELO MAPA E ESTIVER SAINDO DO DESTINO DECLARADO NA IMPORTAÇÃO, EM DIREÇÃO A QUALQUER UF:
               </span>
@@ -64,7 +64,7 @@ function Result() {
             </div>
             <hr/>
             <h4 className="h4">TRÂNSITO NACIONAL DE PARTIDA EXPORTADA</h4>
-            <div style={{"margin":"6px"}}>
+            <div style={{margin: "6px"}}>
               <span>
                 1 – SE A PARTIDA JÁ ESTIVER COM CERTIFICADO FITOSSANITÁRIO NO INTERIOR DO BRASIL, EM TRÂNSITO PARA PONTO DE EGRESSO:
               </span>
@@ -76,6 +76,8 @@ function Result() {
             <br/>
             <br/>
             <a target="_blank" href="leg/IN59-2013.pdf">Instrução Normativa MAPA Nº 59, de 18 de dezembro de 2013</a>
+            <br/>
+            <hr/>
           </div>
 
         </div>

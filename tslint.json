@@ -35,6 +35,7 @@
       "static-before-instance",
       "variables-before-functions"
     ],
+    "ordered-imports": [false],
     "no-any": false,
     "no-arg": true,
     "no-bitwise": true,
@@ -57,10 +58,10 @@
     "no-require-imports": true,
     "no-string-literal": true,
     "no-switch-case-fall-through": true,
-    "trailing-comma": {
+    "trailing-comma": [true, {
       "singleline": "never",
       "multiline": "always"
-    },
+    }],
     "no-trailing-whitespace": true,
     "no-unreachable": true,
     "no-unused-expression": true,
@@ -84,6 +85,7 @@
       true,
       "allow-null-check"
     ],
+    "arrow-parens": false,
     "typedef": [
       true,
       //"call-signature",

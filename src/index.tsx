@@ -23,11 +23,11 @@ const App = ({store}) => {
                   </span>
 
             </div>
-            <div id="identificacao-sistema" style={{"float":"none"}}>
+            <div id="identificacao-sistema" style={{float: "none"}}>
               <br/>
-              <div style={{"float":"right","color":"#fff","padding":"5px 10px 5px 15px"}}>Versão {store.appVersion}-{store.dbVersion}</div>
+              <div style={{float: "right", color: "#fff", padding: "5px 10px 5px 15px"}}>Versão {store.appVersion}-{store.dbVersion}</div>
               <h1>CEFiTI</h1>
-              <div style={{"float":"right","color":"#fff","padding":"5px 10px 5px 15px"}}>Data: {(new Date()).toLocaleDateString()}</div>
+              <div style={{float: "right", color: "#fff", padding: "5px 10px 5px 15px"}}>Data: {(new Date()).toLocaleDateString()}</div>
               <h2>Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual</h2>
             </div>
             <div id="dados-login"/>
@@ -47,21 +47,19 @@ const App = ({store}) => {
 
           </div>
           <br/>
-          <p className="small red center ">
-            Este Sistema está em fase de HOMOLOGAÇÃO, devido a isso as informações obtidas devem ser verificadas na legislação pertinente.
-          </p>
-          <p className="small red center ">
-            Se for encontrada alguma informação que não reflita corretamente a legislação, favor informar o SSV-MT no e-mail abaixo.
-          </p>
-          <br/>
           <p className="small center">
             As informações apresentadas não substituem o texto legal vigente, publicado em Diário Oficial da União, e referem-se a requisitos
             fitossanitários, não dispensando outras exigências estabelecidas em normas específicas. No caso de interceptação de
             praga, serão adotados os procedimentos constantes do Decreto 24.114, de 12 de abril de 1934. Quando se tratar de material
-            de multiplicação ou propagação vegetaldeverá ser obaservada a Legislação de Sementes e Mudas.
+            de multiplicação ou propagação vegetal deverá ser observada a Legislação de Sementes e Mudas.
+          </p>
+          <br/>
+          <p className="small red center ">
+            Em caso de dúvida, sugestão de melhoria ou de correção, entrar em contato no e-mail abaixo.
           </p>
           <br/>
           <div>
+            <h5 className="center" >Departamento de Sanidade Vegetal - DSV/SDA/MAPA</h5>
             <h5 className="center">
               Desenvolvido pelo SSV-MT - <a href="mailto:ssv-mt@agricultura.gov.br">ssv-mt@agricultura.gov.br</a>
             </h5>

@@ -5,8 +5,13 @@
         "noImplicitAny": false,
         "sourceMap": true,
         "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "moduleResolution": "node",
         "jsx": "react",
-        "outDir": "build"
+        "outDir": "build",
+        "strict": true,
+        "noEmitHelpers": true,
+        "importHelpers": true
     },
     "exclude": [
         "node_modules"
