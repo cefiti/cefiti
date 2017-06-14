@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 3.6-12
+- Ajustes para colocar em produção
+
 ## 3.5-12
 - Cancro Cítrico: Santa Catarina passa de Área de Risco Desconhecido para Área sob Mitigação de Risco, conforme a Resolução 12/2017
 
