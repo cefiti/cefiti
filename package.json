@@ -1,6 +1,6 @@
 {
   "name": "cefiti",
-  "version": "3.6.12",
+  "version": "3.6.13",
   "description": "Catálogo de Exigências Fitossanitárias para o Trânstio Interestadual",
   "main": "index.js",
   "scripts": {
@@ -21,9 +21,15 @@
   },
   "homepage": "https://github.com/cefiti/cefiti#readme",
   "jest": {
-    "transform": {".(ts|tsx)": "<rootDir>/../node_modules/ts-jest/preprocessor.js"},
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/../node_modules/ts-jest/preprocessor.js"
+    },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": ["ts", "tsx", "js" ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
     "rootDir": "app",
     "globals": {
       "__TS_CONFIG__": {

@@ -1,17 +1,29 @@
 // CEFiTI db
-"use strict";
+'use strict'
 
-var version = "12";
+var version = '13'
 
+/**
+ * === REGRAS PARA EDIÇÃO ===
+ * 1 - Toda haspa dupla (") dentro do texto deve ser precedida de uma barra invertida (Ex.: texto \"texto\" texto) <=
+ * 2 - Para inserir uma quebra de linha dentro de um item, inserir "\n" (Ex.: texto \n texto ou texto \ntexto)     <=
+ * 3 - Uma lista de itens (array) é definida colocando-se os itens entre colchetes (Ex.: ["a", "b", "c"]).         <=
+ * 4 - Os itens da lista devem estar entre hastas duplas (") e separados por vírgula. 
+ * 5 - Cada regra deve conter os seguintes campos: desc, hosp[], part[], orig[], dest[], prag, pragc, exig[], leg, link
+ * 6 - Cada campo da regra deve ser seguido pela sua definição após dois pontos (:), e os campos separados por vírgula.
+ * 7 - Cada regra deve ter seus campos agrupados dentro de chaves ({...}), e separado de outras regras por uma vírgula.  
+ */
+
+// prettier-ignore
 var db = [
   
-//ÁCARO-VERMELHO-DAS-PALMEIRAS  
+//ÁCARO-VERMELHO-DAS-PALMEIRAS
 {
   desc: "DE UF com ocorrência de Ácaro-vermelho-das-palmeiras PARA UF reconhecida pelo MAPA como livre da ocorrência de Ácaro-vermelho-das-palmeiras",
   hosp: ["Euterpe oleracea", "Euterpe precatoria", "Alpínia purpurata", "Alpínia zerumbet", "Syagrus schizophylla", "Ravenala madagascariensis", "Musa spp.", "Etlingera alatior", "Mauritia flexuosa", "Canna indica", "Cocos nucifera", "Butia capitata", "Corypha umbraculifera", "Elaeis guineensis", "Strelitzia reginae", "Heliconia spp.", "Syagrus romanzoffianum", "Licuala grandis", "Coccothrinax miraguama", "Microcycas calocoma", "Coccothrinax barbadensis", "Aiphanes spp.", "Pseudophoenix vinifera", "Dypsis lutescens", "Veitchia arecina", "Chamaedora spp.", "Veitchia maerrillii", "Phoenix roebelenii", "Acoelorraphe wrightii", "Wodyetia bifurcata", "Archontophoenix alexandrae", "Cycas spp.", "Areca sp.", "Bismarckia nobilis", "Washingtonia robusta", "Ptychosperma macarthurii", "Beccariophoenix madagascariensis", "Bactris plumeriana", "Washingtonia filifera", "Pseudophoenix sargentii", "Roystonea borinquena", "Schippia concolor", "Thrinax radiata", "Livistona chinensis", "Pritchardia pacifica", "Coccothrinax argentata", "Dictyosperma album", "Caryota mitis", "Caryota urens", "Raphis excelsa", "Roystonia regia", "Ptychosperma elegans", "Dypsis decaryi", "Pritchardia vuylstekeana", "Bactris gasipaes", "Bactris plumeriana", "Phoenix dactylifera", "Phoenix canariensis", "Phoenix reclinata", "Arecaceae (espécies desta família)", "Heliconiaceae (espécies desta família)", "Musaceae (espécies desta família)", "Pandanaceae (espécies desta família)", "Strelitziaceae (espécies desta família)", "Zingiberaceae (espécies desta família)"],
   part: ["plantas", "mudas", "raízes", "caules", "ramos", "folhas", "flores", "frutos"],
-  orig: ["RR", "AM"],
-  dest: ["AC", "AL", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RS", "SC", "SE", "SP", "TO"],
+  orig: ["RR", "AM", "BA", "CE", "GO", "MG", "PA", "PR", "RN", "SE", "SP", "DF"],
+  dest: ["AC", "AL", "AP", "ES", "MA", "MS", "MT", "PB", "PE", "PI", "RJ", "RO", "RS", "SC", "TO"],
   prag: "Raoiella indica",
   pragc: "ÁCARO-VERMELHO-DAS-PALMEIRAS",
   exig: [
@@ -745,6 +757,7 @@ var db = [
   proib: undefined
 }];
 
+// prettier-ignore
 var hospedeiros = [
   { nomeVul: "Abacate (Persea gratissima)", nomeSci: "Persea gratissima" },
   { nomeVul: "Abeto Europeu", nomeSci: "Picea abies" },
@@ -1064,9 +1077,9 @@ var hospedeiros = [
 ];
 
 if (typeof module === 'object') {
-  exports.db = db;
-  exports.hospedeiros = hospedeiros;
-  exports.version = vsersion;
+  exports.db = db
+  exports.hospedeiros = hospedeiros
+  exports.version = vsersion
 }
 
 /*
@@ -1115,5 +1128,8 @@ TRÂNSITO NACIONAL DE PARTIDA EXPORTADA
 
 ##Versão 12:
 - Cancro Cítrico: Santa Catarina passa de Área de Risco Desconhecido para Área sob Mitigação de Risco, conforme a Resolução 12/2017
+
+##Versão 13:
+- Alteração do status fitossanitário dos Estados Bahia, Ceará, Goiás, Minas Gerais, Pará, Paraná, Rio Grande do Norte, São Paulo, Sergipe e no Distrito Federal, de ausente para presente da praga Ácaro Vermelho ('Raoiella indica'), conforme processo SEI 21000.022348/2017-84.
 
 */
