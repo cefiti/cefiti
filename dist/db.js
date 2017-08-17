@@ -1,7 +1,7 @@
 // CEFiTI db
 'use strict'
 
-var version = '14'
+var version = '15'
 
 /**
  * === REGRAS PARA EDIÇÃO ===
@@ -378,7 +378,7 @@ var db = [
     prag: "Ralstonia solanacearum raça 2",
     pragc: "MOKO-DA-BANANEIRA",
     exig: [
-      "PTV com a seguinte declaração adicional: \"Os frutos ou inflorescências foram produzidos em UP onde não foi observada a presença de Ralstonia solanacearum raça 2, nos últimos doze meses\" OU \nPTV com a seguinte declaração adicional: \"Os frutos ou inflorescências foram produzidos sob aplicação de medidas integradas em um enfoque de Sistemas para o Manejo de Risco da praga Ralstonia solanacearum raça 2\"; \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009."
+      "OU PTV com a seguinte declaração adicional: \"Os frutos ou inflorescências foram produzidos em UP onde não foi observada a presença de Ralstonia solanacearum raça 2, nos últimos doze meses\"; OU \nPTV com a seguinte declaração adicional: \"Os frutos ou inflorescências foram produzidos sob aplicação de medidas integradas em um enfoque de Sistemas para o Manejo de Risco da praga Ralstonia solanacearum raça 2\"; \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009."
     ],
     leg: "Instrução Normativa SDA/MAPA nº 17, de 27 de maio de 2009",
     link: "leg/IN17-2009.pdf",
@@ -517,7 +517,10 @@ var db = [
     prag: "Mycosphaerella fijiensis",
     pragc: "SIGATOKA NEGRA",
     exig: [
-      "Partida isenta de PTV, mas é PROIBIDO o trânsito por AL, CE, DF, GO, PB, PE, PI, RN, SE, bem como pelos municípios livres de Sigatoka Negra de MG e de MS: \n\na) Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\nb)Municípios livres de Sigatoka Negra de MS: Água Clara, Anaurilândia, Aparecida do Taboado, Bataguassú, Batayporã, Brasilândia, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba, Ribas do Rio Pardo, Santa Rita do Pardo, Selvíria, Taquarussú e Três Lagoas;",
+      "OU Partida isenta de PTV, sendo porém PROIBIDO o trânsito por Área Livre de Sigatoka Negra, listadas no Item 2; OU PTV com a seguinte declaração adicional: \"A partida é originária de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco para Sigatoka Negra\", sendo permitido o trânsito por Área Livre de Sigatoka Negra;",
+      "ÁREAS LIVRE DE SIGATOKA NEGRA: Unidades da Federação AL, CE, DF, GO, PB, PE, PI, RN, SE, bem como pelos municípios livres de Sigatoka Negra de MG e de MS: \na) Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \nb)Municípios livres de Sigatoka Negra de MS: Água Clara, Anaurilândia, Aparecida do Taboado, Bataguassú, Batayporã, Brasilândia, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba, Ribas do Rio Pardo, Santa Rita do Pardo, Selvíria, Taquarussú e Três Lagoas;",
+      "As bananas não podem transitar em cacho, em todo o território nacional;",
+      "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
       "Estas exigências não se aplicam às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;"
     ],
     leg: "Instrução Normativa SDA/MAPA nº 17, de 31 de maio de 2005",
@@ -1136,4 +1139,6 @@ TRÂNSITO NACIONAL DE PARTIDA EXPORTADA
 ##Versão 14:
 - Alteração da regra "DE área com ocorrência de Sigatoka Negra PARA demais áreas" para "DE área com ocorrência de Sigatoka Negra PARA área livre de Sigatoka Negra", pois estava havendo sobreposição com a regra "DE área com ocorrência de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra". Por exemplo, frutos de banana de RO pa MT gerava dois requisitos: "sem PTV"" e "PTV com SMR", gerando dúvida fiscal em qual aplicar. Com a modificação "PTV com SMR" será exigido apenas para ALP, sendo para as demais áreas com ocorrência "transito livre sem PTV", ressalvada o trânsito por ALP.
 
+##Versão 15
+- Correção na regra  "DE área com ocorrência de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra" para incluir o SMR como opção.
 */
