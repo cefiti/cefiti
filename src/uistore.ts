@@ -8,7 +8,8 @@ class UiStore {
   //@observable exibeMapa: boolean = false;
   @observable searched: boolean = false
 
-  @action handleMenu = (i: string): void => {
+  @action
+  handleMenu = (i: string): void => {
     if (i === 'Base') {
       this.exibeBase = !this.exibeBase
     }
@@ -17,9 +18,16 @@ class UiStore {
       store.clean()
       this.searched = false
     }
+    if (i === 'Print') {
+      window.print()
+    }
+    if (i === 'Download') {
+      window.open('CEFiTI.zip')
+    }
   }
 
-  @action handleSearch = (event: any): void => {
+  @action
+  handleSearch = (event: any): void => {
     this.searched = true
     event.preventDefault()
   }

@@ -30,4 +30,11 @@ interface hospedeiro {
   nomeSci: string
 }
 
-export { estados, dados, exig, hospedeiro }
+interface Event {
+  target: {
+    name: string
+    value: any
+  }
+}
+
+export { estados, dados, exig, hospedeiro, Event }

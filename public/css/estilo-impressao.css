@@ -1,0 +1,208 @@
+/* #######
+	Definições da visualização da página de impressão:
+
+	Todos os propriedades estão escritas em ordem alfabética.
+	O uso do '*' antes da propriedade significa que a mesma será aplicada (ou ajustada) apenas no Internet Explorer.
+	
+####### */
+@media print {
+
+/* ##### estilo-template.css #### */
+
+* { /* Se aplica a todas as declarações */
+  border      :0;
+  color       :#000;
+  font-family :arial, verdana helvetica;
+	margin	    :0;
+	padding	    :0;
+}
+
+body {
+	color	:#666;
+	font	:normal 11px/1em verdana, arial, serif;
+}
+
+div#resolucao {
+	width       :100%;
+}
+
+div#moldura-topo {
+  background    :none;
+  border-bottom :2px solid black;
+  height        :60px;	
+  margin-bottom :20px;
+  padding       :0 0 5px 0;
+}
+
+div#moldura-topo #topo {
+  background :none;
+	height     :60px;
+}
+
+div#moldura-topo #topo #identificacao-sistema {
+  background :none;
+	height     :60px;
+}
+
+div#moldura-topo #topo #identificacao-sistema p {
+  border-bottom :none;
+  font-size     :0.8em;
+  font-weight   :normal;
+  margin        :0 0 3px 0;
+  width         :311px;
+}
+
+div#moldura-topo #topo #identificacao-sistema h1 {
+  font-size :1.5em;
+  margin    :0 0 3px 0;
+}
+
+div#moldura-topo #topo #identificacao-sistema h2 {
+  color       :#686868;
+  font-size   :1em;
+  font-weight :normal;
+  margin      :0;
+}
+
+div#moldura-topo #topo #dados-login {
+  float       :right;
+  font-size   :0.9em;
+  line-height :1.3em;
+  padding     :0 15px 0 0;
+  text-align  :right;
+}
+
+div#moldura-topo #topo #dados-login a {
+  display   :none;
+  visibility:hidden;
+}
+
+div#moldura-topo #topo #dados-login p.links {
+  display   :none;
+  visibility:hidden;
+}
+
+div#moldura-navegacao-global {
+  display   :none;
+  visibility:hidden;
+}
+
+div#moldura-navegacao-global #navegacao-global {
+  display   :none;
+  visibility:hidden;
+}
+
+div#navegacao-local {
+  display   :none;
+  visibility:hidden;
+}
+
+div#corpo {
+  margin:0;
+  padding:0;
+}
+
+div#corpo p.caminho-navegacao {
+  font-size     :0.8em;
+  margin-bottom :10px;
+}
+
+div#corpo p.caminho-navegacao span.caminho-navegacao-ativa{
+  color         :#000;
+}
+
+div#corpo p.ajuda-contextual {
+  display   :none;
+  visibility:hidden;
+}
+
+div#corpo h3 {
+  font-size     :1.1em;
+  font-weight   :bold;
+  margin-bottom :20px;
+}
+
+div#corpo #conteudo {
+  border        :0;
+  padding       :0;
+}
+
+div#corpo #conteudo h4 {
+  background    :none;
+  border-bottom :1px solid #ccc;
+  font-size     :1em;
+  font-weight   :normal;
+  margin-bottom :15px;
+  padding       :0;
+}
+
+div#corpo #conteudo p.conteudo {
+  margin-bottom :20px;
+}
+
+div#corpo #area-mensagens {
+  display   :none;
+  visibility:hidden;
+}
+
+div#controle-exibicao-menu {
+  display   :none;
+  visibility:hidden;
+}
+
+/* ##### estilo-formulario.css #### */
+
+.form-legenda-campo-obrigatorio {
+  margin-top   :20px;
+  text-align   :right;
+  padding-right:15px;
+}
+
+.form-barra-botoes-consulta {
+  border-top    :1px dashed #ccc;
+  border-bottom :1px dashed #ccc;
+  margin        :10px 0 20px 0;
+  padding       :5px 15px 5px 0;
+  text-align    :right;
+}
+
+.form-barra-botoes {
+  background    :#f7f7f7;
+  border-top    :1px dashed #ccc;
+  border-bottom :1px dashed #ccc;
+  margin-top    :10px;
+  padding       :5px 15px 5px 5px;
+  text-align    :right;
+}
+
+/* ##### estilo-tabela.css #### */
+
+.table-grid caption {
+	background	:none;
+  font-size   :1.4em;
+	font-weight	:bold;
+	padding     :5px 0;
+	margin      :0 2px;
+}
+
+.table-grid td, th, caption {
+	padding	:3px;
+}
+
+.table-grid tr th {
+  font-size   :1.2em;
+	font-weight:bold;
+	padding	   :3px;
+}
+
+/* ##### estilo-abas.css #### */
+
+div#nav-aba-conteudo {
+  background    :none;
+  border-bottom :none;
+	padding       :10px;
+	overflow      :hidden;
+}
+
+}
+

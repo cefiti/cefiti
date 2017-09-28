@@ -5,11 +5,26 @@ import { observer } from 'mobx-react'
 const Menu = () => {
   return (
     <p>
-      <span><a href="#" onClick={uiStore.handleMenu.bind(undefined, 'Base')}>Ver Base de Dados</a></span>
-      <span title="Para salvar o resultado como PDF, utilize o navegador Chrome, e altere a impressora para 'Salvar como PDF' na página de impressão">
-        <a href="#" onClick={uiStore.handleMenu.bind(undefined, '')}>Imprimir</a>
+      <span>
+        <a href="#" onClick={uiStore.handleMenu.bind(undefined, 'Base')}>
+          Ver Base de Dados
+        </a>
       </span>
-      <span><a href="#" onClick={uiStore.handleMenu.bind(undefined, 'Nova')}>Nova Consulta</a></span>
+      <span title="Baixar o sistema para uso off-line. Descompacte o arquivo CEFiTI.zip e acesse o arquivo index.html">
+        <a href="#" onClick={uiStore.handleMenu.bind(undefined, 'Download')}>
+          Download
+        </a>
+      </span>
+      <span title="Para salvar o resultado como PDF, utilize o navegador Chrome, e altere a impressora para 'Salvar como PDF' na página de impressão">
+        <a href="#" onClick={uiStore.handleMenu.bind(undefined, 'Print')}>
+          Imprimir
+        </a>
+      </span>
+      <span>
+        <a href="#" onClick={uiStore.handleMenu.bind(undefined, 'Nova')}>
+          NOVA CONSULTA
+        </a>
+      </span>
     </p>
   )
 }

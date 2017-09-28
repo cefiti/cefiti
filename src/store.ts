@@ -1,6 +1,6 @@
 import { observable, computed, useStrict, action } from 'mobx'
 import 'js-plus'
-import { exig, dados, estados, hospedeiro } from './cefiti'
+import { exig, dados, estados, hospedeiro, Event } from './cefiti'
 //import {db, hospedeiros} from './db'
 
 declare var db: exig[]
@@ -9,15 +9,20 @@ declare var version: string
 
 useStrict(true)
 
-class Store {
+export class Store {
   db: exig[] = db
   dbVersion = version
   appVersion = '3.6'
   hospedeiros: hospedeiro[] = hospedeiros
-  listaNomesSci: string[] = hospedeiros.unique('nomeSci').sort((a, b) => a.localeCompare(b))
-  listaNomesVul: string[] = hospedeiros.unique('nomeVul').sort((a, b) => a.localeCompare(b))
+  listaNomesSci: string[] = hospedeiros
+    .unique('nomeSci')
+    .sort((a, b) => a.localeCompare(b))
+  listaNomesVul: string[] = hospedeiros
+    .unique('nomeVul')
+    .sort((a, b) => a.localeCompare(b))
 
-  @observable dados: dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
+  @observable
+  dados: dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
 
   @computed
   get empty(): boolean {
@@ -26,12 +31,16 @@ class Store {
 
   @computed
   get origem(): estados[] {
-    return this.estados.filter(estado => estado.UF !== this.dados.dest || estado.UF === '')
+    return this.estados.filter(
+      estado => estado.UF !== this.dados.dest || estado.UF === ''
+    )
   }
 
   @computed
   get destino(): estados[] {
-    return this.estados.filter(estado => estado.UF !== this.dados.orig || estado.UF === '')
+    return this.estados.filter(
+      estado => estado.UF !== this.dados.orig || estado.UF === ''
+    )
   }
 
   @computed
@@ -42,7 +51,11 @@ class Store {
   @computed
   get completed(): boolean {
     return (
-      Boolean(this.dados.hospSci) && Boolean(this.dados.hospVul) && Boolean(this.dados.prod) && Boolean(this.dados.orig) && Boolean(this.dados.dest)
+      Boolean(this.dados.hospSci) &&
+      Boolean(this.dados.hospVul) &&
+      Boolean(this.dados.prod) &&
+      Boolean(this.dados.orig) &&
+      Boolean(this.dados.dest)
     )
   }
 
@@ -50,24 +63,28 @@ class Store {
   get partes(): string[] {
     return db
       .filter(
-        (exig: exig) =>
-          exig.hosp.includes(this.dados.hospSci) || exig.hosp.includes(this.gender + ' sp.') || exig.hosp.includes(this.gender + ' spp.')
+        (exigen: exig) =>
+          exigen.hosp.includes(this.dados.hospSci) ||
+          exigen.hosp.includes(this.gender + ' sp.') ||
+          exigen.hosp.includes(this.gender + ' spp.')
       )
       .by('part')
       .flatten()
       .unique()
       .concat([''])
-      .sort((a, b) => a.localeCompare(b))
+      .sort((a: string, b: string) => a.localeCompare(b))
   }
 
   @computed
   get result(): exig[] {
-    return db.filter((exig: exig) => {
+    return db.filter((exigen: exig) => {
       return (
-        (exig.hosp.includes(this.dados.hospSci) || exig.hosp.includes(this.gender + ' sp.') || exig.hosp.includes(this.gender + ' spp.')) &&
-        exig.orig.includes(this.dados.orig) &&
-        exig.dest.includes(this.dados.dest) &&
-        exig.part.includes(this.dados.prod)
+        (exigen.hosp.includes(this.dados.hospSci) ||
+          exigen.hosp.includes(this.gender + ' sp.') ||
+          exigen.hosp.includes(this.gender + ' spp.')) &&
+        exigen.orig.includes(this.dados.orig) &&
+        exigen.dest.includes(this.dados.dest) &&
+        exigen.part.includes(this.dados.prod)
       )
     })
   }
@@ -103,13 +120,20 @@ class Store {
     { estado: 'Tocantins', UF: 'TO' },
   ]
 
-  @action handleChanges = (event: any): void => {
+  @action
+  handleChanges = (event: Event): void => {
     switch (event.target.name) {
       case 'hospSci':
-        store.dados.hospVul = store.hospedeiros.find(hosp => hosp.nomeSci === event.target.value).nomeVul
+        const hospVulg: hospedeiro | undefined = this.hospedeiros.find(
+          hosp => hosp.nomeSci === event.target.value
+        )
+        this.dados.hospVul = hospVulg ? hospVulg.nomeVul : ''
         break
       case 'hospVul':
-        store.dados.hospSci = store.hospedeiros.find(hosp => hosp.nomeVul === event.target.value).nomeSci
+        const hospSci = this.hospedeiros.find(
+          hosp => hosp.nomeVul === event.target.value
+        )
+        this.dados.hospSci = hospSci ? hospSci.nomeSci : ''
         break
       default:
         break

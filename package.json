@@ -1,14 +1,9 @@
 {
-  "name": "cefiti",
-  "version": "3.6.13",
-  "description": "Catálogo de Exigências Fitossanitárias para o Trânstio Interestadual",
+  "version": "4.0.0",
+  "description":
+    "Catálogo de Exigências Fitossanitárias para o Trânstio Interestadual",
   "main": "index.js",
-  "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack -p",
-    "test": "mocha -r mocha-clean -r ts-node/register -r dist/db.js test/**/*.* src -w --watch-extensions ts,tsx -R min",
-    "ilink": "npm link react react-dom mobx mobx-react mocha mocha-clean ts-node ts-loader source-map-loader"
-  },
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cefiti/cefiti.git"
@@ -19,29 +14,30 @@
   "bugs": {
     "url": "https://github.com/cefiti/cefiti/issues"
   },
-  "homepage": "https://github.com/cefiti/cefiti#readme",
-  "jest": {
-    "transform": {
-      ".(ts|tsx)": "<rootDir>/../node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
-    "rootDir": "app",
-    "globals": {
-      "__TS_CONFIG__": {
-        "module": "commonjs",
-        "jsx": "react-native",
-        "experimentalDecorators": true,
-        "allowSyntheticDefaultImports": true,
-        "moduleResolution": "node",
-        "strict": true,
-        "noEmitHelpers": true,
-        "importHelpers": true
-      }
-    }
+  "homepage": ".",
+  "dependencies": {
+    "js-plus": "^0.1.4",
+    "jszip-cli": "^1.4.24",
+    "mobx": "^3.3.0",
+    "mobx-react": "^4.3.2",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "tslib": "^1.7.1",
+    "tslint-config-prettier": "^1.5.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^21.1.1",
+    "@types/node": "^8.0.31",
+    "@types/react": "^16.0.7",
+    "@types/react-dom": "^15.5.5",
+    "react-scripts-ts": "2.7.0"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build && npm run zip",
+    "snapshot": "react-snapshot",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject",
+    "zip": "jszip ./build -o ./build/CEFiTI.zip"
   }
 }
