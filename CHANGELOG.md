@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 4.0.0
+- Correção do botão Imprimir
+- Reimplementação do botão Download para uso do sistema off-line
+- Atualização para React 16.0 e Mobx 3.3
+- Uso de ferramenta create-react-app para compilação 
+
 ## 3.6-12
 - Ajustes para colocar em produção
 

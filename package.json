@@ -1,7 +1,6 @@
 {
   "version": "4.0.0",
-  "description":
-    "Catálogo de Exigências Fitossanitárias para o Trânstio Interestadual",
+  "description": "Catálogo de Exigências Fitossanitárias para o Trânstio Interestadual",
   "main": "index.js",
   "private": true,
   "repository": {
@@ -16,7 +15,7 @@
   },
   "homepage": ".",
   "dependencies": {
-    "js-plus": "^0.1.4",
+    "js-plus": "^0.1.6",
     "jszip-cli": "^1.4.24",
     "mobx": "^3.3.0",
     "mobx-react": "^4.3.2",
@@ -30,7 +29,8 @@
     "@types/node": "^8.0.31",
     "@types/react": "^16.0.7",
     "@types/react-dom": "^15.5.5",
-    "react-scripts-ts": "2.7.0"
+    "react-scripts-ts": "2.7.0",
+    "babel-runtime": "^6.26.0"
   },
   "scripts": {
     "start": "react-scripts-ts start",
