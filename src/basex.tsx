@@ -1,9 +1,7 @@
 import * as React from 'react'
 import uiStore from './uistore'
+import store from './store'
 import { observer } from 'mobx-react'
-import { exig } from './cefiti'
-
-declare var db: exig[]
 
 const Base = () => {
   return uiStore.exibeBase ? (
@@ -20,11 +18,10 @@ const Base = () => {
             <th style={{ width: '10%' }}>Destino</th>
             <th style={{ width: '15%' }}>Legislação</th>
             <th style={{ width: '30%' }}>Exigências</th>
-            <th style={{ width: '5%' }}>Trânsito Proibido</th>
           </tr>
         </thead>
         <tbody>
-          {db.map((item, i) => {
+          {store.db.map((item, i) => {
             return (
               <tr key={i}>
                 <td style={{ width: '10%' }}>
@@ -43,9 +40,11 @@ const Base = () => {
                   <span>{item.dest.toString()}</span>
                 </td>
                 <td style={{ width: '15%' }}>
-                  <a target="_blank" href={item.link}>
-                    {item.leg}
-                  </a>
+                  {item.files.map((file, i) => (
+                    <a target="_blank" key={file.link} href={'leg/' + file.link}>
+                      {file.leg}
+                    </a>
+                  ))}
                   <br />
                   <br />
                   <span>{item.pragc}</span>
@@ -64,9 +63,6 @@ const Base = () => {
                     })}
                   </div>
                 </td>
-                <td style={{ width: '5%', textAlign: 'center' }}>
-                  <input type="checkbox" disabled={true} checked={item.proib} />
-                </td>
               </tr>
             )
           })}
@@ -84,3 +80,9 @@ const Base = () => {
 }
 
 export default observer(Base)
+
+/*               
+            <th style={{ width: '5%' }}>Trânsito Proibido</th>
+                <td style={{ width: '5%', textAlign: 'center' }}>
+                  <input type="checkbox" disabled={true} checked={item.proib} />
+                </td>*/

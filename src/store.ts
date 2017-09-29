@@ -1,23 +1,36 @@
 import { observable, computed, useStrict, action } from 'mobx'
 import 'js-plus'
-import { exig, dados, estados, hospedeiro, Event } from './cefiti'
+import { Exig, Dados, Estados, Hospedeiro, Event, Praga, Regra } from './cefiti'
 //import {db, hospedeiros} from './db'
 
-declare var db: exig[]
-declare var hospedeiros: hospedeiro[]
+//declare var db: exig[]
+declare var pragas: Praga[]
+declare var hospedeiros: Hospedeiro[]
+declare var regras: Regra[]
 declare var version: string
 
 useStrict(true)
 
 export class Store {
-  db: exig[] = db
+  db = this.getDb()
   dbVersion = version
   appVersion = '4.0'
-  hospedeiros: hospedeiro[] = hospedeiros
+  hospedeiros: Hospedeiro[] = hospedeiros
   listaNomesSci: string[] = hospedeiros.unique('nomeSci').sort((a, b) => a.localeCompare(b))
   listaNomesVul: string[] = hospedeiros.unique('nomeVul').sort((a, b) => a.localeCompare(b))
 
-  @observable dados: dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
+  @observable dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
+
+  getDb(): Exig[] {
+    return regras.map(regra => {
+      let praga: Praga | undefined = pragas.find(item => item.prag === regra.prag)
+      if (!praga) {
+        throw Error('Dados da praga não cadastrados.')
+      } else {
+        return { ...regra, ...praga }
+      }
+    })
+  }
 
   @computed
   get empty(): boolean {
@@ -25,12 +38,12 @@ export class Store {
   }
 
   @computed
-  get origem(): estados[] {
+  get origem(): Estados[] {
     return this.estados.filter(estado => estado.UF !== this.dados.dest || estado.UF === '')
   }
 
   @computed
-  get destino(): estados[] {
+  get destino(): Estados[] {
     return this.estados.filter(estado => estado.UF !== this.dados.orig || estado.UF === '')
   }
 
@@ -48,9 +61,9 @@ export class Store {
 
   @computed
   get partes(): string[] {
-    return db
+    return this.db
       .filter(
-        (exigen: exig) =>
+        (exigen: Exig) =>
           exigen.hosp.includes(this.dados.hospSci) || exigen.hosp.includes(this.gender + ' sp.') || exigen.hosp.includes(this.gender + ' spp.')
       )
       .by('part')
@@ -61,8 +74,8 @@ export class Store {
   }
 
   @computed
-  get result(): exig[] {
-    return db.filter((exigen: exig) => {
+  get result(): Exig[] {
+    return this.db.filter((exigen: Exig) => {
       return (
         (exigen.hosp.includes(this.dados.hospSci) || exigen.hosp.includes(this.gender + ' sp.') || exigen.hosp.includes(this.gender + ' spp.')) &&
         exigen.orig.includes(this.dados.orig) &&
@@ -72,7 +85,7 @@ export class Store {
     })
   }
 
-  estados: estados[] = [
+  estados: Estados[] = [
     { estado: '', UF: '' },
     { estado: 'Acre', UF: 'AC' },
     { estado: 'Alagoas', UF: 'AL' },
@@ -107,7 +120,7 @@ export class Store {
   handleChanges = (event: Event): void => {
     switch (event.target.name) {
       case 'hospSci':
-        const hospVulg: hospedeiro | undefined = this.hospedeiros.find(hosp => hosp.nomeSci === event.target.value)
+        const hospVulg: Hospedeiro | undefined = this.hospedeiros.find(hosp => hosp.nomeSci === event.target.value)
         this.dados.hospVul = hospVulg ? hospVulg.nomeVul : ''
         break
       case 'hospVul':
