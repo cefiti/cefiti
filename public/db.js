@@ -1,7 +1,7 @@
 // CEFiTI db
 'use strict'
 
-var version = '15'
+var version = '16'
 
 /**
  * === REGRAS PARA EDIÇÃO ===
@@ -668,21 +668,21 @@ var db = [
 
   //CANCRO CÍTRICO
   /*
-  Área com Praga Ausente: BA, GO, TO
-  Área sob Erradicação ou Supressão : MG, RR
-  Área sob Sistema de Mitigação de Risco (SMR): MT,. MS, RS, SP
+  Área com Praga Ausente: AM, BA, DF, GO, TO
+  Área sob Erradicação ou Supressão : CE, MG, RR
+  Área sob Sistema de Mitigação de Risco (SMR): MT, MS, RS, SP
   Área Livre: PA (Ourém, Irituia, Garrafão do Norte, Capitão Poço, Nova Esperança do Piriá, Alenquer, Belterra, Mojuí dos Campos, Monte Alegre, Prainha, Santarém)
   */
   {
     desc: "DE Área com Cancro Cítrico Ausente PARA qualquer UF",
     hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
     part: ["frutos", "material de propagação"],
-    orig: ["BA", "GO", "TO"],
+    orig: [ "AM", "BA", "DF", "GO", "TO"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     pragc: "CANCRO CÍTRICO",
     exig: [
-      "PTV."
+      "SEM EXIGÊNCIAS PARA O TRÂNSITO."
     ],
     leg: "Instrução Normativa nº 37, de 5 de setembro de 2016",
     link: "leg/IN37-2016.pdf",
@@ -706,7 +706,7 @@ var db = [
     desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF", //Arts. 39 e 40
     hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
     part: ["frutos"],
-    orig: ["MG", "RR"],
+    orig: [ "CE", "MG", "RR"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     pragc: "CANCRO CÍTRICO",
@@ -721,7 +721,7 @@ var db = [
     desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF",  //Art. 41
     hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
     part: ["material de propagação"],
-    orig: ["MG", "RR"],
+    orig: [ "CE", "MG", "RR"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     pragc: "CANCRO CÍTRICO",
@@ -747,11 +747,27 @@ var db = [
     leg: "Instrução Normativa nº 37, de 5 de setembro de 2016",
     link: "leg/IN37-2016.pdf",
     proib: undefined
-  }, {
+  }, 
+  {
+    desc: "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF", //Arts. 61 a 63
+    hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
+    part: ["material de propagação"],
+    orig: ["MT", "MS", "RS", "SP", "SC"],
+    dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
+    prag: "Xanthomonas citri subsp. citri",
+    pragc: "CANCRO CÍTRICO",
+    exig: [
+      "TRÃNSITO PROIBIDO"
+    ],
+    leg: "Instrução Normativa nº 37, de 5 de setembro de 2016",
+    link: "leg/IN37-2016.pdf",
+    proib: undefined
+  },
+  {
     desc: "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA qualquer UF",
     hosp: ["Citrus spp.", "Fortunella spp.", "Poncirus spp."],
     part: ["frutos", "material de propagação"],
-    orig: ["AC", "AL", "AM", "AP", "CE", "DF", "ES", "MA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "SE"],
+    orig: ["AC", "AL", "AP", "ES", "MA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "SE"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     pragc: "CANCRO CÍTRICO",
@@ -1141,4 +1157,10 @@ TRÂNSITO NACIONAL DE PARTIDA EXPORTADA
 
 ##Versão 15
 - Correção na regra  "DE área com ocorrência de Sigatoka Negra PARA área com ocorrência de Sigatoka Negra" para incluir o SMR como opção.
+
+##Versão 16:
+- Inclusão da regra para Cancro Cítrico "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF" para material de propagação, sendo o trânsito proibido.
+- Amazonas e Distrito Federal passam de Área de Risco Desconhecido de Cancro Cítrico para Área com Ausência de Praga, conforme as Resoluções 14/2017 e 15/2017.
+- Ceará passa de Área de Risco Desconhecido de Cancro Cítrico para Área sob Erradicação ou Supressão, conforme a Resolução 13/2017.
+- DE Área com Cancro Cítrico Ausente PARA qualquer UF teve a exigência alterada de PTV para SEM EXIGÊNCIAS PARA O TRÂNSITO.
 */
