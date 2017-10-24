@@ -2,6 +2,8 @@
 
 'use strict'
 
+// ===>>>>>> Lembrar de altera a versão no arquivo db.js  <<<<<<<<==================
+
 // prettier-ignore
 var regras = [
 
@@ -451,16 +453,11 @@ var regras = [
   },
 
   //CANCRO CÍTRICO
-  /*
-  Área com Praga Ausente: AM, BA, DF, GO, TO
-  Área sob Erradicação ou Supressão : CE, MG, RR
-  Área sob Sistema de Mitigação de Risco (SMR): MT, MS, RS, SP
-  Área Livre: PA (Ourém, Irituia, Garrafão do Norte, Capitão Poço, Nova Esperança do Piriá, Alenquer, Belterra, Mojuí dos Campos, Monte Alegre, Prainha, Santarém)
-  */
+
   {
     desc: "DE Área com Cancro Cítrico Ausente PARA qualquer UF",
     part: ["frutos", "material de propagação"],
-    orig: [ "AM", "BA", "DF", "GO", "TO"],
+    orig: [ "AM", "BA", "DF", "GO", "PE", "SE", "TO"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     exig: [
@@ -514,13 +511,13 @@ var regras = [
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     exig: [
-      "TRÃNSITO PROIBIDO"
+      "TRÂNSITO PROIBIDO"
     ]
   },
   {
     desc: "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA qualquer UF",
     part: ["frutos", "material de propagação"],
-    orig: ["AC", "AL", "AP", "ES", "MA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "SE"],
+    orig: ["AC", "AL", "AP", "ES", "MA", "PB", "PI", "PR", "RJ", "RN", "RO"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     exig: ["TRÂNSITO PROIBIDO."]
