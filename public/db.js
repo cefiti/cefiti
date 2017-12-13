@@ -1,7 +1,7 @@
 // CEFiTI db
 'use strict'
 
-var version = '18'
+var version = '19'
 
 if (typeof module === 'object') {
   exports.version = vsersion
@@ -57,5 +57,9 @@ if (typeof module === 'object') {
 
 ##Versão 18
 - Alteração do status de Pernambuco e Sergipe para Cancro Cítrico de Risco Desconhecido para Área com praga ausente, conforme as Resoluções nº 16 de 20/09/17 e 17 de 28/09/17.
+
+##Versão 19
+- Alteração do status do Paraná para Cancro Cítrico de Risco Desconhecido para o Área sob Sistema de Mitigação de Risco (SMR), conforme a Resolução nº 18 de 08/12/17.
+
 
 */

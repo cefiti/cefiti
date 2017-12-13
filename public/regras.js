@@ -34,7 +34,7 @@ var regras = [
   },
 
   //ÁCARO HINDU
-{
+  {
     desc: "DE UF com ocorrência de Ácaro-hindu-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Ácaro-hindu-dos-citros",
     part: ["plantas", "mudas", "raízes", "caules", "ramos", "folhas", "flores", "frutos"],
     orig: ["RR"],
@@ -457,7 +457,7 @@ var regras = [
   {
     desc: "DE Área com Cancro Cítrico Ausente PARA qualquer UF",
     part: ["frutos", "material de propagação"],
-    orig: [ "AM", "BA", "DF", "GO", "PE", "SE", "TO"],
+    orig: ["AM", "BA", "DF", "GO", "PE", "SE", "TO"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     exig: [
@@ -476,7 +476,7 @@ var regras = [
   }, {
     desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF", //Arts. 39 e 40
     part: ["frutos"],
-    orig: [ "CE", "MG", "RR"],
+    orig: ["CE", "MG", "RR"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     exig: [
@@ -486,7 +486,7 @@ var regras = [
   }, {
     desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF",  //Art. 41
     part: ["material de propagação"],
-    orig: [ "CE", "MG", "RR"],
+    orig: ["CE", "MG", "RR"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     exig: [
@@ -503,11 +503,11 @@ var regras = [
       "Carga acondicionada em veículo fechado ou coberto, a granel, ou em embalagens descartáveis, ou em caixas plásticas retornáveis; e",
       "Carga lacrada com número de lacre informado na PTV."
     ]
-  }, 
+  },
   {
     desc: "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF", //Arts. 61 a 63
     part: ["material de propagação"],
-    orig: ["MT", "MS", "RS", "SP", "SC"],
+    orig: ["MT", "MS", "PR", "RS", "SP", "SC"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     exig: [
@@ -517,7 +517,7 @@ var regras = [
   {
     desc: "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA qualquer UF",
     part: ["frutos", "material de propagação"],
-    orig: ["AC", "AL", "AP", "ES", "MA", "PB", "PI", "PR", "RJ", "RN", "RO"],
+    orig: ["AC", "AL", "AP", "ES", "MA", "PB", "PI", "RJ", "RN", "RO"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     exig: ["TRÂNSITO PROIBIDO."]
