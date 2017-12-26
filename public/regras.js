@@ -2,7 +2,7 @@
 
 'use strict'
 
-// ===>>>>>> Lembrar de altera a versão no arquivo db.js  <<<<<<<<==================
+// ===>>>>>> Lembrar de alter a versão no arquivo db.js  <<<<<<<<==================
 
 // prettier-ignore
 var regras = [
@@ -11,8 +11,8 @@ var regras = [
   {
     desc: "DE UF com ocorrência de Ácaro-vermelho-das-palmeiras PARA UF reconhecida pelo MAPA como livre da ocorrência de Ácaro-vermelho-das-palmeiras",
     part: ["plantas", "mudas", "raízes", "caules", "ramos", "folhas", "flores", "frutos"],
-    orig: ["RR", "AM", "BA", "CE", "GO", "MG", "PA", "PR", "RN", "SE", "SP", "DF"],
-    dest: ["AC", "AL", "AP", "ES", "MA", "MS", "MT", "PB", "PE", "PI", "RJ", "RO", "RS", "SC", "TO"],
+    orig: ["RR", "AM"],
+    dest: ["AC", "AL", "AP", "ES", "MA", "MS", "MT", "PB", "PE", "PI", "RJ", "RO", "RS", "SC", "TO", "BA", "CE", "GO", "MG", "PA", "PR", "RN", "SE", "SP", "DF",],
     prag: "Raoiella indica",
     exig: [
       "PTV com a seguinte declaração adicional: \"Não se observou a presença de Raoiella indica no local de produção e a partida foi inspecionada e encontra-se livre da praga\"; ",

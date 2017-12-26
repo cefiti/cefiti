@@ -1,7 +1,7 @@
 // CEFiTI db
 'use strict'
 
-var version = '19'
+var version = '20'
 
 if (typeof module === 'object') {
   exports.version = vsersion
@@ -61,5 +61,7 @@ if (typeof module === 'object') {
 ##Versão 19
 - Alteração do status do Paraná para Cancro Cítrico de Risco Desconhecido para o Área sob Sistema de Mitigação de Risco (SMR), conforme a Resolução nº 18 de 08/12/17.
 
+##Versão 20
+- Revogação do Ofício Circular 15/2017 do Ácaro Vermelho, permanecendo com área infestada somente RR e AM. 
 
 */

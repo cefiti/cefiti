@@ -75,7 +75,6 @@ const pragas = [
     ],
     files: [
       { leg: 'Instrução Normativa MAPA nº 14, de 6 de abril de 2010', link: 'IN14-2010.pdf' },
-      { leg: 'Ofício Circular 15/2017 - DSV', link: 'OC15-2017.pdf' },
     ],
   },
   {
