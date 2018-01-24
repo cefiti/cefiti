@@ -457,7 +457,7 @@ var regras = [
   {
     desc: "DE Área com Cancro Cítrico Ausente PARA qualquer UF",
     part: ["frutos", "material de propagação"],
-    orig: ["AM", "BA", "DF", "GO", "PE", "SE", "TO"],
+    orig: ["AM", "BA", "DF", "ES", "GO", "PB", "PE", "SE", "TO"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     exig: [
@@ -517,7 +517,7 @@ var regras = [
   {
     desc: "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA qualquer UF",
     part: ["frutos", "material de propagação"],
-    orig: ["AC", "AL", "AP", "ES", "MA", "PB", "PI", "RJ", "RN", "RO"],
+    orig: ["AC", "AL", "AP", "MA", "PI", "RJ", "RN", "RO"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     exig: ["TRÂNSITO PROIBIDO."]

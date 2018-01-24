@@ -1,7 +1,7 @@
 // CEFiTI db
 'use strict'
 
-var version = '20'
+var version = '21'
 
 if (typeof module === 'object') {
   exports.version = vsersion
@@ -12,13 +12,13 @@ if (typeof module === 'object') {
  * 1 - Toda haspa dupla (") dentro do texto deve ser precedida de uma barra invertida (Ex.: texto \"texto\" texto) <=
  * 2 - Para inserir uma quebra de linha dentro de um item, inserir "\n" (Ex.: texto \n texto ou texto \ntexto)     <=
  * 3 - Uma lista de itens (array) é definida colocando-se os itens entre colchetes (Ex.: ["a", "b", "c"]).         <=
- * 4 - Os itens da lista devem estar entre hastas duplas (") e separados por vírgula. 
+ * 4 - Os itens da lista devem estar entre hastas duplas (") e separados por vírgula.
  * 5 - Cada regra deve conter os seguintes campos: desc, hosp[], part[], orig[], dest[], prag, pragc, exig[], leg, link
  * 6 - Cada campo da regra deve ser seguido pela sua definição após dois pontos (:), e os campos separados por vírgula.
- * 7 - Cada regra deve ter seus campos agrupados dentro de chaves ({...}), e separado de outras regras por uma vírgula.  
+ * 7 - Cada regra deve ter seus campos agrupados dentro de chaves ({...}), e separado de outras regras por uma vírgula.
  */
 
- /* 
+/* 
  VSCODE
  Ctrl+Z : Voltar
  Ctrl+S : Salvar
@@ -56,7 +56,7 @@ if (typeof module === 'object') {
 - Inclusão do arquivo PDF do Ofício Circular 15/2017 de Ácaro Vermelho
 
 ##Versão 18
-- Alteração do status de Pernambuco e Sergipe para Cancro Cítrico de Risco Desconhecido para Área com praga ausente, conforme as Resoluções nº 16 de 20/09/17 e 17 de 28/09/17.
+- Alteração do status de Pernambuco e Sergipe de Cancro Cítrico de Risco Desconhecido para Área com praga ausente, conforme as Resoluções nº 16 de 20/09/17 e 17 de 28/09/17.
 
 ##Versão 19
 - Alteração do status do Paraná para Cancro Cítrico de Risco Desconhecido para o Área sob Sistema de Mitigação de Risco (SMR), conforme a Resolução nº 18 de 08/12/17.
@@ -64,4 +64,6 @@ if (typeof module === 'object') {
 ##Versão 20
 - Revogação do Ofício Circular 15/2017 do Ácaro Vermelho, permanecendo com área infestada somente RR e AM. 
 
+##Versão 21
+- Alteração do status de Espirito Santo e Paraíba de Cancro Cítrico de Risco Desconhecido para Área com praga ausente, conforme as Resoluções nº 01/2018 e 19/2017.
 */
