@@ -1,11 +1,8 @@
 // CEFiTI db
-'use strict'
 
 var version = '20'
 
-if (typeof module === 'object') {
-  exports.version = vsersion
-}
+export { version }
 
 /**
  * === REGRAS PARA EDIÇÃO ===

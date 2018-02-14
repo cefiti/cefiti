@@ -11,8 +11,8 @@ function Result() {
       <div className={store.completed && uiStore.searched ? '' : 'hidden'}>
         <br />
         <h3>
-          Exigências Fitossanitárias para o trânsito de {store.dados.prod} de {store.dados.hospVul} <i>({store.dados.hospSci})</i> do{' '}
-          {store.dados.orig} para {store.dados.dest}
+          Exigências Fitossanitárias para o trânsito de {store.dados.prod} de {store.dados.hospVul}{' '}
+          <i>({store.dados.hospSci})</i> do {store.dados.orig} para {store.dados.dest}
         </h3>
         <div className={store.empty ? '' : 'hidden'}>
           <br />
@@ -26,7 +26,7 @@ function Result() {
 
         {store.result.map((item, i) => {
           return (
-            <div key={i}>
+            <div key={item.prag + i}>
               <hr />
               <h4 className="h4" style={{ textAlign: 'left', float: 'left' }}>
                 <i>{item.prag}</i> - {item.pragc}
@@ -40,9 +40,9 @@ function Result() {
                 [FOTOS DA PRAGA]
               </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'          '}
               <br />
-              {item.files.map((file, i) => (
-                <div>
-                  <a target="_blank" key={file.link} href={'leg/' + file.link}>
+              {item.files.map((file, iii) => (
+                <div key={file.link + iii}>
+                  <a target="_blank" href={'leg/' + file.link}>
                     {file.leg}
                   </a>
                   <br />
@@ -51,7 +51,7 @@ function Result() {
               <span className="small underline">{item.desc}</span>
               {item.exig.map((exig, ii) => {
                 return (
-                  <div style={{ margin: '6px' }} key={ii}>
+                  <div style={{ margin: '6px' }} key={exig + ii}>
                     <span title={'De: ' + item.orig + ' para ' + item.dest}>
                       {ii + 1} - {exig}
                     </span>
@@ -66,20 +66,33 @@ function Result() {
           <hr />
           <h4 className="h4">TRÂNSITO NACIONAL DE PARTIDA IMPORTADA</h4>
           <div style={{ margin: '6px' }}>
-            <span>1 – SE A PARTIDA AINDA NÃO FOI INTERNALIZADA PELO MAPA E ESTIVER EM TRÂNSITO A UMA ÁREA ALFANDEGADA NO INTERIOR DO BRASIL:</span>
+            <span>
+              1 – SE A PARTIDA AINDA NÃO FOI INTERNALIZADA PELO MAPA E ESTIVER EM TRÂNSITO A UMA
+              ÁREA ALFANDEGADA NO INTERIOR DO BRASIL:
+            </span>
             <br />
             <span>- Certificado Fitossanitário ou Certificado Fitossanitário de Reexportação;</span>
           </div>
           <div style={{ margin: '6px' }}>
-            <span>2 – SE A PARTIDA JÁ FOI INTERNALIZADA PELO MAPA E ESTIVER EM TRÂNSITO AO PONTO DE DESTINO DECLARADO NA IMPORTAÇÃO:</span>
+            <span>
+              2 – SE A PARTIDA JÁ FOI INTERNALIZADA PELO MAPA E ESTIVER EM TRÂNSITO AO PONTO DE
+              DESTINO DECLARADO NA IMPORTAÇÃO:
+            </span>
             <br />
-            <span>- Cópia autenticada do Certificado Fitossanitário ou do Certificado Fitossanitário de Reexportação; </span>
+            <span>
+              - Cópia autenticada do Certificado Fitossanitário ou do Certificado Fitossanitário de
+              Reexportação;{' '}
+            </span>
             <br />
-            <span>- Original ou cópia autenticada do Requerimento para Fiscalização de Produtos Agropecuários, emitido pelo MAPA;</span>
+            <span>
+              - Original ou cópia autenticada do Requerimento para Fiscalização de Produtos
+              Agropecuários, emitido pelo MAPA;
+            </span>
           </div>
           <div style={{ margin: '6px' }}>
             <span>
-              3 – SE A PARTIDA JÁ FOI INTERNALIZADA PELO MAPA E ESTIVER SAINDO DO DESTINO DECLARADO NA IMPORTAÇÃO, EM DIREÇÃO A QUALQUER UF:
+              3 – SE A PARTIDA JÁ FOI INTERNALIZADA PELO MAPA E ESTIVER SAINDO DO DESTINO DECLARADO
+              NA IMPORTAÇÃO, EM DIREÇÃO A QUALQUER UF:
             </span>
             <br />
             <span>- Cumprir os requisitos fitossanitários para o trânsito interestadual.</span>
@@ -87,7 +100,10 @@ function Result() {
           <hr />
           <h4 className="h4">TRÂNSITO NACIONAL DE PARTIDA EXPORTADA</h4>
           <div style={{ margin: '6px' }}>
-            <span>1 – SE A PARTIDA JÁ ESTIVER COM CERTIFICADO FITOSSANITÁRIO NO INTERIOR DO BRASIL, EM TRÂNSITO PARA PONTO DE EGRESSO:</span>
+            <span>
+              1 – SE A PARTIDA JÁ ESTIVER COM CERTIFICADO FITOSSANITÁRIO NO INTERIOR DO BRASIL, EM
+              TRÂNSITO PARA PONTO DE EGRESSO:
+            </span>
             <span>- Certificado Fitossanitário.</span>
           </div>
           <hr />
@@ -102,6 +118,22 @@ function Result() {
           </a>
           <br />
           <hr />
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <button
+            onClick={uiStore.handleMenu.bind(undefined, 'Voltar')}
+            className="form-button"
+            disabled={false}
+          >
+            Voltar
+          </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button
+            onClick={uiStore.handleMenu.bind(undefined, 'Nova')}
+            className="form-button"
+            disabled={false}
+          >
+            Nova Consulta
+          </button>
         </div>
       </div>
     </div>

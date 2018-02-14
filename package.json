@@ -13,31 +13,46 @@
   "bugs": {
     "url": "https://github.com/cefiti/cefiti/issues"
   },
-  "homepage": ".",
   "dependencies": {
     "js-plus": "^0.1.6",
-    "jszip-cli": "^1.4.24",
-    "mobx": "^3.3.0",
-    "mobx-react": "^4.3.2",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "tslib": "^1.7.1",
-    "tslint-config-prettier": "^1.5.0"
+    "mobx": "^3.5.1",
+    "mobx-react": "^4.4.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "tslib": "^1.9.0",
+    "tslint": "^5.9.1"
   },
   "devDependencies": {
     "@types/jest": "^21.1.1",
     "@types/node": "^8.0.31",
-    "@types/react": "^16.0.7",
-    "@types/react-dom": "^15.5.5",
-    "react-scripts-ts": "2.7.0",
-    "babel-runtime": "^6.26.0"
+    "@types/react": "^16.0.36",
+    "@types/react-dom": "^16.0.3",
+    "parcel-bundler": "^1.5.1",
+    "jest": "^22.2.2",
+    "jszip-cli": "^1.4.24",
+    "ts-jest": "^22.0.4",
+    "tslint-config-prettier": "^1.7.0",
+    "tslint-react": "^3.5.0",
+    "typescript": "^2.7.1"
   },
   "scripts": {
-    "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build && npm run zip",
-    "snapshot": "react-snapshot",
-    "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject",
-    "zip": "jszip ./build -o ./build/CEFiTI.zip"
+    "start": "parcel ./src/_.html -o",
+    "build": "parcel build ./src/index.tsx -d ./public",
+    "test": "jest test --watchAll",
+    "zip": "jszip ./public -o ./public/CEFiTI.zip"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }

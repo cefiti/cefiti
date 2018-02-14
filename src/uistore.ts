@@ -18,6 +18,9 @@ class UiStore {
       store.clean()
       this.searched = false
     }
+    if (i === 'Voltar') {
+      this.searched = false
+    }
     if (i === 'Print') {
       window.print()
     }

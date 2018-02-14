@@ -1,14 +1,19 @@
 //CEFiTI - Regras
 
-'use strict'
-
-// ===>>>>>> Lembrar de alter a versão no arquivo db.js  <<<<<<<<==================
+interface Regra {
+  desc: string
+  part: string[]
+  orig: string[]
+  dest: string[]
+  prag: string
+  exig: string[]
+}
 
 // prettier-ignore
-var regras = [
+const regras: Regra[] = [
 
   //ÁCARO-VERMELHO-DAS-PALMEIRAS
-  {
+  /*{
     desc: "DE UF com ocorrência de Ácaro-vermelho-das-palmeiras PARA UF reconhecida pelo MAPA como livre da ocorrência de Ácaro-vermelho-das-palmeiras",
     part: ["plantas", "mudas", "raízes", "caules", "ramos", "folhas", "flores", "frutos"],
     orig: ["RR", "AM"],
@@ -19,7 +24,7 @@ var regras = [
       "A partida deve ser transportada em caminhão lonado ou tipo baú, e lacrado; ", "A PTV deve conter o(s) número(s) do(s) lacre(s);",
       "Estas exigências fitossanitárias não se aplicam a material in vitro."
     ],
-  },
+  },*/
 
   //MOSCA-DA-CARAMBOLA
   {
@@ -457,7 +462,7 @@ var regras = [
   {
     desc: "DE Área com Cancro Cítrico Ausente PARA qualquer UF",
     part: ["frutos", "material de propagação"],
-    orig: ["AM", "BA", "DF", "GO", "PE", "SE", "TO"],
+    orig: ["AM", "BA", "DF", "ES", "GO", "PB", "PE", "RO", "SE", "TO"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     exig: [
@@ -495,12 +500,13 @@ var regras = [
   }, {
     desc: "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF", //Arts. 61 a 63
     part: ["frutos"],
-    orig: ["MT", "MS", "RS", "SP", "SC"],
+    orig: ["MT", "MS", "PR", "RS", "SP", "SC"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     exig: [
       "PTV com a seguinte declaração adicional: \"A partida não apresenta risco quarentenário para Xanthomonas citri subsp. citri como resultado da aplicação oficialmente supervisionada do Sistema Integrado de Medidas Fitossanitárias para o Manejo de Risco (SMR) da praga\";",
       "Carga acondicionada em veículo fechado ou coberto, a granel, ou em embalagens descartáveis, ou em caixas plásticas retornáveis; e",
+      "No Estado do Paraná, excetuam-se os municípios de Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná, cujo risco fitossanitário é desconhecido, sendo que frutos com origem nestes municípios tem o TRÂNSITO PROIBIDO.",
       "Carga lacrada com número de lacre informado na PTV."
     ]
   },
@@ -517,12 +523,10 @@ var regras = [
   {
     desc: "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA qualquer UF",
     part: ["frutos", "material de propagação"],
-    orig: ["AC", "AL", "AP", "ES", "MA", "PB", "PI", "RJ", "RN", "RO"],
+    orig: ["AC", "AL", "AP", "MA", "PI", "RJ", "RN"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
     exig: ["TRÂNSITO PROIBIDO."]
   }];
 
-if (typeof module === 'object') {
-  exports.regras = regras
-}
+export { regras }
