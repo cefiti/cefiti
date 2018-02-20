@@ -8,7 +8,7 @@ useStrict(true)
 
 export class Store {
   db = this.getDb()
-  dbVersion = '21'
+  dbVersion = '22'
   appVersion = '4.1'
   hospedeiros = hospedeiros
   estados = estados

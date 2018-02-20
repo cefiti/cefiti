@@ -4,6 +4,12 @@
 
 ## **_CHANGELOG_**
 
+## 4.1-22
+
+* [db] Mosca da Carambola: altera Pará para Área com Ocorrência
+* [db] Inclusão das partes "material de propagação", "mudas", "estacas", "gemas", "plantas" para Greening, Pinta Preta e Cancro Cítrico, para harmonizar com Cancro Europeu das Pomáceas que tem 'Citrus sinensis' como hospedeiro e estas outras partes listadas.
+* [db] Correção na grafia de dois hospedeiros: ''Crataegus oxyacanthoides (syn: oxyacantha)' e 'Fagus crenata f. grandifolia (syn. Americana)'.
+
 ## 4.1-21
 
 * Substituição do WebPack(CRA) pelo Parcel como bundler
@@ -13,7 +19,6 @@
 * [db] Alteração do status de Rondônia, Paraíba e Espírito Santo de Cancro Cítrico de Risco Desconhecido para Área com Praga Ausente, conforme as Resoluções nº 1602/2018, 19/2017 e 01/2018.
 * [db] Correção no status fitossanitário do Paraná em Cancro Cítrico emMaterial de Propagação em SMR.
 * [db] Conferência das regras de Cancro Cítrico com o Comunicado nº 1/2018/CGPP/DSV/MAPA/SDA/MAPA
-* [db] Mosca da Carambola: altera Pará para Área com Ocorrência
 
 ## 4.0-20
 

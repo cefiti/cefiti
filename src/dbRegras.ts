@@ -99,7 +99,7 @@ const regras: Regra[] = [
   //CANCRO EUROPEU DAS POMÁCEAS
   {
     desc: "DE UF com ocorrência de Cancro-europeu-das-pomáceas PARA UF reconhecida pelo MAPA como livre da ocorrência de Cancro-europeu-das-pomáceas",
-    part: ["mudas", "sementes", "estacas", "bulbos", "tubérculos", "manivas", "toletes", "gemas", "ramas", "rizomas"],
+    part: ["mudas", "sementes", "estacas", "bulbos", "tubérculos", "manivas", "toletes", "gemas", "ramas", "rizomas", "material de propagação"],
     orig: ["PR", "RS", "SC"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "RJ", "RN", "RO", "RR", "SE", "SP", "TO"],
     prag: "Neonectria galligena (=Nectria galligena)",
@@ -121,7 +121,7 @@ const regras: Regra[] = [
   //GREENING
   {
     desc: "DE UF com ocorrência de Greening PARA UF reconhecida pelo MAPA como livre da ocorrência de Greening",
-    part: ["mudas", "estacas", "gemas", "ramas", "raízes"],
+    part: ["mudas", "estacas", "gemas", "ramas", "raízes", "material de propagação", "plantas"],
     orig: ["MG", "PR", "SP"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MS", "MT", "PA", "PB", "PE", "PI", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "TO"],
     prag: "Candidatus Liberibacter spp.",
@@ -133,7 +133,7 @@ const regras: Regra[] = [
   //PINTA-PRETA-DOS-CITROS
   {
     desc: "DE UF com ocorrência de Pinta-preta-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Pinta-preta-dos-citros",
-    part: ["mudas", "estacas", "gemas"],
+    part: ["mudas", "estacas", "gemas", "material de propagação", "plantas"],
     orig: ["AM", "ES", "MT", "MS", "MG", "PR", "RJ", "RS", "SC", "SP", "BA", "GO", "RO"],
     dest: ["AC", "AL", "AP", "CE", "DF", "MA", "PA", "PB", "PE", "PI", "RN", "RR", "SE", "TO"],
     prag: "Guignardia citricarpa (=Phyllosticta citricarpa)",
@@ -461,7 +461,7 @@ const regras: Regra[] = [
 
   {
     desc: "DE Área com Cancro Cítrico Ausente PARA qualquer UF",
-    part: ["frutos", "material de propagação"],
+    part: ["frutos", "material de propagação", "mudas", "estacas", "gemas", "plantas"],
     orig: ["AM", "BA", "DF", "ES", "GO", "PB", "PE", "RO", "SE", "TO"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
@@ -470,7 +470,7 @@ const regras: Regra[] = [
     ]
   }, {
     desc: "DE Área Livre de Cancro Cítrico PARA qualquer UF",
-    part: ["frutos", "material de propagação"],
+    part: ["frutos", "material de propagação", "mudas", "estacas", "gemas", "plantas"],
     orig: ["PA"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
@@ -490,7 +490,7 @@ const regras: Regra[] = [
     ]
   }, {
     desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF",  //Art. 41
-    part: ["material de propagação"],
+    part: ["material de propagação", "mudas", "estacas", "gemas", "plantas"],
     orig: ["CE", "MG", "RR"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
@@ -512,7 +512,7 @@ const regras: Regra[] = [
   },
   {
     desc: "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF", //Arts. 61 a 63
-    part: ["material de propagação"],
+    part: ["material de propagação", "mudas", "estacas", "gemas", "plantas"],
     orig: ["MT", "MS", "PR", "RS", "SP", "SC"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
@@ -522,7 +522,7 @@ const regras: Regra[] = [
   },
   {
     desc: "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA qualquer UF",
-    part: ["frutos", "material de propagação"],
+    part: ["frutos", "material de propagação", "mudas", "estacas", "gemas", "plantas"],
     orig: ["AC", "AL", "AP", "MA", "PI", "RJ", "RN"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Xanthomonas citri subsp. citri",
