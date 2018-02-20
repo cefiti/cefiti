@@ -1,21 +1,16 @@
 import * as React from 'react'
-//import { component } from 'react';
 import * as ReactDom from 'react-dom'
-//import Mapa from './mapa';
 import Base from './basex'
 import Menu from './menu'
 import Result from './result'
 import Form from './form'
 import { store, Store } from './store'
-//import DevTools from 'mobx-react-devtools'
-//        <DevTools />
 
-//class App extends React.component <{store: any}, {}> {
-//  render() {
 interface AppStore {
   store: Store
 }
 
+//tslint:disable-next-line:no-shadowed-variable
 const App = ({ store }: AppStore) => {
   return (
     <div id="resolucao">

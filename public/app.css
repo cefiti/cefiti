@@ -16,6 +16,7 @@
       .italic {font-style: italic}
       .small {font-size: 10px;}
       .col30 {width: 30%;}
+      .col60 {width: 60%;}
       hr {margin-bottom: 1px solid #ccc;}
       .center {text-align:center;}
       .right {text-align:right ;}

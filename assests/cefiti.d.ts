@@ -29,7 +29,7 @@ interface Dados {
   ]
 }*/
 
-type Exig = Praga & Regra
+/*type Exig = Praga & Regra
 
 interface Praga {
   prag: string
@@ -55,7 +55,7 @@ interface Regra {
 interface Hospedeiro {
   nomeVul: string
   nomeSci: string
-}
+}*/
 
 interface Event {
   target: {
@@ -64,4 +64,4 @@ interface Event {
   }
 }
 
-export { Estados, Dados, Exig, Hospedeiro, Event, Praga, Regra }
+export { Estados, Dados, Event }

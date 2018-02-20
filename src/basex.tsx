@@ -40,7 +40,7 @@ const Base = () => {
                   <span>{item.dest.toString()}</span>
                 </td>
                 <td style={{ width: '15%' }}>
-                  {item.files.map((file, i) => (
+                  {item.files.map((file) => (
                     <a target="_blank" key={file.link} href={'leg/' + file.link}>
                       {file.leg}
                     </a>
@@ -75,8 +75,8 @@ const Base = () => {
       </table>
     </div>
   ) : (
-    <div />
-  )
+      <div />
+    )
 }
 
 export default observer(Base)

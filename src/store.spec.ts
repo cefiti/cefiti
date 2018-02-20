@@ -1,27 +1,27 @@
 import store from './../src/store';
-import {useStrict} from 'mobx';
+import { useStrict } from 'mobx';
 import 'jest';
 
 useStrict(false);
 
 const estadosSemAC = [
-    /*{estado: 'Acre', UF: 'AC'},*/{estado: 'Alagoas', UF: 'AL'}, {estado: 'Amazonas', UF: 'AM'},
-    {estado: 'Amapá', UF: 'AP'}, {estado: 'Bahia', UF: 'BA'}, {estado: 'Ceará', UF: 'CE'},
-    {estado: 'Distrito Federal', UF: 'DF'}, {estado: 'Espirito Santo', UF: 'ES'}, {estado: 'Goiás', UF: 'GO'},
-    {estado: 'Maranhão', UF: 'MA'}, {estado: 'Minas Gerais', UF: 'MG'}, {estado: 'Mato Grosso do Sul', UF: 'MS'},
-    {estado: 'Mato Grosso', UF: 'MT'}, {estado: 'Pará', UF: 'PA'}, {estado: 'Paraíba', UF: 'PB'},
-    {estado: 'Pernambuco', UF: 'PE'}, {estado: 'Piauí', UF: 'PI'}, {estado: 'Paraná', UF: 'PR'},
-    {estado: 'Rio de janeiro', UF: 'RJ'}, {estado: 'Rio Grande do Norte', UF: 'RN'},
-    {estado: 'Rondônia', UF: 'RO'}, {estado: 'Roraima', UF: 'RR'}, {estado: 'Rio Grande do Sul', UF: 'RS'},
-    {estado: 'Santa Catarina', UF: 'SC'}, {estado: 'Sergipe', UF: 'SE'}, {estado: 'São Paulo', UF: 'SP'},
-    {estado: 'Tocantins', UF: 'TO'},
-  ];
+    /*{estado: 'Acre', UF: 'AC'},*/{ estado: 'Alagoas', UF: 'AL' }, { estado: 'Amazonas', UF: 'AM' },
+  { estado: 'Amapá', UF: 'AP' }, { estado: 'Bahia', UF: 'BA' }, { estado: 'Ceará', UF: 'CE' },
+  { estado: 'Distrito Federal', UF: 'DF' }, { estado: 'Espirito Santo', UF: 'ES' }, { estado: 'Goiás', UF: 'GO' },
+  { estado: 'Maranhão', UF: 'MA' }, { estado: 'Minas Gerais', UF: 'MG' }, { estado: 'Mato Grosso do Sul', UF: 'MS' },
+  { estado: 'Mato Grosso', UF: 'MT' }, { estado: 'Pará', UF: 'PA' }, { estado: 'Paraíba', UF: 'PB' },
+  { estado: 'Pernambuco', UF: 'PE' }, { estado: 'Piauí', UF: 'PI' }, { estado: 'Paraná', UF: 'PR' },
+  { estado: 'Rio de janeiro', UF: 'RJ' }, { estado: 'Rio Grande do Norte', UF: 'RN' },
+  { estado: 'Rondônia', UF: 'RO' }, { estado: 'Roraima', UF: 'RR' }, { estado: 'Rio Grande do Sul', UF: 'RS' },
+  { estado: 'Santa Catarina', UF: 'SC' }, { estado: 'Sergipe', UF: 'SE' }, { estado: 'São Paulo', UF: 'SP' },
+  { estado: 'Tocantins', UF: 'TO' },
+];
 
 const hosp10 = ["Acacia sp.", "Acer circinatum", "Acer macrophyllum", "Acer mono subsp. Heterophyllum", "Acer negundo",
-   "Acer palmatum", "Acer pennsylvanicum", "Acer pseudoplatanus", "Acer rubrum", "Acer saccharum"];
-const hosp_20 = ["Tectona grandis", "Terminalia catappa",  "Thrinax radiata", "Tilia americana", "Tilia cordata", "Tilia sp.", "Ulmus americana", "Ulmus glabra (syn. montana)",
-   "Ulmus sp.", "Umbelluraria californica", "Veitchia arecina", "Veitchia maerrillii", "Viola sp.", "Vitis spp. e seus híbridos",
-   "Washingtonia filifera", "Washingtonia robusta", "Wodyetia bifurcata", "Zingiberaceae (espécies desta família)", "Ziziphus jujuba", "Ziziphus mauritiana"];
+  "Acer palmatum", "Acer pennsylvanicum", "Acer pseudoplatanus", "Acer rubrum", "Acer saccharum"];
+const hosp20 = ["Tectona grandis", "Terminalia catappa", "Thrinax radiata", "Tilia americana", "Tilia cordata", "Tilia sp.", "Ulmus americana", "Ulmus glabra (syn. montana)",
+  "Ulmus sp.", "Umbelluraria californica", "Veitchia arecina", "Veitchia maerrillii", "Viola sp.", "Vitis spp. e seus híbridos",
+  "Washingtonia filifera", "Washingtonia robusta", "Wodyetia bifurcata", "Zingiberaceae (espécies desta família)", "Ziziphus jujuba", "Ziziphus mauritiana"];
 
 describe('Store origem e destino', () => {
 
@@ -50,7 +50,7 @@ describe('Store hospedeiros nomeSci', () => {
 
   it('unique values', () => {
     expect(store.listaNomesSci.take(10)).toEqual(hosp10);
-    expect(store.listaNomesSci.take(-20)).toEqual(hosp_20);
+    expect(store.listaNomesSci.take(-20)).toEqual(hosp20);
     expect(store.listaNomesSci.length).toBe(246);
   });
 });
@@ -64,12 +64,12 @@ describe('Store partes', () => {
 
   it('de Banana', () => {
     store.dados.hospSci = 'Musa spp.';
-    expect(store.partes).toEqual([ "caules",  "flores",  "folhas", "frutos", "material para pesquisa", "mudas", "plantas", "raízes", "ramos", "rizomas"]);
+    expect(store.partes).toEqual(["caules", "flores", "folhas", "frutos", "material para pesquisa", "mudas", "plantas", "raízes", "ramos", "rizomas"]);
   });
 
   it('de Mandioca', () => {
     store.dados.hospSci = 'Manihot esculenta';
-    expect(store.partes).toEqual([ "estaca", "madeira", "maniva"]);
+    expect(store.partes).toEqual(["estaca", "madeira", "maniva"]);
   });
 
 });
@@ -140,3 +140,15 @@ describe('Store filtro geral', () => {
     expect(store.result.by('proib').includes(true)).toBe(true);
   });
 });
+
+/*
+pragas.map(praga => praga.hosp.map(hosp => {
+  const especies = hospedeiros.filter(especie => especie.nomeSci === hosp)
+  especies.map( especie => {
+  const index = hospedeiros.findIndex(esp => esp.nomeVul === especie.nomeVul )
+  if (index >= 0) {
+    //console.log(index, especie.nomeVul)
+    hospedeiros[index].count += 1
+  } 
+})}))
+*/

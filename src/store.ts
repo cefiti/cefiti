@@ -1,29 +1,25 @@
 import { observable, computed, useStrict, action } from 'mobx'
 import 'js-plus'
-import { Exig, Dados, Estados, Hospedeiro, Event, Praga, Regra } from './cefiti'
-//import {db, hospedeiros} from './db'
-
-//declare var db: exig[]
-declare var pragas: Praga[]
-declare var hospedeiros: Hospedeiro[]
-declare var regras: Regra[]
-declare var version: string
+import { regras } from './dbRegras'
+import { pragas } from './dbPragas'
+import { hospedeiros } from './dbHospedeiros'
 
 useStrict(true)
 
 export class Store {
   db = this.getDb()
-  dbVersion = version
-  appVersion = '4.0'
-  hospedeiros: Hospedeiro[] = hospedeiros
+  dbVersion = '21'
+  appVersion = '4.1'
+  hospedeiros = hospedeiros
+  estados = estados
   listaNomesSci: string[] = hospedeiros.unique('nomeSci').sort((a, b) => a.localeCompare(b))
   listaNomesVul: string[] = hospedeiros.unique('nomeVul').sort((a, b) => a.localeCompare(b))
 
-  @observable dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
+  @observable dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
 
-  getDb(): Exig[] {
+  getDb() {
     return regras.map(regra => {
-      let praga: Praga | undefined = pragas.find(item => item.prag === regra.prag)
+      const praga = pragas.find(item => item.prag === regra.prag)
       if (!praga) {
         throw Error('Dados da praga não cadastrados.')
       } else {
@@ -38,12 +34,12 @@ export class Store {
   }
 
   @computed
-  get origem(): Estados[] {
+  get origem() {
     return this.estados.filter(estado => estado.UF !== this.dados.dest || estado.UF === '')
   }
 
   @computed
-  get destino(): Estados[] {
+  get destino() {
     return this.estados.filter(estado => estado.UF !== this.dados.orig || estado.UF === '')
   }
 
@@ -55,7 +51,11 @@ export class Store {
   @computed
   get completed(): boolean {
     return (
-      Boolean(this.dados.hospSci) && Boolean(this.dados.hospVul) && Boolean(this.dados.prod) && Boolean(this.dados.orig) && Boolean(this.dados.dest)
+      Boolean(this.dados.hospSci) &&
+      Boolean(this.dados.hospVul) &&
+      Boolean(this.dados.prod) &&
+      Boolean(this.dados.orig) &&
+      Boolean(this.dados.dest)
     )
   }
 
@@ -63,8 +63,10 @@ export class Store {
   get partes(): string[] {
     return this.db
       .filter(
-        (exigen: Exig) =>
-          exigen.hosp.includes(this.dados.hospSci) || exigen.hosp.includes(this.gender + ' sp.') || exigen.hosp.includes(this.gender + ' spp.')
+        exigen =>
+          exigen.hosp.includes(this.dados.hospSci) ||
+          exigen.hosp.includes(this.gender + ' sp.') ||
+          exigen.hosp.includes(this.gender + ' spp.')
       )
       .by('part')
       .flatten()
@@ -74,10 +76,12 @@ export class Store {
   }
 
   @computed
-  get result(): Exig[] {
-    return this.db.filter((exigen: Exig) => {
+  get result() {
+    return this.db.filter(exigen => {
       return (
-        (exigen.hosp.includes(this.dados.hospSci) || exigen.hosp.includes(this.gender + ' sp.') || exigen.hosp.includes(this.gender + ' spp.')) &&
+        (exigen.hosp.includes(this.dados.hospSci) ||
+          exigen.hosp.includes(this.gender + ' sp.') ||
+          exigen.hosp.includes(this.gender + ' spp.')) &&
         exigen.orig.includes(this.dados.orig) &&
         exigen.dest.includes(this.dados.dest) &&
         exigen.part.includes(this.dados.prod)
@@ -85,46 +89,15 @@ export class Store {
     })
   }
 
-  estados: Estados[] = [
-    { estado: '', UF: '' },
-    { estado: 'Acre', UF: 'AC' },
-    { estado: 'Alagoas', UF: 'AL' },
-    { estado: 'Amazonas', UF: 'AM' },
-    { estado: 'Amapá', UF: 'AP' },
-    { estado: 'Bahia', UF: 'BA' },
-    { estado: 'Ceará', UF: 'CE' },
-    { estado: 'Distrito Federal', UF: 'DF' },
-    { estado: 'Espirito Santo', UF: 'ES' },
-    { estado: 'Goiás', UF: 'GO' },
-    { estado: 'Maranhão', UF: 'MA' },
-    { estado: 'Minas Gerais', UF: 'MG' },
-    { estado: 'Mato Grosso do Sul', UF: 'MS' },
-    { estado: 'Mato Grosso', UF: 'MT' },
-    { estado: 'Pará', UF: 'PA' },
-    { estado: 'Paraíba', UF: 'PB' },
-    { estado: 'Pernambuco', UF: 'PE' },
-    { estado: 'Piauí', UF: 'PI' },
-    { estado: 'Paraná', UF: 'PR' },
-    { estado: 'Rio de janeiro', UF: 'RJ' },
-    { estado: 'Rio Grande do Norte', UF: 'RN' },
-    { estado: 'Rondônia', UF: 'RO' },
-    { estado: 'Roraima', UF: 'RR' },
-    { estado: 'Rio Grande do Sul', UF: 'RS' },
-    { estado: 'Santa Catarina', UF: 'SC' },
-    { estado: 'Sergipe', UF: 'SE' },
-    { estado: 'São Paulo', UF: 'SP' },
-    { estado: 'Tocantins', UF: 'TO' },
-  ]
-
   @action
-  handleChanges = (event: Event): void => {
+  handleChanges = (event: { target: { name: string; value: any } }): void => {
     switch (event.target.name) {
       case 'hospSci':
-        const hospVulg: Hospedeiro | undefined = this.hospedeiros.find(hosp => hosp.nomeSci === event.target.value)
+        const hospVulg = hospedeiros.find(hosp => hosp.nomeSci === event.target.value)
         this.dados.hospVul = hospVulg ? hospVulg.nomeVul : ''
         break
       case 'hospVul':
-        const hospSci = this.hospedeiros.find(hosp => hosp.nomeVul === event.target.value)
+        const hospSci = hospedeiros.find(hosp => hosp.nomeVul === event.target.value)
         this.dados.hospSci = hospSci ? hospSci.nomeSci : ''
         break
       default:
@@ -142,6 +115,37 @@ export class Store {
     this.dados.dest = ''
   }
 }
+
+const estados = [
+  { estado: '', UF: '' },
+  { estado: 'Acre', UF: 'AC' },
+  { estado: 'Alagoas', UF: 'AL' },
+  { estado: 'Amazonas', UF: 'AM' },
+  { estado: 'Amapá', UF: 'AP' },
+  { estado: 'Bahia', UF: 'BA' },
+  { estado: 'Ceará', UF: 'CE' },
+  { estado: 'Distrito Federal', UF: 'DF' },
+  { estado: 'Espirito Santo', UF: 'ES' },
+  { estado: 'Goiás', UF: 'GO' },
+  { estado: 'Maranhão', UF: 'MA' },
+  { estado: 'Minas Gerais', UF: 'MG' },
+  { estado: 'Mato Grosso do Sul', UF: 'MS' },
+  { estado: 'Mato Grosso', UF: 'MT' },
+  { estado: 'Pará', UF: 'PA' },
+  { estado: 'Paraíba', UF: 'PB' },
+  { estado: 'Pernambuco', UF: 'PE' },
+  { estado: 'Piauí', UF: 'PI' },
+  { estado: 'Paraná', UF: 'PR' },
+  { estado: 'Rio de janeiro', UF: 'RJ' },
+  { estado: 'Rio Grande do Norte', UF: 'RN' },
+  { estado: 'Rondônia', UF: 'RO' },
+  { estado: 'Roraima', UF: 'RR' },
+  { estado: 'Rio Grande do Sul', UF: 'RS' },
+  { estado: 'Santa Catarina', UF: 'SC' },
+  { estado: 'Sergipe', UF: 'SE' },
+  { estado: 'São Paulo', UF: 'SP' },
+  { estado: 'Tocantins', UF: 'TO' },
+]
 
 export const store = new Store()
 export default store
