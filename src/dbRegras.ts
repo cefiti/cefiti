@@ -30,8 +30,8 @@ const regras: Regra[] = [
   {
     desc: "DE UF com ocorrência de Mosca-da-carambola PARA UF reconhecida pelo MAPA como livre da ocorrência de Mosca-da-carambola",
     part: ["frutos"],
-    orig: ["AP", "RR"],
-    dest: ["AC", "AL", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RS", "SC", "SE", "SP", "TO"],
+    orig: ["AP", "PA", "RR"],
+    dest: ["AC", "AL", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RS", "SC", "SE", "SP", "TO"],
     prag: "Bactrocera carambolae",
     exig: [
       "TRÂNSITO PROIBIDO. \nMotivo: Ausência de área livre de mosca-da-carambola, na origem da partida."
