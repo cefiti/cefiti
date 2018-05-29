@@ -1,7 +1,7 @@
-import { observable, useStrict, action } from 'mobx'
+import { observable, action, configure } from 'mobx'
 import store from './store'
 
-useStrict(true)
+configure({ enforceActions: true }) //useStrict(true)
 
 class UiStore {
   @observable exibeBase: boolean = false

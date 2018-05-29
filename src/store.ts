@@ -1,10 +1,10 @@
-import { observable, computed, useStrict, action } from 'mobx'
+import { observable, computed, configure, action } from 'mobx'
 import 'js-plus'
 import { regras } from './dbRegras'
 import { pragas } from './dbPragas'
 import { hospedeiros } from './dbHospedeiros'
 
-useStrict(true)
+configure({ enforceActions: true }) //useStrict(true)
 
 export class Store {
   db = this.getDb()

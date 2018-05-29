@@ -8,23 +8,16 @@
     "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
-
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "noEmitHelpers": true,
     "importHelpers": true,
     "strict": true,
     "experimentalDecorators": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true
+
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true /* Report errors on unused locals. */,
+    "noUnusedParameters": true /* Report errors on unused parameters. */,
+    "noImplicitReturns": true /* Report error when not all code paths in function return a value. */,
+    "noFallthroughCasesInSwitch": true /* Report errors for fallthrough cases in switch statement. */
   },
-  "exclude": [
-    "node_modules",
-    "build",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts"
-  ]
+  "exclude": ["node_modules", "build", "src/setupTests.ts"]
 }
