@@ -1,11 +1,11 @@
 import store from './../src/store'
-import { useStrict } from 'mobx'
+import { configure } from 'mobx'
 //import { regras } from './dbRegras'
 import { pragas } from './dbPragas'
 import { hospedeiros } from './dbHospedeiros'
 import 'jest'
 
-useStrict(false)
+configure({ enforceActions: true }) //useStrict(true)
 
 const estadosSemAC = [
   { estado: '', UF: '' },
