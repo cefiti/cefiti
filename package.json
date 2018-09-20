@@ -1,5 +1,5 @@
 {
-  "version": "4.0.0",
+  "version": "4.2.0",
   "description": "Catálogo de Exigências Fitossanitárias para o Trânstio Interestadual",
   "main": "index.js",
   "private": true,
@@ -8,32 +8,35 @@
     "url": "git+https://github.com/cefiti/cefiti.git"
   },
   "keywords": [],
-  "author": "Dalci de Jesus Bagolin",
+  "authors": [
+    "Dalci de Jesus Bagolin",
+    "Omar Roberto da Silveira"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cefiti/cefiti/issues"
   },
   "dependencies": {
     "js-plus": "^0.1.6",
-    "mobx": "^4.3.0",
-    "mobx-react": "^5.1.2",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "tslib": "^1.9.1",
-    "tslint": "^5.10.0"
+    "mobx": "^4.4.0",
+    "mobx-react": "^5.2.8",
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
+    "tslib": "^1.9.3",
+    "tslint": "^5.11.0"
   },
   "devDependencies": {
-    "@types/jest": "^22.2.3",
-    "@types/node": "^10.1.3",
-    "@types/react": "^16.0.36",
-    "@types/react-dom": "^16.0.3",
-    "jest": "^23.0.1",
+    "@types/jest": "^23.3.2",
+    "@types/node": "^10.9.4",
+    "@types/react": "^16.4.14",
+    "@types/react-dom": "^16.0.7",
+    "jest": "^23.6.0",
     "jszip-cli": "^1.4.24",
-    "parcel-bundler": "^1.8.1",
-    "ts-jest": "^22.4.6",
-    "tslint-config-prettier": "^1.13.0",
+    "parcel-bundler": "^1.9.7",
+    "ts-jest": "^23.1.4",
+    "tslint-config-prettier": "^1.15.0",
     "tslint-react": "^3.6.0",
-    "typescript": "^2.8.3"
+    "typescript": "^3.0.3"
   },
   "scripts": {
     "start": "parcel ./src/_.html --open",
@@ -46,6 +49,13 @@
       "^.+\\.tsx?$": "ts-jest"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }

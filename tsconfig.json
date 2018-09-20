@@ -8,6 +8,9 @@
     "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
     "importHelpers": true,
     "strict": true,
     "experimentalDecorators": true,

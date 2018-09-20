@@ -29,7 +29,7 @@ const Menu = () => {
   )
 }
 
-export default observer(Menu)
+export default observer(Menu as any)
 
 //style="float:right;color:#fff;padding:5px 10px 5px 15px;"
 /*          <span>

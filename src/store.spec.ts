@@ -5,7 +5,7 @@ import { pragas } from './dbPragas'
 import { hospedeiros } from './dbHospedeiros'
 import 'jest'
 
-configure({ enforceActions: true }) //useStrict(true)
+configure({ enforceActions: 'observed' }) //useStrict(true)
 
 const estadosSemAC = [
   { estado: '', UF: '' },

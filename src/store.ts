@@ -4,18 +4,19 @@ import { regras } from './dbRegras'
 import { pragas } from './dbPragas'
 import { hospedeiros } from './dbHospedeiros'
 
-configure({ enforceActions: true }) //useStrict(true)
+configure({ enforceActions: 'observed' }) //useStrict(true)
 
 export class Store {
   db = this.getDb()
-  dbVersion = '22'
-  appVersion = '4.1'
+  dbVersion = '23'
+  appVersion = '4.2'
   hospedeiros = hospedeiros
   estados = estados
   listaNomesSci: string[] = hospedeiros.unique('nomeSci').sort((a, b) => a.localeCompare(b))
   listaNomesVul: string[] = hospedeiros.unique('nomeVul').sort((a, b) => a.localeCompare(b))
 
-  @observable dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
+  @observable
+  dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
 
   getDb() {
     return regras.map(regra => {

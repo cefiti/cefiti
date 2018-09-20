@@ -38,7 +38,9 @@ function Result() {
                 style={{ textAlign: 'right', float: 'right' }}
               >
                 [FOTOS DA PRAGA]
-              </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'          '}
+              </a>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              {'          '}
               <br />
               {item.files.map((file, iii) => (
                 <div key={file.link + iii}>
@@ -126,7 +128,8 @@ function Result() {
             disabled={false}
           >
             Voltar
-          </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button
             onClick={uiStore.handleMenu.bind(undefined, 'Nova')}
             className="form-button"
@@ -140,7 +143,7 @@ function Result() {
   )
 }
 
-export default observer(Result)
+export default observer(Result as any)
 
 //                   {item.proib ? (<span className="alert"><div>TRÂNSITO PROIBIDO</div></span>) : ''}
 

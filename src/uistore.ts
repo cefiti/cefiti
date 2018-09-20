@@ -1,12 +1,14 @@
 import { observable, action, configure } from 'mobx'
 import store from './store'
 
-configure({ enforceActions: true }) //useStrict(true)
+configure({ enforceActions: 'observed' }) //useStrict(true)
 
 class UiStore {
-  @observable exibeBase: boolean = false
+  @observable
+  exibeBase: boolean = false
   //@observable exibeMapa: boolean = false;
-  @observable searched: boolean = false
+  @observable
+  searched: boolean = false
 
   @action
   handleMenu = (i: string): void => {

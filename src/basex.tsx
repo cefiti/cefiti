@@ -1,9 +1,9 @@
-import * as React from 'react'
+import React from 'react'
 import uiStore from './uistore'
 import store from './store'
 import { observer } from 'mobx-react'
 
-const Base = () => {
+const Base /* : React.SFC<any> */ = ({}) => {
   return uiStore.exibeBase ? (
     <div>
       <br />
@@ -40,7 +40,7 @@ const Base = () => {
                   <span>{item.dest.toString()}</span>
                 </td>
                 <td style={{ width: '15%' }}>
-                  {item.files.map((file) => (
+                  {item.files.map(file => (
                     <a target="_blank" key={file.link} href={'leg/' + file.link}>
                       {file.leg}
                     </a>
@@ -56,9 +56,9 @@ const Base = () => {
                   <div style={{ margin: '6px' }}>
                     {item.exig.map((exigen, ix) => {
                       return (
-                        <span key={ix}>
+                        <p key={ix}>
                           {ix + 1} - {exigen}
-                        </span>
+                        </p>
                       )
                     })}
                   </div>
@@ -75,11 +75,11 @@ const Base = () => {
       </table>
     </div>
   ) : (
-      <div />
-    )
+    <div />
+  )
 }
 
-export default observer(Base)
+export default observer(Base as any)
 
 /*               
             <th style={{ width: '5%' }}>Trânsito Proibido</th>
