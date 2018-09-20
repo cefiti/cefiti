@@ -369,7 +369,7 @@ const pragas: Praga[] = [
     prag: 'Xanthomonas citri subsp. citri',
     pragc: 'CANCRO CÍTRICO',
     hosp: ['Citrus spp.', 'Fortunella spp.', 'Poncirus spp.'],
-    files: [{ leg: 'Instrução Normativa nº 37, de 5 de setembro de 2016', link: 'IN37-2016.pdf' }],
+    files: [{ leg: 'Instrução Normativa nº 21, de 25 de abril de 2018', link: 'IN21-2018.pdf' }],
   },
 ]
 
