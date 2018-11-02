@@ -17,34 +17,43 @@
     "url": "https://github.com/cefiti/cefiti/issues"
   },
   "dependencies": {
-    "js-plus": "^0.1.6",
-    "mobx": "^4.4.0",
-    "mobx-react": "^5.2.8",
+    "detect-browser": "^3.0.1",
+    "eslint-plugin-typescript": "^0.12.0",
+    "js-plus": "^0.1.7",
+    "mobx": "^4.5.2",
+    "mobx-react": "^5.3.6",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "tslib": "^1.9.3",
-    "tslint": "^5.11.0"
+    "tslint": "^5.11.0",
+    "typescript-eslint-parser": "^20.1.0"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.2",
-    "@types/node": "^10.9.4",
-    "@types/react": "^16.4.14",
-    "@types/react-dom": "^16.0.7",
+    "@babel/plugin-proposal-decorators": "^7.1.2",
+    "@types/jest": "^23.3.8",
+    "@types/node": "^10.12.1",
+    "@types/react": "^16.4.18",
+    "@types/react-dom": "^16.0.9",
+    "customize-cra": "^0.2.0",
     "jest": "^23.6.0",
     "jszip-cli": "^1.4.24",
-    "parcel-bundler": "^1.9.7",
+    "react-app-rewired": "^1.6.2",
+    "react-scripts": "2.1.0",
     "ts-jest": "^23.1.4",
     "tslint-config-prettier": "^1.15.0",
     "tslint-react": "^3.6.0",
-    "typescript": "^3.0.3"
+    "typescript": "^3.1.4"
   },
   "scripts": {
-    "start": "parcel ./src/_.html --open",
-    "build": "parcel build ./src/index.tsx -d ./public",
-    "test": "jest test --watchAll",
+    "startp": "parcel ./src/_.html --open",
+    "start": "react-app-rewired start",
+    "buildp": "parcel build ./src/index.tsx -d ./public",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "testp": "jest test --watchAll",
     "zip": "jszip ./public -o ./public/CEFiTI.zip"
   },
-  "jest": {
+  "jestx": {
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
@@ -57,5 +66,41 @@
       "json",
       "node"
     ]
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ]
+    ]
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "eslintConfig": {
+    "parser": "typescript-eslint-parser",
+    "extends": "react-app",
+    "plugins": [
+      "typescript"
+    ],
+    "rules": {
+      "no-undef": "off",
+      "no-unused-vars": "off",
+      "jsx-a11y/anchor-is-valid": "off"
+    },
+    "parserOptions": {
+      "ecmaFeatures": {
+        "legacyDecotators": true
+      }
+    }
   }
 }

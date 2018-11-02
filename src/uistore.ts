@@ -33,6 +33,7 @@ class UiStore {
 
   @action
   handleSearch = (event: any): void => {
+    ;(window as any).ga('send', 'event', 'search', 'click')
     this.searched = true
     event.preventDefault()
   }

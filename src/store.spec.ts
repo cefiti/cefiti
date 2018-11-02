@@ -208,7 +208,7 @@ describe('Store filtro geral', () => {
         .by('files')
         .flatten()
         .by('link')
-    ).toEqual(['IN53-2008.pdf', 'IN37-2016.pdf'])
+    ).toEqual(['IN53-2008.pdf', 'IN21-2018.pdf'])
     expect(store.result.by('pragc')).toEqual(['GREENING', 'CANCRO CÍTRICO'])
   })
 })

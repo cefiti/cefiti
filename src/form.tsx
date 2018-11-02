@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import store from './store'
 import uiStore from './uistore'
 import { observer } from 'mobx-react'
@@ -124,6 +124,7 @@ function Form() {
             <td className="col30">
               <a
                 target="_blank"
+                rel="noopener noreferrer"
                 href={
                   'https://www.google.com.br/search?site=imghp&tbm=isch&q=' +
                   store.dados.hospSci +
@@ -146,4 +147,4 @@ function Form() {
   )
 }
 
-export default observer(Form as any)
+export default observer(Form as React.SFC)

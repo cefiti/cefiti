@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import uiStore from './uistore'
 import { observer } from 'mobx-react'
 
@@ -29,7 +29,7 @@ const Menu = () => {
   )
 }
 
-export default observer(Menu as any)
+export default observer(Menu as React.SFC)
 
 //style="float:right;color:#fff;padding:5px 10px 5px 15px;"
 /*          <span>

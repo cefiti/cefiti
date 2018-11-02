@@ -3,7 +3,7 @@ import uiStore from './uistore'
 import store from './store'
 import { observer } from 'mobx-react'
 
-const Base /* : React.SFC<any> */ = ({}) => {
+const Base = () => {
   return uiStore.exibeBase ? (
     <div>
       <br />
@@ -41,7 +41,12 @@ const Base /* : React.SFC<any> */ = ({}) => {
                 </td>
                 <td style={{ width: '15%' }}>
                   {item.files.map(file => (
-                    <a target="_blank" key={file.link} href={'leg/' + file.link}>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      key={file.link}
+                      href={'leg/' + file.link}
+                    >
                       {file.leg}
                     </a>
                   ))}
@@ -79,7 +84,7 @@ const Base /* : React.SFC<any> */ = ({}) => {
   )
 }
 
-export default observer(Base as any)
+export default observer(Base as React.SFC)
 
 /*               
             <th style={{ width: '5%' }}>Trânsito Proibido</th>

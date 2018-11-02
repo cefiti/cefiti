@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import store from './store'
 import uiStore from './uistore'
 import { observer } from 'mobx-react'
@@ -34,6 +34,7 @@ function Result() {
               <a
                 className="small"
                 target="_blank"
+                rel="noopener noreferrer"
                 href={'https://www.google.com.br/search?site=imghp&tbm=isch&q=' + item.prag}
                 style={{ textAlign: 'right', float: 'right' }}
               >
@@ -44,7 +45,7 @@ function Result() {
               <br />
               {item.files.map((file, iii) => (
                 <div key={file.link + iii}>
-                  <a target="_blank" href={'leg/' + file.link}>
+                  <a target="_blank" rel="noopener noreferrer" href={'leg/' + file.link}>
                     {file.leg}
                   </a>
                   <br />
@@ -143,7 +144,7 @@ function Result() {
   )
 }
 
-export default observer(Result as any)
+export default observer(Result as React.SFC)
 
 //                   {item.proib ? (<span className="alert"><div>TRÂNSITO PROIBIDO</div></span>) : ''}
 
