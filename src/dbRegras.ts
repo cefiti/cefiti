@@ -130,6 +130,18 @@ const regras: Regra[] = [
     ]
   },
 
+  //GORGULHO DA MANGA
+  {
+    desc: "DE UF com ocorrência PARA qualquer UF",
+    part: ["frutos"],
+    orig: ["RJ"],
+    dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
+    prag: "Sternochetus mangiferae",
+    exig: [
+      "PTV com a seguinte Declaração Adicional: \"A partida foi produzida fora da zona interditada e encontra-se livre de Sternochetus mangiferae\"."
+    ]
+  },
+
   //PINTA-PRETA-DOS-CITROS
   {
     desc: "DE UF com ocorrência de Pinta-preta-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Pinta-preta-dos-citros",

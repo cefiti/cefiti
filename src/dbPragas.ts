@@ -137,6 +137,17 @@ const pragas: Praga[] = [
     ],
   },
   {
+    prag: 'Sternochetus mangiferae',
+    pragc: 'GORGULHO DA MANGA',
+    hosp: ['Mangifera indica'],
+    files: [
+      {
+        leg: 'Instrução Normativa MAPA/SDA nº. 34, de 05 de setembro de 2017',
+        link: 'IN34-2017.pdf',
+      },
+    ],
+  },
+  {
     prag: 'BSV e CMV',
     pragc: 'BANANA STREAK VIRUS e CUCUMBER MOSAIC VIRUS',
     hosp: ['Musa spp.'],
