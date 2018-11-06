@@ -134,8 +134,8 @@ const regras: Regra[] = [
   {
     desc: "DE UF com ocorrência de Pinta-preta-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Pinta-preta-dos-citros",
     part: ["mudas", "estacas", "gemas", "material de propagação", "plantas"],
-    orig: ["AM", "ES", "MT", "MS", "MG", "PR", "RJ", "RS", "SC", "SP", "BA", "GO", "RO"],
-    dest: ["AC", "AL", "AP", "CE", "DF", "MA", "PA", "PB", "PE", "PI", "RN", "RR", "SE", "TO"],
+    orig: ["AM", "ES", "MT", "MS", "MG", "PE", "PR", "RJ", "RS", "SC", "SP", "BA", "GO"],
+    dest: ["AC", "AL", "AP", "CE", "DF", "MA", "PA", "PB", "PI", "RN", "RO", "RR", "SE", "TO"],
     prag: "Guignardia citricarpa (=Phyllosticta citricarpa)",
     exig: [
       "PTV;",
@@ -144,8 +144,8 @@ const regras: Regra[] = [
   }, {
     desc: "DE UF com ocorrência de Pinta-preta-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Pinta-preta-dos-citros",
     part: ["frutos"],
-    orig: ["AM", "ES", "MT", "MS", "MG", "PR", "RJ", "RS", "SC", "SP", "BA", "GO", "RO"],
-    dest: ["AC", "AL", "AP", "CE", "DF", "MA", "PA", "PB", "PE", "PI", "RN", "RR", "SE", "TO"],
+    orig: ["AM", "ES", "MT", "MS", "MG", "PE", "PR", "RJ", "RS", "SC", "SP", "BA", "GO"],
+    dest: ["AC", "AL", "AP", "CE", "DF", "MA", "PA", "PB", "PI", "RN", "RO", "RR", "SE", "TO"],
     prag: "Guignardia citricarpa (=Phyllosticta citricarpa)",
     exig: [
       "PTV com a seguinte declaração adicional: \"Os frutos foram produzidos sob Manejo Integrado de Guignardia citricarpa e submetidos a processo de seleção para a retirada de folhas e partes de ramos\";",
