@@ -128,7 +128,7 @@ const pragas: Praga[] = [
       'Cocos nucifera',
       'Azadirachta indica',
       'Sorghum bicolor',
-      'Acacia sp.',
+      'Acacia spp.',
       'Melia azedarach',
       'Citrus spp.',
     ],
