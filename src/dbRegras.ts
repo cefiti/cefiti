@@ -179,8 +179,8 @@ const regras: Regra[] = [
   }, {
     desc: "DE UF com ocorrência de Moko-da-bananeira PARA todas as UFs",
     part: ["mudas", "rizomas"],
-    orig: ["AM", "AP", "PA", "RO", "RR", "SE"],
-    dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
+    orig: ["AL", "AM", "AP", "PA", "RO", "RR", "SE"],
+    dest: ["AC", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Ralstonia solanacearum raça 2",
     exig: [
       "TRÂNSITO PROIBIDO, exceto para mudas transportadas en vitro ou micropropagadas. \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009",
@@ -199,7 +199,7 @@ const regras: Regra[] = [
   }, {
     desc: "DE UF sem ocorrência de Moko-da-bananeira PARA todas as UFs",
     part: ["mudas", "rizomas"],
-    orig: ["AC", "AL", "BA", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PB", "PR", "RJ", "RN", "RS", "SP", "TO"],
+    orig: ["AC", "BA", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PB", "PR", "RJ", "RN", "RS", "SP", "TO"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Ralstonia solanacearum raça 2",
     exig: [
@@ -209,7 +209,7 @@ const regras: Regra[] = [
   }, {
     desc: "DE UF com ocorrência de Moko-da-bananeira PARA área livre de Moko-da-bananeira",
     part: ["frutos", "flores"],
-    orig: ["AM", "AP", "PA", "RO", "RR", "SE"],
+    orig: ["AL", "AM", "AP", "PA", "RO", "RR", "SE"],
     dest: ["CE", "PE", "PI", "SC"],
     prag: "Ralstonia solanacearum raça 2",
     exig: [
@@ -227,7 +227,7 @@ const regras: Regra[] = [
   }, {
     desc: "DE UF sem ocorrência de Moko-da-bananeira PARA todas as UFs",
     part: ["frutos", "flores"],
-    orig: ["AC", "AL", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PB", "PE", "PI", "PR", "RJ", "RN", "RS", "SC", "SP", "TO"],
+    orig: ["AC", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PB", "PE", "PI", "PR", "RJ", "RN", "RS", "SC", "SP", "TO"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     prag: "Ralstonia solanacearum raça 2",
     exig: [
@@ -236,8 +236,8 @@ const regras: Regra[] = [
   }, {
     desc: "DE UF com ocorrência de Moko-da-bananeira PARA UF sem ocorrência de Moko-da-bananeira",
     part: ["frutos", "flores"],
-    orig: ["AM", "AP", "PA", "RO", "RR", "SE"],
-    dest: ["AC", "AL", "BA", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PB", "PR", "RJ", "RN", "RS", "SP", "TO"],
+    orig: ["AL", "AM", "AP", "PA", "RO", "RR", "SE"],
+    dest: ["AC", "BA", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PB", "PR", "RJ", "RN", "RS", "SP", "TO"],
     prag: "Ralstonia solanacearum raça 2",
     exig: [
       "OU PTV com a seguinte declaração adicional: \"Os frutos ou inflorescências foram produzidos em UP onde não foi observada a presença de Ralstonia solanacearum raça 2, nos últimos doze meses\"; OU \nPTV com a seguinte declaração adicional: \"Os frutos ou inflorescências foram produzidos sob aplicação de medidas integradas em um enfoque de Sistemas para o Manejo de Risco da praga Ralstonia solanacearum raça 2\"; \nObs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em desacordo com estas exigências, será sumariamente destruída ou retornada à origem, sem prejuízo das demais sanções estabelecidas pela legislação própria, conforme o art. 11 da Instrução Normativa SDA nº. 17, de 27 de maio de 2009."
