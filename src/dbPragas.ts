@@ -1,6 +1,6 @@
 //CEFiTI - Pragas
 
-interface Praga {
+export interface Praga {
   prag: string
   hosp: string[]
   pragc: string

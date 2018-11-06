@@ -1,6 +1,6 @@
 //CEFiTI - Hospedeiros
 
-interface Hospedeiro {
+export interface Hospedeiro {
   nomeVul: string
   nomeSci: string
   count: number

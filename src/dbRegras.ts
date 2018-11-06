@@ -1,6 +1,6 @@
 //CEFiTI - Regras
 
-interface Regra {
+export interface Regra {
   desc: string
   part: string[]
   orig: string[]

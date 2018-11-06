@@ -1,27 +1,47 @@
 import { observable, computed, configure, action } from 'mobx'
 import 'js-plus'
-import { regras } from './dbRegras'
-import { pragas } from './dbPragas'
-import { hospedeiros } from './dbHospedeiros'
+import { regras, Regra } from './dbRegras'
+import { pragas, Praga } from './dbPragas'
+import { hospedeiros, Hospedeiro } from './dbHospedeiros'
 import estados from './estados'
 
 configure({ enforceActions: 'observed' }) //useStrict(true)
 
 export class Store {
-  db = this.getDb()
+  dbRegras: Regra[]
+  dbHospedeiros: Hospedeiro[]
+  dbPragas: Praga[]
+  db: Db[]
   dbVersion = '23'
   appVersion = '4.3'
-  hospedeiros = hospedeiros
   estados = estados
-  listaNomesSci: string[] = hospedeiros.unique('nomeSci').sort((a, b) => a.localeCompare(b))
-  listaNomesVul: string[] = hospedeiros.unique('nomeVul').sort((a, b) => a.localeCompare(b))
+  listaNomesSci: string[]
+  listaNomesVul: string[]
 
   @observable
   dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
 
+  constructor(dbRegras: Regra[], dbHospedeiros: Hospedeiro[], dbPragas: Praga[]) {
+    console.log(dbPragas[0])
+    this.dbRegras = dbRegras
+    this.dbHospedeiros = dbHospedeiros
+    this.dbPragas = dbPragas
+    this.db = this.getDb()
+    const hospedeirosPragas = this.dbPragas.flatMap(praga => praga.hosp)
+    const hospedeirosRegulamentados = this.dbHospedeiros.filter(hospedeiro =>
+      hospedeirosPragas.includes(hospedeiro.nomeSci)
+    )
+    this.listaNomesSci = hospedeirosRegulamentados
+      .unique('nomeSci')
+      .sort((a, b) => a.localeCompare(b))
+    this.listaNomesVul = hospedeirosRegulamentados
+      .unique('nomeVul')
+      .sort((a, b) => a.localeCompare(b))
+  }
+
   getDb() {
-    return regras.map(regra => {
-      const praga = pragas.find(item => item.prag === regra.prag)
+    return this.dbRegras.map(regra => {
+      const praga = this.dbPragas.find(item => item.prag === regra.prag)
       if (!praga) {
         throw Error('Dados da praga não cadastrados.')
       } else {
@@ -29,6 +49,35 @@ export class Store {
       }
     })
   }
+
+  /*   getHospedeirosSci() {
+    const hospedeirosPragas = this.dbPragas.flatMap(praga => praga.hosp)
+    const hospedeirosRegulamentados = this.dbHospedeiros.filter(hospedeiro =>
+      hospedeirosPragas.includes(hospedeiro.nomeSci)
+    )
+    console.log(
+      hospedeirosPragas.count(),
+      hospedeirosPragas //hospedeirosPragas,
+        .unique()
+        .count(),
+      this.dbPragas.length,
+      this.dbPragas
+        .map(praga => praga.hosp)
+        .flatten()
+        .unique().length,
+      this.dbHospedeiros.length,
+      hospedeirosRegulamentados.length,
+      this.dbHospedeiros.map(hospedeiro => hospedeiro.nomeSci).count(),
+      this.dbHospedeiros
+        .map(hospedeiro => hospedeiro.nomeVul)
+        .unique()
+        .count(),
+      this.dbHospedeiros
+        .map(hospedeiro => hospedeiro.nomeSci)
+        .unique()
+        .count()
+    )
+  } */
 
   @computed
   get empty(): boolean {
@@ -95,11 +144,11 @@ export class Store {
   handleChanges = (event: { target: { name: string; value: any } }): void => {
     switch (event.target.name) {
       case 'hospSci':
-        const hospVulg = hospedeiros.find(hosp => hosp.nomeSci === event.target.value)
+        const hospVulg = this.dbHospedeiros.find(hosp => hosp.nomeSci === event.target.value)
         this.dados.hospVul = hospVulg ? hospVulg.nomeVul : ''
         break
       case 'hospVul':
-        const hospSci = hospedeiros.find(hosp => hosp.nomeVul === event.target.value)
+        const hospSci = this.dbHospedeiros.find(hosp => hosp.nomeVul === event.target.value)
         this.dados.hospSci = hospSci ? hospSci.nomeSci : ''
         break
       default:
@@ -118,5 +167,21 @@ export class Store {
   }
 }
 
-export const store = new Store()
+interface Db {
+  prag: string
+  hosp: string[]
+  pragc: string
+  files: [
+    {
+      leg: string
+      link: string
+    }
+  ]
+  desc: string
+  part: string[]
+  orig: string[]
+  dest: string[]
+  exig: string[]
+}
+export const store = new Store(regras, hospedeiros, pragas)
 export default store

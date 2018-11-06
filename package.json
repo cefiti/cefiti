@@ -18,15 +18,13 @@
   },
   "dependencies": {
     "detect-browser": "^3.0.1",
-    "eslint-plugin-typescript": "^0.12.0",
     "js-plus": "^0.1.7",
     "mobx": "^4.5.2",
     "mobx-react": "^5.3.6",
-    "react": "^16.5.1",
-    "react-dom": "^16.5.1",
+    "react": "^16.6.6",
+    "react-dom": "^16.6.6",
     "tslib": "^1.9.3",
-    "tslint": "^5.11.0",
-    "typescript-eslint-parser": "^20.1.0"
+    "tslint": "^5.11.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.1.2",
@@ -39,33 +37,18 @@
     "jszip-cli": "^1.4.24",
     "react-app-rewired": "^1.6.2",
     "react-scripts": "2.1.0",
+    "typescript-eslint-parser": "^20.1.0",
+    "eslint-plugin-typescript": "^0.12.0",
     "ts-jest": "^23.1.4",
     "tslint-config-prettier": "^1.15.0",
     "tslint-react": "^3.6.0",
     "typescript": "^3.1.4"
   },
   "scripts": {
-    "startp": "parcel ./src/_.html --open",
     "start": "react-app-rewired start",
-    "buildp": "parcel build ./src/index.tsx -d ./public",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "testp": "jest test --watchAll",
     "zip": "jszip ./public -o ./public/CEFiTI.zip"
-  },
-  "jestx": {
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ]
   },
   "babel": {
     "presets": [

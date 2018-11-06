@@ -44,7 +44,7 @@ function Form() {
                 onChange={store.handleChanges}
               >
                 <option value={''} />
-                {store.hospedeiros.map((option, i) => {
+                {store.dbHospedeiros.map((option, i) => {
                   return (
                     <option value={option.nomeVul} key={i}>
                       {option.nomeVul}
