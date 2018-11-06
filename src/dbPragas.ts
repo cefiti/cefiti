@@ -170,13 +170,13 @@ const pragas: Praga[] = [
     files: [{ leg: 'Instrução Normativa nº 20, de 20 de junho de 2013', link: 'IN20-2013.pdf' }],
   },
   {
-    prag: 'Candidatus Liberibacter spp.',
+    prag: 'Candidatus liberibacter americanus e Candidatus liberibacter asiaticus',
     pragc: 'GREENING',
     hosp: ['Citrus spp.', 'Fortunella spp.', 'Poncirus spp.', 'Murraya paniculata'],
     files: [{ leg: 'Instrução Normativa nº 53, de 16 de outubro de 2008', link: 'IN53-2008.pdf' }],
   },
   {
-    prag: 'Guignardia citricarpa (=Phyllosticta citricarpa)',
+    prag: 'Phyllosticta citricarpa (Guinardia citricarpa) ',
     pragc: 'PINTA-PRETA-DOS-CITROS',
     hosp: ['Citrus spp.'],
     files: [
@@ -192,7 +192,7 @@ const pragas: Praga[] = [
     ],
   },
   {
-    prag: 'Mycosphaerella fijiensis',
+    prag: 'Pseudocercospora fijiensis (Mycosphaerella fijiensis)',
     pragc: 'SIGATOKA NEGRA',
     hosp: ['Musa spp.', 'Heliconia spp.'],
     files: [

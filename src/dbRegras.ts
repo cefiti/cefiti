@@ -124,7 +124,7 @@ const regras: Regra[] = [
     part: ["mudas", "estacas", "gemas", "ramas", "raízes", "material de propagação", "plantas"],
     orig: ["MG", "PR", "SP"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MS", "MT", "PA", "PB", "PE", "PI", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "TO"],
-    prag: "Candidatus Liberibacter spp.",
+    prag: "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
     exig: [
       "PTV; \n Obs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em\ndesacordo com o previsto nesta Instrução Normativa, será sumariamente destruída, não cabendo ao infrator qualquer tipo de indenização, sem prejuízo das demais sanções estabelecidas pela legislação estadual e federal de defesa sanitária vegetal, conforme o art. 5º, da Instrução Normativa MAPA nº. 53, de 16 de outubro de 2010."
     ]
@@ -148,7 +148,7 @@ const regras: Regra[] = [
     part: ["mudas", "estacas", "gemas", "material de propagação", "plantas"],
     orig: ["AM", "ES", "MT", "MS", "MG", "PE", "PR", "RJ", "RS", "SC", "SP", "BA", "GO"],
     dest: ["AC", "AL", "AP", "CE", "DF", "MA", "PA", "PB", "PI", "RN", "RO", "RR", "SE", "TO"],
-    prag: "Guignardia citricarpa (=Phyllosticta citricarpa)",
+    prag: "Phyllosticta citricarpa (Guinardia citricarpa) ",
     exig: [
       "PTV;",
       "A partida deve ser transportada em veículos fechados ou totalmente protegidos por lona."
@@ -158,7 +158,7 @@ const regras: Regra[] = [
     part: ["frutos"],
     orig: ["AM", "ES", "MT", "MS", "MG", "PE", "PR", "RJ", "RS", "SC", "SP", "BA", "GO"],
     dest: ["AC", "AL", "AP", "CE", "DF", "MA", "PA", "PB", "PI", "RN", "RO", "RR", "SE", "TO"],
-    prag: "Guignardia citricarpa (=Phyllosticta citricarpa)",
+    prag: "Phyllosticta citricarpa (Guinardia citricarpa) ",
     exig: [
       "PTV com a seguinte declaração adicional: \"Os frutos foram produzidos sob Manejo Integrado de Guignardia citricarpa e submetidos a processo de seleção para a retirada de folhas e partes de ramos\";",
       "Os frutos devem estar isentos de material vegetativo."
@@ -250,7 +250,7 @@ const regras: Regra[] = [
     part: ["mudas"],
     orig: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
-    prag: "Mycosphaerella fijiensis",
+    prag: "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
     exig: [
       "PTV;",
       "As mudas devem ser transportadas in vitro;",
@@ -262,7 +262,7 @@ const regras: Regra[] = [
     part: ["material para pesquisa"],
     orig: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
-    prag: "Mycosphaerella fijiensis",
+    prag: "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
     exig: [
       "Autorização Declaratória emitida pela Área de Sanidade Vegetal da Superintendência Federal da Agricultura - SFA, na Unidade da Federação de origem do material genético;",
       "O material genético deve ser transportado em recipiente lacrado, devendo o número do lacre constar da Autorização Declaratória;",
@@ -274,7 +274,7 @@ const regras: Regra[] = [
     part: ["frutos", "flores"],
     orig: ["AL", "CE", "DF", "GO", "PB", "PE", "PI", "RN", "SE"],
     dest: ["AC", "AM", "AP", "MA", "MG", "MS", "MT", "PA", "PR", "RS", "RJ", "RO", "RR", "SC", "SP", "TO", "BA", "ES"],
-    prag: "Mycosphaerella fijiensis",
+    prag: "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
     exig: [
       "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
       "As bananas não podem transitar em cacho, em todo o território nacional;",
@@ -286,7 +286,7 @@ const regras: Regra[] = [
     part: ["frutos", "flores"],
     orig: ["MG"],
     dest: ["AC", "AM", "AP", "MA", "MS", "MT", "PA", "PR", "RS", "RJ", "RO", "RR", "SC", "SP", "TO", "BA", "ES"],
-    prag: "Mycosphaerella fijiensis",
+    prag: "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
     exig: [
       "PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
       "As bananas não podem transitar em cacho, em todo o território nacional;",
@@ -299,7 +299,7 @@ const regras: Regra[] = [
     part: ["frutos", "flores"],
     orig: ["MS"],
     dest: ["AC", "AM", "AP", "MA", "MG", "MT", "PA", "PR", "RS", "RJ", "RO", "RR", "SC", "SP", "TO", "BA", "ES"],
-    prag: "Mycosphaerella fijiensis",
+    prag: "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
     exig: ["PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
       "As bananas não podem transitar em cacho, em todo o território nacional;",
       "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento dos frutos;",
@@ -311,7 +311,7 @@ const regras: Regra[] = [
     part: ["frutos", "flores"],
     orig: ["AL", "CE", "DF", "GO", "MG", "MS", "PB", "PE", "PI", "RN", "SE"],
     dest: ["AL", "CE", "DF", "GO", "MG", "MS", "PB", "PE", "PI", "RN", "SE"],
-    prag: "Mycosphaerella fijiensis",
+    prag: "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
     exig: ["PTV com a declaração adicional de que a partida é originária de área livre de Sigatoka Negra;",
       "A partida deve estar lacrada para transitar por AC, AM, AP, MA, MG (exceto pelos municípios listados no item 6.1), MS (exceto pelos municípios listados no item 6.2), MT, PA, PR, RS, RJ, RO, RR, SC, SP e TO;",
       "As bananas não podem transitar em cacho, em todo o território nacional;",
@@ -324,7 +324,7 @@ const regras: Regra[] = [
     part: ["frutos", "flores"],
     orig: ["AC", "AM", "AP", "MA", "MG", "MS", "MT", "PA", "PR", "RS", "RJ", "RO", "RR", "SC", "SP", "TO", "BA", "ES"],
     dest: ["AL", "CE", "DF", "GO", "MG", "MS", "PB", "PE", "PI", "RN", "SE"],
-    prag: "Mycosphaerella fijiensis",
+    prag: "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
     exig: [
       "PTV com a seguinte declaração adicional: \"A partida é originária de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco para Sigatoka Negra\";",
       "As bananas não podem transitar em cacho, em todo o território nacional;",
@@ -337,7 +337,7 @@ const regras: Regra[] = [
     part: ["frutos", "flores"],
     orig: ["AC", "AM", "AP", "MA", "MG", "MS", "MT", "PA", "PR", "RS", "RJ", "RO", "RR", "SC", "SP", "TO", "BA", "ES"],
     dest: ["AC", "AM", "AP", "MA", "MG", "MS", "MT", "PA", "PR", "RS", "RJ", "RO", "RR", "SC", "SP", "TO", "BA", "ES"],
-    prag: "Mycosphaerella fijiensis",
+    prag: "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
     exig: [
       "OU Partida isenta de PTV, sendo porém PROIBIDO o trânsito por Área Livre de Sigatoka Negra, listadas no Item 2; OU PTV com a seguinte declaração adicional: \"A partida é originária de Unidade de Produção onde foi implantado o Sistema de Mitigação de Risco para Sigatoka Negra\", sendo permitido o trânsito por Área Livre de Sigatoka Negra;",
       "ÁREAS LIVRE DE SIGATOKA NEGRA: Unidades da Federação AL, CE, DF, GO, PB, PE, PI, RN, SE, bem como pelos municípios livres de Sigatoka Negra de MG e de MS: \na) Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \nb)Municípios livres de Sigatoka Negra de MS: Água Clara, Anaurilândia, Aparecida do Taboado, Bataguassú, Batayporã, Brasilândia, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba, Ribas do Rio Pardo, Santa Rita do Pardo, Selvíria, Taquarussú e Três Lagoas;",
@@ -350,7 +350,7 @@ const regras: Regra[] = [
     part: ["mudas"],
     orig: ["AL", "CE", "DF", "GO", "PB", "PE", "PI", "RN", "SE"],
     dest: ["AC", "AM", "AP", "MA", "MG", "MS", "MT", "PA", "PR", "RS", "RJ", "RO", "RR", "SC", "SP", "TO", "BA", "ES"],
-    prag: "Mycosphaerella fijiensis",
+    prag: "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
     exig: [
       "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;",  //verificar
       "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
@@ -361,7 +361,7 @@ const regras: Regra[] = [
     part: ["mudas"],
     orig: ["MG"],
     dest: ["AC", "AM", "AP", "MA", "MS", "MT", "PA", "PR", "RS", "RJ", "RO", "RR", "SC", "SP", "TO", "BA", "ES"],
-    prag: "Mycosphaerella fijiensis",
+    prag: "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
     exig: [
       "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;",  //verificar
       "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
@@ -373,7 +373,7 @@ const regras: Regra[] = [
     part: ["mudas"],
     orig: ["MS"],
     dest: ["AC", "AM", "AP", "MA", "MG", "MS", "MT", "PA", "PR", "RS", "RJ", "RO", "RR", "SC", "SP", "TO", "BA", "ES"],
-    prag: "Mycosphaerella fijiensis",
+    prag: "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
     exig: [
       "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra;",  //Verificar
       "A partida deve estar livre de folhas de bananeira ou de parte da planta, no acondicionamento das mudas;",
@@ -386,7 +386,7 @@ const regras: Regra[] = [
     part: ["mudas"],
     orig: ["AL", "CE", "DF", "GO", "MG", "MS", "PB", "PE", "PI", "RN", "SE"],
     dest: ["AL", "CE", "DF", "GO", "MG", "MS", "PB", "PE", "PI", "RN", "SE"],
-    prag: "Mycosphaerella fijiensis",
+    prag: "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
     exig: [
       "PTV com a Declaração Adicional constando que a partida é originária de área livre da Sigatoka Negra.",
       "A partida deve estar lacrada para transitar por AC, AM, AP, MA, MG (exceto pelos municípios listados no item 5.1), MS (exceto pelos municípios listados no item 5.2), MT, PA, PR, RS, RJ, RO, RR, SC, SP e TO;",
@@ -400,7 +400,7 @@ const regras: Regra[] = [
     part: ["mudas"],
     orig: ["AC", "AM", "AP", "MA", "MG", "MS", "MT", "PA", "PR", "RS", "RJ", "RO", "RR", "SC", "SP", "TO", "BA", "ES"],
     dest: ["AL", "CE", "DF", "GO", "MG", "MS", "PB", "PE", "PI", "RN", "SE"],
-    prag: "Mycosphaerella fijiensis",
+    prag: "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
     exig: [
       "TRÂNSITO PROIBIDO para mudas convencionais. Esta proibição não se aplica à mudas micropopagadas;",
       "Esta proibição não se aplica às espécies Heliconia rostrata, Heliconia bihai, Heliconia augusta, Heliconia chartacea, Heliconia spathocircinada, Heliconia librata, Heliconia psittacorum cultivar Red Opal e Heliconia stricta;",
@@ -411,7 +411,7 @@ const regras: Regra[] = [
     part: ["mudas"],
     orig: ["AC", "AM", "AP", "MA", "MG", "MS", "MT", "PA", "PR", "RS", "RJ", "RO", "RR", "SC", "SP", "TO", "BA", "ES"],
     dest: ["AC", "AM", "AP", "MA", "MG", "MS", "MT", "PA", "PR", "RS", "RJ", "RO", "RR", "SC", "SP", "TO", "BA", "ES"],
-    prag: "Mycosphaerella fijiensis",
+    prag: "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
     exig: [
       "TRÂNSITO PROIBIDO para mudas convencionais. Esta proibição não se aplica à mudas micropopagadas;",
       "Esta proibição não se aplica a partida proveniente de município livre de Sigatoka Negra de MG e de MS: \n\na)Municípios livres de Sigatoka Negra de MG: Águas Vermelhas, Araçuaí, Araguari, Araporã, Bocaiúva, Buritizeiro, Cachoeira Dourada, Campina Verde, Campos Altos, Canápolis, Capinópolis, Capitão Enéias, Carmo do Paranaíba, Carneirinho, Cascalho Rico, Catuti, Centralina, Claro dos Poções, Engenheiro Navarro, Espinosa, Estrela do Sul, Francisco Sá, Franscisco Dumont, Frutal, Guaraciama, Gurinhatã, Indianópolis, Ipiaçu, Iraí de Minas, Itacarambi, Itaobim, Itapagipe, Ituiutaba,Iturama, Jaíba, Janaúba, Januária, Jequitaí, Jequitinhonha, Joaíma, João Pinheiro, Lagamar, Lagoa Formosa, Lassance, Limeira do Oeste, Manga, Matias Cardoso, Mato Verde, Medina, Monte Alegre de Minas, Monte Azul, Monte Carmelo, Montes Claros, Nova Ponte, Nova Porteirinha, Pai Pedro, Paracatu, Patos de Minas, Patrocínio, Pedra de Maria da Cruz, Perdizes, Pirapora, Ponto dos Volantes, Porteirinha, Prata, Presidente Olegário, Rio Paranaíba, Sacramento, Santa Rosa da Serra, Santa Vitória, Santo Antonio do Retiro, São Francisco, São Gonçalo do Abaeté, São Gotardo, São João das Missões, Serra do Salitre, Tapira, Tupaciguara, Uberaba, Uberlândia, Unaí, Varjão de Minas, Várzea da Palma, Vazante, Verdelândia e Veríssimo; \n\nb)Municípios livres de Sigatoka Negra de MS: Água Clara, Anaurilândia, Aparecida do Taboado, Bataguassú,Batayporã, Brasilândia, Cassilândia, Chapadão do Sul, Inocência, Nova Andradina, Paranaíba, Ribas do Rio Pardo, Santa Rita do Pardo, Selvíria, Taquarussú e Três Lagoas;",
