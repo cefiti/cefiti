@@ -188,14 +188,6 @@ const pragas: Praga[] = [
     files: [{ leg: '', link: '' }],
   },
   {
-    prag: 'Dactylopius opuntiae',
-    pragc: 'COCHONILHA-DO-CARMIM',
-    hosp: ['Opuntia cochenillifera'],
-    files: [
-      { leg: 'Instrução Normativa MAPA nº 23, de 29 de maio de 2007', link: 'IN23-2007.pdf' },
-    ],
-  },
-  {
     prag: 'Ralstonia solanacearum raça 2',
     pragc: 'MOKO-DA-BANANEIRA',
     hosp: ['Musa spp.', 'Heliconia spp.'],

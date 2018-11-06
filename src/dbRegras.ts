@@ -165,18 +165,6 @@ const regras: Regra[] = [
     ]
   },
 
-  //COCHONILHA-DO-CARMIM
-  {
-    desc: "DE UF com ocorrência de Cochonilha-do-carmim PARA UF reconhecida pelo MAPA como livre da ocorrência de Cochonilha-do-carmim",
-    part: ["palma"],
-    orig: ["CE", "PB", "PE", "PI", "RN"],
-    dest: ["AC", "AL", "AM", "AP", "BA", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PR", "RJ", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
-    prag: "Dactylopius opuntiae",
-    exig: [
-      "PTV; \nObs.: Nas barreiras fitossanitárias interestaduais, caso seja constatada por meio de inspeção visual, infestação por cochonilha-do-carmim, independente da espécie, toda a partida será imediatamente apreendida e destruída de modo a impedir a sobrevivência da praga, conforme o art. 6º. da Instrução Normativa MAPA nº. 23 de maio de 2007."
-    ]
-  },
-
   //MOKO-DA-BANANEIRA
   {
     desc: "Material para pesquisa DE qualquer UF PARA UF sem ocorrência",  //ok
