@@ -173,21 +173,6 @@ const pragas: Praga[] = [
     ],
   },
   {
-    prag: 'Sinoxylon conigerum',
-    pragc: 'BROCA CONÍGERA',
-    hosp: [
-      'Myroxylon balsamum',
-      'Anacardium occidentale',
-      'Delonix regia',
-      'Manihot esculenta',
-      'Mangifera indica',
-      'Switenia macrophyla',
-      'Hevea brasiliensis',
-      'Tectona grandis',
-    ],
-    files: [{ leg: '', link: '' }],
-  },
-  {
     prag: 'Ralstonia solanacearum raça 2',
     pragc: 'MOKO-DA-BANANEIRA',
     hosp: ['Musa spp.', 'Heliconia spp.'],

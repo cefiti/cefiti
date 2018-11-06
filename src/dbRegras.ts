@@ -153,18 +153,6 @@ const regras: Regra[] = [
     ]
   },
 
-  //BROCA CONÍGERA
-  {
-    desc: "DE UF com ocorrência de Broca Conígera PARA UF reconhecida pelo MAPA como livre da ocorrência de Broca Conígera",
-    part: ["madeira", "maniva", "estaca"],
-    orig: ["MT"],
-    dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
-    prag: "Sinoxylon conigerum",
-    exig: [
-      "PTV."
-    ]
-  },
-
   //MOKO-DA-BANANEIRA
   {
     desc: "Material para pesquisa DE qualquer UF PARA UF sem ocorrência",  //ok
