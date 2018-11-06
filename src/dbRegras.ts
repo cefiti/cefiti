@@ -102,7 +102,7 @@ const regras: Regra[] = [
     part: ["mudas", "sementes", "estacas", "bulbos", "tubérculos", "manivas", "toletes", "gemas", "ramas", "rizomas", "material de propagação"],
     orig: ["PR", "RS", "SC"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "RJ", "RN", "RO", "RR", "SE", "SP", "TO"],
-    prag: "Neonectria galligena (=Nectria galligena)",
+    prag: "Neonectria ditissima (Neonectria galligena)",
     exig: [
       "PTV com a seguinte declaração adicional: \"A Unidade de produção foi inspecionada oficialmente durante o período de produção e não foi constatada a presença de sintomas de infecção pela praga Neonectria galligena\";",
       "Esta exigência fitossanitária não se aplica a material propagativo in vitro."
@@ -112,7 +112,7 @@ const regras: Regra[] = [
     part: ["frutos"],
     orig: ["PR", "RS", "SC"],
     dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "RJ", "RN", "RO", "RR", "SE", "SP", "TO"],
-    prag: "Neonectria galligena (=Nectria galligena)",
+    prag: "Neonectria ditissima (Neonectria galligena)",
     exig: [
       "PTV com a seguinte declaração adicional: \"Na unidade de produção e Unidade de Consolidação - UC foram adotados os procedimentos de controle e prevenção previstos nesta norma (Instrução Normativa nº 20, de 20 de junho de 2013) e os frutos não apresentam sintomas de Neonectria galligena\"."
     ]
