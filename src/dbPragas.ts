@@ -217,8 +217,8 @@ const pragas: Praga[] = [
     hosp: ['Malpighia spp.'],
     files: [
       {
-        leg: 'Instrução Normativa MAPA/SDA nº. 19, de 16 de setembro de 2014',
-        link: 'IN19-2014.pdf',
+        leg: 'Instrução Normativa MAPA/SDA nº. 38, de 01 de outubro de 2018',
+        link: 'IN38-2018.pdf',
       },
     ],
   },

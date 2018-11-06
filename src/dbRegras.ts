@@ -433,18 +433,7 @@ const regras: Regra[] = [
   },
 
   //ANTHONOMUS TOMENTOSUS
-  {
-    desc: "DE UF com ocorrência de Anthonomus tomentosus PARA UF sem a ocorrência de Anthonomus tomentosus",
-    part: ["frutos"],
-    orig: ["AM"],
-    dest: ["AC", "AL", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
-    prag: "Anthonomus tomentosus",
-    exig: [
-      "Se a partida for proveniente dos municípios Presidente Figueiredo, Rio Preto da Eva e Manaus: PTV com a seguinte declaração adicional: \"A partida foi inspecionada e encontra-se livre de Anthonomus tomentosus\"; ",
-      "Para os demais municípios do Amazonas, trânsito livre",
-      "Estas exigências fitossanitárias só se aplicam a frutos frescos;"
-    ]
-  }, {
+{
     desc: "DE UF com ocorrência de Anthonomus tomentosus PARA UF sem a ocorrência de Anthonomus tomentosus",
     part: ["frutos"],
     orig: ["RR"],
