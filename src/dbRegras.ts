@@ -12,20 +12,6 @@ export interface Regra {
 // prettier-ignore
 const regras: Regra[] = [
 
-  //ÁCARO-VERMELHO-DAS-PALMEIRAS
-  /*{
-    desc: "DE UF com ocorrência de Ácaro-vermelho-das-palmeiras PARA UF reconhecida pelo MAPA como livre da ocorrência de Ácaro-vermelho-das-palmeiras",
-    part: ["plantas", "mudas", "raízes", "caules", "ramos", "folhas", "flores", "frutos"],
-    orig: ["RR", "AM"],
-    dest: ["AC", "AL", "AP", "ES", "MA", "MS", "MT", "PB", "PE", "PI", "RJ", "RO", "RS", "SC", "TO", "BA", "CE", "GO", "MG", "PA", "PR", "RN", "SE", "SP", "DF",],
-    prag: "Raoiella indica",
-    exig: [
-      "PTV com a seguinte declaração adicional: \"Não se observou a presença de Raoiella indica no local de produção e a partida foi inspecionada e encontra-se livre da praga\"; ",
-      "A partida deve ser transportada em caminhão lonado ou tipo baú, e lacrado; ", "A PTV deve conter o(s) número(s) do(s) lacre(s);",
-      "Estas exigências fitossanitárias não se aplicam a material in vitro."
-    ],
-  },*/
-
   //MOSCA-DA-CARAMBOLA
   {
     desc: "DE UF com ocorrência de Mosca-da-carambola PARA UF reconhecida pelo MAPA como livre da ocorrência de Mosca-da-carambola",
@@ -435,77 +421,6 @@ const regras: Regra[] = [
   },
 
   //CANCRO CÍTRICO
-/*
-  {
-    desc: "DE Área com Cancro Cítrico Ausente PARA qualquer UF",
-    part: ["frutos", "material de propagação", "mudas", "estacas", "gemas", "plantas"],
-    orig: ["AM", "BA", "DF", "ES", "GO", "PB", "PE", "RO", "SE", "TO"],
-    dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
-    prag: "Xanthomonas citri subsp. citri",
-    exig: [
-      "SEM EXIGÊNCIAS PARA O TRÂNSITO."
-    ]
-  }, {
-    desc: "DE Área Livre de Cancro Cítrico PARA qualquer UF",
-    part: ["frutos", "material de propagação", "mudas", "estacas", "gemas", "plantas"],
-    orig: ["PA"],
-    dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
-    prag: "Xanthomonas citri subsp. citri",
-    exig: [
-      "Se a partida for proveniente de Áreas Livres de Canco Cítrico do Estado do Pará, compostas pelo municípios Ourém, Irituia, Garrafão do Norte, Capitão Poço, Nova Esperança do Piriá, Alenquer, Belterra, Mojuí dos Campos, Monte Alegre, Prainha e Santarém: PTV.",
-      "Se a partida for proveniente dos demais municípios que não fazem parte das Áreas Livres de Cancro Cítrico: TRÂNSITO PROIBIDO"
-    ]
-  }, {
-    desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF", //Arts. 39 e 40
-    part: ["frutos"],
-    orig: ["CE", "MG", "RR"],
-    dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
-    prag: "Xanthomonas citri subsp. citri",
-    exig: [
-      "SE OS FRUTOS FOREM PROCEDENTES DE IMÓVEL INTERDITADO POR MOTIVO DE OCORRÊNCIA DE CANCRO CÍTRICO:\na)PTV com a seguinte declaração adicional: \"Os frutos são provenientes de plantas sadias de imóvel sob supervisão oficial, foram higienizados com [produto, concentração, tempo de exposição] e encontram-se livres de Xanthomonas citri subsp. citri\"; e\nb)Os frutos devem estar acondicionados em veículo fechado ou coberto, a granel, ou em embalagens descartáveis, ou em caixas retornáveis.",
-      "SE OS FRUTOS FOREM PROCEDENTES DE IMÓVEL SEM OCORRÊNCIA DE CANCRO CÍTRICO: PTV com a seguinte declaração adicional: \"Os frutos são provenientes de imóvel sem ocorrência do cancro cítrico localizado em Área sob Erradicação ou Supressão\"."
-    ]
-  }, {
-    desc: "DE Área sob Erradicação ou Supressão de Cancro Cítrico PARA qualquer UF",  //Art. 41
-    part: ["material de propagação", "mudas", "estacas", "gemas", "plantas"],
-    orig: ["CE", "MG", "RR"],
-    dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
-    prag: "Xanthomonas citri subsp. citri",
-    exig: [
-      "PTV com a seguinte declaração adicional: \"O material de propagação é proveniente de Área sob Erradicação ou Supressão e foi produzido em ambiente protegido conforme preconiza a legislação específica em vigor\"."
-    ]
-  }, {
-    desc: "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF", //Arts. 61 a 63
-    part: ["frutos"],
-    orig: ["MT", "MS", "PR", "RS", "SP", "SC"],
-    dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
-    prag: "Xanthomonas citri subsp. citri",
-    exig: [
-      "PTV com a seguinte declaração adicional: \"A partida não apresenta risco quarentenário para Xanthomonas citri subsp. citri como resultado da aplicação oficialmente supervisionada do Sistema Integrado de Medidas Fitossanitárias para o Manejo de Risco (SMR) da praga\";",
-      "Carga acondicionada em veículo fechado ou coberto, a granel, ou em embalagens descartáveis, ou em caixas plásticas retornáveis; e",
-      "No Estado do Paraná, excetuam-se os municípios de Adrianópolis, Agudos do Sul, Almirante Tamandaré, Araucária, Antonina, Balsa Nova, Bocaiuva do Sul, Campina Grande do Sul, Campo Largo, Campo Magro, Cerro Azul, Colombo, Contenda, Curitiba, Doutor Ulysses, Fazenda Rio Grande, Guaraqueçaba, Guaratuba, Itaperuçu, Mandirituba, Matinhos, Morretes, Paranaguá, Pinhais, Piraquara, Pontal do Paraná, Quatro Barras, Rio Branco do Sul, São José dos Pinhais, Tijucas do Sul e Tunas do Paraná, cujo risco fitossanitário é desconhecido, sendo que frutos com origem nestes municípios tem o TRÂNSITO PROIBIDO.",
-      "Carga lacrada com número de lacre informado na PTV."
-    ]
-  },
-  {
-    desc: "DE Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF", //Arts. 61 a 63
-    part: ["material de propagação", "mudas", "estacas", "gemas", "plantas"],
-    orig: ["MT", "MS", "PR", "RS", "SP", "SC"],
-    dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
-    prag: "Xanthomonas citri subsp. citri",
-    exig: [
-      "TRÂNSITO PROIBIDO"
-    ]
-  },
-  {
-    desc: "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA qualquer UF",
-    part: ["frutos", "material de propagação", "mudas", "estacas", "gemas", "plantas"],
-    orig: ["AC", "AL", "AP", "MA", "PI", "RJ", "RN"],
-    dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"],
-    prag: "Xanthomonas citri subsp. citri",
-    exig: ["TRÂNSITO PROIBIDO."]
-  }];
-  */
 
   {    //1
     desc: "DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga – ALP, Área sob Sistema de Mitigação de Risco - SMR e Área sob Erradicação",
