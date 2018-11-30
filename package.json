@@ -19,30 +19,29 @@
   "dependencies": {
     "detect-browser": "^3.0.1",
     "js-plus": "^0.1.7",
-    "mobx": "^4.5.2",
-    "mobx-react": "^5.3.6",
-    "react": "^16.6.6",
-    "react-dom": "^16.6.6",
+    "mobx": "^4.6.0",
+    "mobx-react": "^5.4.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "tslib": "^1.9.3",
     "tslint": "^5.11.0"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-decorators": "^7.1.2",
-    "@types/jest": "^23.3.8",
-    "@types/node": "^10.12.1",
-    "@types/react": "^16.4.18",
-    "@types/react-dom": "^16.0.9",
-    "customize-cra": "^0.2.0",
+    "@babel/plugin-proposal-decorators": "^7.1.6",
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.10",
+    "@types/react": "^16.7.9",
+    "@types/react-dom": "^16.0.11",
+    "customize-cra": "^0.2.7",
     "jest": "^23.6.0",
     "jszip-cli": "^1.4.24",
     "react-app-rewired": "^1.6.2",
-    "react-scripts": "2.1.0",
-    "typescript-eslint-parser": "^20.1.0",
-    "eslint-plugin-typescript": "^0.12.0",
-    "ts-jest": "^23.1.4",
-    "tslint-config-prettier": "^1.15.0",
+    "react-scripts": "2.1.1",
+    "typescript-eslint-parser": "^21.0.1",
+    "eslint-plugin-typescript": "^0.14.0",
+    "tslint-config-prettier": "^1.17.0",
     "tslint-react": "^3.6.0",
-    "typescript": "^3.1.4"
+    "typescript": "^3.2.1"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -66,7 +65,7 @@
   "browserslist": [
     ">0.2%",
     "not dead",
-    "not ie <= 11",
+    "not ie < 11",
     "not op_mini all"
   ],
   "eslintConfig": {
