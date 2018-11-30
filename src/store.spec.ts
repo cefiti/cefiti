@@ -3,6 +3,7 @@ import { configure } from 'mobx'
 //import { regras } from './dbRegras'
 import { pragas } from './dbPragas'
 import { hospedeiros } from './dbHospedeiros'
+import 'js-plus'
 import 'jest'
 
 configure({ enforceActions: 'observed' }) //useStrict(true)
@@ -65,7 +66,8 @@ describe('Store hospedeiros nomeSci', () => {
   it('unique values Nome Vulgar', () => {
     //expect(store.listaNomesSci.take(10)).toEqual(hosp10)
     //expect(store.listaNomesSci.take(-20)).toEqual(hosp20)
-    expect(store.listaNomesVul.length).toEqual(hospedeiros.length)
+    //expect(store.listaNomesVul.length).toEqual(hospedeiros.length)
+    expect(hospedeiros.unique('nomeVul').length).toEqual(hospedeiros.length)
   })
 })
 
@@ -225,6 +227,15 @@ test('Verifica hospedeiros', () => {
   expect(flattenHospedeirosPragas).toEqual(uniqueHospedeirosSci)
 })
 
+/* hospedeiros.groupBy('nomeVul')
+
+const duplicatesHosp = hospedeiros.reduce((obj, hosp) => {
+  obj[hosp.nomeVul] += 1
+}, {}) */
+test('duplicates nomeVul', () => {
+  expect(hospedeiros.groupBy('nomeVul').aggregate({ count: 'nomeVul' })).toBe({})
+  //.map((item :any) => {nomeVul: item.nomeVul, count: item.group.length})
+})
 /*
 pragas.map(praga => praga.hosp.map(hosp => {
   const especies = hospedeiros.filter(especie => especie.nomeSci === hosp)
