@@ -113,7 +113,7 @@ const pragas: Praga[] = [
     files: [{ leg: 'Instrução Normativa nº 53, de 16 de outubro de 2008', link: 'IN53-2008.pdf' }],
   },
   {
-    prag: 'Phyllosticta citricarpa (Guinardia citricarpa) ',
+    prag: 'Phyllosticta citricarpa (Guinardia citricarpa)',
     pragc: 'PINTA-PRETA-DOS-CITROS',
     hosp: ['Citrus spp.'],
     files: [

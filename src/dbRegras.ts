@@ -134,7 +134,7 @@ const regras: Regra[] = [
     part: ["mudas", "estacas", "gemas", "material de propagação", "plantas"],
     orig: ["AM", "ES", "MT", "MS", "MG", "PE", "PR", "RJ", "RS", "SC", "SP", "BA", "GO"],
     dest: ["AC", "AL", "AP", "CE", "DF", "MA", "PA", "PB", "PI", "RN", "RO", "RR", "SE", "TO"],
-    prag: "Phyllosticta citricarpa (Guinardia citricarpa) ",
+    prag: "Phyllosticta citricarpa (Guinardia citricarpa)",
     exig: [
       "PTV;",
       "A partida deve ser transportada em veículos fechados ou totalmente protegidos por lona."
@@ -144,7 +144,7 @@ const regras: Regra[] = [
     part: ["frutos"],
     orig: ["AM", "ES", "MT", "MS", "MG", "PE", "PR", "RJ", "RS", "SC", "SP", "BA", "GO"],
     dest: ["AC", "AL", "AP", "CE", "DF", "MA", "PA", "PB", "PI", "RN", "RO", "RR", "SE", "TO"],
-    prag: "Phyllosticta citricarpa (Guinardia citricarpa) ",
+    prag: "Phyllosticta citricarpa (Guinardia citricarpa)",
     exig: [
       "PTV com a seguinte declaração adicional: \"Os frutos foram produzidos sob Manejo Integrado de Guignardia citricarpa e submetidos a processo de seleção para a retirada de folhas e partes de ramos\";",
       "Os frutos devem estar isentos de material vegetativo."
