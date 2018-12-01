@@ -21,7 +21,7 @@ const regras: Regra[] = [
     prag: 'Bactrocera carambolae',
     exig: [
       'Se a partida tiver que transitar por área sob quarentena: \na) PTV;\nb) os frutos devem estar acondicionados em embalagens que não permitam o contato do produto com a praga;\nc) os frutos devem ser transportados em veículos fechados ou, quando abertos, protegidos com tela de malha de 2 mm',
-      'Consulte a lista de área sob quarentena, área erradicada, área sem ocorrência e de zona tampão nas Resoluções abaixo'
+      'Consulte a lista de área sob quarentena, área erradicada, área sem ocorrência e de zona tampão nas Resoluções acima'
     ]
   }, {
     desc: 'DE UF com ocorrência de Mosca-da-carambola PARA qualquer UF',
@@ -32,7 +32,7 @@ const regras: Regra[] = [
     exig: [
       'Se a partida for procedente DE área sob quarentena e de área protegida PARA local sem ocorrência: TRÂNSITO PROIBIDO.',
       'Se a partida for procedente DE zona tampão, de áreas erradicadas e de áreas sem detecção: PTV com a seguinte DA: "A partida está livre de Bactrocera carambolae”',
-      'Consulte a lista de área sob quarentena, área erradicada, área sem ocorrência e de zona tampão nas Resoluções abaixo'
+      'Consulte a lista de área sob quarentena, área erradicada, área sem ocorrência e de zona tampão nas Resoluções acima'
     ]
   }, 
   //ÁCARO HINDU

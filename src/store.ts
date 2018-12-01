@@ -5,6 +5,8 @@ import { pragas, Praga } from './dbPragas'
 import { hospedeiros, Hospedeiro } from './dbHospedeiros'
 import estados from './estados'
 
+type Db = Praga & Regra
+
 configure({ enforceActions: 'observed' }) //useStrict(true)
 
 export class Store {
@@ -12,8 +14,8 @@ export class Store {
   dbHospedeiros: Hospedeiro[]
   dbPragas: Praga[]
   db: Db[]
-  dbVersion = '23'
-  appVersion = '4.3'
+  dbVersion = '24'
+  appVersion = '4.4'
   estados = estados
   listaNomesSci: string[]
   listaNomesVul: string[]
@@ -137,7 +139,7 @@ export class Store {
   }
 }
 
-interface Db {
+/* interface Dbbb {
   prag: string
   hosp: string[]
   pragc: string
@@ -152,7 +154,8 @@ interface Db {
   orig: string[]
   dest: string[]
   exig: string[]
-}
+} */
+
 export const store = new Store(regras, hospedeiros, pragas)
 export default store
 

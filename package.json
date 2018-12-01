@@ -1,5 +1,5 @@
 {
-  "version": "4.2.0",
+  "version": "4.4.24",
   "description": "Catálogo de Exigências Fitossanitárias para o Trânstio Interestadual",
   "main": "index.js",
   "private": true,
@@ -12,6 +12,7 @@
     "Dalci de Jesus Bagolin",
     "Omar Roberto da Silveira"
   ],
+  "homepage": ".",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cefiti/cefiti/issues"

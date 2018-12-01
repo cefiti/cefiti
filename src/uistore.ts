@@ -33,7 +33,10 @@ class UiStore {
 
   @action
   handleSearch = (event: any): void => {
-    ;(window as any).ga('send', 'event', 'search', 'click')
+    if (process.env.NODE_ENV !== 'development') {
+      ;(window as any).ga('send', 'event', 'search', 'click', store.dados.hospSci)
+      //console.log('click', process.env.NODE_ENV)
+    }
     this.searched = true
     event.preventDefault()
   }
