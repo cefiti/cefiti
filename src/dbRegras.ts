@@ -14,16 +14,27 @@ const regras: Regra[] = [
 
   //MOSCA-DA-CARAMBOLA
   {
-    desc: 'DE UF com ocorrência de Mosca-da-carambola PARA UF reconhecida pelo MAPA como livre da ocorrência de Mosca-da-carambola',
+    desc: 'DE UF sem ocorrência de Mosca-da-carambola PARA UF sem ocorrência de Mosca-da-carambola',
     part: ['frutos'],
-    orig: ['AP', 'PA', 'RR'],
+    orig: ['AC', 'AL', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RS', 'SC', 'SE', 'SP', 'TO'],
     dest: ['AC', 'AL', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Bactrocera carambolae',
     exig: [
-      'TRÂNSITO PROIBIDO. \nMotivo: Ausência de área livre de mosca-da-carambola, na origem da partida.'
+      'Se a partida tiver que transitar por área sob quarentena: \na) PTV;\nb) os frutos devem estar acondicionados em embalagens que não permitam o contato do produto com a praga;\nc) os frutos devem ser transportados em veículos fechados ou, quando abertos, protegidos com tela de malha de 2 mm',
+      'Consulte a lista de área sob quarentena, área erradicada, área sem ocorrência e de zona tampão nas Resoluções abaixo'
     ]
-  },
-
+  }, {
+    desc: 'DE UF com ocorrência de Mosca-da-carambola PARA qualquer UF',
+    part: ['frutos'],
+    orig: ['AP', 'PA', 'RR'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    prag: 'Bactrocera carambolae',
+    exig: [
+      'Se a partida for procedente DE área sob quarentena e de área protegida PARA local sem ocorrência: TRÂNSITO PROIBIDO.',
+      'Se a partida for procedente DE zona tampão, de áreas erradicadas e de áreas sem detecção: PTV com a seguinte DA: "A partida está livre de Bactrocera carambolae”',
+      'Consulte a lista de área sob quarentena, área erradicada, área sem ocorrência e de zona tampão nas Resoluções abaixo'
+    ]
+  }, 
   //ÁCARO HINDU
   {
     desc: 'DE UF com ocorrência de Ácaro-hindu-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Ácaro-hindu-dos-citros',
