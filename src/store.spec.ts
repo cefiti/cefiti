@@ -108,9 +108,25 @@ describe('Store partes', () => {
     ])
   })
 
-  it('de Mandioca', () => {
-    store.dados.hospSci = 'Manihot esculenta'
-    expect(store.partes).toEqual(['', 'estaca', 'madeira', 'maniva'])
+  it('de Maça', () => {
+    store.dados.hospSci = 'Malus sp.'
+    expect(store.partes).toEqual(
+      [
+        '',
+        'mudas',
+        'sementes',
+        'estacas',
+        'bulbos',
+        'tubérculos',
+        'manivas',
+        'toletes',
+        'gemas',
+        'ramas',
+        'rizomas',
+        'material de propagação',
+        'frutos',
+      ].sort()
+    )
   })
 })
 
@@ -184,21 +200,6 @@ describe('Store filtro geral', () => {
     //expect(store.result.by('pragc')).toEqual(['CANCRO CÍTRICO', 'GREENING'])
   })
 
-  it('Citrus sinensis sementes RS->ES', () => {
-    store.dados.hospSci = 'Citrus sinensis'
-    store.dados.prod = 'sementes'
-    store.dados.orig = 'RS'
-    store.dados.dest = 'ES'
-    expect(store.result.length).toBe(1)
-    expect(
-      store.result
-        .by('files')
-        .flatten()
-        .by('link')
-    ).toEqual(['IN20-2013.pdf'])
-    expect(store.result.by('pragc')).toEqual(['CANCRO EUROPEU DAS POMÁCEAS'])
-  })
-
   it('Citrus sinensis mudas SP->ES', () => {
     store.dados.hospSci = 'Citrus sinensis'
     store.dados.prod = 'mudas'
@@ -212,38 +213,28 @@ describe('Store filtro geral', () => {
         .by('link')
     ).toEqual(['IN53-2008.pdf', 'IN21-2018.pdf'])
     expect(store.result.by('pragc')).toEqual(['GREENING', 'CANCRO CÍTRICO'])
+    expect(store.result).toMatchSnapshot()
   })
 })
 
-test('Verifica hospedeiros', () => {
-  //const missingHospedeiro = []
-  const flattenHospedeirosPragas = pragas
+test('Verifica hospedeiros com nome vulgar duplicado', () => {
+  const hospNomeVulDuplicados = hospedeiros
+    .groupBy('nomeVul')
+    .aggregate({ nameVul: 'count' })
+    .filter(item => (item.count_nameVul as number) > 1)
+  expect(hospNomeVulDuplicados).toEqual([])
+})
+
+test('Verifica hospedeiros faltantes', () => {
+  const flattenHospedeirosPragas: string[] = pragas
     .flatMap(praga => praga.hosp)
+    .flat()
     .unique()
     .sort()
-
   const uniqueHospedeirosSci = hospedeiros.unique('nomeSci').sort()
+  const missingHospedeiro = flattenHospedeirosPragas.filter(
+    n => uniqueHospedeirosSci.indexOf(n) === -1
+  )
 
-  expect(flattenHospedeirosPragas).toEqual(uniqueHospedeirosSci)
+  expect(missingHospedeiro).toEqual([])
 })
-
-/* hospedeiros.groupBy('nomeVul')
-
-const duplicatesHosp = hospedeiros.reduce((obj, hosp) => {
-  obj[hosp.nomeVul] += 1
-}, {}) */
-test('duplicates nomeVul', () => {
-  expect(hospedeiros.groupBy('nomeVul').aggregate({ count: 'nomeVul' })).toBe({})
-  //.map((item :any) => {nomeVul: item.nomeVul, count: item.group.length})
-})
-/*
-pragas.map(praga => praga.hosp.map(hosp => {
-  const especies = hospedeiros.filter(especie => especie.nomeSci === hosp)
-  especies.map( especie => {
-  const index = hospedeiros.findIndex(esp => esp.nomeVul === especie.nomeVul )
-  if (index >= 0) {
-    //console.log(index, especie.nomeVul)
-    hospedeiros[index].count += 1
-  } 
-})}))
-*/

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "es5",
-    "lib": ["es6", "dom"],
+    "lib": ["dom", "esnext.array", "es2016"],
     "sourceMap": true,
     "allowJs": true,
     "jsx": "preserve",
