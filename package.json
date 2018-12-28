@@ -1,6 +1,6 @@
 {
-  "version": "4.2.0",
-  "description": "Catálogo de Exigências Fitossanitárias para o Trânstio Interestadual",
+  "version": "5.0.0",
+  "description": "Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual",
   "main": "index.js",
   "private": true,
   "repository": {
@@ -13,41 +13,41 @@
     "Omar Roberto da Silveira"
   ],
   "license": "MIT",
+  "homepage": ".",
   "bugs": {
     "url": "https://github.com/cefiti/cefiti/issues"
   },
   "dependencies": {
     "detect-browser": "^3.0.1",
-    "js-plus": "^0.1.7",
+    "js-plus": "^0.2.0",
     "mobx": "^4.6.0",
-    "mobx-react": "^5.4.2",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "tslib": "^1.9.3",
-    "tslint": "^5.11.0"
+    "mobx-react": "^5.4.3",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-decorators": "^7.1.6",
+    "@babel/plugin-proposal-decorators": "^7.2.3",
     "@types/jest": "^23.3.10",
-    "@types/node": "^10.12.10",
-    "@types/react": "^16.7.9",
+    "@types/node": "^10.12.18",
+    "@types/react": "^16.7.18",
     "@types/react-dom": "^16.0.11",
-    "customize-cra": "^0.2.7",
+    "customize-cra": "^0.2.8",
     "jest": "^23.6.0",
     "jszip-cli": "^1.4.24",
     "react-app-rewired": "^1.6.2",
     "react-scripts": "2.1.1",
-    "typescript-eslint-parser": "^21.0.1",
+    "typescript-eslint-parser": "^21.0.2",
     "eslint-plugin-typescript": "^0.14.0",
+    "tslint": "^5.12.0",
     "tslint-config-prettier": "^1.17.0",
     "tslint-react": "^3.6.0",
-    "typescript": "^3.2.1"
+    "typescript": "^3.2.2"
   },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "zip": "jszip ./public -o ./public/CEFiTI.zip"
+    "zip": "jszip ./build -o ./build/CEFiTI.zip"
   },
   "babel": {
     "presets": [

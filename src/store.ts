@@ -12,8 +12,8 @@ export class Store {
   dbHospedeiros: Hospedeiro[]
   dbPragas: Praga[]
   db: Db[]
-  dbVersion = '23'
-  appVersion = '4.3'
+  dbVersion = '24'
+  appVersion = '5.0'
   estados = estados
   listaNomesSci: string[]
   listaNomesVul: string[]
@@ -22,7 +22,7 @@ export class Store {
   dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
 
   constructor(dbRegras: Regra[], dbHospedeiros: Hospedeiro[], dbPragas: Praga[]) {
-    console.log(dbPragas[0])
+    //console.log(dbPragas[0])
     this.dbRegras = dbRegras
     this.dbHospedeiros = dbHospedeiros
     this.dbPragas = dbPragas
@@ -120,7 +120,7 @@ export class Store {
           exigen.hosp.includes(this.gender + ' spp.')
       )
       .by('part')
-      .flatten()
+      .flat()
       .unique()
       .concat([''])
       .sort((a: string, b: string) => a.localeCompare(b))

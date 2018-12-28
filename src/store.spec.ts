@@ -67,6 +67,7 @@ describe('Store hospedeiros nomeSci', () => {
     //expect(store.listaNomesSci.take(10)).toEqual(hosp10)
     //expect(store.listaNomesSci.take(-20)).toEqual(hosp20)
     //expect(store.listaNomesVul.length).toEqual(hospedeiros.length)
+    expect(hospedeiros.by('nomeVul').filterNonUnique()).toEqual([])
     expect(hospedeiros.unique('nomeVul').length).toEqual(hospedeiros.length)
   })
 })
@@ -108,10 +109,10 @@ describe('Store partes', () => {
     ])
   })
 
-  it('de Mandioca', () => {
+  /* it('de Mandioca', () => {
     store.dados.hospSci = 'Manihot esculenta'
     expect(store.partes).toEqual(['', 'estaca', 'madeira', 'maniva'])
-  })
+  }) */
 })
 
 describe('Store: gender', () => {
@@ -141,7 +142,7 @@ describe('Store filtro geral', () => {
     expect(
       store.result
         .by('files')
-        .flatten()
+        .flat()
         .by('link')
     ).toEqual(['IN17-2009.pdf', 'IN17-2005.pdf', 'IN17-2005.pdf'])
     expect(store.result.by('pragc')).toEqual([
@@ -168,7 +169,7 @@ describe('Store filtro geral', () => {
     expect(
       store.result
         .by('files')
-        .flatten()
+        .flat()
         .by('link')
     ).toEqual(['IN20-2013.pdf'])
     expect(store.result.by('pragc')).toEqual(['CANCRO EUROPEU DAS POMÁCEAS'])
@@ -186,17 +187,17 @@ describe('Store filtro geral', () => {
 
   it('Citrus sinensis sementes RS->ES', () => {
     store.dados.hospSci = 'Citrus sinensis'
-    store.dados.prod = 'sementes'
+    store.dados.prod = 'material de propagação'
     store.dados.orig = 'RS'
     store.dados.dest = 'ES'
     expect(store.result.length).toBe(1)
     expect(
       store.result
         .by('files')
-        .flatten()
+        .flat()
         .by('link')
-    ).toEqual(['IN20-2013.pdf'])
-    expect(store.result.by('pragc')).toEqual(['CANCRO EUROPEU DAS POMÁCEAS'])
+    ).toEqual(['IN21-2018.pdf'])
+    expect(store.result.by('pragc')).toEqual(['CANCRO CÍTRICO'])
   })
 
   it('Citrus sinensis mudas SP->ES', () => {
@@ -208,14 +209,14 @@ describe('Store filtro geral', () => {
     expect(
       store.result
         .by('files')
-        .flatten()
+        .flat()
         .by('link')
     ).toEqual(['IN53-2008.pdf', 'IN21-2018.pdf'])
     expect(store.result.by('pragc')).toEqual(['GREENING', 'CANCRO CÍTRICO'])
   })
 })
 
-test('Verifica hospedeiros', () => {
+/* test('Verifica hospedeiros', () => {
   //const missingHospedeiro = []
   const flattenHospedeirosPragas = pragas
     .flatMap(praga => praga.hosp)
@@ -224,8 +225,10 @@ test('Verifica hospedeiros', () => {
 
   const uniqueHospedeirosSci = hospedeiros.unique('nomeSci').sort()
 
+  const hospSemUso = uniqueHospedeirosSci.diff(flattenHospedeirosPragas)
+
   expect(flattenHospedeirosPragas).toEqual(uniqueHospedeirosSci)
-})
+}) */
 
 /* hospedeiros.groupBy('nomeVul')
 
@@ -233,7 +236,12 @@ const duplicatesHosp = hospedeiros.reduce((obj, hosp) => {
   obj[hosp.nomeVul] += 1
 }, {}) */
 test('duplicates nomeVul', () => {
-  expect(hospedeiros.groupBy('nomeVul').aggregate({ count: 'nomeVul' })).toBe({})
+  expect(
+    hospedeiros
+      .groupBy('nomeVul')
+      .aggregate({ nomeVul: 'count' })
+      .filter((item: any) => item.countNomeVul > 1)
+  ).toEqual([])
   //.map((item :any) => {nomeVul: item.nomeVul, count: item.group.length})
 })
 /*
