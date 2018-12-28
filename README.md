@@ -4,6 +4,23 @@
 
 ## **_CHANGELOG_**
 
+## 4.4.24
+- [db] Atualização Mosca da Carambola ([28bab9b](28bab9b9a215ce578badb8567c4ca3df7082d90b), [b222ad](4b222ad1cad7a9fc94630d57eb0514617f68994a), [74d71a6](74d71a61885befb51fd8106c049be87e76361115))
+- [db] Atualização Ácaro Hindu (hospedeiros) ([f2cd2e6](f2cd2e6b7baf5e6d131df9b610afdf37c4f5280b))
+- [db] Atualização Gorgulho da Manga ([9626a8](9626a84754a56f4f0fbe1500de62a87e3a66fce0))
+- [db] Atualização Bicudo da Acerola
+- [db] Atualização Sigatoka Negra (GO) ([a7d974b]
+- [db] Atualização Gorgulho da Acerola ([c302d37](c302d378fd7a780c8f19215b2c2851df3d609ec1))(a7d974b5d37de5f82054b6fa492aa1fee08cac2a))
+- Atualização Cancro Europeu das Pomãceas ([b434c0c](b434c0c8594b7ef1493e19f6574cdde84c027725))
+- [db] Exclusão Cocholilha do Carmim e Broca Conígera ([674a33c](674a33c41a4023468f55a17e970d7936275694ee), [5c89612](5c89612fe724cd4fbd2c782fbe681d8c204feba2))
+- [db] Atualização Pinta Preta ([cb12f8](cb12f841c76d9d45896cee0b5b6e84b73a694bbf), [ae568e0](ae568e0cc1fe32f45acf6d428ddc59ee98d80156))
+- Melhoria no Google Analytics
+- Melhorias nos Testes
+- Migração para o create-reatc-app (9bfa7903134a936315a0d532796a87acdfc47655)
+- Atualização das dependências
+- BREAKING CHANGE: Internet Explorer menor que 11 não são mais compaíveis
+
+
 ## 4.3-23
 
 - Utilização do react-scripts(CRA) como bunbler, uma vez que este suporta agora Typescript

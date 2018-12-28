@@ -1,15 +1,15 @@
 //CEFiTI - Pragas
 
+interface Files {
+  leg: string
+  link: string
+}
+
 export interface Praga {
   prag: string
   hosp: string[]
   pragc: string
-  files: [
-    {
-      leg: string
-      link: string
-    }
-  ]
+  files: Files[]
 }
 
 const pragas: Praga[] = [
@@ -56,7 +56,11 @@ const pragas: Praga[] = [
       'Rollinia omucosa',
       'Syzygium cumini',
     ],
-    files: [{ leg: 'Portaria SDA/MAPA nº 21, de 25 de março de 1999', link: 'PORT21-1999.pdf' }],
+    files: [
+      { leg: 'Instrução Normativa nº 28, de 20 de julho de 2017', link: 'IN28-2017.pdf' },
+      { leg: 'Resulução nº 03, de 15 de maio de 2018', link: 'RES03-2018.pdf' },
+      { leg: 'Resulução nº 06, de 23 de novembro de 2018', link: 'RES06-2018.pdf' },
+    ],
   },
   {
     prag: 'Schizotetranychus hindustanicus',
@@ -113,7 +117,7 @@ const pragas: Praga[] = [
     files: [{ leg: 'Instrução Normativa nº 53, de 16 de outubro de 2008', link: 'IN53-2008.pdf' }],
   },
   {
-    prag: 'Phyllosticta citricarpa (Guinardia citricarpa) ',
+    prag: 'Phyllosticta citricarpa (Guinardia citricarpa)',
     pragc: 'PINTA-PRETA-DOS-CITROS',
     hosp: ['Citrus spp.'],
     files: [

@@ -213,6 +213,7 @@ describe('Store filtro geral', () => {
         .by('link')
     ).toEqual(['IN53-2008.pdf', 'IN21-2018.pdf'])
     expect(store.result.by('pragc')).toEqual(['GREENING', 'CANCRO CÍTRICO'])
+    expect(store.result).toMatchSnapshot()
   })
 })
 
@@ -220,10 +221,13 @@ describe('Store filtro geral', () => {
   //const missingHospedeiro = []
   const flattenHospedeirosPragas = pragas
     .flatMap(praga => praga.hosp)
+    .flat()
     .unique()
     .sort()
-
   const uniqueHospedeirosSci = hospedeiros.unique('nomeSci').sort()
+  const missingHospedeiro = flattenHospedeirosPragas.filter(
+    n => uniqueHospedeirosSci.indexOf(n) === -1
+  )
 
   const hospSemUso = uniqueHospedeirosSci.diff(flattenHospedeirosPragas)
 
@@ -244,14 +248,3 @@ test('duplicates nomeVul', () => {
   ).toEqual([])
   //.map((item :any) => {nomeVul: item.nomeVul, count: item.group.length})
 })
-/*
-pragas.map(praga => praga.hosp.map(hosp => {
-  const especies = hospedeiros.filter(especie => especie.nomeSci === hosp)
-  especies.map( especie => {
-  const index = hospedeiros.findIndex(esp => esp.nomeVul === especie.nomeVul )
-  if (index >= 0) {
-    //console.log(index, especie.nomeVul)
-    hospedeiros[index].count += 1
-  } 
-})}))
-*/

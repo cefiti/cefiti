@@ -271,8 +271,13 @@ const hospedeiros: Hospedeiro[] = [
   { nomeVul: 'Sorva', nomeSci: 'Sorbus sp.', count: 1 },
   { nomeVul: 'Sumac Staghorn', nomeSci: 'Rhus typhina', count: 1 },
   { nomeVul: 'Tangerina', nomeSci: 'Citrus reticulata', count: 1 },
+<<<<<<< HEAD
   { nomeVul: 'Taperebá (S. lutea)', nomeSci: 'Spondias lutea', count: 1 },
   { nomeVul: 'Taperebá (S. mombin)', nomeSci: 'Spondias mombin', count: 1 },
+=======
+  { nomeVul: 'Taperebá(S. lutea)', nomeSci: 'Spondias lutea', count: 1 },
+  { nomeVul: 'Taperebá(S. mombin)', nomeSci: 'Spondias mombin', count: 1 },
+>>>>>>> 3f1bc9bcae35a8361bf46ae48211968709341050
   { nomeVul: 'Teca', nomeSci: 'Tectona grandis', count: 1 },
   { nomeVul: 'Teja', nomeSci: 'Tilia cordata', count: 1 },
   { nomeVul: 'Tejo', nomeSci: 'Tilia cordata', count: 1 },
@@ -293,12 +298,5 @@ const hospedeiros: Hospedeiro[] = [
   { nomeVul: 'Vimeiro Púrpura', nomeSci: 'Salix purpurea', count: 1 },
   { nomeVul: 'Viola', nomeSci: 'Viola sp.', count: 1 },
 ]
-
-/* import 'js-plus'
-const h = hospedeiros
-  .groupBy('nomeVul')
-  .aggregate({ nameVul: 'count' })
-  .filter(item => (item.count_nameVul as number) > 1)
-console.log(h) */
 
 export { hospedeiros }

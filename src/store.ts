@@ -5,6 +5,8 @@ import { pragas, Praga } from './dbPragas'
 import { hospedeiros, Hospedeiro } from './dbHospedeiros'
 import estados from './estados'
 
+type Db = Praga & Regra
+
 configure({ enforceActions: 'observed' }) //useStrict(true)
 
 export class Store {
@@ -43,41 +45,12 @@ export class Store {
     return this.dbRegras.map(regra => {
       const praga = this.dbPragas.find(item => item.prag === regra.prag)
       if (!praga) {
-        throw Error('Dados da praga não cadastrados.')
+        throw Error(`Dados da praga ${regra.prag} não cadastrados.`)
       } else {
         return { ...regra, ...praga }
       }
     })
   }
-
-  /*   getHospedeirosSci() {
-    const hospedeirosPragas = this.dbPragas.flatMap(praga => praga.hosp)
-    const hospedeirosRegulamentados = this.dbHospedeiros.filter(hospedeiro =>
-      hospedeirosPragas.includes(hospedeiro.nomeSci)
-    )
-    console.log(
-      hospedeirosPragas.count(),
-      hospedeirosPragas //hospedeirosPragas,
-        .unique()
-        .count(),
-      this.dbPragas.length,
-      this.dbPragas
-        .map(praga => praga.hosp)
-        .flatten()
-        .unique().length,
-      this.dbHospedeiros.length,
-      hospedeirosRegulamentados.length,
-      this.dbHospedeiros.map(hospedeiro => hospedeiro.nomeSci).count(),
-      this.dbHospedeiros
-        .map(hospedeiro => hospedeiro.nomeVul)
-        .unique()
-        .count(),
-      this.dbHospedeiros
-        .map(hospedeiro => hospedeiro.nomeSci)
-        .unique()
-        .count()
-    )
-  } */
 
   @computed
   get empty(): boolean {
@@ -167,7 +140,7 @@ export class Store {
   }
 }
 
-interface Db {
+/* interface Dbbb {
   prag: string
   hosp: string[]
   pragc: string
@@ -182,6 +155,36 @@ interface Db {
   orig: string[]
   dest: string[]
   exig: string[]
-}
+} */
+
 export const store = new Store(regras, hospedeiros, pragas)
 export default store
+
+/*   getHospedeirosSci() {
+    const hospedeirosPragas = this.dbPragas.flatMap(praga => praga.hosp)
+    const hospedeirosRegulamentados = this.dbHospedeiros.filter(hospedeiro =>
+      hospedeirosPragas.includes(hospedeiro.nomeSci)
+    )
+    console.log(
+      hospedeirosPragas.count(),
+      hospedeirosPragas //hospedeirosPragas,
+        .unique()
+        .count(),
+      this.dbPragas.length,
+      this.dbPragas
+        .map(praga => praga.hosp)
+        .flatten()
+        .unique().length,
+      this.dbHospedeiros.length,
+      hospedeirosRegulamentados.length,
+      this.dbHospedeiros.map(hospedeiro => hospedeiro.nomeSci).count(),
+      this.dbHospedeiros
+        .map(hospedeiro => hospedeiro.nomeVul)
+        .unique()
+        .count(),
+      this.dbHospedeiros
+        .map(hospedeiro => hospedeiro.nomeSci)
+        .unique()
+        .count()
+    )
+  } */
