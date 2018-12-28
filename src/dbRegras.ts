@@ -421,8 +421,8 @@ const regras: Regra[] = [
 {
     desc: "DE UF com ocorrência de Anthonomus tomentosus PARA UF sem a ocorrência de Anthonomus tomentosus",
     part: ["frutos"],
-    orig: ["RR"],
-    dest: ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RS", "SC", "SE", "SP", "TO"],
+    orig: ["AP", "RR"],
+    dest: ["AC", "AL", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RS", "SC", "SE", "SP", "TO"],
     prag: "Anthonomus tomentosus",
     exig: [
       "Se a partida for proveniente de Boa Vista, Mucajaí e Pacaraima: TRÂNSITO PROIBIDO;",
