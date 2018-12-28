@@ -1,7 +1,7 @@
 import store from './../src/store'
 import { configure } from 'mobx'
 //import { regras } from './dbRegras'
-import { pragas } from './dbPragas'
+//import { pragas } from './dbPragas'
 import { hospedeiros } from './dbHospedeiros'
 import 'js-plus'
 import 'jest'
