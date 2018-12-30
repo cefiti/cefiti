@@ -4,7 +4,8 @@
 
 ## **_CHANGELOG_**
 
-## 4.4.24
+## 5.0.24
+- [db] Atualização Gorgulho da Acerola- Inclusão Amapá
 - [db] Atualização Mosca da Carambola ([28bab9b](28bab9b9a215ce578badb8567c4ca3df7082d90b), [b222ad](4b222ad1cad7a9fc94630d57eb0514617f68994a), [74d71a6](74d71a61885befb51fd8106c049be87e76361115))
 - [db] Atualização Ácaro Hindu (hospedeiros) ([f2cd2e6](f2cd2e6b7baf5e6d131df9b610afdf37c4f5280b))
 - [db] Atualização Gorgulho da Manga ([9626a8](9626a84754a56f4f0fbe1500de62a87e3a66fce0))

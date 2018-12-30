@@ -157,7 +157,7 @@ describe('Store filtro geral', () => {
     store.dados.prod = 'frutos'
     store.dados.orig = 'PI'
     store.dados.dest = 'DF'
-    expect(store.result.length).toBe(0)
+    expect(store.result.length).toBe(1)
   })
 
   it('Malus spp.', () => {

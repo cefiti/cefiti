@@ -22,9 +22,9 @@ function Form() {
                 onChange={store.handleChanges}
               >
                 <option value={''} />
-                {store.listaNomesSci.map((option, i) => {
+                {store.listaNomesSci.map(option => {
                   return (
-                    <option value={option} key={i}>
+                    <option value={option} key={option}>
                       {option}
                     </option>
                   )
@@ -44,10 +44,10 @@ function Form() {
                 onChange={store.handleChanges}
               >
                 <option value={''} />
-                {store.dbHospedeiros.map((option, i) => {
+                {store.listaNomesVul.map(option => {
                   return (
-                    <option value={option.nomeVul} key={i}>
-                      {option.nomeVul}
+                    <option value={option} key={option}>
+                      {option}
                     </option>
                   )
                 })}
