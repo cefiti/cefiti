@@ -2,10 +2,12 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import App from './app'
 import Browser from './browser'
+import { detect } from 'detect-browser'
 
-const { detect } = require('detect-browser')
 const browser = detect()
+//console.log(browser)
 
-const Main = () => (browser.name === 'ie' && browser.version !== '11.0.0' ? <Browser /> : <App />)
+const Main = () =>
+  browser && browser.name === 'ie' && browser.version !== '11.0.0' ? <Browser /> : <App />
 
 ReactDom.render(<Main />, document.getElementById('root'))

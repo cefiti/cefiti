@@ -4,6 +4,11 @@
 
 ## **_CHANGELOG_**
 
+## 5.1.24
+- Atualiação react-scripts
+- Envia para o Analytics o hospedeiro pesquisado
+- Altera IN 59/2013 para IN 38/2018
+  
 ## 5.0.24
 - [db] Atualização Gorgulho da Acerola- Inclusão Amapá
 - [db] Atualização Mosca da Carambola ([28bab9b](28bab9b9a215ce578badb8567c4ca3df7082d90b), [b222ad](4b222ad1cad7a9fc94630d57eb0514617f68994a), [74d71a6](74d71a61885befb51fd8106c049be87e76361115))

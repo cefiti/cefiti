@@ -35,7 +35,7 @@ class UiStore {
   handleSearch = (event: any): void => {
     if (process.env.NODE_ENV !== 'development') {
       ;(window as any).ga('send', 'event', 'search', 'click', store.dados.hospSci)
-      //console.log('click', process.env.NODE_ENV)
+      //console.log('click', process.env.NODE_ENV, store.dados.hospSci)
     }
     this.searched = true
     event.preventDefault()

@@ -116,8 +116,8 @@ function Result() {
           </a>
           <br />
           <br />
-          <a target="_blank" href="leg/IN59-2013.pdf">
-            Instrução Normativa MAPA Nº 59, de 18 de dezembro de 2013
+          <a target="_blank" href="leg/IN38-2018.pdf">
+            Instrução Normativa MAPA Nº 38, de 01 de outubro de 2018
           </a>
           <br />
           <hr />

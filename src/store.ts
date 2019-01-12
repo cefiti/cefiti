@@ -15,7 +15,7 @@ export class Store {
   dbPragas: Praga[]
   db: Db[]
   dbVersion = '24'
-  appVersion = '5.0'
+  appVersion = '5.1'
   estados = estados
   listaNomesSci: string[]
   listaNomesVul: string[]
