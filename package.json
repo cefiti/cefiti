@@ -31,18 +31,19 @@
     "@types/node": "^10.12.18",
     "@types/react": "^16.7.18",
     "@types/react-dom": "^16.0.11",
-    "customize-cra": "^0.2.9",
-    "eslint-plugin-typescript": "^0.14.0",
-    "jest": "^23.6.0",
     "jszip-cli": "^1.4.24",
-    "react-app-rewired": "^2.0.2",
     "react-scripts": "2.1.3",
-    "tslint": "^5.12.0",
-    "tslint-config-prettier": "^1.17.0",
-    "tslint-react": "^3.6.0",
+    "react-app-rewired": "^2.0.2",
+    "customize-cra": "^0.2.9",
+    "source-map-explorer": "^1.6.0",
     "typescript": "^3.2.2",
+    "tslint": "^5.12.0",
+    "tslint-microsoft-contrib": "^6.0.0",
+    "tslint-react": "^3.6.0",
+    "tslint-config-prettier": "^1.17.0",
     "typescript-eslint-parser": "^21.0.2",
-    "source-map-explorer": "^1.6.0"
+    "eslint-plugin-typescript": "^0.14.0",
+    "jest": "^23.6.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -50,7 +51,8 @@
     "test": "react-app-rewired test",
     "zip": "jszip ./build -o ./build/CEFiTI.zip",
     "deploy": "jszip -c package.json -o CEFiTI.zip",
-    "analyze": "source-map-explorer build/static/js/main.*"
+    "analyze": "source-map-explorer build/static/js/main.*",
+    "lint": "tslint --project tsconfig.json \"src/**/*.ts?(x)\""
   },
   "babel": {
     "presets": [

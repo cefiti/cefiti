@@ -1,3 +1,4 @@
+/* tslint:disable:max-func-body-length use-simple-attributes react-this-binding-issue */
 import React from 'react'
 import store from './store'
 import uiStore from './uistore'
@@ -26,7 +27,7 @@ function Result() {
 
         {store.result.map((item, i) => {
           return (
-            <div key={item.prag + i}>
+            <div key={`${item.prag}${i}`}>
               <hr />
               <h4 className="h4" style={{ textAlign: 'left', float: 'left' }}>
                 <i>{item.prag}</i> - {item.pragc}
@@ -35,7 +36,7 @@ function Result() {
                 className="small"
                 target="_blank"
                 rel="noopener noreferrer"
-                href={'https://www.google.com.br/search?site=imghp&tbm=isch&q=' + item.prag}
+                href={`https://www.google.com.br/search?site=imghp&tbm=isch&q=${item.prag}`}
                 style={{ textAlign: 'right', float: 'right' }}
               >
                 [FOTOS DA PRAGA]
@@ -44,8 +45,8 @@ function Result() {
               {'          '}
               <br />
               {item.files.map((file, iii) => (
-                <div key={file.link + iii}>
-                  <a target="_blank" rel="noopener noreferrer" href={'leg/' + file.link}>
+                <div key={`${file.link}${iii}`}>
+                  <a target="_blank" rel="noopener noreferrer" href={`leg/${file.link}`}>
                     {file.leg}
                   </a>
                   <br />
@@ -55,7 +56,7 @@ function Result() {
               {item.exig.map((exig, ii) => {
                 return (
                   <div style={{ margin: '6px' }} key={exig + ii}>
-                    <span title={'De: ' + item.orig + ' para ' + item.dest}>
+                    <span title={`De: ${item.orig} para ${item.dest}`}>
                       {ii + 1} - {exig}
                     </span>
                   </div>
@@ -111,12 +112,12 @@ function Result() {
           </div>
           <hr />
           <h4 className="h4">LEGISLAÇÃO GERAL</h4>
-          <a target="_blank" href="leg/IN28-2016.pdf">
+          <a target="_blank" href="leg/IN28-2016.pdf" rel="noreferrer">
             Instrução Normativa MAPA Nº 28, de 24 de agosto de 2016
           </a>
           <br />
           <br />
-          <a target="_blank" href="leg/IN38-2018.pdf">
+          <a target="_blank" href="leg/IN38-2018.pdf" rel="noreferrer">
             Instrução Normativa MAPA Nº 38, de 01 de outubro de 2018
           </a>
           <br />

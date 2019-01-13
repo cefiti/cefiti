@@ -1,3 +1,4 @@
+/* tslint:disable:no-import-side-effect */
 import store from './../src/store'
 import { configure } from 'mobx'
 //import { regras } from './dbRegras'
@@ -10,7 +11,7 @@ configure({ enforceActions: 'observed' }) //useStrict(true)
 
 const estadosSemAC = [
   { estado: '', UF: '' },
-  /*{estado: 'Acre', UF: 'AC'},*/
+  //{estado: 'Acre', UF: 'AC'},
 
   { estado: 'Alagoas', UF: 'AL' },
   { estado: 'Amazonas', UF: 'AM' },
@@ -244,7 +245,10 @@ test('duplicates nomeVul', () => {
     hospedeiros
       .groupBy('nomeVul')
       .aggregate({ nomeVul: 'count' })
-      .filter((item: any) => item.countNomeVul > 1)
+      // tslint:disable-next-line:no-any
+      .filter((item: any) => {
+        return item.countNomeVul > 1
+      })
   ).toEqual([])
   //.map((item :any) => {nomeVul: item.nomeVul, count: item.group.length})
 })

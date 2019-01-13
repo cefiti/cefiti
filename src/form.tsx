@@ -1,7 +1,30 @@
+/* tslint:disable:max-func-body-length */
 import React from 'react'
 import store from './store'
 import uiStore from './uistore'
 import { observer } from 'mobx-react'
+
+interface PropsSelect {
+  value: string
+  source: string[]
+  name: string
+  empty: boolean
+}
+
+function Select({ value, source, name, empty }: PropsSelect) {
+  return (
+    <select className="italic form-select" value={value} name={name} onBlur={store.handleChanges}>
+      {empty && <option value={''} aria-selected="true" />}
+      {source.map(option => {
+        return (
+          <option value={option} key={option} aria-selected="false">
+            {option}
+          </option>
+        )
+      })}
+    </select>
+  )
+}
 
 function Form() {
   return uiStore.searched ? (
@@ -15,7 +38,13 @@ function Form() {
               <label>Espécie Vegetal (nome científico):</label>
             </td>
             <td className="col60">
-              <select
+              <Select
+                value={store.dados.hospSci}
+                name="hospSci"
+                source={store.listaNomesSci}
+                empty={true}
+              />
+              {/*               <select
                 className="italic form-select"
                 value={store.dados.hospSci}
                 name="hospSci"
@@ -29,7 +58,7 @@ function Form() {
                     </option>
                   )
                 })}
-              </select>
+              </select> */}
             </td>
           </tr>
           <tr>
@@ -37,7 +66,14 @@ function Form() {
               <label>Espécie Vegetal (nome vulgar):</label>
             </td>
             <td className="col60">
-              <select
+              hospVul
+              <Select
+                value={store.dados.hospVul}
+                name="hospSci"
+                source={store.listaNomesVul}
+                empty={true}
+              />
+              {/*               <select
                 className="form-select"
                 name="hospVul"
                 value={store.dados.hospVul}
@@ -51,31 +87,22 @@ function Form() {
                     </option>
                   )
                 })}
-              </select>
+              </select> */}
             </td>
-            {/*             <td rowSpan={4} className="col30 space-line">
-              {msgFamilias}
-            </td> */}
           </tr>
           <tr>
             <td className="col30">
               <label>Parte da Planta:</label>
             </td>
             <td className="col60">
-              <select
-                className="form-select"
-                name="prod"
-                value={store.dados.prod}
-                onChange={store.handleChanges}
-              >
+              <Select value={store.dados.prod} name="prod" source={store.partes} empty={false} />
+              {/*               <select className="form-select" name="prod" value={store.dados.prod} onChange={store.handleChanges}>
                 {store.partes.map((option, i) => {
-                  return (
-                    <option value={option} key={i}>
+                  return <option value={option} key={i}>
                       {option}
                     </option>
-                  )
                 })}
-              </select>
+              </select> */}
             </td>
           </tr>
           <tr>
@@ -87,11 +114,11 @@ function Form() {
                 className="form-select"
                 name="orig"
                 value={store.dados.orig}
-                onChange={store.handleChanges}
+                onBlur={store.handleChanges}
               >
                 {store.origem.map((option, i) => {
                   return (
-                    <option value={option.UF} key={i}>
+                    <option value={option.UF} key={i} aria-selected="false">
                       {option.estado}
                     </option>
                   )
@@ -108,11 +135,11 @@ function Form() {
                 className="form-select"
                 name="dest"
                 value={store.dados.dest}
-                onChange={store.handleChanges}
+                onBlur={store.handleChanges}
               >
                 {store.destino.map((option, i) => {
                   return (
-                    <option value={option.UF} key={i}>
+                    <option value={option.UF} key={i} aria-selected="false">
                       {option.estado}
                     </option>
                   )
@@ -125,11 +152,9 @@ function Form() {
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href={
-                  'https://www.google.com.br/search?site=imghp&tbm=isch&q=' +
-                  store.dados.hospSci +
-                  '+plant+OR+planta+ORfruto+OR+fruit+OR+flor+OR+flower'
-                }
+                href={`https://www.google.com.br/search?site=imghp&tbm=isch&q=${
+                  store.dados.hospSci
+                }+plant+OR+planta+ORfruto+OR+fruit+OR+flor+OR+flower`}
               >
                 Fotos da Espécie Vegetal
               </a>

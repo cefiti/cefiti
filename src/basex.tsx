@@ -45,7 +45,7 @@ const Base = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       key={file.link}
-                      href={'leg/' + file.link}
+                      href={`leg/${file.link}`}
                     >
                       {file.leg}
                     </a>

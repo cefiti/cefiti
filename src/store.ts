@@ -1,3 +1,4 @@
+/* tslint:disable:no-import-side-effect */
 import { observable, computed, configure, action } from 'mobx'
 import 'js-plus'
 import { regras, Regra } from './dbRegras'
@@ -89,8 +90,8 @@ export class Store {
       .filter(
         exigen =>
           exigen.hosp.includes(this.dados.hospSci) ||
-          exigen.hosp.includes(this.gender + ' sp.') ||
-          exigen.hosp.includes(this.gender + ' spp.')
+          exigen.hosp.includes(`${this.gender} sp.`) ||
+          exigen.hosp.includes(`${this.gender} spp.`)
       )
       .by('part')
       .flat()
@@ -104,8 +105,8 @@ export class Store {
     return this.db.filter(exigen => {
       return (
         (exigen.hosp.includes(this.dados.hospSci) ||
-          exigen.hosp.includes(this.gender + ' sp.') ||
-          exigen.hosp.includes(this.gender + ' spp.')) &&
+          exigen.hosp.includes(`${this.gender} sp.`) ||
+          exigen.hosp.includes(`${this.gender} spp.`)) &&
         exigen.orig.includes(this.dados.orig) &&
         exigen.dest.includes(this.dados.dest) &&
         exigen.part.includes(this.dados.prod)
@@ -114,7 +115,7 @@ export class Store {
   }
 
   @action
-  handleChanges = (event: { target: { name: string; value: any } }): void => {
+  handleChanges = (event: { target: { name: string; value: string } }): void => {
     switch (event.target.name) {
       case 'hospSci':
         const hospVulg = this.dbHospedeiros.find(hosp => hosp.nomeSci === event.target.value)
@@ -125,7 +126,7 @@ export class Store {
         this.dados.hospSci = hospSci ? hospSci.nomeSci : ''
         break
       default:
-        break
+        break // tslint:disable-line:switch-final-break
     }
     store.dados[event.target.name] = event.target.value
   }
