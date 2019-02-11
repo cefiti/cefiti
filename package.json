@@ -17,34 +17,6 @@
   "bugs": {
     "url": "https://github.com/cefiti/cefiti/issues"
   },
-  "dependencies": {
-    "detect-browser": "^4.0.3",
-    "js-plus": "^0.2.0",
-    "mobx": "^4.6.0",
-    "mobx-react": "^5.4.3",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0"
-  },
-  "devDependencies": {
-    "@babel/plugin-proposal-decorators": "^7.2.3",
-    "@types/jest": "^23.3.10",
-    "@types/node": "^10.12.18",
-    "@types/react": "^16.7.18",
-    "@types/react-dom": "^16.0.11",
-    "jszip-cli": "^1.4.24",
-    "react-scripts": "2.1.3",
-    "react-app-rewired": "^2.0.2",
-    "customize-cra": "^0.2.9",
-    "source-map-explorer": "^1.6.0",
-    "typescript": "^3.2.2",
-    "tslint": "^5.12.0",
-    "tslint-microsoft-contrib": "^6.0.0",
-    "tslint-react": "^3.6.0",
-    "tslint-config-prettier": "^1.17.0",
-    "typescript-eslint-parser": "^21.0.2",
-    "eslint-plugin-typescript": "^0.14.0",
-    "jest": "^23.6.0"
-  },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
@@ -52,7 +24,37 @@
     "zip": "jszip ./build -o ./build/CEFiTI.zip",
     "deploy": "jszip -c package.json -o CEFiTI.zip",
     "analyze": "source-map-explorer build/static/js/main.*",
-    "lint": "tslint --project tsconfig.json \"src/**/*.ts?(x)\""
+    "lint": "tslint -p tsconfig.json \"src/**/*.ts?(x)\"",
+    "eslint": "eslint --ext .ts,.tsx ."
+  },
+  "dependencies": {
+    "detect-browser": "^4.0.3",
+    "js-plus": "^0.2.0",
+    "mobx": "^4.6.0",
+    "mobx-react": "^5.4.3",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.3.0",
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.23",
+    "@types/react": "^16.8.2",
+    "@types/react-dom": "^16.8.0",
+    "@typescript-eslint/eslint-plugin": "^1.3.1-alpha.0",
+    "customize-cra": "^0.2.11",
+    "eslint-config-prettier": "^4.0.0",
+    "jest": "^23.6.0",
+    "jszip-cli": "^1.4.24",
+    "react-app-rewired": "^2.1.0",
+    "react-scripts": "2.1.3",
+    "source-map-explorer": "^1.6.0",
+    "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-microsoft-contrib": "^6.0.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.3.3",
+    "typescript-eslint-parser": "^21.0.2"
   },
   "babel": {
     "presets": [
@@ -66,22 +68,38 @@
     "not op_mini all"
   ],
   "eslintConfig": {
-    "parser": "typescript-eslint-parser",
-    "extends": "react-app",
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "react-app",
+      "plugin:@typescript-eslint/recommended",
+      "prettier",
+      "prettier/@typescript-eslint"
+    ],
     "plugins": [
-      "typescript"
+      "@typescript-eslint"
     ],
     "rules": {
       "no-undef": "off",
       "no-unused-vars": "off",
-      "jsx-a11y/anchor-is-valid": "off"
+      "jsx-a11y/anchor-is-valid": "off",
+      "@typescript-eslint/explicit-member-accessibility": "off",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/no-type-alias": "off",
+      "@typescript-eslint/array-type": "off",
+      "react/jsx-uses-vars": "error",
+      "@typescript-eslint/no-use-before-define": "off",
+      "@typescript-eslint/prefer-interface": "off"
     },
     "parserOptions": {
+      "project": "./tsconfig.json",
       "ecmaFeatures": {
         "legacyDecotators": true
       }
     }
   },
+  "eslintIgnore": [
+    "/assets/**/*"
+  ],
   "entities": [
     {
       "name": "./build",

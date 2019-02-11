@@ -4,7 +4,7 @@ import 'js-plus'
 import { regras, Regra } from './dbRegras'
 import { pragas, Praga } from './dbPragas'
 import { hospedeiros, Hospedeiro } from './dbHospedeiros'
-import estados from './estados'
+import { estados } from './estados'
 
 type Db = Praga & Regra
 
@@ -42,7 +42,7 @@ export class Store {
       .sort((a, b) => a.localeCompare(b))
   }
 
-  getDb() {
+  getDb(): Db[] {
     return this.dbRegras.map(regra => {
       const praga = this.dbPragas.find(item => item.prag === regra.prag)
       if (!praga) {
@@ -128,7 +128,7 @@ export class Store {
       default:
         break // tslint:disable-line:switch-final-break
     }
-    store.dados[event.target.name] = event.target.value
+    this.dados[event.target.name] = event.target.value
   }
 
   @action

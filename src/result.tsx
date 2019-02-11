@@ -44,18 +44,21 @@ function Result() {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               {'          '}
               <br />
-              {item.files.map((file, iii) => (
-                <div key={`${file.link}${iii}`}>
-                  <a target="_blank" rel="noopener noreferrer" href={`leg/${file.link}`}>
-                    {file.leg}
-                  </a>
-                  <br />
-                </div>
-              ))}
+              {// eslint-disable-next-line @typescript-eslint/no-unused-vars
+              item.files.map((file, iii) => {
+                return (
+                  <div key={file.link.concat(iii.toString())}>
+                    <a target="_blank" rel="noopener noreferrer" href={`leg/${file.link}`}>
+                      {file.leg}
+                    </a>
+                    <br />
+                  </div>
+                )
+              })}
               <span className="small underline">{item.desc}</span>
               {item.exig.map((exig, ii) => {
                 return (
-                  <div style={{ margin: '6px' }} key={exig + ii}>
+                  <div style={{ margin: '6px' }} key={exig.concat(ii.toString())}>
                     <span title={`De: ${item.orig} para ${item.dest}`}>
                       {ii + 1} - {exig}
                     </span>

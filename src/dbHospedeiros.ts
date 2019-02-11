@@ -8,7 +8,7 @@ export interface Hospedeiro {
 }
 
 // prettier-ignore
-const hospedeiros: Hospedeiro[] = [
+export const hospedeiros: Hospedeiro[] = [
   { nomeVul: 'Abacate (Persea gratissima)', nomeSci: 'Persea gratissima', count: 1 },
   { nomeVul: 'Abeto Europeu', nomeSci: 'Picea abies', count: 1 },
   { nomeVul: 'Abeto Vermelho Comum', nomeSci: 'Picea abies', count: 1 },
@@ -294,5 +294,3 @@ const hospedeiros: Hospedeiro[] = [
   { nomeVul: 'Vimeiro Púrpura', nomeSci: 'Salix purpurea', count: 1 },
   { nomeVul: 'Viola', nomeSci: 'Viola sp.', count: 1 },
 ]
-
-export { hospedeiros }

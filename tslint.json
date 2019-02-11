@@ -38,6 +38,9 @@
     "no-use-before-declare": false,
     "strict-boolean-expressions": false,
     "react-this-binding-issue": false,
-    "completed-docs": false
+    "completed-docs": false,
+    "array-type": false,
+    "prefer-type-cast": false,
+    "react-a11y-no-onchange": false
   }
 }

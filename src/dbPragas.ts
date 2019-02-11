@@ -12,7 +12,7 @@ export interface Praga {
   files: Files[]
 }
 
-const pragas: Praga[] = [
+export const pragas: Praga[] = [
   {
     prag: 'Bactrocera carambolae',
     pragc: 'MOSCA-DA-CARAMBOLA',
@@ -158,5 +158,3 @@ const pragas: Praga[] = [
     files: [{ leg: 'Instrução Normativa nº 21, de 25 de abril de 2018', link: 'IN21-2018.pdf' }],
   },
 ]
-
-export { pragas }

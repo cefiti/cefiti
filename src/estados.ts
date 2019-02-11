@@ -1,4 +1,4 @@
-const estados = [
+export const estados: Estado[] = [
   { estado: '', UF: '' },
   { estado: 'Acre', UF: 'AC' },
   { estado: 'Alagoas', UF: 'AL' },
@@ -29,4 +29,7 @@ const estados = [
   { estado: 'Tocantins', UF: 'TO' },
 ]
 
-export default estados
+interface Estado {
+  estado: string
+  UF: string
+}

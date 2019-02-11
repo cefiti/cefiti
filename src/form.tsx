@@ -11,9 +11,10 @@ interface PropsSelect {
   empty: boolean
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function Select({ value, source, name, empty }: PropsSelect) {
   return (
-    <select className="italic form-select" value={value} name={name} onBlur={store.handleChanges}>
+    <select className="italic form-select" value={value} name={name} onChange={store.handleChanges}>
       {empty && <option value={''} aria-selected="true" />}
       {source.map(option => {
         return (
@@ -66,7 +67,6 @@ function Form() {
               <label>Espécie Vegetal (nome vulgar):</label>
             </td>
             <td className="col60">
-              hospVul
               <Select
                 value={store.dados.hospVul}
                 name="hospSci"
@@ -114,9 +114,10 @@ function Form() {
                 className="form-select"
                 name="orig"
                 value={store.dados.orig}
-                onBlur={store.handleChanges}
+                onChange={store.handleChanges}
               >
-                {store.origem.map((option, i) => {
+                {// eslint-disable-next-line @typescript-eslint/no-unused-vars
+                store.origem.map((option, i) => {
                   return (
                     <option value={option.UF} key={i} aria-selected="false">
                       {option.estado}
@@ -135,9 +136,10 @@ function Form() {
                 className="form-select"
                 name="dest"
                 value={store.dados.dest}
-                onBlur={store.handleChanges}
+                onChange={store.handleChanges}
               >
-                {store.destino.map((option, i) => {
+                {// eslint-disable-next-line @typescript-eslint/no-unused-vars
+                store.destino.map((option, i) => {
                   return (
                     <option value={option.UF} key={i} aria-selected="false">
                       {option.estado}

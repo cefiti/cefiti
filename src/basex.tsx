@@ -21,7 +21,8 @@ const Base = () => {
           </tr>
         </thead>
         <tbody>
-          {store.db.map((item, i) => {
+          {// eslint-disable-next-line @typescript-eslint/no-unused-vars
+          store.db.map((item, i) => {
             return (
               <tr key={i}>
                 <td style={{ width: '10%' }}>

@@ -49,6 +49,7 @@ const Browser = () => (
   </div>
 )
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const style: { [key: string]: React.CSSProperties } = {
   container: {
     fontFamily: "'Helvetica', Arial, Verdana, sans-serif",

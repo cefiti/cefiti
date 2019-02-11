@@ -245,10 +245,21 @@ test('duplicates nomeVul', () => {
     hospedeiros
       .groupBy('nomeVul')
       .aggregate({ nomeVul: 'count' })
-      // tslint:disable-next-line:no-any
-      .filter((item: any) => {
-        return item.countNomeVul > 1
+      .filter(item => {
+        return item.count_nameVulg
       })
   ).toEqual([])
   //.map((item :any) => {nomeVul: item.nomeVul, count: item.group.length})
 })
+
+/* test('hh', () => {
+  const hh = hospedeiros.groupBy('nomeSci')
+  const ag = hh.aggregate({ nomeSci: 'count' })
+  console.log(ag)
+}) 
+
+test('hhh', () => {
+  const hh = hospedeiros.groupBy(item => item.nomeVul.substr(0, 5))
+  const ag = hh.aggregate({ nomeSci: 'count' })
+  console.log(hh)
+})*/
