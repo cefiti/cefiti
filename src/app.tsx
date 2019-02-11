@@ -4,16 +4,22 @@ import Menu from './menu'
 import Result from './result'
 import Form from './form'
 import { store } from './store'
-import { observer } from 'mobx-react'
+import { observer } from 'mobx-react-lite'
 
 const App = () => {
-  return <div id="resolucao">
+  return (
+    <div id="resolucao">
       <div id="moldura-topo">
         <div id="topo">
           <div id="identificacao-ministerio">
             <span>
               <div id="imagemGov" />
-              <a href="http://www.brasil.gov.br" target="_blank" rel="noopener noreferrer" id="brasilgov">
+              <a
+                href="http://www.brasil.gov.br"
+                target="_blank"
+                rel="noopener noreferrer"
+                id="brasilgov"
+              >
                 <div />
               </a>
             </span>
@@ -49,8 +55,8 @@ const App = () => {
           As informações apresentadas não substituem o texto legal vigente, publicado em Diário
           Oficial da União, e referem-se a requisitos fitossanitários, não dispensando outras
           exigências estabelecidas em normas específicas. No caso de interceptação de praga, serão
-          adotados os procedimentos constantes do Decreto 24.114, de 12 de abril de 1934. Quando
-          se tratar de material de multiplicação ou propagação vegetal deverá ser observada a
+          adotados os procedimentos constantes do Decreto 24.114, de 12 de abril de 1934. Quando se
+          tratar de material de multiplicação ou propagação vegetal deverá ser observada a
           Legislação de Sementes e Mudas.
         </p>
         <br />
@@ -62,9 +68,8 @@ const App = () => {
         <div>
           <h5 className="center">Departamento de Sanidade Vegetal - DSV/SDA/MAPA</h5>
           <h5 className="center">
-            Desenvolvido pelo SSV-MT -<a href="mailto:ssv-mt@agricultura.gov.br">
-              ssv-mt@agricultura.gov.br
-            </a>
+            Desenvolvido pelo SSV-MT -
+            <a href="mailto:ssv-mt@agricultura.gov.br">ssv-mt@agricultura.gov.br</a>
           </h5>
           <h6 className="center">
             Código fonte:
@@ -73,6 +78,7 @@ const App = () => {
         </div>
       </div>
     </div>
+  )
   //}
 }
 

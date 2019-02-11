@@ -2,7 +2,7 @@
 import React from 'react'
 import store from './store'
 import uiStore from './uistore'
-import { observer } from 'mobx-react'
+import { observer } from 'mobx-react-lite'
 
 interface PropsSelect {
   value: string

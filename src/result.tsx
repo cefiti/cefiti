@@ -2,7 +2,7 @@
 import React from 'react'
 import store from './store'
 import uiStore from './uistore'
-import { observer } from 'mobx-react'
+import { observer } from 'mobx-react-lite'
 
 //const search: string = '+symptoms+OR+sintomas+OR+pest+OR+praga+OR+doença+OR+disease+OR+inseto+OR+insect+OR+fungi+OR+fungi+OR+bactéria';
 
