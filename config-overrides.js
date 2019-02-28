@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const {
   override,
   addDecoratorsLegacy,
   useEslintRc,
-  disableChunk,
+  //disableChunk,
   enableEslintTypescript,
   //addBundleVisualizer,
   //addWebpackAlias,
@@ -12,7 +13,7 @@ module.exports = override(
   // config => console.log(config.module.rules),
   addDecoratorsLegacy(),
   useEslintRc(),
-  disableChunk(),
+  //disableChunk(),
   enableEslintTypescript()
   /*
   config => (process.env.BUNDLE_VISUALIZE == 1 ? addBundleVisualizer()(config) : config),
