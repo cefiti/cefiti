@@ -1,6 +1,6 @@
 //CEFiTI - Pragas
 
-interface Files {
+/* interface Files {
   leg: string
   link: string
 }
@@ -10,7 +10,7 @@ export interface Praga {
   hosp: string[]
   pragc: string
   files: Files[]
-}
+} */
 
 export const pragas: Praga[] = [
   {

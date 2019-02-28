@@ -1,16 +1,16 @@
 //CEFiTI - Regras
 
-export interface Regra {
+/* export interface Regra {
   desc: string
   part: string[]
   orig: string[]
   dest: string[]
   prag: string
   exig: string[]
-}
+} */
 
 // prettier-ignore
-export const regras: Regra[] = [
+const regras: Regra[] = [
 
   //MOSCA-DA-CARAMBOLA
   {
@@ -580,3 +580,5 @@ export const regras: Regra[] = [
       'PTV com a seguinte DA: "O material de propagação é proveniente de Área sob Erradicação e foi produzido em imóvel sem ocorrência de Cancro Cítrico (Xanthomonas citri subsp. citri), conforme preconiza a legislação específica vigente".'
     ]
   }]
+
+export { regras }

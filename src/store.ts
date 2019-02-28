@@ -1,12 +1,10 @@
 /* tslint:disable:no-import-side-effect */
 import { observable, computed, configure, action } from 'mobx'
 import 'js-plus'
-import { regras, Regra } from './dbRegras'
-import { pragas, Praga } from './dbPragas'
-import { hospedeiros, Hospedeiro } from './dbHospedeiros'
+import { regras } from './dbRegras'
+import { pragas } from './dbPragas'
+import { hospedeiros } from './dbHospedeiros'
 import { estados } from './estados'
-
-type Db = Praga & Regra
 
 configure({ enforceActions: 'observed' }) //useStrict(true)
 
@@ -25,10 +23,10 @@ export class Store {
   dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
 
   constructor(dbRegras: Regra[], dbHospedeiros: Hospedeiro[], dbPragas: Praga[]) {
-    //console.log(dbPragas[0])
-    this.dbRegras = dbRegras
     this.dbHospedeiros = dbHospedeiros
     this.dbPragas = dbPragas
+    this.dbRegras = dbRegras
+
     this.db = this.getDb()
     const hospedeirosPragas = this.dbPragas.flatMap(praga => praga.hosp)
     const hospedeirosRegulamentados = this.dbHospedeiros.filter(hospedeiro =>
@@ -158,7 +156,7 @@ export class Store {
   exig: string[]
 } */
 
-export const store = new Store(regras, hospedeiros, pragas)
+const store = new Store(regras, hospedeiros, pragas)
 export default store
 
 /*   getHospedeirosSci() {

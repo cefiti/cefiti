@@ -28,8 +28,3 @@ export const estados: Estado[] = [
   { estado: 'São Paulo', UF: 'SP' },
   { estado: 'Tocantins', UF: 'TO' },
 ]
-
-interface Estado {
-  estado: string
-  UF: string
-}
