@@ -1,0 +1,61 @@
+//import { pragas } from './dbPragas'
+
+//import { hospedeiros } from './dbHospedeiros'
+//import { pragas } from './dbPragas'
+//import { regras} from './dbRegras'
+
+//export { hospedeiros, pragas, regras }
+
+/* const h = async ():Promise<Hospedeiro[]> =>  await import('./dbHospedeiros')
+
+
+interface Db {
+  hospedeiros: Hospedeiro[]
+  pragas: Praga[]
+  regras: Regra[]
+}
+
+const db = new Promise(async $export => {
+  const hospedeiros: typeof import('./dbHospedeiros') = await import('./dbHospedeiros')
+  const pragas: typeof import('./dbPragas') = await import('./dbPragas')
+  const regras: typeof import('./dbRegras') = await import('./dbRegras')
+  $export({ hospedeiros, pragas, regras })
+}).then(db => db)
+
+export default { h } */
+/*  export default new Promise(async () => {
+   const hospedeiros: typeof import("./dbHospedeiros") = await import('./dbHospedeiros')
+  //const pragas = await import('./dbPragas')
+  //const regras = await import('./dbRegras')
+  return { hospedeiros/* , pragas, regras *}
+})() 
+ */
+/* type ModuleType = typeof import("./dbHospedeiros");
+
+const a: Hospedeiro[] = []
+const b: ModuleType = []
+console.log((a===b));
+
+
+
+
+  const x = (async function () {
+    const hospedeiros = await import('./dbHospedeiros')
+    const pragas = await import('./dbPragas')
+    const regras = await import('./dbRegras')
+    return { hospedeiros, pragas, regras }
+  }()); */
+
+/* const db = () => {
+  let hospedeiros: Hospedeiro[] = []
+  let pragas: Praga[] = []
+  let regras: Regra[] =[]
+  import('./dbHospedeiros')
+    .then(({ hospedeiros }) => {
+      hospedeiros = hospedeiros
+    })
+    .catch(err => {
+      // Handle failure
+    });
+    return {hospedeiros}
+}; */

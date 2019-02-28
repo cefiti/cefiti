@@ -45,21 +45,6 @@ function Form() {
                 source={store.listaNomesSci}
                 empty={true}
               />
-              {/*               <select
-                className="italic form-select"
-                value={store.dados.hospSci}
-                name="hospSci"
-                onChange={store.handleChanges}
-              >
-                <option value={''} />
-                {store.listaNomesSci.map(option => {
-                  return (
-                    <option value={option} key={option}>
-                      {option}
-                    </option>
-                  )
-                })}
-              </select> */}
             </td>
           </tr>
           <tr>
@@ -73,21 +58,6 @@ function Form() {
                 source={store.listaNomesVul}
                 empty={true}
               />
-              {/*               <select
-                className="form-select"
-                name="hospVul"
-                value={store.dados.hospVul}
-                onChange={store.handleChanges}
-              >
-                <option value={''} />
-                {store.listaNomesVul.map(option => {
-                  return (
-                    <option value={option} key={option}>
-                      {option}
-                    </option>
-                  )
-                })}
-              </select> */}
             </td>
           </tr>
           <tr>
@@ -96,13 +66,6 @@ function Form() {
             </td>
             <td className="col60">
               <Select value={store.dados.prod} name="prod" source={store.partes} empty={false} />
-              {/*               <select className="form-select" name="prod" value={store.dados.prod} onChange={store.handleChanges}>
-                {store.partes.map((option, i) => {
-                  return <option value={option} key={i}>
-                      {option}
-                    </option>
-                })}
-              </select> */}
             </td>
           </tr>
           <tr>
@@ -117,7 +80,7 @@ function Form() {
                 onChange={store.handleChanges}
               >
                 {// eslint-disable-next-line @typescript-eslint/no-unused-vars
-                store.origem.map((option, i) => {
+                store.origem.map((option: Estado, i: number) => {
                   return (
                     <option value={option.UF} key={i} aria-selected="false">
                       {option.estado}
@@ -139,7 +102,7 @@ function Form() {
                 onChange={store.handleChanges}
               >
                 {// eslint-disable-next-line @typescript-eslint/no-unused-vars
-                store.destino.map((option, i) => {
+                store.destino.map((option: Estado, i: number) => {
                   return (
                     <option value={option.UF} key={i} aria-selected="false">
                       {option.estado}

@@ -25,7 +25,7 @@ function Result() {
         </div>
         <span>{uiStore.searched}</span>
 
-        {store.result.map((item, i) => {
+        {store.result.map((item: Db, i: number) => {
           return (
             <div key={`${item.prag}${i}`}>
               <hr />
