@@ -1,15 +1,15 @@
 /* #######
-	DefiniÁıes da visualizaÁ„o da p·gina de impress„o:
+	Defini√ß√µes da visualiza√ß√£o da p√°gina de impress√£o:
 
-	Todos os propriedades est„o escritas em ordem alfabÈtica.
-	O uso do '*' antes da propriedade significa que a mesma ser· aplicada (ou ajustada) apenas no Internet Explorer.
+	Todos os propriedades est√£o escritas em ordem alfab√©tica.
+	O uso do '*' antes da propriedade significa que a mesma ser√° aplicada (ou ajustada) apenas no Internet Explorer.
 	
 ####### */
 @media print {
 
 /* ##### estilo-template.css #### */
 
-* { /* Se aplica a todas as declaraÁıes */
+* { /* Se aplica a todas as declara√ß√µes */
   border      :0;
   color       :#000;
   font-family :arial, verdana helvetica;

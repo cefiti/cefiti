@@ -1,40 +1,58 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta charset="utf-8">
-  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
-  <meta name="description" content="Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="theme-color" content="#000000">
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-  <title>CEFiTI</title>
-  <script>
-    (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-    ga('create', 'UA-60679065-1', 'auto');
-    ga('send', 'pageview');
-  </script>
-  <link rel="stylesheet" type="text/css" href="http://sistemasweb.agricultura.gov.br/styles_java/css/estilo-template.css">
+  <head>
+    <meta charset="utf-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
+    <meta
+      name="description"
+      content="Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <title>CEFiTI</title>
+    <script>
+      if (
+        navigator.userAgent.indexOf('MSIE') !== -1 ||
+        navigator.appVersion.indexOf('Trident/') > -1
+      ) {
+        window.alert(
+          'CEFiTI\n\nO navegador Internet Explorer não é suportado.\n\nUtilize um dos navegadores a seguir: Google Chrome, Mozilla Firefox, Microsoft Edge ou Safari.'
+        )
+      }
+    </script>
+    <script>
+      ;(function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r
+        ;(i[r] =
+          i[r] ||
+          function() {
+            ;(i[r].q = i[r].q || []).push(arguments)
+          }),
+          (i[r].l = 1 * new Date())
+        ;(a = s.createElement(o)), (m = s.getElementsByTagName(o)[0])
+        a.async = 1
+        a.src = g
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga')
+      ga('create', 'UA-60679065-1', 'auto')
+      ga('send', 'pageview')
+    </script>
+    <!--   <link rel="stylesheet" type="text/css" href="http://sistemasweb.agricultura.gov.br/styles_java/css/estilo-template.css">
   <link rel="stylesheet" type="text/css" href="http://sistemasweb.agricultura.gov.br/styles_java/css/estilo-menu.css">
   <link rel="stylesheet" type="text/css" href="http://sistemasweb.agricultura.gov.br/styles_java/css/estilo-tabela.css">
   <link rel="stylesheet" type="text/css" href="http://sistemasweb.agricultura.gov.br/styles_java/css/estilo-formulario.css">
   <link rel="stylesheet" type="text/css" href="http://sistemasweb.agricultura.gov.br/styles_java/css/estilo-link.css">
   <link rel="stylesheet" type="text/css" href="http://sistemasweb.agricultura.gov.br/styles_java/css/estilo-abas.css">
-  <link rel="stylesheet" type="text/css" href="http://sistemasweb.agricultura.gov.br/styles_java/css/estilo-impressao.css">
-  <link rel="stylesheet" type="text/css" href="app.css">
-</head>
+  <link rel="stylesheet" type="text/css" href="http://sistemasweb.agricultura.gov.br/styles_java/css/estilo-impressao.css"> 
+  <link rel="stylesheet" type="text/css" href="app.css" />-->
+  </head>
 
-<body>
-  <noscript>
-    You need to enable JavaScript to run this app.
-  </noscript>
-  <div id="root"></div>
-</body>
-
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root"></div>
+  </body>
 </html>

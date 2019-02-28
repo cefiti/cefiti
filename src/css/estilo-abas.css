@@ -1,0 +1,72 @@
+/* #######
+
+	Definições de apresentação da navegação por abas ou 'tabs':
+	
+		#nav-abas
+		.nav-aba-selecionada
+		.nav-aba-desabilitada
+		#nav-aba-conteudo
+
+####### */
+
+div#nav-abas {
+  background: url(./img/bkg-nav-aba.gif) repeat-x bottom;
+  font-size: 0.9em;
+  font-weight: bold;
+  height: 27px;
+}
+
+div#nav-abas ul li {
+  border-bottom: 0;
+  float: left;
+  list-style: none;
+  margin-right: 2px;
+}
+
+div#nav-abas ul li a {
+  background: #d3cdb8;
+  color: #3a3a3a;
+  display: block;
+  padding: 6px 7px 5px 7px;
+  text-decoration: none;
+}
+
+div#nav-abas ul li a:hover {
+  text-decoration: underline;
+}
+
+#nav-abas ul li.nav-aba-selecionada {
+  background: #fff;
+  border: 1px solid #6b5a22;
+  border-bottom: 1px solid #fff;
+  color: #6b5a22;
+  padding: 5px 0 5px 7px;
+}
+
+div#nav-abas ul li.nav-aba-selecionada span {
+  padding-right: 7px;
+}
+
+div#nav-abas ul li.nav-aba-desabilitada {
+  background: #ccc;
+  padding: 6px 0 5px 7px;
+}
+
+div#nav-abas ul li.nav-aba-desabilitada span {
+  color: #999;
+  padding: 6px 7px 4px 0;
+}
+
+div#nav-aba-conteudo {
+  background: #fff;
+  padding: 10px;
+  overflow: hidden;
+}
+
+div#nav-aba-conteudo h4 {
+  background: url(./img/blt-subtitulo.gif) left no-repeat;
+  border-bottom: 1px solid #ccc;
+  font-size: 1em;
+  margin-bottom: 15px;
+  padding: 0 0 2px 10px;
+}
