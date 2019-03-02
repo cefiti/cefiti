@@ -1,7 +1,6 @@
-/* tslint:disable:max-func-body-length */
 import React from 'react'
-import store from './store'
-import uiStore from './uistore'
+import { store } from './store'
+import { uiStore } from './uistore'
 import { observer } from 'mobx-react-lite'
 
 interface PropsSelect {

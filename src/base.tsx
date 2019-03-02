@@ -1,7 +1,7 @@
 import React from 'react'
-import uiStore from './uistore'
-import store from './store'
 import { observer } from 'mobx-react-lite'
+import { uiStore } from './uistore'
+import { store } from './store'
 
 const Base = () => {
   return uiStore.exibeBase ? (

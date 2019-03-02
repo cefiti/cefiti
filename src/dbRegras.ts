@@ -10,7 +10,7 @@
 } */
 
 // prettier-ignore
-const regras: Regra[] = [
+export const regras: Regra[] = [
 
   //MOSCA-DA-CARAMBOLA
   {
@@ -581,4 +581,3 @@ const regras: Regra[] = [
     ]
   }]
 
-export { regras }

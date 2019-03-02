@@ -1,54 +1,52 @@
-/* tslint:disable:no-import-side-effect */
-import { observable, computed, configure, action } from 'mobx'
+import { observable, computed, configure, action, runInAction } from 'mobx'
 import 'js-plus'
-import { regras } from './dbRegras'
-import { pragas } from './dbPragas'
-import { hospedeiros } from './dbHospedeiros'
-import { estados } from './estados'
 
-configure({ enforceActions: 'observed' }) //useStrict(true)
+configure({ enforceActions: 'observed' })
 
 export class Store {
-  dbRegras: Regra[]
-  dbHospedeiros: Hospedeiro[]
-  dbPragas: Praga[]
-  db: Db[]
-  dbVersion = '24'
-  appVersion = '5.1'
-  estados = estados
-  listaNomesSci: string[]
-  listaNomesVul: string[]
+  @observable dbRegras: Regra[] = []
+  @observable dbHospedeiros: Hospedeiro[] = []
+  @observable dbPragas: Praga[] = []
+  @observable db: Db[] = []
+  @observable estados: Estado[] = []
 
   @observable
   dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
 
-  constructor(dbRegras: Regra[], dbHospedeiros: Hospedeiro[], dbPragas: Praga[]) {
-    this.dbHospedeiros = dbHospedeiros
-    this.dbPragas = dbPragas
-    this.dbRegras = dbRegras
-
-    this.db = this.getDb()
-    const hospedeirosPragas = this.dbPragas.flatMap(praga => praga.hosp)
-    const hospedeirosRegulamentados = this.dbHospedeiros.filter(hospedeiro =>
-      hospedeirosPragas.includes(hospedeiro.nomeSci)
-    )
-    this.listaNomesSci = hospedeirosRegulamentados
-      .unique('nomeSci')
-      .sort((a, b) => a.localeCompare(b))
-    this.listaNomesVul = hospedeirosRegulamentados
-      .unique('nomeVul')
-      .sort((a, b) => a.localeCompare(b))
+  async getDb() {
+    const { regras, pragas, hospedeiros, estados } = await import('./db')
+    runInAction(() => {
+      this.dbHospedeiros = hospedeiros
+      this.dbRegras = regras
+      this.dbPragas = pragas
+      this.estados = estados
+      this.db = this.dbRegras.map(regra => {
+        const praga = this.dbPragas.find(item => item.prag === regra.prag)
+        if (!praga) {
+          throw Error(`Dados da praga ${regra.prag} não cadastrados.`)
+        } else {
+          return { ...regra, ...praga }
+        }
+      })
+    })
   }
 
-  getDb(): Db[] {
-    return this.dbRegras.map(regra => {
-      const praga = this.dbPragas.find(item => item.prag === regra.prag)
-      if (!praga) {
-        throw Error(`Dados da praga ${regra.prag} não cadastrados.`)
-      } else {
-        return { ...regra, ...praga }
-      }
-    })
+  @computed get hospedeirosPragas() {
+    return this.dbPragas.flatMap(praga => praga.hosp)
+  }
+
+  @computed get hospedeirosRegulamentados() {
+    return this.dbHospedeiros.filter(hospedeiro =>
+      this.hospedeirosPragas.includes(hospedeiro.nomeSci)
+    )
+  }
+
+  @computed get listaNomesSci() {
+    return this.hospedeirosRegulamentados.unique('nomeSci').sort((a, b) => a.localeCompare(b))
+  }
+
+  @computed get listaNomesVul() {
+    return this.hospedeirosRegulamentados.unique('nomeVul').sort((a, b) => a.localeCompare(b))
   }
 
   @computed
@@ -124,7 +122,7 @@ export class Store {
         this.dados.hospSci = hospSci ? hospSci.nomeSci : ''
         break
       default:
-        break // tslint:disable-line:switch-final-break
+        break
     }
     this.dados[event.target.name] = event.target.value
   }
@@ -139,51 +137,6 @@ export class Store {
   }
 }
 
-/* interface Dbbb {
-  prag: string
-  hosp: string[]
-  pragc: string
-  files: [
-    {
-      leg: string
-      link: string
-    }
-  ]
-  desc: string
-  part: string[]
-  orig: string[]
-  dest: string[]
-  exig: string[]
-} */
-
-const store = new Store(regras, hospedeiros, pragas)
-export default store
-
-/*   getHospedeirosSci() {
-    const hospedeirosPragas = this.dbPragas.flatMap(praga => praga.hosp)
-    const hospedeirosRegulamentados = this.dbHospedeiros.filter(hospedeiro =>
-      hospedeirosPragas.includes(hospedeiro.nomeSci)
-    )
-    console.log(
-      hospedeirosPragas.count(),
-      hospedeirosPragas //hospedeirosPragas,
-        .unique()
-        .count(),
-      this.dbPragas.length,
-      this.dbPragas
-        .map(praga => praga.hosp)
-        .flatten()
-        .unique().length,
-      this.dbHospedeiros.length,
-      hospedeirosRegulamentados.length,
-      this.dbHospedeiros.map(hospedeiro => hospedeiro.nomeSci).count(),
-      this.dbHospedeiros
-        .map(hospedeiro => hospedeiro.nomeVul)
-        .unique()
-        .count(),
-      this.dbHospedeiros
-        .map(hospedeiro => hospedeiro.nomeSci)
-        .unique()
-        .count()
-    )
-  } */
+const store = new Store()
+store.getDb()
+export { store }

@@ -1,8 +1,9 @@
 import React from 'react'
-import store from './store'
-import { observer } from 'mobx-react-lite'
+//import store from './store'
+//import { observer } from 'mobx-react-lite'
+import { version } from './../package.json'
 
-const Head = () => (
+export const Head = () => (
   <div id="moldura-topo">
     <div id="topo">
       <div id="identificacao-ministerio">
@@ -21,7 +22,7 @@ const Head = () => (
       <div id="identificacao-sistema" style={{ float: 'none' }}>
         <br />
         <div style={{ float: 'right', color: '#fff', padding: '5px 10px 5px 15px' }}>
-          Versão {store.appVersion}-{store.dbVersion}
+          Versão {version}
         </div>
         <h1>CEFiTI</h1>
         <div style={{ float: 'right', color: '#fff', padding: '5px 10px 5px 15px' }}>
@@ -33,5 +34,3 @@ const Head = () => (
     </div>
   </div>
 )
-
-export default observer(Head as React.SFC)

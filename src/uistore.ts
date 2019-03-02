@@ -1,5 +1,5 @@
 import { observable, action, configure } from 'mobx'
-import store from './store'
+import { store } from './store'
 
 configure({ enforceActions: 'observed' }) //useStrict(true)
 
@@ -47,4 +47,3 @@ class UiStore {
 }
 
 export const uiStore = new UiStore()
-export default uiStore

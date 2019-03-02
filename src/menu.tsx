@@ -1,6 +1,5 @@
-/* tslint:disable:react-this-binding-issue */
 import React from 'react'
-import uiStore from './uistore'
+import { uiStore } from './uistore'
 import { observer } from 'mobx-react-lite'
 
 const Menu = () => {

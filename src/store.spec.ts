@@ -1,5 +1,5 @@
 /* tslint:disable:no-import-side-effect */
-import store from './../src/store'
+import { store } from './../src/store'
 import { configure } from 'mobx'
 //import { regras } from './dbRegras'
 //import { pragas } from './dbPragas'

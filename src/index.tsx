@@ -1,4 +1,6 @@
-//import { detect } from 'detect-browser'
+import React from 'react'
+import ReactDom from 'react-dom'
+import { App } from './app'
 
 import './css/estilo-abas.css'
 import './css/estilo-formulario.css'
@@ -17,10 +19,9 @@ if (browser && browser.name === 'ie') {
 O navegador Internet Explorer não é suportado.
 Utilize um dos navegadores a seguir: Google Chrome, Mozilla Firefox, Microsoft Edge ou Safari.`)
 } else { */
-import './app'
 //}
 
 //const Main = () =>
 //  browser && browser.name === 'ie' /*  && browser.version !== '11.0.0' */ ? <Browser /> : <App />
 
-//ReactDom.render(<Main />, document.getElementById('root'))
+ReactDom.render(<App />, document.getElementById('root'))

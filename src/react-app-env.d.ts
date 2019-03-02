@@ -42,3 +42,20 @@ interface Estado {
   estado: string
   UF: string
 }
+
+/* interface Dbbb {
+  prag: string
+  hosp: string[]
+  pragc: string
+  files: [
+    {
+      leg: string
+      link: string
+    }
+  ]
+  desc: string
+  part: string[]
+  orig: string[]
+  dest: string[]
+  exig: string[]
+} */

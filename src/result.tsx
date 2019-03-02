@@ -1,7 +1,6 @@
-/* tslint:disable:max-func-body-length use-simple-attributes react-this-binding-issue */
 import React from 'react'
-import store from './store'
-import uiStore from './uistore'
+import { store } from './store'
+import { uiStore } from './uistore'
 import { observer } from 'mobx-react-lite'
 
 //const search: string = '+symptoms+OR+sintomas+OR+pest+OR+praga+OR+doença+OR+disease+OR+inseto+OR+insect+OR+fungi+OR+fungi+OR+bactéria';
@@ -151,7 +150,3 @@ function Result() {
 export default observer(Result as React.SFC)
 
 //                   {item.proib ? (<span className="alert"><div>TRÂNSITO PROIBIDO</div></span>) : ''}
-
-/*              <p className="center no-print">Se a espécie vegetal ou a parte da planta buscada não constar das respectivas listas, e a espécie não pertencer às
-                famílias Arecaceae, ou Heliconiaceae, ou Pandanaceae, ou Strelitziaceae, ou Zingiberaceae, então conclui-se que
-                não há nenhuma exigência fitossanitária para o trânsito interestadual</p>*/
