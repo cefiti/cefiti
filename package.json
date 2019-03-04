@@ -8,6 +8,9 @@
     "type": "git",
     "url": "git+https://github.com/cefiti/cefiti.git"
   },
+  "bugs": {
+    "url": "https://github.com/cefiti/cefiti/issues"
+  },
   "keywords": [],
   "authors": [
     "Dalci de Jesus Bagolin",
@@ -15,9 +18,6 @@
   ],
   "license": "MIT",
   "homepage": ".",
-  "bugs": {
-    "url": "https://github.com/cefiti/cefiti/issues"
-  },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
@@ -36,7 +36,6 @@
     "react-dom": "^16.8.3"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-decorators": "^7.3.0",
     "@types/jest": "^23.3.10",
     "@types/node": "^11.9.5",
     "@types/react": "^16.8.5",

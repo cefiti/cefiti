@@ -8,6 +8,14 @@
 }
  */
 
+interface Dados {
+  hospSci: string
+  hospVul: string
+  prod: string
+  orig: string
+  dest: string
+}
+
 interface Regra {
   desc: string
   part: string[]
@@ -42,6 +50,10 @@ interface Estado {
   estado: string
   UF: string
 }
+
+type EventChange = { target: { name: keyof Dados; value: string } } & React.ChangeEvent<
+  HTMLSelectElement
+>
 
 /* interface Dbbb {
   prag: string

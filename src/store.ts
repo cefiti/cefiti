@@ -1,5 +1,6 @@
 import { observable, computed, configure, action, runInAction } from 'mobx'
 import 'js-plus'
+import { ThHTMLAttributes } from 'react'
 
 configure({ enforceActions: 'observed' })
 
@@ -11,7 +12,7 @@ export class Store {
   @observable estados: Estado[] = []
 
   @observable
-  dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
+  dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
 
   async getDb() {
     const { regras, pragas, hospedeiros, estados } = await import('./db')
@@ -111,7 +112,7 @@ export class Store {
   }
 
   @action
-  handleChanges = (event: { target: { name: string; value: string } }): void => {
+  handleChanges = (event: EventChange): void => {
     switch (event.target.name) {
       case 'hospSci':
         const hospVulg = this.dbHospedeiros.find(hosp => hosp.nomeSci === event.target.value)

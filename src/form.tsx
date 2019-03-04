@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { store } from './store'
 import { uiStore } from './uistore'
 import { observer } from 'mobx-react-lite'
@@ -26,6 +26,18 @@ function Select({ value, source, name, empty }: PropsSelect) {
   )
 }
 
+const Cel: FC<{ label: string; children: React.ReactElement<typeof Select> }> = ({
+  label,
+  children,
+}) => (
+  <tr>
+    <td className="col30">
+      <label>{label}</label>
+    </td>
+    <td className="col60">{children}</td>
+  </tr>
+)
+
 function Form() {
   return uiStore.searched ? (
     <div />
@@ -33,84 +45,59 @@ function Form() {
     <form>
       <table className="table-form no-print">
         <tbody>
-          <tr>
-            <td className="col30">
-              <label>Espécie Vegetal (nome científico):</label>
-            </td>
-            <td className="col60">
-              <Select
-                value={store.dados.hospSci}
-                name="hospSci"
-                source={store.listaNomesSci}
-                empty={true}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td className="col30">
-              <label>Espécie Vegetal (nome vulgar):</label>
-            </td>
-            <td className="col60">
-              <Select
-                value={store.dados.hospVul}
-                name="hospSci"
-                source={store.listaNomesVul}
-                empty={true}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td className="col30">
-              <label>Parte da Planta:</label>
-            </td>
-            <td className="col60">
-              <Select value={store.dados.prod} name="prod" source={store.partes} empty={false} />
-            </td>
-          </tr>
-          <tr>
-            <td className="col30">
-              <label>Origem:</label>
-            </td>
-            <td className="col60">
-              <select
-                className="form-select"
-                name="orig"
-                value={store.dados.orig}
-                onChange={store.handleChanges}
-              >
-                {// eslint-disable-next-line @typescript-eslint/no-unused-vars
-                store.origem.map((option: Estado, i: number) => {
-                  return (
-                    <option value={option.UF} key={i} aria-selected="false">
-                      {option.estado}
-                    </option>
-                  )
-                })}
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td className="col30">
-              <label>Destino:</label>
-            </td>
-            <td className="col60">
-              <select
-                className="form-select"
-                name="dest"
-                value={store.dados.dest}
-                onChange={store.handleChanges}
-              >
-                {// eslint-disable-next-line @typescript-eslint/no-unused-vars
-                store.destino.map((option: Estado, i: number) => {
-                  return (
-                    <option value={option.UF} key={i} aria-selected="false">
-                      {option.estado}
-                    </option>
-                  )
-                })}
-              </select>
-            </td>
-          </tr>
+          <Cel label="Espécie Vegetal (nome científico):">
+            <Select
+              value={store.dados.hospSci}
+              name="hospSci"
+              source={store.listaNomesSci}
+              empty={true}
+            />
+          </Cel>
+          <Cel label={'Espécie Vegetal (nome vulgar):'}>
+            <Select
+              value={store.dados.hospVul}
+              name="hospVul"
+              source={store.listaNomesVul}
+              empty={true}
+            />
+          </Cel>
+          <Cel label={'Parte da Planta:'}>
+            <Select value={store.dados.prod} name="prod" source={store.partes} empty={false} />
+          </Cel>
+          <Cel label={'Origem:'}>
+            <select
+              className="form-select"
+              name="orig"
+              value={store.dados.orig}
+              onChange={store.handleChanges}
+            >
+              {// eslint-disable-next-line @typescript-eslint/no-unused-vars
+              store.origem.map((option: Estado, i: number) => {
+                return (
+                  <option value={option.UF} key={i} aria-selected="false">
+                    {option.estado}
+                  </option>
+                )
+              })}
+            </select>
+          </Cel>
+          <Cel label="Destino">
+            <select
+              className="form-select"
+              name="dest"
+              value={store.dados.dest}
+              onChange={store.handleChanges}
+            >
+              {// eslint-disable-next-line @typescript-eslint/no-unused-vars
+              store.destino.map((option: Estado, i: number) => {
+                return (
+                  <option value={option.UF} key={i} aria-selected="false">
+                    {option.estado}
+                  </option>
+                )
+              })}
+            </select>
+          </Cel>
           <tr>
             <td className="col30">
               <a

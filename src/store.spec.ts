@@ -1,8 +1,8 @@
 /* tslint:disable:no-import-side-effect */
 import { store } from './../src/store'
 import { configure } from 'mobx'
-//import { regras } from './dbRegras'
-//import { pragas } from './dbPragas'
+import { regras } from './dbRegras'
+import { pragas } from './dbPragas'
 import { hospedeiros } from './dbHospedeiros'
 import 'js-plus'
 import 'jest'
@@ -176,7 +176,7 @@ describe('Store filtro geral', () => {
     expect(store.result.by('pragc')).toEqual(['CANCRO EUROPEU DAS POMÁCEAS'])
   })
 
-  it('Citrus sinensis sementes SP->ES', () => {
+  xit('Citrus sinensis sementes SP->ES', () => {
     store.dados.hospSci = 'Citrus sinensis'
     store.dados.prod = 'sementes'
     store.dados.orig = 'SP'
@@ -201,7 +201,7 @@ describe('Store filtro geral', () => {
     expect(store.result.by('pragc')).toEqual(['CANCRO CÍTRICO'])
   })
 
-  it('Citrus sinensis mudas SP->ES', () => {
+  xit('Citrus sinensis mudas SP->ES', () => {
     store.dados.hospSci = 'Citrus sinensis'
     store.dados.prod = 'mudas'
     store.dados.orig = 'SP'
@@ -217,6 +217,32 @@ describe('Store filtro geral', () => {
     expect(store.result).toMatchSnapshot()
   })
 })
+
+describe('Sync between NomeVulg and NomeSci', () => {
+  it('should define NomeVulg based in NomeSci', () => {
+    // @ts-ignore
+    const e: EventChange = { target: { name: 'hospSci', value: 'Musa spp.' } } 
+    store.handleChanges(e)
+    //store.dados.hospSci = 'Musa spp.'
+    expect(store.dados.hospVul).toEqual('Banana')
+  });
+  it('should define NomeSci  based in NomeVulg ', () => {
+    // @ts-ignore
+    store.handleChanges({ target: { name: 'hospVul', value: 'Banana' }})
+    //store.dados.hospVul = 'Banana'
+    expect(store.dados.hospSci).toEqual('Musa spp.')
+  });
+});
+
+test('Check normalization of db ', () => {
+  regras.map(regra => {
+    const praga = pragas.find(item => item.prag === regra.prag)
+    if (!praga) {
+      expect(regra.prag).toEqual(praga)
+      //throw Error(`Dados da praga ${regra.prag} não cadastrados.`)
+    } 
+    return regra})
+});
 
 /* test('Verifica hospedeiros', () => {
   //const missingHospedeiro = []
