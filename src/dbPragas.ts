@@ -1,17 +1,5 @@
 //CEFiTI - Pragas
 
-/* interface Files {
-  leg: string
-  link: string
-}
-
-export interface Praga {
-  prag: string
-  hosp: string[]
-  pragc: string
-  files: Files[]
-} */
-
 export const pragas: Praga[] = [
   {
     prag: 'Bactrocera carambolae',

@@ -1,4 +1,3 @@
-/* tslint:disable:no-import-side-effect */
 import { store } from './../src/store'
 import { configure } from 'mobx'
 import { regras } from './dbRegras'
@@ -221,18 +220,18 @@ describe('Store filtro geral', () => {
 describe('Sync between NomeVulg and NomeSci', () => {
   it('should define NomeVulg based in NomeSci', () => {
     // @ts-ignore
-    const e: EventChange = { target: { name: 'hospSci', value: 'Musa spp.' } } 
+    const e: EventChange = { target: { name: 'hospSci', value: 'Musa spp.' } }
     store.handleChanges(e)
     //store.dados.hospSci = 'Musa spp.'
     expect(store.dados.hospVul).toEqual('Banana')
-  });
+  })
   it('should define NomeSci  based in NomeVulg ', () => {
     // @ts-ignore
-    store.handleChanges({ target: { name: 'hospVul', value: 'Banana' }})
+    store.handleChanges({ target: { name: 'hospVul', value: 'Banana' } })
     //store.dados.hospVul = 'Banana'
     expect(store.dados.hospSci).toEqual('Musa spp.')
-  });
-});
+  })
+})
 
 test('Check normalization of db ', () => {
   regras.map(regra => {
@@ -240,9 +239,10 @@ test('Check normalization of db ', () => {
     if (!praga) {
       expect(regra.prag).toEqual(praga)
       //throw Error(`Dados da praga ${regra.prag} não cadastrados.`)
-    } 
-    return regra})
-});
+    }
+    return regra
+  })
+})
 
 /* test('Verifica hospedeiros', () => {
   //const missingHospedeiro = []

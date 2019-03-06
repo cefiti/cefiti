@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const Botton = () => (
-  <div id="corpo">
+  <div id="botton">
     <p className="small center">
       As informações apresentadas não substituem o texto legal vigente, publicado em Diário Oficial
       da União, e referem-se a requisitos fitossanitários, não dispensando outras exigências

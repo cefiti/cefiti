@@ -1,12 +1,5 @@
 //CEFiTI - Hospedeiros
 
-/* export interface Hospedeiro {
-  nomeVul: string
-  nomeSci: string
-  count: number
-  count_nameVul?: number
-} */
-
 // prettier-ignore
 export const hospedeiros: Hospedeiro[] = [
   { nomeVul: 'Abacate (Persea gratissima)', nomeSci: 'Persea gratissima', count: 1 },

@@ -1,6 +1,5 @@
 import { observable, computed, configure, action, runInAction } from 'mobx'
 import 'js-plus'
-import { ThHTMLAttributes } from 'react'
 
 configure({ enforceActions: 'observed' })
 

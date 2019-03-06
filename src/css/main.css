@@ -1,0 +1,160 @@
+.form-select,
+.form-text,
+.form-textarea {
+  vertical-align: bottom;
+  margin-bottom: 10px;
+}
+
+.form-paginador,
+.form-select,
+.form-text,
+.form-textarea {
+  background: #fcfcfc;
+  border: 1px solid #ccc;
+  margin-top: 2px;
+}
+
+.form-button {
+  background: #3866b5;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 3px;
+}
+
+a {
+  color: #1e64d4;
+  text-decoration: underline;
+}
+
+table {
+  font-size: 0.9em;
+  _width: 99.9%;
+}
+
+.table-form td {
+  padding: 3px;
+  vertical-align: top;
+}
+* {
+  border: 0;
+  font-family: arial, verdana, helvetica;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 0.8em;
+}
+
+div#resolucao {
+  width: 100%;
+}
+
+div#moldura-topo {
+  min-height: 116px;
+}
+
+div#moldura-topo #topo {
+  min-height: 116px;
+  background: none repeat scroll 0 0 #3866b5;
+}
+
+div#moldura-topo #topo #identificacao-sistema {
+  float: left;
+}
+div#moldura-topo #topo #identificacao-sistema h1 {
+  font-size: 3.5em;
+  color: #fff;
+  margin: 0 0 2px 10px;
+  _margin-bottom: 4px;
+}
+
+div#moldura-topo #topo #identificacao-sistema h2 {
+  color: #dcecff;
+  font-size: 1.3em;
+  margin-left: 10px;
+}
+
+div#moldura-topo #topo #dados-login {
+  float: right;
+  font-size: 0.8em;
+  line-height: 1.5em;
+  padding: 6px 15px 0 0;
+  color: #fff;
+}
+
+div#navegacao-global p span {
+  background: url(data:image/gif;base64,R0lGODlhCAALAIABAPvMAP///yH5BAEAAAEALAAAAAAIAAsAAAIOjI+pG7DgEoxnSlqZDgUAOw==)
+    no-repeat 0;
+  display: inline-block;
+  margin: 0 5px 2px 0;
+}
+
+div#navegacao-global p span a {
+  background: url(data:image/gif;base64,R0lGODlhAQAKAIAAALylWwAAACH5BAAAAAAALAAAAAABAAoAAAIDhI8FADs=)
+    no-repeat 100%;
+  color: #fff;
+  display: inline-block;
+  padding: 5px 10px 5px 15px;
+  text-decoration: none;
+}
+
+div#moldura-navegacao-global {
+  background: #0f4098 none repeat scroll 0 0;
+  _height: 28px;
+}
+
+div#moldura-navegacao-global #navegacao-global {
+  background: #0f4098 none repeat scroll 0 0;
+  overflow: hidden;
+}
+
+div#corpo {
+  padding: 10px 20px 20px 30px;
+}
+
+div#botton {
+  padding: 10px 20px 20px 30px;
+}
+
+div#moldura-topo #topo #identificacao-ministerio {
+  position: relative;
+  clear: both;
+  overflow: hidden;
+  min-width: 1000px;
+  height: 31px;
+  background: #f1f1f1 none repeat scroll 0 0;
+}
+
+div#moldura-topo #topo #identificacao-ministerio span {
+  display: block;
+  height: 31px;
+  background: #f1f1f1 none repeat scroll 0 0;
+}
+
+div#moldura-topo #topo #identificacao-ministerio span #imagemGov {
+  position: absolute;
+  top: 4px;
+  height: 24px;
+  width: 500px;
+  background: #f1f1f1
+    url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAATCAMAAAC5m+00AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAACrUExURQCXSF27iQCWRQOWSQCWSRCdVACSSgCWRwCVSRKcVv/oAP/yAAIvh/bjBQKVTP/rAK3PF/3sARZBkg05ima2LCqiPg+ZRR9JoermBbGwLwEqkgCST1GwMRqdQZfIHdzgCSdSlTlYbEWrNyNKeouUPHOgtEJsn2WOrSClX2m/lF+6i3q8JsDVEBpCgWN2WefTD8i/IYSstzKmO3eIUaa2h3SOjfvlHjVfq6OmNShvDYIAAAFISURBVCjPbVHXksMgDNQBljC4l9iOndjp5VKv//+XnXByb7fDADO7rNAK9v4DngPv/h/24BHBuEhqB3pCeUxJIAWKtMZlIVCTciogH3yhWMpinM2t7ZctS5UgAR74kVICpMauNrfmaucTpMj5e+4VUNTOEvuzCoL8EvZLJCH1SIHAqKjtehowposwTmbIcqZIt+UpNV/3zWa3HYLp2sZ1gegoPXkNU5M238Ow3d132cIYEyel9MHDLo2NcX4519puPkPmbOIowrdTbGyTZXk2BEH1kZo4LPSjFgq2DFcVc3lWNZbt2rGWIIiwTOztzJZV9W77glCp8RsSNHdc1NfL6rxoxp5JCcmUC1cJjdx0GKZ1hxq0eqYBkuPlzLHrjXuiOAwaDUGQFJyWBpyU7EUaQI/xckGeA98jksqNQLmp8BnB4Xh8+ReHX640GNLt25uiAAAAAElFTkSuQmCC')
+    no-repeat scroll 8px;
+}
+
+div#moldura-topo #topo #identificacao-ministerio span #imagemGov:after {
+  content: 'Minist\E9rio da Agricultura, Pecu\E1ria e Abastecimento';
+  margin-left: 40px;
+  color: #606060;
+  font-weight: 700;
+  position: absolute;
+  top: 4px;
+}
+
+div#moldura-topo #topo #identificacao-ministerio span #brasilgov {
+  height: 24px;
+  float: right;
+  display: block;
+  border: 0 !important;
+}

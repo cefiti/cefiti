@@ -30,12 +30,12 @@ div#resolucao {
   width: 100%;
 }
 
-div#moldura-topo {
-  height: 116px;
-}
+/* div#moldura-topo {
+     height: 116px; 
+} */
 
 div#moldura-topo #topo {
-  height: 116px;
+  /*   height: 116px; */
   background: none repeat scroll 0% 0% #3866b5;
 }
 
@@ -47,6 +47,7 @@ div#moldura-topo #topo {
 
 div#moldura-topo #topo #identificacao-sistema {
   float: left;
+  padding-bottom: 10px; /* */
 }
 
 div#moldura-topo #topo #identificacao-sistema p {

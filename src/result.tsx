@@ -18,7 +18,9 @@ function Result() {
           <br />
           <br />
           <span className="empty">
-            <div>SEM EXIGÊNCIAS PARA O TRÂNSITO</div>
+            <div>
+              <p>SEM EXIGÊNCIAS PARA O TRÂNSITO</p>
+            </div>
           </span>
           <br />
         </div>

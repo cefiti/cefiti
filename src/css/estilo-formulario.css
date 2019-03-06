@@ -28,6 +28,11 @@
   color: #ff0000;
 }
 
+.form-select {
+  max-width: -moz-available; /* WebKit-based browsers will ignore this. */
+  max-width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
+}
+
 .form-text,
 .form-select,
 .form-textarea {
