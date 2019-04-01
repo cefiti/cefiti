@@ -64,8 +64,6 @@ describe('Store origem e destino', () => {
 
 describe('Store hospedeiros nomeSci', () => {
   it('unique values Nome Vulgar', () => {
-    //expect(store.listaNomesSci.take(10)).toEqual(hosp10)
-    //expect(store.listaNomesSci.take(-20)).toEqual(hosp20)
     //expect(store.listaNomesVul.length).toEqual(hospedeiros.length)
     expect(hospedeiros.by('nomeVul').filterNonUnique()).toEqual([])
     expect(hospedeiros.unique('nomeVul').length).toEqual(hospedeiros.length)
@@ -175,7 +173,7 @@ describe('Store filtro geral', () => {
     expect(store.result.by('pragc')).toEqual(['CANCRO EUROPEU DAS POMÁCEAS'])
   })
 
-  xit('Citrus sinensis sementes SP->ES', () => {
+  it('Citrus sinensis sementes SP->ES', () => {
     store.dados.hospSci = 'Citrus sinensis'
     store.dados.prod = 'sementes'
     store.dados.orig = 'SP'
@@ -200,7 +198,7 @@ describe('Store filtro geral', () => {
     expect(store.result.by('pragc')).toEqual(['CANCRO CÍTRICO'])
   })
 
-  xit('Citrus sinensis mudas SP->ES', () => {
+  it('Citrus sinensis mudas SP->ES', () => {
     store.dados.hospSci = 'Citrus sinensis'
     store.dados.prod = 'mudas'
     store.dados.orig = 'SP'
@@ -244,28 +242,6 @@ test('Check normalization of db ', () => {
   })
 })
 
-/* test('Verifica hospedeiros', () => {
-  //const missingHospedeiro = []
-  const flattenHospedeirosPragas = pragas
-    .flatMap(praga => praga.hosp)
-    .flat()
-    .unique()
-    .sort()
-  const uniqueHospedeirosSci = hospedeiros.unique('nomeSci').sort()
-  const missingHospedeiro = flattenHospedeirosPragas.filter(
-    n => uniqueHospedeirosSci.indexOf(n) === -1
-  )
-
-  const hospSemUso = uniqueHospedeirosSci.diff(flattenHospedeirosPragas)
-
-  expect(flattenHospedeirosPragas).toEqual(uniqueHospedeirosSci)
-}) */
-
-/* hospedeiros.groupBy('nomeVul')
-
-const duplicatesHosp = hospedeiros.reduce((obj, hosp) => {
-  obj[hosp.nomeVul] += 1
-}, {}) */
 test('duplicates nomeVul', () => {
   expect(
     hospedeiros

@@ -1,8 +1,7 @@
 {
   "name": "cefiti",
-  "version": "5.1.24",
+  "version": "5.2.25",
   "description": "Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual",
-  "main": "index.js",
   "private": true,
   "repository": {
     "type": "git",
@@ -19,41 +18,30 @@
   "license": "MIT",
   "homepage": ".",
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
     "zip": "jszip ./build -o ./build/CEFiTI.zip",
     "deploy": "jszip -c package.json -o CEFiTI.zip",
     "analyze": "source-map-explorer build/static/js/*",
-    "lint": "tslint -p tsconfig.json \"src/**/*.ts?(x)\"",
-    "eslint": "eslint --ext .ts,.tsx ."
+    "lint": "eslint --ignore-pattern ./assests/**/* --ext .ts,.tsx ."
   },
   "dependencies": {
     "js-plus": "^0.3.0",
     "mobx": "^5.9.0",
-    "mobx-react-lite": "^1.1.0",
+    "mobx-react-lite": "^1.1.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
   },
   "devDependencies": {
     "@types/jest": "^23.3.10",
-    "@types/node": "^11.10.4",
-    "@types/react": "^16.8.6",
+    "@types/node": "^11.11.3",
+    "@types/react": "^16.8.8",
     "@types/react-dom": "^16.8.2",
-    "@typescript-eslint/eslint-plugin": "^1.4.2",
-    "customize-cra": "^0.2.12",
-    "eslint-config-prettier": "^4.1.0",
-    "jest": "^23.6.0",
     "jszip-cli": "^1.4.24",
-    "react-app-rewired": "^2.1.0",
-    "react-scripts": "2.1.4",
+    "react-scripts": "next",
     "source-map-explorer": "^1.7.0",
     "typescript": "^3.3.3333"
-  },
-  "babel": {
-    "presets": [
-      "react-app"
-    ]
   },
   "browserslist": [
     ">0.2%",
@@ -62,34 +50,13 @@
     "not op_mini all"
   ],
   "eslintConfig": {
-    "parser": "@typescript-eslint/parser",
     "extends": [
-      "react-app",
-      "plugin:@typescript-eslint/recommended",
-      "prettier",
-      "prettier/@typescript-eslint"
-    ],
-    "plugins": [
-      "@typescript-eslint"
-    ],
-    "rules": {
-      "no-undef": "off",
-      "no-unused-vars": "off",
-      "jsx-a11y/anchor-is-valid": "off",
-      "@typescript-eslint/explicit-member-accessibility": "off",
-      "@typescript-eslint/explicit-function-return-type": "off",
-      "@typescript-eslint/no-type-alias": "off",
-      "@typescript-eslint/array-type": "off",
-      "react/jsx-uses-vars": "error",
-      "@typescript-eslint/no-use-before-define": "off",
-      "@typescript-eslint/prefer-interface": "off"
-    },
-    "parserOptions": {
-      "project": "./tsconfig.json"
-    }
+      "react-app"
+    ]
   },
   "eslintIgnore": [
-    "/assets/**/*"
+    "/assests/**/*",
+    "assets/**/*"
   ],
   "entities": [
     {

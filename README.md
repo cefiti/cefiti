@@ -4,12 +4,25 @@
 
 ## **_CHANGELOG_**
 
+## 5.2.25
+
+- Make improvments in performance and accessibility by auditing with Lighthouse
+- Use Flexbox to layout the Form instead of Table
+- [db] Update ALP Sigatoka NEgra MS IN 31/2017
+- Remove tslint to use typescript-eslint
+- Use local css
+- Load db async
+- Remove IE 11
+- Replace mobx-react by mobx-react-lite
+
 ## 5.1.24
+
 - Atualiação react-scripts
 - Envia para o Analytics o hospedeiro pesquisado
-- Altera IN 59/2013 para IN 38/2018
-  
+- [db] Altera IN 59/2013 para IN 38/2018
+
 ## 5.0.24
+
 - [db] Atualização Gorgulho da Acerola- Inclusão Amapá
 - [db] Atualização Mosca da Carambola ([28bab9b](28bab9b9a215ce578badb8567c4ca3df7082d90b), [b222ad](4b222ad1cad7a9fc94630d57eb0514617f68994a), [74d71a6](74d71a61885befb51fd8106c049be87e76361115))
 - [db] Atualização Ácaro Hindu (hospedeiros) ([f2cd2e6](f2cd2e6b7baf5e6d131df9b610afdf37c4f5280b))
@@ -25,7 +38,6 @@
 - Migração para o create-reatc-app (9bfa7903134a936315a0d532796a87acdfc47655)
 - Atualização das dependências
 - BREAKING CHANGE: Internet Explorer menor que 11 não são mais compaíveis
-
 
 ## 4.3-23
 
@@ -145,3 +157,16 @@ Ctrl+Z : Voltar
 Ctrl+S : Salvar
 Alt+Z : Quebrar a linha (só para vizualização)
 _/
+
+    "rules": {
+      "no-undef": "off",
+      "no-unused-vars": "off",
+      "jsx-a11y/anchor-is-valid": "off",
+      "@typescript-eslint/explicit-member-accessibility": "off",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/no-type-alias": "off",
+      "@typescript-eslint/array-type": "off",
+      "react/jsx-uses-vars": "error",
+      "@typescript-eslint/no-use-before-define": "off",
+      "@typescript-eslint/prefer-interface": "off"
+    }
