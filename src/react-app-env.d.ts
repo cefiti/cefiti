@@ -51,9 +51,9 @@ interface Estado {
   UF: string
 }
 
-type EventChange = { target: { name: keyof Dados; value: string } } & React.ChangeEvent<
+/* type EventChange = { target: { name: keyof Dados; value: string } } & React.ChangeEvent<
   HTMLSelectElement
->
+> */
 
 /* interface Dbbb {
   prag: string

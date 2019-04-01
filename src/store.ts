@@ -111,20 +111,21 @@ export class Store {
   }
 
   @action
-  handleChanges = (event: EventChange): void => {
-    switch (event.target.name) {
+  handleChanges = (event: React.FormEvent<HTMLSelectElement>): void => {
+    const target = event.currentTarget
+    switch (target.name) {
       case 'hospSci':
-        const hospVulg = this.dbHospedeiros.find(hosp => hosp.nomeSci === event.target.value)
+        const hospVulg = this.dbHospedeiros.find(hosp => hosp.nomeSci === target.value)
         this.dados.hospVul = hospVulg ? hospVulg.nomeVul : ''
         break
       case 'hospVul':
-        const hospSci = this.dbHospedeiros.find(hosp => hosp.nomeVul === event.target.value)
+        const hospSci = this.dbHospedeiros.find(hosp => hosp.nomeVul === target.value)
         this.dados.hospSci = hospSci ? hospSci.nomeSci : ''
         break
       default:
         break
     }
-    this.dados[event.target.name] = event.target.value
+    this.dados[target.name] = target.value
   }
 
   @action
