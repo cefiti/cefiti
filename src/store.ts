@@ -1,5 +1,7 @@
 import { observable, computed, configure, action, runInAction } from 'mobx'
-import 'js-plus'
+//import 'js-plus'
+//import 'array-flat-polyfill'
+import './utils'
 
 configure({ enforceActions: 'observed' })
 
@@ -20,14 +22,10 @@ export class Store {
       this.dbRegras = regras
       this.dbPragas = pragas
       this.estados = estados
-      this.db = this.dbRegras.map(regra => {
-        const praga = this.dbPragas.find(item => item.prag === regra.prag)
-        if (!praga) {
-          throw Error(`Dados da praga ${regra.prag} não cadastrados.`)
-        } else {
-          return { ...regra, ...praga }
-        }
-      })
+      this.db = this.dbRegras.map(regra => ({
+        ...this.dbPragas.find(item => item.prag === regra.prag),
+        ...regra,
+      })) as Db[]
     })
   }
 
@@ -42,11 +40,17 @@ export class Store {
   }
 
   @computed get listaNomesSci() {
-    return this.hospedeirosRegulamentados.unique('nomeSci').sort((a, b) => a.localeCompare(b))
+    return this.hospedeirosRegulamentados
+      .map(v => v.nomeSci)
+      .filter((i, x, a) => a.indexOf(i) === x)
+      .sort((a, b) => a.localeCompare(b))
   }
 
   @computed get listaNomesVul() {
-    return this.hospedeirosRegulamentados.unique('nomeVul').sort((a, b) => a.localeCompare(b))
+    return this.hospedeirosRegulamentados
+      .map(v => v.nomeVul)
+      .filter((i, x, a) => a.indexOf(i) === x)
+      .sort((a, b) => a.localeCompare(b))
   }
 
   @computed
@@ -89,9 +93,8 @@ export class Store {
           exigen.hosp.includes(`${this.gender} sp.`) ||
           exigen.hosp.includes(`${this.gender} spp.`)
       )
-      .by('part')
-      .flat()
-      .unique()
+      .flatMap(v => v.part)
+      .filter((i, x, a) => a.indexOf(i) === x)
       .concat([''])
       .sort((a: string, b: string) => a.localeCompare(b))
   }

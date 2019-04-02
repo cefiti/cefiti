@@ -1,9 +1,10 @@
-import { store } from './../src/store'
+import { store } from './store'
 import { configure } from 'mobx'
 import { regras } from './dbRegras'
 import { pragas } from './dbPragas'
 import { hospedeiros } from './dbHospedeiros'
-import 'js-plus'
+import './utils'
+import * as d3 from 'd3-array'
 import 'jest'
 
 configure({ enforceActions: 'observed' }) //useStrict(true)
@@ -65,8 +66,10 @@ describe('Store origem e destino', () => {
 describe('Store hospedeiros nomeSci', () => {
   it('unique values Nome Vulgar', () => {
     //expect(store.listaNomesVul.length).toEqual(hospedeiros.length)
-    expect(hospedeiros.by('nomeVul').filterNonUnique()).toEqual([])
-    expect(hospedeiros.unique('nomeVul').length).toEqual(hospedeiros.length)
+    expect(hospedeiros.map(v => v.nomeVul).filter((i, x, a) => a.indexOf(i) !== x)).toEqual([])
+    expect(hospedeiros.map(v => v.nomeVul).filter((i, x, a) => a.indexOf(i) === x).length).toEqual(
+      hospedeiros.length
+    )
   })
 })
 
@@ -131,19 +134,26 @@ describe('Store: gender', () => {
 })
 
 describe('Store filtro geral', () => {
-  it('Musa spp.', () => {
+  beforeAll(() => {
     store.dados.hospSci = 'Musa spp.'
     store.dados.prod = 'frutos'
     store.dados.orig = 'MG'
     store.dados.dest = 'MT'
+  })
+
+  it('Musa spp. count', () => {
     expect(store.result.length).toBe(3)
-    expect(
-      store.result
-        .by('files')
-        .flat()
-        .by('link')
-    ).toEqual(['IN17-2009.pdf', 'IN17-2005.pdf', 'IN17-2005.pdf'])
-    expect(store.result.by('pragc')).toEqual([
+  })
+  it('Musa spp. legis', () => {
+    expect(store.result.flatMap(v => v.files).map(v => v.link)).toEqual([
+      'IN17-2009.pdf',
+      'IN17-2005.pdf',
+      'IN17-2005.pdf',
+    ])
+  })
+
+  it('Musa spp. pragas', () => {
+    expect(store.result.map(v => v.pragc)).toEqual([
       'MOKO-DA-BANANEIRA',
       'SIGATOKA NEGRA',
       'SIGATOKA NEGRA',
@@ -164,13 +174,8 @@ describe('Store filtro geral', () => {
     store.dados.orig = 'SC'
     store.dados.dest = 'MT'
     expect(store.result.length).toBe(1)
-    expect(
-      store.result
-        .by('files')
-        .flat()
-        .by('link')
-    ).toEqual(['IN20-2013.pdf'])
-    expect(store.result.by('pragc')).toEqual(['CANCRO EUROPEU DAS POMÁCEAS'])
+    expect(store.result.flatMap(v => v.files).map(v => v.link)).toEqual(['IN20-2013.pdf'])
+    expect(store.result.map(v => v.pragc)).toEqual(['CANCRO EUROPEU DAS POMÁCEAS'])
   })
 
   it('Citrus sinensis sementes SP->ES', () => {
@@ -189,13 +194,8 @@ describe('Store filtro geral', () => {
     store.dados.orig = 'RS'
     store.dados.dest = 'ES'
     expect(store.result.length).toBe(1)
-    expect(
-      store.result
-        .by('files')
-        .flat()
-        .by('link')
-    ).toEqual(['IN21-2018.pdf'])
-    expect(store.result.by('pragc')).toEqual(['CANCRO CÍTRICO'])
+    expect(store.result.flatMap(v => v.files).map(v => v.link)).toEqual(['IN21-2018.pdf'])
+    expect(store.result.map(v => v.pragc)).toEqual(['CANCRO CÍTRICO'])
   })
 
   it('Citrus sinensis mudas SP->ES', () => {
@@ -204,13 +204,11 @@ describe('Store filtro geral', () => {
     store.dados.orig = 'SP'
     store.dados.dest = 'ES'
     expect(store.result.length).toBe(2)
-    expect(
-      store.result
-        .by('files')
-        .flat()
-        .by('link')
-    ).toEqual(['IN53-2008.pdf', 'IN21-2018.pdf'])
-    expect(store.result.by('pragc')).toEqual(['GREENING', 'CANCRO CÍTRICO'])
+    expect(store.result.flatMap(v => v.files).map(v => v.link)).toEqual([
+      'IN53-2008.pdf',
+      'IN21-2018.pdf',
+    ])
+    expect(store.result.map(v => v.pragc)).toEqual(['GREENING', 'CANCRO CÍTRICO'])
     expect(store.result).toMatchSnapshot()
   })
 })
@@ -218,14 +216,14 @@ describe('Store filtro geral', () => {
 describe('Sync between NomeVulg and NomeSci', () => {
   it('should define NomeVulg based in NomeSci', () => {
     // @ts-ignore
-    const e: EventChange = { target: { name: 'hospSci', value: 'Musa spp.' } }
+    const e: EventChange = { currentTarget: { name: 'hospSci', value: 'Musa spp.' } }
     store.handleChanges(e)
     //store.dados.hospSci = 'Musa spp.'
     expect(store.dados.hospVul).toEqual('Banana')
   })
   it('should define NomeSci  based in NomeVulg ', () => {
     // @ts-ignore
-    store.handleChanges({ target: { name: 'hospVul', value: 'Banana' } })
+    store.handleChanges({ currentTarget: { name: 'hospVul', value: 'Banana' } })
     //store.dados.hospVul = 'Banana'
     expect(store.dados.hospSci).toEqual('Musa spp.')
   })
@@ -243,25 +241,16 @@ test('Check normalization of db ', () => {
 })
 
 test('duplicates nomeVul', () => {
-  expect(
-    hospedeiros
-      .groupBy('nomeVul')
-      .aggregate({ nomeVul: 'count' })
-      .filter(item => {
-        return item.count_nameVulg
-      })
-  ).toEqual([])
-  //.map((item :any) => {nomeVul: item.nomeVul, count: item.group.length})
+  const countDupli = Array.from(
+    d3.rollup(hospedeiros, v => ({ countNomeVulg: v.length }), k => k.nomeVul),
+    ([key, values]) => ({ nomeVulg: key, ...values })
+  )
+  expect(countDupli.filter(v => !v.countNomeVulg)).toEqual([])
 })
 
-/* test('hh', () => {
-  const hh = hospedeiros.groupBy('nomeSci')
-  const ag = hh.aggregate({ nomeSci: 'count' })
-  console.log(ag)
-}) 
-
-test('hhh', () => {
-  const hh = hospedeiros.groupBy(item => item.nomeVul.substr(0, 5))
-  const ag = hh.aggregate({ nomeSci: 'count' })
-  console.log(hh)
-})*/
+test('should join Pragas and Regras', () => {
+  regras.forEach(regra => {
+    const praga = pragas.find(item => item.prag === regra.prag)
+    expect(praga).toBeDefined()
+  })
+})
