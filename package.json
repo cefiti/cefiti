@@ -21,8 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "zip": "jszip ./build -o ./build/CEFiTI.zip",
-    "deploy": "jszip -c package.json -o CEFiTI.zip",
+    "deploy": "jszip -c package.json -o CEFiTI%npm_package_version%.zip",
     "analyze": "source-map-explorer build/static/js/*",
     "lint": "eslint --ignore-pattern ./assests/**/* --ext .ts,.tsx ."
   },

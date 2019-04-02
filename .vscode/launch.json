@@ -6,10 +6,21 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "node",
+      "name": "vscode-jest-tests",
+      "request": "launch",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/react-scripts",
+      "args": ["test", "--env=jsdom", "--runInBand"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "protocol": "inspector",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
       "name": "Debug CRA Tests",
       "type": "node",
       "request": "launch",
-      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/react-app-rewired",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/react-scripts",
       "args": ["test", "--runInBand", "--no-cache", "--no-watch"],
       "cwd": "${workspaceRoot}",
       "protocol": "inspector",

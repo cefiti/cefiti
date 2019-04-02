@@ -6,6 +6,9 @@
 
 ## 5.2.25
 
+- [db] Include Resolução 04/2019 - Mosca da Carambola - Paré and remove Resolução 06/2018
+- Exclude js-plus and use d3-array for tests
+- Move to create-react-app 3.0.0(beta)
 - Make improvments in performance and accessibility by auditing with Lighthouse
 - Use Flexbox to layout the Form instead of Table
 - [db] Update ALP Sigatoka NEgra MS IN 31/2017

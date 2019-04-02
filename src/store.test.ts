@@ -75,6 +75,7 @@ describe('Store hospedeiros nomeSci', () => {
 
 describe('Store partes', () => {
   it('de Acerola', () => {
+    debugger
     store.dados.hospSci = 'Malpighia spp.'
     expect(store.partes).toEqual(['', 'frutos'])
   })

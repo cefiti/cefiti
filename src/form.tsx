@@ -33,18 +33,6 @@ function Select({ value, source, name, empty }: PropsSelect) {
   )
 }
 
-/* const Cel: FC<{ label: string; children: React.ReactElement<typeof Select> }> = ({
-  label,
-  children,
-}) => (
-  <tr>
-    <td className="col30">
-      <label>{label}</label>
-    </td>
-    <td className="col60">{children}</td>
-  </tr>
-) */
-
 function Form() {
   return uiStore.searched ? (
     <div />
