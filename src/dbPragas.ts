@@ -46,8 +46,8 @@ export const pragas: Praga[] = [
     ],
     files: [
       { leg: 'Instrução Normativa nº 28, de 20 de julho de 2017', link: 'IN28-2017.pdf' },
-      { leg: 'Resolução nº 03, de 15 de maio de 2018', link: 'RES03-2018.pdf' },
-      { leg: 'Resolução nº 04, de 29 de março de 2019', link: 'RES04-2019.pdf' },
+      { leg: 'Resolução nº 04, de 29 de março de 2019 [Pará]', link: 'RES04-2019.pdf' },
+      { leg: 'Resolução nº 06, de 13 de junho de 2019 [Roraima]', link: 'RES06-2019.pdf' },
     ],
   },
   {
