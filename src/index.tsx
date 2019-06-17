@@ -26,7 +26,12 @@ const Main = () =>-*/
 
 //console.log(renderToString(<App />))
 
-ReactDom.render(<App />, document.getElementById('root'))
+ReactDom.render(
+  //<React.StrictMode>
+  <App />,
+  //</React.StrictMode>,
+  document.getElementById('root')
+)
 //ReactDom.hydrate(<App />, document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change

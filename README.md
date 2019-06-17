@@ -4,9 +4,13 @@
 
 ## **_CHANGELOG_**
 
+## 5.2.26
+
+- [db] Include Resolução 06/2019 - Mosca da Carambola - Roraima and remove Resolução 03/2018
+
 ## 5.2.25
 
-- [db] Include Resolução 04/2019 - Mosca da Carambola - Paré and remove Resolução 06/2018
+- [db] Include Resolução 04/2019 - Mosca da Carambola - Pará and remove Resolução 06/2018
 - Exclude js-plus and use d3-array for tests
 - Move to create-react-app 3.0.0(beta)
 - Make improvments in performance and accessibility by auditing with Lighthouse

@@ -12,7 +12,6 @@ configure({ enforceActions: 'observed' }) //useStrict(true)
 const estadosSemAC = [
   { estado: '', UF: '' },
   //{estado: 'Acre', UF: 'AC'},
-
   { estado: 'Alagoas', UF: 'AL' },
   { estado: 'Amazonas', UF: 'AM' },
   { estado: 'Amapá', UF: 'AP' },

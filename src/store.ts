@@ -1,6 +1,4 @@
 import { observable, computed, configure, action, runInAction } from 'mobx'
-//import 'js-plus'
-//import 'array-flat-polyfill'
 import './utils'
 
 configure({ enforceActions: 'observed' })
