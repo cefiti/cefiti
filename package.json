@@ -28,10 +28,12 @@
     "lint": "eslint --ignore-pattern ./assests/**/* --ext .ts,.tsx ."
   },
   "dependencies": {
+    "immer": "^4.0.1",
     "mobx": "^5.14.0",
     "mobx-react-lite": "^1.4.1",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react-dom": "^16.10.2",
+    "use-immer": "^0.3.4"
   },
   "devDependencies": {
     "@types/d3-array": "^2.0.0",
