@@ -51,6 +51,16 @@ interface Estado {
   UF: string
 }
 
+type Store = import('./store').Store
+type UiStore = import('./uistore').UiStore
+type Draft = import('immer').Draft
+type Stores = {
+  store: Store
+  setStore?: Draft<Store>
+  uiStore?: UiStore
+  setUiStore?: Draft<UiStore>
+}
+
 //declare global {
 interface Window {
   ga(send: string, event?: string, search?: string, category?: string, data?: string): void

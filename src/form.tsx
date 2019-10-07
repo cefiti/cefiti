@@ -1,6 +1,6 @@
 import React from 'react'
 import { store } from './store'
-import { uiStore } from './uistore'
+//import { uiStore } from './uistore'
 import { observer } from 'mobx-react-lite'
 
 interface PropsSelect {
@@ -33,7 +33,7 @@ function Select({ value, source, name, empty }: PropsSelect) {
   )
 }
 
-function Form() {
+function Form({ store, setStore, uiStore, setUiStore }: Stores) {
   return uiStore.searched ? (
     <div />
   ) : (
@@ -114,9 +114,7 @@ function Form() {
           style={{ marginBottom: '10px' }}
           target="_blank"
           rel="noopener noreferrer"
-          href={`https://www.google.com.br/search?site=imghp&tbm=isch&q=${
-            store.dados.hospSci
-          }+plant+OR+planta+ORfruto+OR+fruit+OR+flor+OR+flower`}
+          href={`https://www.google.com.br/search?site=imghp&tbm=isch&q=${store.dados.hospSci}+plant+OR+planta+ORfruto+OR+fruit+OR+flor+OR+flower`}
         >
           Fotos da Espécie Vegetal
         </a>

@@ -1,20 +1,20 @@
-import { observable, action, configure } from 'mobx'
+//import { observable, action, configure } from 'mobx'
 import { store } from './store'
 
-configure({ enforceActions: 'observed' }) //useStrict(true)
+//configure({ enforceActions: 'observed' }) //useStrict(true)
 
 /* type WindowGa = Window & {
   ga(send: string, event?: string, search?: string, category?: string, data?: string): void
 } */
 
 class UiStore {
-  @observable
+  //@observable
   exibeBase: boolean = false
   //@observable exibeMapa: boolean = false;
-  @observable
+  //@observable
   searched: boolean = false
 
-  @action
+  //@action
   handleMenu = (i: string): void => {
     if (i === 'Base') {
       this.exibeBase = !this.exibeBase
@@ -35,7 +35,7 @@ class UiStore {
     }
   }
 
-  @action
+  //@action
   handleSearch = (event: React.MouseEvent<HTMLButtonElement>): void => {
     if (process.env.NODE_ENV !== 'development') {
       window.ga('send', 'event', 'search', 'click', store.dados.hospSci)
