@@ -5,47 +5,32 @@ import useStore from './context'
 
 const Menu = () => {
   const { setUiStore } = useStore()
+  const handleMenu = (menu: string) => {
+    setUiStore(d => {
+      d.handleMenu(menu)
+    })
+  }
   return (
     <div id="moldura-navegacao-global">
       <div id="navegacao-global">
         <p>
           <span>
-            <a
-              href="#"
-              onClick={() => {
-                setUiStore((d: any) => d.uiStore.handleMenu.bind(undefined, 'Base'))
-              }}
-            >
+            <a href="#" onClick={() => handleMenu('Base')}>
               Ver Base de Dados
             </a>
           </span>
           <span title="Baixar o sistema para uso off-line. Descompacte o arquivo CEFiTI.zip e acesse o arquivo index.html">
-            <a
-              href="#"
-              onClick={() => {
-                setUiStore((d: any) => d.handleMenu.bind(undefined, 'Download'))
-              }}
-            >
+            <a href="#" onClick={() => handleMenu('Download')}>
               Download
             </a>
           </span>
           <span title="Para salvar o resultado como PDF, utilize o navegador Chrome, e altere a impressora para 'Salvar como PDF' na página de impressão">
-            <a
-              href="#"
-              onClick={() => {
-                setUiStore((d: any) => d.handleMenu.bind(undefined, 'Print'))
-              }}
-            >
+            <a href="#" onClick={() => handleMenu('Print')}>
               Imprimir
             </a>
           </span>
           <span>
-            <a
-              href="#"
-              onClick={() => {
-                setUiStore((d: any) => d.uiStore.handleMenu.bind(undefined, 'Nova'))
-              }}
-            >
+            <a href="#" onClick={() => handleMenu('Nova')}>
               NOVA CONSULTA
             </a>
           </span>

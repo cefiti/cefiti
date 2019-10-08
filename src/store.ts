@@ -1,6 +1,7 @@
 //import { observable, computed, configure, action, runInAction } from 'mobx'
 //import 'js-plus'
 //import 'array-flat-polyfill'
+import { produce } from 'immer'
 import './utils'
 
 //configure({ enforceActions: 'observed' })
@@ -14,6 +15,7 @@ export class Store {
 
   //@observable
   dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
+  loading: boolean = true
 
   async getDb() {
     const { regras, pragas, hospedeiros, estados } = await import('./db')
@@ -26,6 +28,7 @@ export class Store {
       ...this.dbPragas.find(item => item.prag === regra.prag),
       ...regra,
     })) as Db[]
+    this.loading = false
     //})
   }
 
@@ -146,5 +149,7 @@ export class Store {
 }
 
 const store = new Store()
-store.getDb()
+produce(store, (d: Store) => {
+  d.getDb()
+})
 export { store }

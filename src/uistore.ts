@@ -16,6 +16,7 @@ class UiStore {
 
   //@action
   handleMenu = (i: string): void => {
+    console.log('MEnu', i)
     if (i === 'Base') {
       this.exibeBase = !this.exibeBase
     }

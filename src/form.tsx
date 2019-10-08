@@ -40,11 +40,16 @@ function Form() {
     setStore(d => {
       d.handleChanges(e)
     })
+  console.log(store)
+  React.useEffect(() => {
+    console.log(store.db.length)
+  }, [store.db, store.loading])
   return uiStore.searched ? (
     <div />
   ) : (
-    <form>
-      <div>
+      <form> 
+      {store.loading ? (<div />) :
+      (<div><div>
         <label className="form" htmlFor="hospSci">
           Espécie Vegetal (nome científico):
         </label>
@@ -79,7 +84,7 @@ function Form() {
           empty={false}
           handleChange={handleChange}
         />
-      </div>
+      </div>)}
       <div>
         <label className="form" htmlFor="orig">
           Origem:
@@ -89,7 +94,7 @@ function Form() {
           className="form-select"
           name="orig"
           value={store.dados.orig}
-          onChange={store.handleChanges}
+          onChange={handleChange}
         >
           {// eslint-disable-next-line @typescript-eslint/no-unused-vars
           store.origem.map((option: Estado, i: number) => {
@@ -122,7 +127,7 @@ function Form() {
           })}
         </select>
       </div>
-      <br />
+          <br />
       <div>
         <a
           style={{ marginBottom: '10px' }}
@@ -143,7 +148,8 @@ function Form() {
         >
           Pesquisar
         </button>
-      </div>
+          </div>
+          </div>)}
     </form>
   )
 }
