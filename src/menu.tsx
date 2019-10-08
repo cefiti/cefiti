@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-///import { uiStore } from './uistore'
+import useStore from './context'
 //import { observer } from 'mobx-react-lite'
 
-const Menu = ({ uiStore, setUiStore }: Stores) => {
+const Menu = () => {
+  const { setUiStore } = useStore()
   return (
     <div id="moldura-navegacao-global">
       <div id="navegacao-global">
@@ -12,7 +13,7 @@ const Menu = ({ uiStore, setUiStore }: Stores) => {
             <a
               href="#"
               onClick={() => {
-                uiStore.handleMenu.bind(undefined, 'Base')
+                setUiStore((d: any) => d.uiStore.handleMenu.bind(undefined, 'Base'))
               }}
             >
               Ver Base de Dados
@@ -22,7 +23,7 @@ const Menu = ({ uiStore, setUiStore }: Stores) => {
             <a
               href="#"
               onClick={() => {
-                setUiStore(uiStore.handleMenu.bind(undefined, 'Download'))
+                setUiStore((d: any) => d.handleMenu.bind(undefined, 'Download'))
               }}
             >
               Download
@@ -42,7 +43,7 @@ const Menu = ({ uiStore, setUiStore }: Stores) => {
             <a
               href="#"
               onClick={() => {
-                uiStore.handleMenu.bind(undefined, 'Nova')
+                setUiStore((d: any) => d.uiStore.handleMenu.bind(undefined, 'Nova'))
               }}
             >
               NOVA CONSULTA

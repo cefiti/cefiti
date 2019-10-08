@@ -51,14 +51,19 @@ interface Estado {
   UF: string
 }
 
+type Draft<T> = T extends AtomicObject
+  ? T
+  : T extends object
+  ? { -readonly [K in keyof T]: Draft<T[K]> }
+  : T
 type Store = import('./store').Store
 type UiStore = import('./uistore').UiStore
-type Draft = import('immer').Draft
-type Stores = {
+
+type Context = {
   store: Store
-  setStore?: Draft<Store>
-  uiStore?: UiStore
-  setUiStore?: Draft<UiStore>
+  setStore: (f: (draft: Draft<Store>) => void | Store) => void
+  uiStore: UiStore
+  setUiStore: (f: (draft: Draft<UiStore>) => void | UiStore) => void
 }
 
 //declare global {

@@ -1,6 +1,6 @@
 import React from 'react'
-import { store } from './store'
-//import { uiStore } from './uistore'
+//import { store } from './store'
+import { useStore } from './context'
 import { observer } from 'mobx-react-lite'
 
 interface PropsSelect {
@@ -8,10 +8,11 @@ interface PropsSelect {
   source: string[]
   name: string
   empty: boolean
+  handleChange: (e: any) => any
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function Select({ value, source, name, empty }: PropsSelect) {
+function Select({ value, source, name, empty, handleChange }: PropsSelect) {
   return (
     <select
       style={name === 'prod' ? { minWidth: '145px' } : {}}
@@ -19,7 +20,7 @@ function Select({ value, source, name, empty }: PropsSelect) {
       className={name === 'hospSci' ? 'italic form-select' : 'form-select'}
       value={value}
       name={name}
-      onChange={store.handleChanges}
+      onChange={handleChange}
     >
       {empty && <option value={''} aria-selected="true" />}
       {source.map(option => {
@@ -33,7 +34,12 @@ function Select({ value, source, name, empty }: PropsSelect) {
   )
 }
 
-function Form({ store, setStore, uiStore, setUiStore }: Stores) {
+function Form() {
+  const { uiStore, store, setStore, setUiStore } = useStore()
+  const handleChange = (e: any) =>
+    setStore(d => {
+      d.handleChanges(e)
+    })
   return uiStore.searched ? (
     <div />
   ) : (
@@ -47,6 +53,7 @@ function Form({ store, setStore, uiStore, setUiStore }: Stores) {
           name="hospSci"
           source={store.listaNomesSci}
           empty={true}
+          handleChange={handleChange}
         />
       </div>
       <div>
@@ -58,13 +65,20 @@ function Form({ store, setStore, uiStore, setUiStore }: Stores) {
           name="hospVul"
           source={store.listaNomesVul}
           empty={true}
+          handleChange={handleChange}
         />
       </div>
       <div>
         <label className="form" htmlFor="prod">
           Parte da Planta:
         </label>
-        <Select value={store.dados.prod} name="prod" source={store.partes} empty={false} />
+        <Select
+          value={store.dados.prod}
+          name="prod"
+          source={store.partes}
+          empty={false}
+          handleChange={handleChange}
+        />
       </div>
       <div>
         <label className="form" htmlFor="orig">
@@ -96,7 +110,7 @@ function Form({ store, setStore, uiStore, setUiStore }: Stores) {
           className="form-select"
           name="dest"
           value={store.dados.dest}
-          onChange={store.handleChanges}
+          onChange={handleChange}
         >
           {// eslint-disable-next-line @typescript-eslint/no-unused-vars
           store.destino.map((option: Estado, i: number) => {
@@ -119,7 +133,11 @@ function Form({ store, setStore, uiStore, setUiStore }: Stores) {
           Fotos da Espécie Vegetal
         </a>
         <button
-          onClick={uiStore.handleSearch}
+          onClick={(e: any) =>
+            setUiStore(d => {
+              d.handleSearch(e)
+            })
+          }
           className="form-button margin-left-100"
           disabled={false}
         >

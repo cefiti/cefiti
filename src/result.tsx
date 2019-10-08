@@ -1,11 +1,13 @@
 import React from 'react'
 //import { store } from './store'
 //import { uiStore } from './uistore'
-import { observer } from 'mobx-react-lite'
+//import { observer } from 'mobx-react-lite'
+import useStore from './context'
 
 //const search: string = '+symptoms+OR+sintomas+OR+pest+OR+praga+OR+doença+OR+disease+OR+inseto+OR+insect+OR+fungi+OR+fungi+OR+bactéria';
 
-function Result({ store, uiStore }: Stores) {
+function Result() {
+  const { uiStore, store } = useStore()
   return (
     <div>
       <div className={store.completed && uiStore.searched ? '' : 'hidden'}>
@@ -149,6 +151,7 @@ function Result({ store, uiStore }: Stores) {
   )
 }
 
-export default observer(Result as React.SFC)
+//export default observer(Result as React.SFC)
+export default Result
 
 //                   {item.proib ? (<span className="alert"><div>TRÂNSITO PROIBIDO</div></span>) : ''}

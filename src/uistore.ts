@@ -47,3 +47,4 @@ class UiStore {
 }
 
 export const uiStore = new UiStore()
+export { UiStore }
