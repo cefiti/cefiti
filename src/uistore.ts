@@ -3,9 +3,9 @@ import { store } from './store'
 
 configure({ enforceActions: 'observed' }) //useStrict(true)
 
-type WindowGa = Window & {
+/* type WindowGa = Window & {
   ga(send: string, event?: string, search?: string, category?: string, data?: string): void
-}
+} */
 
 class UiStore {
   @observable
@@ -38,7 +38,7 @@ class UiStore {
   @action
   handleSearch = (event: React.MouseEvent<HTMLButtonElement>): void => {
     if (process.env.NODE_ENV !== 'development') {
-      ;(window as WindowGa).ga('send', 'event', 'search', 'click', store.dados.hospSci)
+      window.ga('send', 'event', 'search', 'click', store.dados.hospSci)
       //console.log('click', process.env.NODE_ENV, store.dados.hospSci)
     }
     this.searched = true

@@ -51,6 +51,12 @@ interface Estado {
   UF: string
 }
 
+//declare global {
+interface Window {
+  ga(send: string, event?: string, search?: string, category?: string, data?: string): void
+}
+//}
+
 /* type EventChange = { currentTarget: { name: keyof Dados; value: string } } & React.ChangeEvent<
   HTMLSelectElement
 > */

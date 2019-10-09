@@ -28,22 +28,22 @@
     "lint": "eslint --ignore-pattern ./assests/**/* --ext .ts,.tsx ."
   },
   "dependencies": {
-    "mobx": "^5.9.4",
-    "mobx-react-lite": "^1.4.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "mobx": "^5.14.0",
+    "mobx-react-lite": "^1.4.1",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
   },
   "devDependencies": {
     "@types/d3-array": "^2.0.0",
-    "@types/jest": "^24.0.15",
-    "@types/node": "^12.0.8",
-    "@types/react": "^16.8.20",
-    "@types/react-dom": "^16.8.4",
-    "d3-array": "^2.2.0",
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.07.11",
+    "@types/react": "^16.9.5",
+    "@types/react-dom": "^16.9.1",
+    "d3-array": "^2.3.2",
     "jszip-cli": "^1.4.24",
-    "react-scripts": "3.0.1",
-    "source-map-explorer": "^2.0.0",
-    "typescript": "^3.3.3333"
+    "react-scripts": "^3.2.0",
+    "source-map-explorer": "^2.1.0",
+    "typescript": "^3.6.3"
   },
   "browserslist": [
     ">0.2%",
