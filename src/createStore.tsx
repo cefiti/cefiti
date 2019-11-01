@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useCallback, useState } from 'react'
-import { Draft } from 'immer'
+import produce, { setUseProxies, immerable, Draft } from 'immer'
 //import { useImmer } from 'use-immer'
-import produce, { setUseProxies } from 'immer'
 
 setUseProxies(false)
 type SetState<State> = (f: (draft: Draft<State>) => void | State) => void
@@ -40,3 +39,5 @@ export default function createStore<State>(initialState: State) {
   ] = [useStore, Provider]
   return result
 }
+
+export { immerable, setUseProxies }

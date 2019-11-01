@@ -1,4 +1,4 @@
-import { immerable } from 'immer'
+import createStore, { immerable } from './createStore'
 import './utils'
 
 export class Store {
@@ -9,6 +9,8 @@ export class Store {
   db: Db[] = []
   estados: Estado[] = []
   dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
+  exibeBase: boolean = false
+  searched: boolean = false
 
   getDb(db: { regras: Regra[]; pragas: Praga[]; hospedeiros: Hospedeiro[]; estados: Estado[] }) {
     const { regras, pragas, hospedeiros, estados } = db
@@ -123,7 +125,35 @@ export class Store {
     this.dados.orig = ''
     this.dados.dest = ''
   }
+
+  handleMenu(i: string): void {
+    if (i === 'Base') {
+      this.exibeBase = !this.exibeBase
+    }
+    if (i === 'Nova') {
+      this.searched = false
+    }
+    if (i === 'Voltar') {
+      this.searched = false
+      this.clean()
+    }
+    if (i === 'Print') {
+      window.print()
+    }
+    if (i === 'Download') {
+      window.open('CEFiTI.zip')
+    }
+  }
+
+  handleSearch(): void {
+    if (process.env.NODE_ENV !== 'development') {
+      window.ga('send', 'event', 'search', 'click', this.dados.hospSci)
+      console.log('click', process.env.NODE_ENV, this.dados.hospSci)
+    }
+    this.searched = true
+  }
 }
 
 const store = new Store()
-export { store }
+const [useStore, ProviderStore] = createStore<Store>(store)
+export { useStore, ProviderStore, store }

@@ -1,14 +1,13 @@
 import React from 'react'
-import { useStore, useUiStore } from './context'
+import { useStore } from './store'
 
 //const search: string = '+symptoms+OR+sintomas+OR+pest+OR+praga+OR+doença+OR+disease+OR+inseto+OR+insect+OR+fungi+OR+fungi+OR+bactéria';
 
 function Result() {
   const [store, setStore] = useStore()
-  const [uiStore, setUiStore] = useUiStore()
   return (
     <div>
-      <div className={store.completed && uiStore.searched ? '' : 'hidden'}>
+      <div className={store.completed && store.searched ? '' : 'hidden'}>
         <br />
         <h3>
           Exigências Fitossanitárias para o trânsito de {store.dados.prod} de {store.dados.hospVul}{' '}
@@ -24,7 +23,7 @@ function Result() {
           </span>
           <br />
         </div>
-        <span>{uiStore.searched}</span>
+        <span>{store.searched}</span>
 
         {store.result.map((item: Db, i: number) => {
           return (
@@ -130,7 +129,7 @@ function Result() {
         <div style={{ textAlign: 'center' }}>
           <button
             onClick={() =>
-              setUiStore(d => {
+              setStore(d => {
                 d.handleMenu('Voltar')
               })
             }
@@ -142,11 +141,8 @@ function Result() {
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button
             onClick={() => {
-              setUiStore(d => {
-                d.handleMenu('Nova')
-              })
               setStore(d => {
-                d.clean()
+                d.handleMenu('Nova')
               })
             }}
             className="form-button"

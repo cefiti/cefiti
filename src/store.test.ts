@@ -1,5 +1,5 @@
 import { store } from './store'
-import { configure } from 'mobx'
+import db from './db'
 import { regras } from './dbRegras'
 import { pragas } from './dbPragas'
 import { hospedeiros } from './dbHospedeiros'
@@ -7,7 +7,7 @@ import './utils'
 import * as d3 from 'd3-array'
 import 'jest'
 
-configure({ enforceActions: 'observed' }) //useStrict(true)
+store.getDb(db)
 
 const estadosSemAC = [
   { estado: '', UF: '' },
@@ -216,15 +216,13 @@ describe('Store filtro geral', () => {
 
 describe('Sync between NomeVulg and NomeSci', () => {
   it('should define NomeVulg based in NomeSci', () => {
-    // @ts-ignore
-    const e: EventChange = { currentTarget: { name: 'hospSci', value: 'Musa spp.' } }
-    store.handleChanges(e)
+    store.handleChanges('hospSci', 'Musa spp.')
     //store.dados.hospSci = 'Musa spp.'
     expect(store.dados.hospVul).toEqual('Banana')
   })
   it('should define NomeSci  based in NomeVulg ', () => {
     // @ts-ignore
-    store.handleChanges({ currentTarget: { name: 'hospVul', value: 'Banana' } })
+    store.handleChanges('hospVul', 'Banana')
     //store.dados.hospVul = 'Banana'
     expect(store.dados.hospSci).toEqual('Musa spp.')
   })

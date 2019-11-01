@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import { useUiStore } from './context'
+import { useStore } from './store'
 
 const Menu = () => {
-  const [, setUiStore] = useUiStore()
+  const [, setStore] = useStore()
   const handleMenu = (menu: string) => {
-    setUiStore(d => {
+    setStore(d => {
       d.handleMenu(menu)
     })
   }

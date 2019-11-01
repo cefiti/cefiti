@@ -1,10 +1,9 @@
 import React from 'react'
-import { useStore, useUiStore } from './context'
+import { useStore } from './store'
 
 const Base = () => {
   const [store] = useStore()
-  const [uiStore] = useUiStore()
-  return uiStore.exibeBase ? (
+  return store.exibeBase ? (
     <div>
       <br />
       <table style={{ width: '100%' }} className="table-grid">

@@ -1,10 +1,9 @@
 import React from 'react'
-import { useStore, useUiStore } from './context'
+import { useStore } from './store'
 import Select from './select'
 
 function Form() {
   const [store, setStore] = useStore()
-  const [uiStore, setUiStore] = useUiStore()
 
   React.useEffect(() => {
     async function getDb() {
@@ -21,7 +20,7 @@ function Form() {
       d.handleChanges(currentTarget.name, currentTarget.value)
     })
   }
-  return uiStore.searched ? (
+  return store.searched ? (
     <div />
   ) : (
     <form>
@@ -116,7 +115,7 @@ function Form() {
         <button
           type="button"
           onClick={() => {
-            setUiStore(d => {
+            setStore(d => {
               d.handleSearch()
             })
           }}

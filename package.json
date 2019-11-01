@@ -28,9 +28,9 @@
     "lint": "eslint --ignore-pattern ./assests/**/* --ext .ts,.tsx ."
   },
   "dependencies": {
-    "immer": "^4.0.1",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "immer": "^5.0.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
   },
   "devDependencies": {
     "@types/d3-array": "^2.0.0",
