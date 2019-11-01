@@ -1,11 +1,12 @@
 import React from 'react'
-import { observer } from 'mobx-react-lite'
+//import { observer } from 'mobx-react-lite'
 //import { uiStore } from './uistore'
 //import { store } from './store'
-import useStore from './context'
+import { useStore, useUiStore } from './context'
 
 const Base = () => {
-  const { uiStore, store } = useStore()
+  const [store] = useStore()
+  const [uiStore] = useUiStore()
   return uiStore.exibeBase ? (
     <div>
       <br />
@@ -87,7 +88,8 @@ const Base = () => {
   )
 }
 
-export default observer(Base as React.SFC)
+//export default observer(Base as React.SFC)
+export default Base
 
 /*               
             <th style={{ width: '5%' }}>Trânsito Proibido</th>

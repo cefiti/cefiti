@@ -1,5 +1,7 @@
 //import { observable, action, configure } from 'mobx'
 import { store } from './store'
+import { immerable } from 'immer'
+//import { useStore } from './context'
 
 //configure({ enforceActions: 'observed' }) //useStrict(true)
 
@@ -7,7 +9,10 @@ import { store } from './store'
   ga(send: string, event?: string, search?: string, category?: string, data?: string): void
 } */
 
+//const [store, setStore] = useStore()
+
 class UiStore {
+  [immerable] = true
   //@observable
   exibeBase: boolean = false
   //@observable exibeMapa: boolean = false;
@@ -15,14 +20,16 @@ class UiStore {
   searched: boolean = false
 
   //@action
-  handleMenu = (i: string): void => {
+  handleMenu(i: string): void {
     console.log('MEnu', i)
     if (i === 'Base') {
       this.exibeBase = !this.exibeBase
     }
     //if (i === 'Mapa') {this.exibeMapa = !this.exibeMapa; };
     if (i === 'Nova') {
-      store.clean()
+      /*       setStore(d => {
+        d.clean()
+      }) */
       this.searched = false
     }
     if (i === 'Voltar') {
@@ -37,13 +44,13 @@ class UiStore {
   }
 
   //@action
-  handleSearch = (event: React.MouseEvent<HTMLButtonElement>): void => {
+  handleSearch(/* event: React.MouseEvent<HTMLButtonElement> */): void {
     if (process.env.NODE_ENV !== 'development') {
       window.ga('send', 'event', 'search', 'click', store.dados.hospSci)
-      //console.log('click', process.env.NODE_ENV, store.dados.hospSci)
     }
+    console.log('click', process.env.NODE_ENV, store.dados.hospSci)
     this.searched = true
-    event.preventDefault()
+    //event.preventDefault()
   }
 }
 

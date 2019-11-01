@@ -1,55 +1,59 @@
 import React from 'react'
-//import { store } from './store'
-import { useStore } from './context'
-import { observer } from 'mobx-react-lite'
+//import { store as sstore } from './store'
+import { useStore, useUiStore } from './context'
+//import { observer } from 'mobx-react-lite'
+import Select from './select'
+//import produce from 'immer'
 
-interface PropsSelect {
-  value: string
-  source: string[]
-  name: string
-  empty: boolean
-  handleChange: (e: any) => any
-}
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function Select({ value, source, name, empty, handleChange }: PropsSelect) {
-  return (
-    <select
-      style={name === 'prod' ? { minWidth: '145px' } : {}}
-      id={name}
-      className={name === 'hospSci' ? 'italic form-select' : 'form-select'}
-      value={value}
-      name={name}
-      onChange={handleChange}
-    >
-      {empty && <option value={''} aria-selected="true" />}
-      {source.map(option => {
-        return (
-          <option value={option} key={option} aria-selected="false">
-            {option}
-          </option>
-        )
-      })}
-    </select>
-  )
-}
+/* function useForceUpdate() {
+  const [value, setValue] = React.useState(true) //boolean state
+  return () => setValue(!value) // toggle the state to force render
+} */
 
 function Form() {
-  const { uiStore, store, setStore, setUiStore } = useStore()
-  const handleChange = (e: any) =>
+  const [value, setValue] = React.useState(true)
+  const [store, setStore] = useStore()
+  const [uiStore, setUiStore] = useUiStore()
+
+  /*  store.getDb().then(db =>
+    //@ts-ignore
     setStore(d => {
-      d.handleChanges(e)
+      console.log(db, 'dfdsf')
+      d = db
     })
-  console.log(store)
+  ) */
+
+  //produce( d => {d.getDb().then(res => setStore)})
+  /*   async function getDb() {
+    await setStore(async d => {
+      await d.getDb()
+      console.log(d.db.length, 'dfdsf')
+    })
+  }
+  getDb() */
+  /*   const db = produce(async d => {
+    return await d.getDb()
+  }) */
+  //@ts-ignore
+  //setStore(db)
   React.useEffect(() => {
-    console.log(store.db.length)
-  }, [store.db, store.loading])
+    if (store.db.length === 0) {
+      setValue(!value)
+      console.log('effectxx', store.db.length)
+    }
+  })
+
+  const handleChange = ({ currentTarget }: React.FormEvent<HTMLSelectElement>) => {
+    setStore((d: Store) => {
+      d.handleChanges(currentTarget.name, currentTarget.value)
+      console.log(currentTarget.name, currentTarget.value, 'form')
+    })
+  }
   return uiStore.searched ? (
     <div />
   ) : (
-      <form> 
-      {store.loading ? (<div />) :
-      (<div><div>
+    <form>
+      <div>
         <label className="form" htmlFor="hospSci">
           Espécie Vegetal (nome científico):
         </label>
@@ -84,7 +88,7 @@ function Form() {
           empty={false}
           handleChange={handleChange}
         />
-      </div>)}
+      </div>
       <div>
         <label className="form" htmlFor="orig">
           Origem:
@@ -127,7 +131,7 @@ function Form() {
           })}
         </select>
       </div>
-          <br />
+      <br />
       <div>
         <a
           style={{ marginBottom: '10px' }}
@@ -138,20 +142,21 @@ function Form() {
           Fotos da Espécie Vegetal
         </a>
         <button
-          onClick={(e: any) =>
+          type="button"
+          onClick={() => {
             setUiStore(d => {
-              d.handleSearch(e)
+              d.handleSearch()
             })
-          }
+          }}
           className="form-button margin-left-100"
           disabled={false}
         >
           Pesquisar
         </button>
-          </div>
-          </div>)}
+      </div>
     </form>
   )
 }
 
-export default observer(Form as React.SFC)
+//export default observer(Form as React.SFC)
+export default Form

@@ -2,12 +2,13 @@ import React from 'react'
 //import { store } from './store'
 //import { uiStore } from './uistore'
 //import { observer } from 'mobx-react-lite'
-import useStore from './context'
+import { useStore, useUiStore } from './context'
 
 //const search: string = '+symptoms+OR+sintomas+OR+pest+OR+praga+OR+doença+OR+disease+OR+inseto+OR+insect+OR+fungi+OR+fungi+OR+bactéria';
 
 function Result() {
-  const { uiStore, store } = useStore()
+  const [store, setStore] = useStore()
+  const [uiStore, setUiStore] = useUiStore()
   return (
     <div>
       <div className={store.completed && uiStore.searched ? '' : 'hidden'}>
@@ -131,7 +132,11 @@ function Result() {
         </div>
         <div style={{ textAlign: 'center' }}>
           <button
-            onClick={uiStore.handleMenu.bind(undefined, 'Voltar')}
+            onClick={() =>
+              setUiStore(d => {
+                d.handleMenu('Voltar')
+              })
+            }
             className="form-button"
             disabled={false}
           >
@@ -139,7 +144,14 @@ function Result() {
           </button>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button
-            onClick={uiStore.handleMenu.bind(undefined, 'Nova')}
+            onClick={() => {
+              setUiStore(d => {
+                d.handleMenu('Nova')
+              })
+              setStore(d => {
+                d.clean()
+              })
+            }}
             className="form-button"
             disabled={false}
           >

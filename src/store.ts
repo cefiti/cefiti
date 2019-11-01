@@ -1,12 +1,14 @@
 //import { observable, computed, configure, action, runInAction } from 'mobx'
 //import 'js-plus'
 //import 'array-flat-polyfill'
-import { produce } from 'immer'
+import { /* produce, */ immerable } from 'immer'
 import './utils'
+//import { regras, pragas, hospedeiros, estados } from './db'
 
 //configure({ enforceActions: 'observed' })
 
 export class Store {
+  [immerable] = true
   /* @observable */ dbRegras: Regra[] = []
   /* @observable */ dbHospedeiros: Hospedeiro[] = []
   /* @observable */ dbPragas: Praga[] = []
@@ -15,11 +17,12 @@ export class Store {
 
   //@observable
   dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
-  loading: boolean = true
+  loading: boolean = false
+  count = 0
+  teste = 'asd'
 
   async getDb() {
     const { regras, pragas, hospedeiros, estados } = await import('./db')
-    //runInAction(() => {
     this.dbHospedeiros = hospedeiros
     this.dbRegras = regras
     this.dbPragas = pragas
@@ -29,7 +32,8 @@ export class Store {
       ...regra,
     })) as Db[]
     this.loading = false
-    //})
+    //console.log('getDb', this.db.length, this.db.length)
+    return this
   }
 
   //@computed
@@ -121,21 +125,22 @@ export class Store {
   }
 
   //@action
-  handleChanges = (event: React.FormEvent<HTMLSelectElement>): void => {
-    const target = event.currentTarget
-    switch (target.name) {
+  //handleChanges = (event: React.FormEvent<HTMLSelectElement>): void => {
+  handleChanges(name: string, value: any): void {
+    switch (name) {
       case 'hospSci':
-        const hospVulg = this.dbHospedeiros.find(hosp => hosp.nomeSci === target.value)
+        const hospVulg = this.dbHospedeiros.find(hosp => hosp.nomeSci === value)
         this.dados.hospVul = hospVulg ? hospVulg.nomeVul : ''
         break
       case 'hospVul':
-        const hospSci = this.dbHospedeiros.find(hosp => hosp.nomeVul === target.value)
+        const hospSci = this.dbHospedeiros.find(hosp => hosp.nomeVul === value)
         this.dados.hospSci = hospSci ? hospSci.nomeSci : ''
         break
       default:
         break
     }
-    this.dados[target.name] = target.value
+    this.dados[name] = value
+    console.log(this.dados[name], value, name)
   }
 
   //@action
@@ -149,7 +154,5 @@ export class Store {
 }
 
 const store = new Store()
-produce(store, (d: Store) => {
-  d.getDb()
-})
+store.getDb()
 export { store }

@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import useStore from './context'
+import { useUiStore } from './context'
 //import { observer } from 'mobx-react-lite'
 
 const Menu = () => {
-  const { setUiStore } = useStore()
+  const [, setUiStore] = useUiStore()
   const handleMenu = (menu: string) => {
     setUiStore(d => {
       d.handleMenu(menu)
