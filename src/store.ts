@@ -17,12 +17,12 @@ export class Store {
 
   //@observable
   dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
-  loading: boolean = false
+  /*  loading: boolean = false
   count = 0
-  teste = 'asd'
+  teste = 'asd' */
 
-  async getDb() {
-    const { regras, pragas, hospedeiros, estados } = await import('./db')
+  getDb(db: { regras: Regra[]; pragas: Praga[]; hospedeiros: Hospedeiro[]; estados: Estado[] }) {
+    const { regras, pragas, hospedeiros, estados } = db
     this.dbHospedeiros = hospedeiros
     this.dbRegras = regras
     this.dbPragas = pragas
@@ -31,7 +31,7 @@ export class Store {
       ...this.dbPragas.find(item => item.prag === regra.prag),
       ...regra,
     })) as Db[]
-    this.loading = false
+    //this.loading = false
     //console.log('getDb', this.db.length, this.db.length)
     return this
   }
@@ -140,7 +140,6 @@ export class Store {
         break
     }
     this.dados[name] = value
-    console.log(this.dados[name], value, name)
   }
 
   //@action
@@ -154,5 +153,5 @@ export class Store {
 }
 
 const store = new Store()
-store.getDb()
+//store.getDb()
 export { store }

@@ -1,52 +1,26 @@
 import React from 'react'
-//import { store as sstore } from './store'
 import { useStore, useUiStore } from './context'
-//import { observer } from 'mobx-react-lite'
 import Select from './select'
-//import produce from 'immer'
-
-/* function useForceUpdate() {
-  const [value, setValue] = React.useState(true) //boolean state
-  return () => setValue(!value) // toggle the state to force render
-} */
+//import { store as sstore } from './store'
+//import { observer } from 'mobx-react-lite'
 
 function Form() {
-  const [value, setValue] = React.useState(true)
   const [store, setStore] = useStore()
   const [uiStore, setUiStore] = useUiStore()
 
-  /*  store.getDb().then(db =>
-    //@ts-ignore
-    setStore(d => {
-      console.log(db, 'dfdsf')
-      d = db
-    })
-  ) */
-
-  //produce( d => {d.getDb().then(res => setStore)})
-  /*   async function getDb() {
-    await setStore(async d => {
-      await d.getDb()
-      console.log(d.db.length, 'dfdsf')
-    })
-  }
-  getDb() */
-  /*   const db = produce(async d => {
-    return await d.getDb()
-  }) */
-  //@ts-ignore
-  //setStore(db)
   React.useEffect(() => {
-    if (store.db.length === 0) {
-      setValue(!value)
-      console.log('effectxx', store.db.length)
+    async function getDb() {
+      const db = await import('./db')
+      setStore(d => {
+        d.getDb(db)
+      })
     }
-  })
+    getDb()  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const handleChange = ({ currentTarget }: React.FormEvent<HTMLSelectElement>) => {
     setStore((d: Store) => {
       d.handleChanges(currentTarget.name, currentTarget.value)
-      console.log(currentTarget.name, currentTarget.value, 'form')
     })
   }
   return uiStore.searched ? (

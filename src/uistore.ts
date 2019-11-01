@@ -21,15 +21,10 @@ class UiStore {
 
   //@action
   handleMenu(i: string): void {
-    console.log('MEnu', i)
     if (i === 'Base') {
       this.exibeBase = !this.exibeBase
     }
-    //if (i === 'Mapa') {this.exibeMapa = !this.exibeMapa; };
     if (i === 'Nova') {
-      /*       setStore(d => {
-        d.clean()
-      }) */
       this.searched = false
     }
     if (i === 'Voltar') {
@@ -41,16 +36,16 @@ class UiStore {
     if (i === 'Download') {
       window.open('CEFiTI.zip')
     }
+    //if (i === 'Mapa') {this.exibeMapa = !this.exibeMapa; };
   }
 
   //@action
   handleSearch(/* event: React.MouseEvent<HTMLButtonElement> */): void {
     if (process.env.NODE_ENV !== 'development') {
       window.ga('send', 'event', 'search', 'click', store.dados.hospSci)
+      console.log('click', process.env.NODE_ENV, store.dados.hospSci)
     }
-    console.log('click', process.env.NODE_ENV, store.dados.hospSci)
     this.searched = true
-    //event.preventDefault()
   }
 }
 
