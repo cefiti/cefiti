@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { useUiStore } from './context'
-//import { observer } from 'mobx-react-lite'
 
 const Menu = () => {
   const [, setUiStore] = useUiStore()
@@ -40,7 +39,6 @@ const Menu = () => {
   )
 }
 
-//export default observer(Menu as React.SFC)
 export default Menu
 
 //style="float:right;color:#fff;padding:5px 10px 5px 15px;"

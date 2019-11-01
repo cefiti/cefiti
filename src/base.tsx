@@ -1,7 +1,4 @@
 import React from 'react'
-//import { observer } from 'mobx-react-lite'
-//import { uiStore } from './uistore'
-//import { store } from './store'
 import { useStore, useUiStore } from './context'
 
 const Base = () => {
@@ -88,7 +85,6 @@ const Base = () => {
   )
 }
 
-//export default observer(Base as React.SFC)
 export default Base
 
 /*               

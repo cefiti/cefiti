@@ -1,8 +1,6 @@
 import React from 'react'
 import { useStore, useUiStore } from './context'
 import Select from './select'
-//import { store as sstore } from './store'
-//import { observer } from 'mobx-react-lite'
 
 function Form() {
   const [store, setStore] = useStore()
@@ -15,7 +13,7 @@ function Form() {
         d.getDb(db)
       })
     }
-    getDb()  // eslint-disable-next-line react-hooks/exhaustive-deps
+    getDb() // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleChange = ({ currentTarget }: React.FormEvent<HTMLSelectElement>) => {
@@ -132,5 +130,4 @@ function Form() {
   )
 }
 
-//export default observer(Form as React.SFC)
 export default Form

@@ -1,7 +1,4 @@
 import React from 'react'
-//import { store } from './store'
-//import { uiStore } from './uistore'
-//import { observer } from 'mobx-react-lite'
 import { useStore, useUiStore } from './context'
 
 //const search: string = '+symptoms+OR+sintomas+OR+pest+OR+praga+OR+doença+OR+disease+OR+inseto+OR+insect+OR+fungi+OR+fungi+OR+bactéria';
@@ -163,7 +160,6 @@ function Result() {
   )
 }
 
-//export default observer(Result as React.SFC)
 export default Result
 
 //                   {item.proib ? (<span className="alert"><div>TRÂNSITO PROIBIDO</div></span>) : ''}
