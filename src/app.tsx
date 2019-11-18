@@ -5,9 +5,6 @@ import Form from './form'
 import { Head } from './head'
 import { Botton } from './botton'
 import { ProviderStore } from './store'
-import { setUseProxies } from 'immer'
-
-setUseProxies(false)
 
 export const App = () => {
   return (

@@ -8,12 +8,11 @@ export class Store {
   dbPragas: Praga[] = []
   db: Db[] = []
   estados: Estado[] = []
-  dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
-  exibeBase: boolean = false
-  searched: boolean = false
+  dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
+  exibeBase = false
+  searched = false
 
-  getDb(db: { regras: Regra[]; pragas: Praga[]; hospedeiros: Hospedeiro[]; estados: Estado[] }) {
-    const { regras, pragas, hospedeiros, estados } = db
+  getDb({ regras, pragas, hospedeiros, estados }: ImportDb) {
     this.dbHospedeiros = hospedeiros
     this.dbRegras = regras
     this.dbPragas = pragas
@@ -49,7 +48,7 @@ export class Store {
       .sort((a, b) => a.localeCompare(b))
   }
 
-  get empty(): boolean {
+  get empty() {
     return this.result.length === 0
   }
 
@@ -61,11 +60,11 @@ export class Store {
     return this.estados.filter(estado => estado.UF !== this.dados.orig || estado.UF === '')
   }
 
-  get gender(): string {
+  get gender() {
     return this.dados.hospSci.split(' ')[0]
   }
 
-  get completed(): boolean {
+  get completed() {
     return (
       Boolean(this.dados.hospSci) &&
       Boolean(this.dados.hospVul) &&
@@ -75,7 +74,7 @@ export class Store {
     )
   }
 
-  get partes(): string[] {
+  get partes() {
     return this.db
       .filter(
         exigen =>
@@ -86,7 +85,7 @@ export class Store {
       .flatMap(v => v.part)
       .filter((i, x, a) => a.indexOf(i) === x)
       .concat([''])
-      .sort((a: string, b: string) => a.localeCompare(b))
+      .sort((a, b) => a.localeCompare(b))
   }
 
   get result() {
@@ -102,7 +101,7 @@ export class Store {
     })
   }
 
-  handleChanges(name: string, value: any): void {
+  handleChanges(name: string, value: any) {
     switch (name) {
       case 'hospSci':
         const hospVulg = this.dbHospedeiros.find(hosp => hosp.nomeSci === value)
@@ -118,7 +117,7 @@ export class Store {
     this.dados[name] = value
   }
 
-  clean(): void {
+  clean() {
     this.dados.hospSci = ''
     this.dados.hospVul = ''
     this.dados.prod = ''
@@ -126,16 +125,16 @@ export class Store {
     this.dados.dest = ''
   }
 
-  handleMenu(i: string): void {
+  handleMenu(i: string) {
     if (i === 'Base') {
       this.exibeBase = !this.exibeBase
     }
     if (i === 'Nova') {
       this.searched = false
+      this.clean()
     }
     if (i === 'Voltar') {
       this.searched = false
-      this.clean()
     }
     if (i === 'Print') {
       window.print()
@@ -145,7 +144,7 @@ export class Store {
     }
   }
 
-  handleSearch(): void {
+  handleSearch() {
     if (process.env.NODE_ENV !== 'development') {
       window.ga('send', 'event', 'search', 'click', this.dados.hospSci)
       console.log('click', process.env.NODE_ENV, this.dados.hospSci)

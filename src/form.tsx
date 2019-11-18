@@ -16,7 +16,7 @@ function Form() {
   }, [])
 
   const handleChange = ({ currentTarget }: React.FormEvent<HTMLSelectElement>) => {
-    setStore((d: Store) => {
+    setStore(d => {
       d.handleChanges(currentTarget.name, currentTarget.value)
     })
   }

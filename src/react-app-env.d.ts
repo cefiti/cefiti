@@ -1,13 +1,5 @@
 /// <reference types="react-scripts" />
 
-/* declare module 'detect-browser' {
-  detect: () => Browser
-  detectOS: any
-  getNodeVersion: any
-  parseUserAgent: any
-}
- */
-
 interface Dados {
   hospSci: string
   hospVul: string
@@ -51,44 +43,13 @@ interface Estado {
   UF: string
 }
 
-type Draft<T> = T extends AtomicObject
-  ? T
-  : T extends object
-  ? { -readonly [K in keyof T]: Draft<T[K]> }
-  : T
-type Store = import('./store').Store
-type UiStore = import('./uistore').UiStore
-
-type Context = {
-  store: Store
-  setStore: (f: (draft: Draft<Store>) => void | Store) => void
-  uiStore: UiStore
-  setUiStore: (f: (draft: Draft<UiStore>) => void | UiStore) => void
+type ImportDb = {
+  regras: Regra[]
+  pragas: Praga[]
+  hospedeiros: Hospedeiro[]
+  estados: Estado[]
 }
 
-//declare global {
 interface Window {
   ga(send: string, event?: string, search?: string, category?: string, data?: string): void
 }
-//}
-
-/* type EventChange = { currentTarget: { name: keyof Dados; value: string } } & React.ChangeEvent<
-  HTMLSelectElement
-> */
-
-/* interface Dbbb {
-  prag: string
-  hosp: string[]
-  pragc: string
-  files: [
-    {
-      leg: string
-      link: string
-    }
-  ]
-  desc: string
-  part: string[]
-  orig: string[]
-  dest: string[]
-  exig: string[]
-} */
