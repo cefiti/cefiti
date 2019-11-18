@@ -1,14 +1,14 @@
 import React from 'react'
-import { store } from './store'
-import { uiStore } from './uistore'
+import { useStore } from './useStore'
 import { observer } from 'mobx-react-lite'
 
 //const search: string = '+symptoms+OR+sintomas+OR+pest+OR+praga+OR+doença+OR+disease+OR+inseto+OR+insect+OR+fungi+OR+fungi+OR+bactéria';
 
 function Result() {
+  const store = useStore()
   return (
     <div>
-      <div className={store.completed && uiStore.searched ? '' : 'hidden'}>
+      <div className={store.completed && store.searched ? '' : 'hidden'}>
         <br />
         <h3>
           Exigências Fitossanitárias para o trânsito de {store.dados.prod} de {store.dados.hospVul}{' '}
@@ -24,7 +24,7 @@ function Result() {
           </span>
           <br />
         </div>
-        <span>{uiStore.searched}</span>
+        <span>{store.searched}</span>
 
         {store.result.map((item: Db, i: number) => {
           return (
@@ -129,7 +129,7 @@ function Result() {
         </div>
         <div style={{ textAlign: 'center' }}>
           <button
-            onClick={uiStore.handleMenu.bind(undefined, 'Voltar')}
+            onClick={store.handleMenu.bind(undefined, 'Voltar')}
             className="form-button"
             disabled={false}
           >
@@ -137,7 +137,7 @@ function Result() {
           </button>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button
-            onClick={uiStore.handleMenu.bind(undefined, 'Nova')}
+            onClick={store.handleMenu.bind(undefined, 'Nova')}
             className="form-button"
             disabled={false}
           >

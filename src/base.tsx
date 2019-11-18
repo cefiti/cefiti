@@ -1,10 +1,10 @@
 import React from 'react'
 import { observer } from 'mobx-react-lite'
-import { uiStore } from './uistore'
-import { store } from './store'
+import { useStore } from './useStore'
 
 const Base = () => {
-  return uiStore.exibeBase ? (
+  const store = useStore()
+  return store.exibeBase ? (
     <div>
       <br />
       <table style={{ width: '100%' }} className="table-grid">

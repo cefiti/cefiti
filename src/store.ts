@@ -9,9 +9,9 @@ export class Store {
   @observable dbPragas: Praga[] = []
   @observable db: Db[] = []
   @observable estados: Estado[] = []
-
-  @observable
-  dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
+  @observable exibeBase: boolean = false
+  @observable searched: boolean = false
+  @observable dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
 
   async getDb() {
     const { regras, pragas, hospedeiros, estados } = await import('./db')
@@ -112,21 +112,20 @@ export class Store {
   }
 
   @action
-  handleChanges = (event: React.FormEvent<HTMLSelectElement>): void => {
-    const target = event.currentTarget
-    switch (target.name) {
+  handleChanges(name: string, value: any) {
+    switch (name) {
       case 'hospSci':
-        const hospVulg = this.dbHospedeiros.find(hosp => hosp.nomeSci === target.value)
+        const hospVulg = this.dbHospedeiros.find(hosp => hosp.nomeSci === value)
         this.dados.hospVul = hospVulg ? hospVulg.nomeVul : ''
         break
       case 'hospVul':
-        const hospSci = this.dbHospedeiros.find(hosp => hosp.nomeVul === target.value)
+        const hospSci = this.dbHospedeiros.find(hosp => hosp.nomeVul === value)
         this.dados.hospSci = hospSci ? hospSci.nomeSci : ''
         break
       default:
         break
     }
-    this.dados[target.name] = target.value
+    this.dados[name] = value
   }
 
   @action
@@ -136,6 +135,37 @@ export class Store {
     this.dados.prod = ''
     this.dados.orig = ''
     this.dados.dest = ''
+  }
+
+  @action
+  handleMenu = (i: string): void => {
+    if (i === 'Base') {
+      this.exibeBase = !this.exibeBase
+    }
+    //if (i === 'Mapa') {this.exibeMapa = !this.exibeMapa; };
+    if (i === 'Nova') {
+      store.clean()
+      this.searched = false
+    }
+    if (i === 'Voltar') {
+      this.searched = false
+    }
+    if (i === 'Print') {
+      window.print()
+    }
+    if (i === 'Download') {
+      window.open('CEFiTI.zip')
+    }
+  }
+
+  @action
+  handleSearch = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    if (process.env.NODE_ENV !== 'development') {
+      window.ga('send', 'event', 'search', 'click', store.dados.hospSci)
+      //console.log('click', process.env.NODE_ENV, store.dados.hospSci)
+    }
+    this.searched = true
+    event.preventDefault()
   }
 }
 
