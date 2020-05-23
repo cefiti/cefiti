@@ -65,10 +65,10 @@ describe('Store origem e destino', () => {
 describe('Store hospedeiros nomeSci', () => {
   it('unique values Nome Vulgar', () => {
     //expect(store.listaNomesVul.length).toEqual(hospedeiros.length)
-    expect(hospedeiros.map(v => v.nomeVul).filter((i, x, a) => a.indexOf(i) !== x)).toEqual([])
-    expect(hospedeiros.map(v => v.nomeVul).filter((i, x, a) => a.indexOf(i) === x).length).toEqual(
-      hospedeiros.length
-    )
+    expect(hospedeiros.map((v) => v.nomeVul).filter((i, x, a) => a.indexOf(i) !== x)).toEqual([])
+    expect(
+      hospedeiros.map((v) => v.nomeVul).filter((i, x, a) => a.indexOf(i) === x).length
+    ).toEqual(hospedeiros.length)
   })
 })
 
@@ -145,7 +145,7 @@ describe('Store filtro geral', () => {
     expect(store.result.length).toBe(3)
   })
   it('Musa spp. legis', () => {
-    expect(store.result.flatMap(v => v.files).map(v => v.link)).toEqual([
+    expect(store.result.flatMap((v) => v.files).map((v) => v.link)).toEqual([
       'IN17-2009.pdf',
       'IN17-2005.pdf',
       'IN17-2005.pdf',
@@ -153,7 +153,7 @@ describe('Store filtro geral', () => {
   })
 
   it('Musa spp. pragas', () => {
-    expect(store.result.map(v => v.pragc)).toEqual([
+    expect(store.result.map((v) => v.pragc)).toEqual([
       'MOKO-DA-BANANEIRA',
       'SIGATOKA NEGRA',
       'SIGATOKA NEGRA',
@@ -174,8 +174,8 @@ describe('Store filtro geral', () => {
     store.dados.orig = 'SC'
     store.dados.dest = 'MT'
     expect(store.result.length).toBe(1)
-    expect(store.result.flatMap(v => v.files).map(v => v.link)).toEqual(['IN20-2013.pdf'])
-    expect(store.result.map(v => v.pragc)).toEqual(['CANCRO EUROPEU DAS POMÁCEAS'])
+    expect(store.result.flatMap((v) => v.files).map((v) => v.link)).toEqual(['IN20-2013.pdf'])
+    expect(store.result.map((v) => v.pragc)).toEqual(['CANCRO EUROPEU DAS POMÁCEAS'])
   })
 
   it('Citrus sinensis sementes SP->ES', () => {
@@ -193,9 +193,12 @@ describe('Store filtro geral', () => {
     store.dados.prod = 'material de propagação'
     store.dados.orig = 'RS'
     store.dados.dest = 'ES'
-    expect(store.result.length).toBe(1)
-    expect(store.result.flatMap(v => v.files).map(v => v.link)).toEqual(['IN21-2018.pdf'])
-    expect(store.result.map(v => v.pragc)).toEqual(['CANCRO CÍTRICO'])
+    expect(store.result.length).toBe(2)
+    expect(store.result.flatMap((v) => v.files).map((v) => v.link)).toEqual([
+      'IN03-2008.pdf',
+      'IN21-2018.pdf',
+    ])
+    expect(store.result.map((v) => v.pragc)).toEqual(['PINTA-PRETA-DOS-CITROS', 'CANCRO CÍTRICO'])
   })
 
   it('Citrus sinensis mudas SP->ES', () => {
@@ -203,12 +206,17 @@ describe('Store filtro geral', () => {
     store.dados.prod = 'mudas'
     store.dados.orig = 'SP'
     store.dados.dest = 'ES'
-    expect(store.result.length).toBe(2)
-    expect(store.result.flatMap(v => v.files).map(v => v.link)).toEqual([
+    expect(store.result.length).toBe(3)
+    expect(store.result.flatMap((v) => v.files).map((v) => v.link)).toEqual([
       'IN53-2008.pdf',
+      'IN03-2008.pdf',
       'IN21-2018.pdf',
     ])
-    expect(store.result.map(v => v.pragc)).toEqual(['GREENING', 'CANCRO CÍTRICO'])
+    expect(store.result.map((v) => v.pragc)).toEqual([
+      'GREENING',
+      'PINTA-PRETA-DOS-CITROS',
+      'CANCRO CÍTRICO',
+    ])
     expect(store.result).toMatchSnapshot()
   })
 })
@@ -230,8 +238,8 @@ describe('Sync between NomeVulg and NomeSci', () => {
 })
 
 test('Check normalization of db ', () => {
-  regras.map(regra => {
-    const praga = pragas.find(item => item.prag === regra.prag)
+  regras.map((regra) => {
+    const praga = pragas.find((item) => item.prag === regra.prag)
     if (!praga) {
       expect(regra.prag).toEqual(praga)
       //throw Error(`Dados da praga ${regra.prag} não cadastrados.`)
@@ -242,15 +250,19 @@ test('Check normalization of db ', () => {
 
 test('duplicates nomeVul', () => {
   const countDupli = Array.from(
-    d3.rollup(hospedeiros, v => ({ countNomeVulg: v.length }), k => k.nomeVul),
+    d3.rollup(
+      hospedeiros,
+      (v) => ({ countNomeVulg: v.length }),
+      (k) => k.nomeVul
+    ),
     ([key, values]) => ({ nomeVulg: key, ...values })
   )
-  expect(countDupli.filter(v => !v.countNomeVulg)).toEqual([])
+  expect(countDupli.filter((v) => !v.countNomeVulg)).toEqual([])
 })
 
 test('should join Pragas and Regras', () => {
-  regras.forEach(regra => {
-    const praga = pragas.find(item => item.prag === regra.prag)
+  regras.forEach((regra) => {
+    const praga = pragas.find((item) => item.prag === regra.prag)
     expect(praga).toBeDefined()
   })
 })

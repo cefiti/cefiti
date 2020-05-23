@@ -131,11 +131,11 @@ export const regras: Regra[] = [
   },
 
   //PINTA-PRETA-DOS-CITROS
-  {
+  {        
     desc: 'DE UF com ocorrência de Pinta-preta-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Pinta-preta-dos-citros',
     part: ['mudas', 'estacas', 'gemas', 'material de propagação', 'plantas'],
     orig: ['AM', 'ES', 'MT', 'MS', 'MG', 'PE', 'PR', 'RJ', 'RS', 'SC', 'SP', 'BA', 'GO'],
-    dest: ['AC', 'AL', 'AP', 'CE', 'DF', 'MA', 'PA', 'PB', 'PI', 'RN', 'RO', 'RR', 'SE', 'TO'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Phyllosticta citricarpa (Guinardia citricarpa)',
     exig: [
       'PTV;',
@@ -145,7 +145,7 @@ export const regras: Regra[] = [
     desc: 'DE UF com ocorrência de Pinta-preta-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Pinta-preta-dos-citros',
     part: ['frutos'],
     orig: ['AM', 'ES', 'MT', 'MS', 'MG', 'PE', 'PR', 'RJ', 'RS', 'SC', 'SP', 'BA', 'GO'],
-    dest: ['AC', 'AL', 'AP', 'CE', 'DF', 'MA', 'PA', 'PB', 'PI', 'RN', 'RO', 'RR', 'SE', 'TO'],
+    dest: ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Phyllosticta citricarpa (Guinardia citricarpa)',
     exig: [
       'PTV com a seguinte declaração adicional: "Os frutos foram produzidos sob Manejo Integrado de Guignardia citricarpa e submetidos a processo de seleção para a retirada de folhas e partes de ramos";',

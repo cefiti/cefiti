@@ -4,6 +4,11 @@
 
 ## **_CHANGELOG_**
 
+## 5.2.27
+
+- [db] PINTA-PRETA-DOS-CITROS - Amplia Destino para todos os estados.
+- Inclui uma linha abaixo de cada resultado para melhorar a leitura
+
 ## 5.2.26
 
 - [db] Include Resolução 06/2019 - Mosca da Carambola - Roraima and remove Resolução 03/2018
