@@ -1,0 +1,97 @@
+/* #######
+
+	Definições de apresentação dos elementos de formulário:
+	
+		.form-label
+		.form-text
+		.form-paginador
+		.form-select
+		.form-textarea
+		.form-check-radio		
+		.form-botton
+		.form-barra-botoes
+		
+####### */
+
+.form-label {
+  font-weight: bold;
+}
+
+/*
+.form-label-blue {
+	font-weight	:bold;
+	color: #1581E3;
+}
+*/
+
+.form-campo-obrigatorio {
+  color: #ff0000;
+}
+
+.form-select {
+  max-width: -moz-available; /* WebKit-based browsers will ignore this. */
+  max-width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
+}
+
+.form-text,
+.form-select,
+.form-textarea {
+  background: #fcfcfc;
+  border: 1px solid #ccc;
+  margin-top: 2px;
+  vertical-align: bottom;
+}
+
+.form-paginador {
+  background: #fcfcfc;
+  border: 1px solid #ccc;
+  margin-top: 2px;
+  vertical-align: top;
+  color: #6b5a22;
+}
+
+.form-textarea {
+  font-size: 1.1em;
+}
+
+.form-check-radio {
+  vertical-align: middle;
+}
+
+.form-button {
+  background: #3866b5;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 3px;
+}
+
+.form-button-disabled {
+  background: #dedede;
+  color: #c0c0c0;
+  font-weight: bold;
+  padding: 3px;
+}
+
+.form-legenda-campo-obrigatorio {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.form-barra-botoes-consulta {
+  border-top: 1px dashed #ccc;
+  border-bottom: 1px dashed #ccc;
+  margin: 10px 0 20px 0;
+  padding: 5px 0;
+  text-align: right;
+}
+
+.form-barra-botoes {
+  /* base */
+  background: #f7f7f7;
+  border-top: 1px dashed #ccc;
+  border-bottom: 1px dashed #ccc;
+  margin-top: 10px;
+  padding: 5px;
+  text-align: right;
+}

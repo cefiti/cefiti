@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "mobx": "./mobx.js",
+    "mobx-react-lite": "./mobx-react-lite.js",
+    "react": "./react.js",
+    "react-dom": "./react-dom.js"
+  }
+}

@@ -42,6 +42,18 @@
       ga('create', 'UA-60679065-1', 'auto')
       ga('send', 'pageview')
     </script>
+
+    <script defer src="es-module-shims.min.js"></script>
+    <script type="importmap-shim">
+      {
+        "imports": {
+          "react": "https://cdn.skypack.dev/react",
+          "react-dom": "https://cdn.skypack.dev/react-dom",
+          "mobx": "https://cdn.skypack.dev/mobx",
+          "mobx-react-lite": "https://cdn.skypack.dev/mobx-react-lite@next"
+        }
+      }
+    </script>
   </head>
 
   <body style="height: 100%;">
@@ -50,5 +62,5 @@
     </noscript>
     <div id="root" style="display: flex; height: 100%;"></div>
   </body>
-  <script type="module" src="index.js"></script>
+  <script type="module-shim" src="js/index.js"></script>
 </html>

@@ -25,7 +25,9 @@
     "zip": "jszip ./build -o ./build/CEFiTI.zip",
     "deploy": "jszip -c package.json -o CEFiTI%npm_package_version%.zip",
     "analyze": "source-map-explorer build/static/js/*",
-    "lint": "eslint --ignore-pattern ./assests/**/* --ext .ts,.tsx ."
+    "lint": "eslint --ignore-pattern ./assests/**/* --ext .ts,.tsx .",
+    "esbuild:prod": "esbuild src/index.tsx --bundle --define:process.env.NODE_ENV=\"'production'\" --minify --sourcemap --format=esm --external:mobx --external:react-dom --external:react --external:mobx-react-lite --outdir=public/js --splitting",
+    "esbuild:dev": "esbuild src/index.tsx --bundle --define:process.env.NODE_ENV=\"'development'\" --format=esm --external:mobx --external:react-dom --external:react --external:mobx-react-lite --outdir=public/js --splitting"
   },
   "dependencies": {
     "mobx": "^5.14.0",
@@ -66,5 +68,14 @@
       "root": true
     },
     "./build/CEFiTI.zip"
-  ]
+  ],
+  "snowpack": {
+    "extends": "@snowpack/app-scripts-react",
+    "plugins": [],
+    "mount": "./public",
+    "exclude": "./assets"
+  },
+  "babel": {
+    "extends": "@snowpack/app-scripts-react/babel.config.json"
+  }
 }

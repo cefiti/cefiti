@@ -11,8 +11,9 @@ import './css/estilo-link.css'
 import './css/estilo-menu.css'
 import './css/estilo-tabela.css'
 import './css/estilo-template.css' */
-import './css/main.css'
-import './css/app.css'
+
+//import './css/main.css'
+//import './css/app.css'
 
 /* const browser = detect()
 if (browser && browser.name === 'ie') {
