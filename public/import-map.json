@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "react": "https://cdn.skypack.dev/pin/react@v16.13.1-zjOHmKoBShdi3wIQWY2z/react.js",
+    "react-dom": "https://cdn.skypack.dev/pin/react-dom@v16.13.1-zy0G8GAHjONvAZK0I7lf/react-dom.js",
+    "mobx": "https://cdn.skypack.dev/mobx",
+    "mobx-react-lite": "https://cdn.skypack.dev/mobx-react-lite@next"
+  }
+}

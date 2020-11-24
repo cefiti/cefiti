@@ -1,2 +1,550 @@
-var F=Object.defineProperty,V=Object.getOwnPropertyDescriptor,n=(e,o,i,l)=>{for(var d=l>1?void 0:l?V(o,i):o,h=e.length-1,y;h>=0;h--)(y=e[h])&&(d=(l?y(o,i,d):y(d))||d);return l&&d&&F(o,i,d),d};function x(e,o,i,l){return o===0?e:e.reduce((d,h,y)=>(i&&(h=i.call(l||e,h,y,e)),Array.isArray(h)?d.push(...x(h,o-1)):d.push(h),d),[])}Array.prototype.flat||(Array.prototype.flat=function(e=Infinity){return x(this,e)});Array.prototype.flatMap||(Array.prototype.flatMap=function(e,o){return x(this,1,e,o)});import{observable as v,computed as b,configure as B,action as E,runInAction as L}from"mobx";B({enforceActions:"observed"});class p{constructor(){this.dbRegras=[];this.dbHospedeiros=[];this.dbPragas=[];this.db=[];this.estados=[];this.dados={hospSci:"",hospVul:"",prod:"",orig:"",dest:""};this.handleChanges=e=>{const o=e.currentTarget;switch(o.name){case"hospSci":const i=this.dbHospedeiros.find(d=>d.nomeSci===o.value);this.dados.hospVul=i?i.nomeVul:"";break;case"hospVul":const l=this.dbHospedeiros.find(d=>d.nomeVul===o.value);this.dados.hospSci=l?l.nomeSci:"";break;default:break}this.dados[o.name]=o.value}}async getDb(){const{regras:e,pragas:o,hospedeiros:i,estados:l}=await import("./db.js");L(()=>{this.dbHospedeiros=i,this.dbRegras=e,this.dbPragas=o,this.estados=l,this.db=this.dbRegras.map(d=>({...this.dbPragas.find(h=>h.prag===d.prag),...d}))})}get hospedeirosPragas(){return this.dbPragas.flatMap(e=>e.hosp)}get hospedeirosRegulamentados(){return this.dbHospedeiros.filter(e=>this.hospedeirosPragas.includes(e.nomeSci))}get listaNomesSci(){return this.hospedeirosRegulamentados.map(e=>e.nomeSci).filter((e,o,i)=>i.indexOf(e)===o).sort((e,o)=>e.localeCompare(o))}get listaNomesVul(){return this.hospedeirosRegulamentados.map(e=>e.nomeVul).filter((e,o,i)=>i.indexOf(e)===o).sort((e,o)=>e.localeCompare(o))}get empty(){return this.result.length===0}get origem(){return this.estados.filter(e=>e.UF!==this.dados.dest||e.UF==="")}get destino(){return this.estados.filter(e=>e.UF!==this.dados.orig||e.UF==="")}get gender(){return this.dados.hospSci.split(" ")[0]}get completed(){return Boolean(this.dados.hospSci)&&Boolean(this.dados.hospVul)&&Boolean(this.dados.prod)&&Boolean(this.dados.orig)&&Boolean(this.dados.dest)}get partes(){return this.db.filter(e=>e.hosp.includes(this.dados.hospSci)||e.hosp.includes(`${this.gender} sp.`)||e.hosp.includes(`${this.gender} spp.`)).flatMap(e=>e.part).filter((e,o,i)=>i.indexOf(e)===o).concat([""]).sort((e,o)=>e.localeCompare(o))}get result(){return this.db.filter(e=>(e.hosp.includes(this.dados.hospSci)||e.hosp.includes(`${this.gender} sp.`)||e.hosp.includes(`${this.gender} spp.`))&&e.orig.includes(this.dados.orig)&&e.dest.includes(this.dados.dest)&&e.part.includes(this.dados.prod))}clean(){this.dados.hospSci="",this.dados.hospVul="",this.dados.prod="",this.dados.orig="",this.dados.dest=""}}n([v],p.prototype,"dbRegras",2),n([v],p.prototype,"dbHospedeiros",2),n([v],p.prototype,"dbPragas",2),n([v],p.prototype,"db",2),n([v],p.prototype,"estados",2),n([v],p.prototype,"dados",2),n([b],p.prototype,"hospedeirosPragas",1),n([b],p.prototype,"hospedeirosRegulamentados",1),n([b],p.prototype,"listaNomesSci",1),n([b],p.prototype,"listaNomesVul",1),n([b],p.prototype,"empty",1),n([b],p.prototype,"origem",1),n([b],p.prototype,"destino",1),n([b],p.prototype,"gender",1),n([b],p.prototype,"completed",1),n([b],p.prototype,"partes",1),n([b],p.prototype,"result",1),n([E],p.prototype,"handleChanges",2),n([E],p.prototype,"clean",1);const t=new p();t.getDb();import{observable as O,action as I,configure as U}from"mobx";U({enforceActions:"observed"});class A{constructor(){this.exibeBase=!1;this.searched=!1;this.handleMenu=e=>{e==="Base"&&(this.exibeBase=!this.exibeBase),e==="Nova"&&(t.clean(),this.searched=!1),e==="Voltar"&&(this.searched=!1),e==="Print"&&window.print(),e==="Download"&&window.open("CEFiTI.zip")};this.handleSearch=e=>{window.ga("send","event","search","click",t.dados.hospSci),this.searched=!0,e.preventDefault()}}}n([O],A.prototype,"exibeBase",2),n([O],A.prototype,"searched",2),n([I],A.prototype,"handleMenu",2),n([I],A.prototype,"handleSearch",2);const u=new A();import r from"react";import{observer as z}from"mobx-react-lite";const _=()=>u.exibeBase?r.createElement("div",null,r.createElement("br",null),r.createElement("table",{style:{width:"100%"},className:"table-grid"},r.createElement("caption",null,"Exigências"),r.createElement("thead",null,r.createElement("tr",null,r.createElement("th",{style:{width:"10%"}},"Descrição"),r.createElement("th",{style:{width:"20%"}},"Hospedeiro"),r.createElement("th",{style:{width:"10%"}},"Partida"),r.createElement("th",{style:{width:"10%"}},"Origem"),r.createElement("th",{style:{width:"10%"}},"Destino"),r.createElement("th",{style:{width:"15%"}},"Legislação"),r.createElement("th",{style:{width:"30%"}},"Exigências"))),r.createElement("tbody",null,t.db.map((e,o)=>r.createElement("tr",{key:o},r.createElement("td",{style:{width:"10%"}},r.createElement("span",null,e.desc)),r.createElement("td",{style:{width:"20%"},className:"italic"},r.createElement("span",null,e.hosp.toString())),r.createElement("td",{style:{width:"10%"}},r.createElement("span",null,e.part.toString())),r.createElement("td",{style:{width:"10%"}},r.createElement("span",null,e.orig.toString())),r.createElement("td",{style:{width:"10%"}},r.createElement("span",null,e.dest.toString())),r.createElement("td",{style:{width:"15%"}},e.files.map(i=>r.createElement("a",{target:"_blank",rel:"noopener noreferrer",key:i.link,href:`leg/${i.link}`},i.leg)),r.createElement("br",null),r.createElement("br",null),r.createElement("span",null,e.pragc),r.createElement("br",null),r.createElement("br",null),r.createElement("span",{className:"italic"},e.prag)),r.createElement("td",{style:{width:"30%"}},r.createElement("div",{style:{margin:"6px"}},e.exig.map((i,l)=>r.createElement("p",{key:l},l+1," - ",i))))))),r.createElement("tfoot",{className:"form-barra-botoes"},r.createElement("tr",null,r.createElement("td",null))))):r.createElement("div",null);var S=z(_);import s from"react";import{observer as j}from"mobx-react-lite";function $(){return s.createElement("div",null,s.createElement("div",{className:t.completed&&u.searched?"":"hidden"},s.createElement("br",null),s.createElement("h3",null,"Exigências Fitossanitárias para o trânsito de ",t.dados.prod," de ",t.dados.hospVul," ",s.createElement("i",null,"(",t.dados.hospSci,")")," do ",t.dados.orig," para ",t.dados.dest),s.createElement("div",{className:t.empty?"":"hidden"},s.createElement("br",null),s.createElement("br",null),s.createElement("span",{className:"empty"},s.createElement("div",null,s.createElement("p",null,"SEM EXIGÊNCIAS PARA O TRÂNSITO"))),s.createElement("br",null)),s.createElement("span",null,u.searched),t.result.map((e,o)=>s.createElement("div",{key:`${e.prag}${o}`},s.createElement("hr",null),s.createElement("h4",{className:"h4",style:{textAlign:"left",float:"left"}},s.createElement("i",null,e.prag)," - ",e.pragc),s.createElement("a",{className:"small",target:"_blank",rel:"noopener noreferrer",href:`https://www.google.com.br/search?site=imghp&tbm=isch&q=${e.prag}`,style:{textAlign:"right",float:"right"}},"[FOTOS DA PRAGA]"),"        ","          ",s.createElement("br",null),e.files.map((i,l)=>s.createElement("div",{key:i.link.concat(l.toString())},s.createElement("a",{target:"_blank",rel:"noopener noreferrer",href:`leg/${i.link}`},i.leg),s.createElement("br",null))),s.createElement("span",{className:"small underline"},e.desc),e.exig.map((i,l)=>s.createElement("div",{style:{margin:"6px"},key:i.concat(l.toString())},s.createElement("span",{title:`De: ${e.orig} para ${e.dest}`},l+1," - ",i))),s.createElement("br",null))),s.createElement("div",{className:t.empty?"hidden":""},s.createElement("hr",null),s.createElement("h4",{className:"h4"},"TRÂNSITO NACIONAL DE PARTIDA IMPORTADA"),s.createElement("div",{style:{margin:"6px"}},s.createElement("span",null,"1 – SE A PARTIDA AINDA NÃO FOI INTERNALIZADA PELO MAPA E ESTIVER EM TRÂNSITO A UMA ÁREA ALFANDEGADA NO INTERIOR DO BRASIL:"),s.createElement("br",null),s.createElement("span",null,"- Certificado Fitossanitário ou Certificado Fitossanitário de Reexportação;")),s.createElement("div",{style:{margin:"6px"}},s.createElement("span",null,"2 – SE A PARTIDA JÁ FOI INTERNALIZADA PELO MAPA E ESTIVER EM TRÂNSITO AO PONTO DE DESTINO DECLARADO NA IMPORTAÇÃO:"),s.createElement("br",null),s.createElement("span",null,"- Cópia autenticada do Certificado Fitossanitário ou do Certificado Fitossanitário de Reexportação;"," "),s.createElement("br",null),s.createElement("span",null,"- Original ou cópia autenticada do Requerimento para Fiscalização de Produtos Agropecuários, emitido pelo MAPA;")),s.createElement("div",{style:{margin:"6px"}},s.createElement("span",null,"3 – SE A PARTIDA JÁ FOI INTERNALIZADA PELO MAPA E ESTIVER SAINDO DO DESTINO DECLARADO NA IMPORTAÇÃO, EM DIREÇÃO A QUALQUER UF:"),s.createElement("br",null),s.createElement("span",null,"- Cumprir os requisitos fitossanitários para o trânsito interestadual.")),s.createElement("hr",null),s.createElement("h4",{className:"h4"},"TRÂNSITO NACIONAL DE PARTIDA EXPORTADA"),s.createElement("div",{style:{margin:"6px"}},s.createElement("span",null,"1 – SE A PARTIDA JÁ ESTIVER COM CERTIFICADO FITOSSANITÁRIO NO INTERIOR DO BRASIL, EM TRÂNSITO PARA PONTO DE EGRESSO:"),s.createElement("span",null,"- Certificado Fitossanitário.")),s.createElement("hr",null),s.createElement("h4",{className:"h4"},"LEGISLAÇÃO GERAL"),s.createElement("a",{target:"_blank",href:"leg/IN28-2016.pdf",rel:"noreferrer"},"Instrução Normativa MAPA Nº 28, de 24 de agosto de 2016"),s.createElement("br",null),s.createElement("br",null),s.createElement("a",{target:"_blank",href:"leg/IN38-2018.pdf",rel:"noreferrer"},"Instrução Normativa MAPA Nº 38, de 01 de outubro de 2018"),s.createElement("br",null),s.createElement("hr",null)),s.createElement("div",{style:{textAlign:"center"}},s.createElement("button",{onClick:u.handleMenu.bind(void 0,"Voltar"),className:"form-button",disabled:!1},"Voltar"),"      ",s.createElement("button",{onClick:u.handleMenu.bind(void 0,"Nova"),className:"form-button",disabled:!1},"Nova Consulta"))))}var D=j($);import a from"react";import{observer as H}from"mobx-react-lite";function N({value:e,source:o,name:i,empty:l}){return a.createElement("select",{style:i==="prod"?{minWidth:"145px"}:{},id:i,className:i==="hospSci"?"italic form-select":"form-select",value:e,name:i,onChange:t.handleChanges},l&&a.createElement("option",{value:"","aria-selected":"true"}),o.map(d=>a.createElement("option",{value:d,key:d,"aria-selected":"false"},d)))}function G(){return u.searched?a.createElement("div",null):a.createElement("form",null,a.createElement("div",null,a.createElement("label",{className:"form",htmlFor:"hospSci"},"Espécie Vegetal (nome científico):"),a.createElement(N,{value:t.dados.hospSci,name:"hospSci",source:t.listaNomesSci,empty:!0})),a.createElement("div",null,a.createElement("label",{className:"form",htmlFor:"hospVul"},"Espécie Vegetal (nome vulgar):"),a.createElement(N,{value:t.dados.hospVul,name:"hospVul",source:t.listaNomesVul,empty:!0})),a.createElement("div",null,a.createElement("label",{className:"form",htmlFor:"prod"},"Parte da Planta:"),a.createElement(N,{value:t.dados.prod,name:"prod",source:t.partes,empty:!1})),a.createElement("div",null,a.createElement("label",{className:"form",htmlFor:"orig"},"Origem:"),a.createElement("select",{id:"orig",className:"form-select",name:"orig",value:t.dados.orig,onChange:t.handleChanges},t.origem.map((e,o)=>a.createElement("option",{value:e.UF,key:o,"aria-selected":"false"},e.estado)))),a.createElement("div",null,a.createElement("label",{className:"form",htmlFor:"dest"},"Destino:"),a.createElement("select",{id:"dest",className:"form-select",name:"dest",value:t.dados.dest,onChange:t.handleChanges},t.destino.map((e,o)=>a.createElement("option",{value:e.UF,key:o,"aria-selected":"false"},e.estado)))),a.createElement("br",null),a.createElement("div",null,a.createElement("a",{style:{marginBottom:"10px"},target:"_blank",rel:"noopener noreferrer",href:`https://www.google.com.br/search?site=imghp&tbm=isch&q=${t.dados.hospSci}+plant+OR+planta+ORfruto+OR+fruit+OR+flor+OR+flower`},"Fotos da Espécie Vegetal"),a.createElement("button",{onClick:u.handleSearch,className:"form-button margin-left-100",disabled:!1},"Pesquisar")))}var T=H(G);import c from"react";import{observer as q}from"mobx-react-lite";const W=()=>c.createElement("div",{id:"moldura-navegacao-global"},c.createElement("div",{id:"navegacao-global"},c.createElement("p",null,c.createElement("span",null,c.createElement("a",{href:"#",onClick:u.handleMenu.bind(void 0,"Base")},"Ver Base de Dados")),c.createElement("span",{title:"Baixar o sistema para uso off-line. Descompacte o arquivo CEFiTI.zip e acesse o arquivo index.html"},c.createElement("a",{href:"#",onClick:u.handleMenu.bind(void 0,"Download")},"Download")),c.createElement("span",{title:"Para salvar o resultado como PDF, utilize o navegador Chrome, e altere a impressora para 'Salvar como PDF' na página de impressão"},c.createElement("a",{href:"#",onClick:u.handleMenu.bind(void 0,"Print")},"Imprimir")),c.createElement("span",null,c.createElement("a",{href:"#",onClick:u.handleMenu.bind(void 0,"Nova")},"NOVA CONSULTA")))));var w=q(W);var C="5.2.27";import m from"react";const k=()=>m.createElement(m.Fragment,null,m.createElement("div",{id:"moldura-topo"},m.createElement("div",{id:"topo"},m.createElement("div",{id:"identificacao-ministerio"},m.createElement("span",null,m.createElement("div",{id:"imagemGov"},m.createElement("a",{href:"http://www.brasil.gov.br",target:"_blank",rel:"noopener noreferrer",id:"brasilgov"})))),m.createElement("div",{id:"identificacao-sistema",style:{float:"none"}},m.createElement("br",null),m.createElement("div",{style:{float:"right",color:"#fff",padding:"5px 10px 5px 15px"}},m.createElement("p",null,"Versão ",C)),m.createElement("h1",null,"CEFiTI"),m.createElement("div",{style:{float:"right",color:"#fff",padding:"5px 10px 5px 15px"}},m.createElement("p",null,"Data: ",new Date().toLocaleDateString())),m.createElement("h2",null,"Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual")),m.createElement("div",{id:"dados-login"}))),m.createElement(w,null));import f from"react";const M=()=>f.createElement("div",{id:"botton"},f.createElement("p",{className:"small center"},"As informações apresentadas não substituem o texto legal vigente, publicado em Diário Oficial da União, e referem-se a requisitos fitossanitários, não dispensando outras exigências estabelecidas em normas específicas. No caso de interceptação de praga, serão adotados os procedimentos constantes do Decreto 24.114, de 12 de abril de 1934. Quando se tratar de material de multiplicação ou propagação vegetal deverá ser observada a Legislação de Sementes e Mudas."),f.createElement("br",null),f.createElement("p",{className:"small red center "},"Em caso de dúvida, sugestão de melhoria ou de correção, entrar em contato no e-mail abaixo."),f.createElement("br",null),f.createElement("div",null,f.createElement("h5",{className:"center"},"Departamento de Sanidade Vegetal - DSV/SDA/MAPA"),f.createElement("h5",{className:"center"},"Desenvolvido pelo SSV-MT -",f.createElement("a",{href:"mailto:ssv-mt@agricultura.gov.br"},"ssv-mt@agricultura.gov.br")),f.createElement("h6",{className:"center"},"Código fonte:",f.createElement("a",{href:"https://github.com/cefiti/cefiti"},"https://github.com/cefiti/cefiti"))));import g from"react";const P=()=>g.createElement("div",{id:"resolucao"},g.createElement(k,null),g.createElement("div",{id:"corpo"},g.createElement("div",{id:"conteúdo"},g.createElement(T,null),g.createElement(D,null),g.createElement(S,null))),g.createElement(M,null));import J from"react";import Q from"react-dom";Q.render(J.createElement(P,null),document.getElementById("root"));
-//# sourceMappingURL=index.js.map
+var __defineProperty = Object.defineProperty;
+var __getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+var __decorate = (decorators, target, key, kind) => {
+  var result2 = kind > 1 ? void 0 : kind ? __getOwnPropertyDescriptor(target, key) : target;
+  for (var i = decorators.length - 1, decorator; i >= 0; i--)
+    if (decorator = decorators[i])
+      result2 = (kind ? decorator(target, key, result2) : decorator(result2)) || result2;
+  if (kind && result2)
+    __defineProperty(target, key, result2);
+  return result2;
+};
+
+// src/utils.ts
+function flatten(list, depth, mapperFn, mapperCtx) {
+  if (depth === 0) {
+    return list;
+  }
+  return list.reduce((accumulator, item, i) => {
+    if (mapperFn) {
+      item = mapperFn.call(mapperCtx || list, item, i, list);
+    }
+    if (Array.isArray(item)) {
+      accumulator.push(...flatten(item, depth - 1));
+    } else {
+      accumulator.push(item);
+    }
+    return accumulator;
+  }, []);
+}
+if (!Array.prototype.flat) {
+  Array.prototype.flat = function(depth = Infinity) {
+    return flatten(this, depth);
+  };
+}
+if (!Array.prototype.flatMap) {
+  Array.prototype.flatMap = function(callback, thisArg) {
+    return flatten(this, 1, callback, thisArg);
+  };
+}
+
+// src/store.ts
+import {observable, computed, configure, action, runInAction} from "mobx";
+configure({enforceActions: "observed"});
+class Store {
+  constructor() {
+    this.dbRegras = [];
+    this.dbHospedeiros = [];
+    this.dbPragas = [];
+    this.db = [];
+    this.estados = [];
+    this.dados = {hospSci: "", hospVul: "", prod: "", orig: "", dest: ""};
+    this.handleChanges = (event) => {
+      const target = event.currentTarget;
+      switch (target.name) {
+        case "hospSci":
+          const hospVulg = this.dbHospedeiros.find((hosp) => hosp.nomeSci === target.value);
+          this.dados.hospVul = hospVulg ? hospVulg.nomeVul : "";
+          break;
+        case "hospVul":
+          const hospSci = this.dbHospedeiros.find((hosp) => hosp.nomeVul === target.value);
+          this.dados.hospSci = hospSci ? hospSci.nomeSci : "";
+          break;
+        default:
+          break;
+      }
+      this.dados[target.name] = target.value;
+    };
+  }
+  async getDb() {
+    const {regras, pragas, hospedeiros, estados} = await import("./db.js");
+    runInAction(() => {
+      this.dbHospedeiros = hospedeiros;
+      this.dbRegras = regras;
+      this.dbPragas = pragas;
+      this.estados = estados;
+      this.db = this.dbRegras.map((regra) => ({
+        ...this.dbPragas.find((item) => item.prag === regra.prag),
+        ...regra
+      }));
+    });
+  }
+  get hospedeirosPragas() {
+    return this.dbPragas.flatMap((praga) => praga.hosp);
+  }
+  get hospedeirosRegulamentados() {
+    return this.dbHospedeiros.filter((hospedeiro) => this.hospedeirosPragas.includes(hospedeiro.nomeSci));
+  }
+  get listaNomesSci() {
+    return this.hospedeirosRegulamentados.map((v) => v.nomeSci).filter((i, x, a) => a.indexOf(i) === x).sort((a, b) => a.localeCompare(b));
+  }
+  get listaNomesVul() {
+    return this.hospedeirosRegulamentados.map((v) => v.nomeVul).filter((i, x, a) => a.indexOf(i) === x).sort((a, b) => a.localeCompare(b));
+  }
+  get empty() {
+    return this.result.length === 0;
+  }
+  get origem() {
+    return this.estados.filter((estado) => estado.UF !== this.dados.dest || estado.UF === "");
+  }
+  get destino() {
+    return this.estados.filter((estado) => estado.UF !== this.dados.orig || estado.UF === "");
+  }
+  get gender() {
+    return this.dados.hospSci.split(" ")[0];
+  }
+  get completed() {
+    return Boolean(this.dados.hospSci) && Boolean(this.dados.hospVul) && Boolean(this.dados.prod) && Boolean(this.dados.orig) && Boolean(this.dados.dest);
+  }
+  get partes() {
+    return this.db.filter((exigen) => exigen.hosp.includes(this.dados.hospSci) || exigen.hosp.includes(`${this.gender} sp.`) || exigen.hosp.includes(`${this.gender} spp.`)).flatMap((v) => v.part).filter((i, x, a) => a.indexOf(i) === x).concat([""]).sort((a, b) => a.localeCompare(b));
+  }
+  get result() {
+    return this.db.filter((exigen) => {
+      return (exigen.hosp.includes(this.dados.hospSci) || exigen.hosp.includes(`${this.gender} sp.`) || exigen.hosp.includes(`${this.gender} spp.`)) && exigen.orig.includes(this.dados.orig) && exigen.dest.includes(this.dados.dest) && exigen.part.includes(this.dados.prod);
+    });
+  }
+  clean() {
+    this.dados.hospSci = "";
+    this.dados.hospVul = "";
+    this.dados.prod = "";
+    this.dados.orig = "";
+    this.dados.dest = "";
+  }
+}
+__decorate([
+  observable
+], Store.prototype, "dbRegras", 2);
+__decorate([
+  observable
+], Store.prototype, "dbHospedeiros", 2);
+__decorate([
+  observable
+], Store.prototype, "dbPragas", 2);
+__decorate([
+  observable
+], Store.prototype, "db", 2);
+__decorate([
+  observable
+], Store.prototype, "estados", 2);
+__decorate([
+  observable
+], Store.prototype, "dados", 2);
+__decorate([
+  computed
+], Store.prototype, "hospedeirosPragas", 1);
+__decorate([
+  computed
+], Store.prototype, "hospedeirosRegulamentados", 1);
+__decorate([
+  computed
+], Store.prototype, "listaNomesSci", 1);
+__decorate([
+  computed
+], Store.prototype, "listaNomesVul", 1);
+__decorate([
+  computed
+], Store.prototype, "empty", 1);
+__decorate([
+  computed
+], Store.prototype, "origem", 1);
+__decorate([
+  computed
+], Store.prototype, "destino", 1);
+__decorate([
+  computed
+], Store.prototype, "gender", 1);
+__decorate([
+  computed
+], Store.prototype, "completed", 1);
+__decorate([
+  computed
+], Store.prototype, "partes", 1);
+__decorate([
+  computed
+], Store.prototype, "result", 1);
+__decorate([
+  action
+], Store.prototype, "handleChanges", 2);
+__decorate([
+  action
+], Store.prototype, "clean", 1);
+const store = new Store();
+store.getDb();
+
+// src/uistore.ts
+import {observable as observable2, action as action2, configure as configure2} from "mobx";
+configure2({enforceActions: "observed"});
+class UiStore {
+  constructor() {
+    this.exibeBase = false;
+    this.searched = false;
+    this.handleMenu = (i) => {
+      if (i === "Base") {
+        this.exibeBase = !this.exibeBase;
+      }
+      if (i === "Nova") {
+        store.clean();
+        this.searched = false;
+      }
+      if (i === "Voltar") {
+        this.searched = false;
+      }
+      if (i === "Print") {
+        window.print();
+      }
+      if (i === "Download") {
+        window.open("CEFiTI.zip");
+      }
+    };
+    this.handleSearch = (event) => {
+      if (false) {
+        window.ga("send", "event", "search", "click", store.dados.hospSci);
+      }
+      this.searched = true;
+      event.preventDefault();
+    };
+  }
+}
+__decorate([
+  observable2
+], UiStore.prototype, "exibeBase", 2);
+__decorate([
+  observable2
+], UiStore.prototype, "searched", 2);
+__decorate([
+  action2
+], UiStore.prototype, "handleMenu", 2);
+__decorate([
+  action2
+], UiStore.prototype, "handleSearch", 2);
+const uiStore = new UiStore();
+
+// src/base.tsx
+import React from "react";
+import {observer} from "mobx-react-lite";
+const Base = () => {
+  return uiStore.exibeBase ? /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("table", {
+    style: {width: "100%"},
+    className: "table-grid"
+  }, /* @__PURE__ */ React.createElement("caption", null, "Exigências"), /* @__PURE__ */ React.createElement("thead", null, /* @__PURE__ */ React.createElement("tr", null, /* @__PURE__ */ React.createElement("th", {
+    style: {width: "10%"}
+  }, "Descrição"), /* @__PURE__ */ React.createElement("th", {
+    style: {width: "20%"}
+  }, "Hospedeiro"), /* @__PURE__ */ React.createElement("th", {
+    style: {width: "10%"}
+  }, "Partida"), /* @__PURE__ */ React.createElement("th", {
+    style: {width: "10%"}
+  }, "Origem"), /* @__PURE__ */ React.createElement("th", {
+    style: {width: "10%"}
+  }, "Destino"), /* @__PURE__ */ React.createElement("th", {
+    style: {width: "15%"}
+  }, "Legislação"), /* @__PURE__ */ React.createElement("th", {
+    style: {width: "30%"}
+  }, "Exigências"))), /* @__PURE__ */ React.createElement("tbody", null, store.db.map((item, i) => {
+    return /* @__PURE__ */ React.createElement("tr", {
+      key: i
+    }, /* @__PURE__ */ React.createElement("td", {
+      style: {width: "10%"}
+    }, /* @__PURE__ */ React.createElement("span", null, item.desc)), /* @__PURE__ */ React.createElement("td", {
+      style: {width: "20%"},
+      className: "italic"
+    }, /* @__PURE__ */ React.createElement("span", null, item.hosp.toString())), /* @__PURE__ */ React.createElement("td", {
+      style: {width: "10%"}
+    }, /* @__PURE__ */ React.createElement("span", null, item.part.toString())), /* @__PURE__ */ React.createElement("td", {
+      style: {width: "10%"}
+    }, /* @__PURE__ */ React.createElement("span", null, item.orig.toString())), /* @__PURE__ */ React.createElement("td", {
+      style: {width: "10%"}
+    }, /* @__PURE__ */ React.createElement("span", null, item.dest.toString())), /* @__PURE__ */ React.createElement("td", {
+      style: {width: "15%"}
+    }, item.files.map((file) => /* @__PURE__ */ React.createElement("a", {
+      target: "_blank",
+      rel: "noopener noreferrer",
+      key: file.link,
+      href: `leg/${file.link}`
+    }, file.leg)), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("span", null, item.pragc), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("span", {
+      className: "italic"
+    }, item.prag)), /* @__PURE__ */ React.createElement("td", {
+      style: {width: "30%"}
+    }, /* @__PURE__ */ React.createElement("div", {
+      style: {margin: "6px"}
+    }, item.exig.map((exigen, ix) => {
+      return /* @__PURE__ */ React.createElement("p", {
+        key: ix
+      }, ix + 1, " - ", exigen);
+    }))));
+  })), /* @__PURE__ */ React.createElement("tfoot", {
+    className: "form-barra-botoes"
+  }, /* @__PURE__ */ React.createElement("tr", null, /* @__PURE__ */ React.createElement("td", null))))) : /* @__PURE__ */ React.createElement("div", null);
+};
+var base_default = observer(Base);
+
+// src/result.tsx
+import React2 from "react";
+import {observer as observer2} from "mobx-react-lite";
+function Result() {
+  return /* @__PURE__ */ React2.createElement("div", null, /* @__PURE__ */ React2.createElement("div", {
+    className: store.completed && uiStore.searched ? "" : "hidden"
+  }, /* @__PURE__ */ React2.createElement("br", null), /* @__PURE__ */ React2.createElement("h3", null, "Exigências Fitossanitárias para o trânsito de ", store.dados.prod, " de ", store.dados.hospVul, " ", /* @__PURE__ */ React2.createElement("i", null, "(", store.dados.hospSci, ")"), " do ", store.dados.orig, " para ", store.dados.dest), /* @__PURE__ */ React2.createElement("div", {
+    className: store.empty ? "" : "hidden"
+  }, /* @__PURE__ */ React2.createElement("br", null), /* @__PURE__ */ React2.createElement("br", null), /* @__PURE__ */ React2.createElement("span", {
+    className: "empty"
+  }, /* @__PURE__ */ React2.createElement("div", null, /* @__PURE__ */ React2.createElement("p", null, "SEM EXIGÊNCIAS PARA O TRÂNSITO"))), /* @__PURE__ */ React2.createElement("br", null)), /* @__PURE__ */ React2.createElement("span", null, uiStore.searched), store.result.map((item, i) => {
+    return /* @__PURE__ */ React2.createElement("div", {
+      key: `${item.prag}${i}`
+    }, /* @__PURE__ */ React2.createElement("hr", null), /* @__PURE__ */ React2.createElement("h4", {
+      className: "h4",
+      style: {textAlign: "left", float: "left"}
+    }, /* @__PURE__ */ React2.createElement("i", null, item.prag), " - ", item.pragc), /* @__PURE__ */ React2.createElement("a", {
+      className: "small",
+      target: "_blank",
+      rel: "noopener noreferrer",
+      href: `https://www.google.com.br/search?site=imghp&tbm=isch&q=${item.prag}`,
+      style: {textAlign: "right", float: "right"}
+    }, "[FOTOS DA PRAGA]"), "        ", "          ", /* @__PURE__ */ React2.createElement("br", null), item.files.map((file, iii) => {
+      return /* @__PURE__ */ React2.createElement("div", {
+        key: file.link.concat(iii.toString())
+      }, /* @__PURE__ */ React2.createElement("a", {
+        target: "_blank",
+        rel: "noopener noreferrer",
+        href: `leg/${file.link}`
+      }, file.leg), /* @__PURE__ */ React2.createElement("br", null));
+    }), /* @__PURE__ */ React2.createElement("span", {
+      className: "small underline"
+    }, item.desc), item.exig.map((exig, ii) => {
+      return /* @__PURE__ */ React2.createElement("div", {
+        style: {margin: "6px"},
+        key: exig.concat(ii.toString())
+      }, /* @__PURE__ */ React2.createElement("span", {
+        title: `De: ${item.orig} para ${item.dest}`
+      }, ii + 1, " - ", exig));
+    }), /* @__PURE__ */ React2.createElement("br", null));
+  }), /* @__PURE__ */ React2.createElement("div", {
+    className: store.empty ? "hidden" : ""
+  }, /* @__PURE__ */ React2.createElement("hr", null), /* @__PURE__ */ React2.createElement("h4", {
+    className: "h4"
+  }, "TRÂNSITO NACIONAL DE PARTIDA IMPORTADA"), /* @__PURE__ */ React2.createElement("div", {
+    style: {margin: "6px"}
+  }, /* @__PURE__ */ React2.createElement("span", null, "1 – SE A PARTIDA AINDA NÃO FOI INTERNALIZADA PELO MAPA E ESTIVER EM TRÂNSITO A UMA ÁREA ALFANDEGADA NO INTERIOR DO BRASIL:"), /* @__PURE__ */ React2.createElement("br", null), /* @__PURE__ */ React2.createElement("span", null, "- Certificado Fitossanitário ou Certificado Fitossanitário de Reexportação;")), /* @__PURE__ */ React2.createElement("div", {
+    style: {margin: "6px"}
+  }, /* @__PURE__ */ React2.createElement("span", null, "2 – SE A PARTIDA JÁ FOI INTERNALIZADA PELO MAPA E ESTIVER EM TRÂNSITO AO PONTO DE DESTINO DECLARADO NA IMPORTAÇÃO:"), /* @__PURE__ */ React2.createElement("br", null), /* @__PURE__ */ React2.createElement("span", null, "- Cópia autenticada do Certificado Fitossanitário ou do Certificado Fitossanitário de Reexportação;", " "), /* @__PURE__ */ React2.createElement("br", null), /* @__PURE__ */ React2.createElement("span", null, "- Original ou cópia autenticada do Requerimento para Fiscalização de Produtos Agropecuários, emitido pelo MAPA;")), /* @__PURE__ */ React2.createElement("div", {
+    style: {margin: "6px"}
+  }, /* @__PURE__ */ React2.createElement("span", null, "3 – SE A PARTIDA JÁ FOI INTERNALIZADA PELO MAPA E ESTIVER SAINDO DO DESTINO DECLARADO NA IMPORTAÇÃO, EM DIREÇÃO A QUALQUER UF:"), /* @__PURE__ */ React2.createElement("br", null), /* @__PURE__ */ React2.createElement("span", null, "- Cumprir os requisitos fitossanitários para o trânsito interestadual.")), /* @__PURE__ */ React2.createElement("hr", null), /* @__PURE__ */ React2.createElement("h4", {
+    className: "h4"
+  }, "TRÂNSITO NACIONAL DE PARTIDA EXPORTADA"), /* @__PURE__ */ React2.createElement("div", {
+    style: {margin: "6px"}
+  }, /* @__PURE__ */ React2.createElement("span", null, "1 – SE A PARTIDA JÁ ESTIVER COM CERTIFICADO FITOSSANITÁRIO NO INTERIOR DO BRASIL, EM TRÂNSITO PARA PONTO DE EGRESSO:"), /* @__PURE__ */ React2.createElement("span", null, "- Certificado Fitossanitário.")), /* @__PURE__ */ React2.createElement("hr", null), /* @__PURE__ */ React2.createElement("h4", {
+    className: "h4"
+  }, "LEGISLAÇÃO GERAL"), /* @__PURE__ */ React2.createElement("a", {
+    target: "_blank",
+    href: "leg/IN28-2016.pdf",
+    rel: "noreferrer"
+  }, "Instrução Normativa MAPA Nº 28, de 24 de agosto de 2016"), /* @__PURE__ */ React2.createElement("br", null), /* @__PURE__ */ React2.createElement("br", null), /* @__PURE__ */ React2.createElement("a", {
+    target: "_blank",
+    href: "leg/IN38-2018.pdf",
+    rel: "noreferrer"
+  }, "Instrução Normativa MAPA Nº 38, de 01 de outubro de 2018"), /* @__PURE__ */ React2.createElement("br", null), /* @__PURE__ */ React2.createElement("hr", null)), /* @__PURE__ */ React2.createElement("div", {
+    style: {textAlign: "center"}
+  }, /* @__PURE__ */ React2.createElement("button", {
+    onClick: uiStore.handleMenu.bind(void 0, "Voltar"),
+    className: "form-button",
+    disabled: false
+  }, "Voltar"), "      ", /* @__PURE__ */ React2.createElement("button", {
+    onClick: uiStore.handleMenu.bind(void 0, "Nova"),
+    className: "form-button",
+    disabled: false
+  }, "Nova Consulta"))));
+}
+var result_default = observer2(Result);
+
+// src/form.tsx
+import React3 from "react";
+import {observer as observer3} from "mobx-react-lite";
+function Select({value, source, name, empty}) {
+  return /* @__PURE__ */ React3.createElement("select", {
+    style: name === "prod" ? {minWidth: "145px"} : {},
+    id: name,
+    className: name === "hospSci" ? "italic form-select" : "form-select",
+    value,
+    name,
+    onChange: store.handleChanges
+  }, empty && /* @__PURE__ */ React3.createElement("option", {
+    value: "",
+    "aria-selected": "true"
+  }), source.map((option) => {
+    return /* @__PURE__ */ React3.createElement("option", {
+      value: option,
+      key: option,
+      "aria-selected": "false"
+    }, option);
+  }));
+}
+function Form() {
+  return uiStore.searched ? /* @__PURE__ */ React3.createElement("div", null) : /* @__PURE__ */ React3.createElement("form", null, /* @__PURE__ */ React3.createElement("div", null, /* @__PURE__ */ React3.createElement("label", {
+    className: "form",
+    htmlFor: "hospSci"
+  }, "Espécie Vegetal (nome científico):"), /* @__PURE__ */ React3.createElement(Select, {
+    value: store.dados.hospSci,
+    name: "hospSci",
+    source: store.listaNomesSci,
+    empty: true
+  })), /* @__PURE__ */ React3.createElement("div", null, /* @__PURE__ */ React3.createElement("label", {
+    className: "form",
+    htmlFor: "hospVul"
+  }, "Espécie Vegetal (nome vulgar):"), /* @__PURE__ */ React3.createElement(Select, {
+    value: store.dados.hospVul,
+    name: "hospVul",
+    source: store.listaNomesVul,
+    empty: true
+  })), /* @__PURE__ */ React3.createElement("div", null, /* @__PURE__ */ React3.createElement("label", {
+    className: "form",
+    htmlFor: "prod"
+  }, "Parte da Planta:"), /* @__PURE__ */ React3.createElement(Select, {
+    value: store.dados.prod,
+    name: "prod",
+    source: store.partes,
+    empty: false
+  })), /* @__PURE__ */ React3.createElement("div", null, /* @__PURE__ */ React3.createElement("label", {
+    className: "form",
+    htmlFor: "orig"
+  }, "Origem:"), /* @__PURE__ */ React3.createElement("select", {
+    id: "orig",
+    className: "form-select",
+    name: "orig",
+    value: store.dados.orig,
+    onChange: store.handleChanges
+  }, store.origem.map((option, i) => {
+    return /* @__PURE__ */ React3.createElement("option", {
+      value: option.UF,
+      key: i,
+      "aria-selected": "false"
+    }, option.estado);
+  }))), /* @__PURE__ */ React3.createElement("div", null, /* @__PURE__ */ React3.createElement("label", {
+    className: "form",
+    htmlFor: "dest"
+  }, "Destino:"), /* @__PURE__ */ React3.createElement("select", {
+    id: "dest",
+    className: "form-select",
+    name: "dest",
+    value: store.dados.dest,
+    onChange: store.handleChanges
+  }, store.destino.map((option, i) => {
+    return /* @__PURE__ */ React3.createElement("option", {
+      value: option.UF,
+      key: i,
+      "aria-selected": "false"
+    }, option.estado);
+  }))), /* @__PURE__ */ React3.createElement("br", null), /* @__PURE__ */ React3.createElement("div", null, /* @__PURE__ */ React3.createElement("a", {
+    style: {marginBottom: "10px"},
+    target: "_blank",
+    rel: "noopener noreferrer",
+    href: `https://www.google.com.br/search?site=imghp&tbm=isch&q=${store.dados.hospSci}+plant+OR+planta+ORfruto+OR+fruit+OR+flor+OR+flower`
+  }, "Fotos da Espécie Vegetal"), /* @__PURE__ */ React3.createElement("button", {
+    onClick: uiStore.handleSearch,
+    className: "form-button margin-left-100",
+    disabled: false
+  }, "Pesquisar")));
+}
+var form_default = observer3(Form);
+
+// src/menu.tsx
+import React4 from "react";
+import {observer as observer4} from "mobx-react-lite";
+const Menu = () => {
+  return /* @__PURE__ */ React4.createElement("div", {
+    id: "moldura-navegacao-global"
+  }, /* @__PURE__ */ React4.createElement("div", {
+    id: "navegacao-global"
+  }, /* @__PURE__ */ React4.createElement("p", null, /* @__PURE__ */ React4.createElement("span", null, /* @__PURE__ */ React4.createElement("a", {
+    href: "#",
+    onClick: uiStore.handleMenu.bind(void 0, "Base")
+  }, "Ver Base de Dados")), /* @__PURE__ */ React4.createElement("span", {
+    title: "Baixar o sistema para uso off-line. Descompacte o arquivo CEFiTI.zip e acesse o arquivo index.html"
+  }, /* @__PURE__ */ React4.createElement("a", {
+    href: "#",
+    onClick: uiStore.handleMenu.bind(void 0, "Download")
+  }, "Download")), /* @__PURE__ */ React4.createElement("span", {
+    title: "Para salvar o resultado como PDF, utilize o navegador Chrome, e altere a impressora para 'Salvar como PDF' na página de impressão"
+  }, /* @__PURE__ */ React4.createElement("a", {
+    href: "#",
+    onClick: uiStore.handleMenu.bind(void 0, "Print")
+  }, "Imprimir")), /* @__PURE__ */ React4.createElement("span", null, /* @__PURE__ */ React4.createElement("a", {
+    href: "#",
+    onClick: uiStore.handleMenu.bind(void 0, "Nova")
+  }, "NOVA CONSULTA")))));
+};
+var menu_default = observer4(Menu);
+
+// package.json
+var version = "5.2.27";
+
+// src/head.tsx
+import React5 from "react";
+const Head = () => /* @__PURE__ */ React5.createElement(React5.Fragment, null, /* @__PURE__ */ React5.createElement("div", {
+  id: "moldura-topo"
+}, /* @__PURE__ */ React5.createElement("div", {
+  id: "topo"
+}, /* @__PURE__ */ React5.createElement("div", {
+  id: "identificacao-ministerio"
+}, /* @__PURE__ */ React5.createElement("span", null, /* @__PURE__ */ React5.createElement("div", {
+  id: "imagemGov"
+}, /* @__PURE__ */ React5.createElement("a", {
+  href: "http://www.brasil.gov.br",
+  target: "_blank",
+  rel: "noopener noreferrer",
+  id: "brasilgov"
+})))), /* @__PURE__ */ React5.createElement("div", {
+  id: "identificacao-sistema",
+  style: {float: "none"}
+}, /* @__PURE__ */ React5.createElement("br", null), /* @__PURE__ */ React5.createElement("div", {
+  style: {float: "right", color: "#fff", padding: "5px 10px 5px 15px"}
+}, /* @__PURE__ */ React5.createElement("p", null, "Versão ", version)), /* @__PURE__ */ React5.createElement("h1", null, "CEFiTI"), /* @__PURE__ */ React5.createElement("div", {
+  style: {float: "right", color: "#fff", padding: "5px 10px 5px 15px"}
+}, /* @__PURE__ */ React5.createElement("p", null, "Data: ", new Date().toLocaleDateString())), /* @__PURE__ */ React5.createElement("h2", null, "Catálogo de Exigências Fitossanitárias para o Trânsito Interestadual")), /* @__PURE__ */ React5.createElement("div", {
+  id: "dados-login"
+}))), /* @__PURE__ */ React5.createElement(menu_default, null));
+
+// src/botton.tsx
+import React6 from "react";
+const Botton = () => /* @__PURE__ */ React6.createElement("div", {
+  id: "botton"
+}, /* @__PURE__ */ React6.createElement("p", {
+  className: "small center"
+}, "As informações apresentadas não substituem o texto legal vigente, publicado em Diário Oficial da União, e referem-se a requisitos fitossanitários, não dispensando outras exigências estabelecidas em normas específicas. No caso de interceptação de praga, serão adotados os procedimentos constantes do Decreto 24.114, de 12 de abril de 1934. Quando se tratar de material de multiplicação ou propagação vegetal deverá ser observada a Legislação de Sementes e Mudas."), /* @__PURE__ */ React6.createElement("br", null), /* @__PURE__ */ React6.createElement("p", {
+  className: "small red center "
+}, "Em caso de dúvida, sugestão de melhoria ou de correção, entrar em contato no e-mail abaixo."), /* @__PURE__ */ React6.createElement("br", null), /* @__PURE__ */ React6.createElement("div", null, /* @__PURE__ */ React6.createElement("h5", {
+  className: "center"
+}, "Departamento de Sanidade Vegetal - DSV/SDA/MAPA"), /* @__PURE__ */ React6.createElement("h5", {
+  className: "center"
+}, "Desenvolvido pelo SSV-MT -", /* @__PURE__ */ React6.createElement("a", {
+  href: "mailto:ssv-mt@agricultura.gov.br"
+}, "ssv-mt@agricultura.gov.br")), /* @__PURE__ */ React6.createElement("h6", {
+  className: "center"
+}, "Código fonte:", /* @__PURE__ */ React6.createElement("a", {
+  href: "https://github.com/cefiti/cefiti"
+}, "https://github.com/cefiti/cefiti"))));
+
+// src/app.tsx
+import React7 from "react";
+const App = () => /* @__PURE__ */ React7.createElement("div", {
+  id: "resolucao"
+}, /* @__PURE__ */ React7.createElement(Head, null), /* @__PURE__ */ React7.createElement("div", {
+  id: "corpo"
+}, /* @__PURE__ */ React7.createElement("div", {
+  id: "conteúdo"
+}, /* @__PURE__ */ React7.createElement(form_default, null), /* @__PURE__ */ React7.createElement(result_default, null), /* @__PURE__ */ React7.createElement(base_default, null))), /* @__PURE__ */ React7.createElement(Botton, null));
+
+// src/index.tsx
+import React8 from "react";
+import ReactDom from "react-dom";
+ReactDom.render(/* @__PURE__ */ React8.createElement(App, null), document.getElementById("root"));
