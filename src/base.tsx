@@ -1,9 +1,11 @@
 import React from 'react'
-import { observer } from 'mobx-react-lite'
-import { uiStore } from './uistore'
-import { store } from './store'
+import { store as state } from './store'
+import { uiStore as uiState} from './uistore'
+import { useProxy } from 'valtio'  
 
 const Base = () => {
+  const store = useProxy(state)
+  const uiStore = useProxy(uiState)
   return uiStore.exibeBase ? (
     <div>
       <br />
@@ -85,7 +87,7 @@ const Base = () => {
   )
 }
 
-export default observer(Base as React.SFC)
+export default Base
 
 /*               
             <th style={{ width: '5%' }}>Trânsito Proibido</th>

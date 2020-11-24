@@ -28,10 +28,9 @@
     "lint": "eslint --ignore-pattern ./assests/**/* --ext .ts,.tsx ."
   },
   "dependencies": {
-    "mobx": "^5.14.0",
-    "mobx-react-lite": "^1.4.1",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react-dom": "^16.10.2",
+    "valtio": "https://pkg.csb.dev/pmndrs/valtio/commit/de2c4ca7/valtio"
   },
   "devDependencies": {
     "@types/d3-array": "^2.0.0",
@@ -41,7 +40,7 @@
     "@types/react-dom": "^16.9.1",
     "d3-array": "^2.3.2",
     "jszip-cli": "^1.4.24",
-    "react-scripts": "^3.2.0",
+    "react-scripts": "^3.4.4",
     "source-map-explorer": "^2.1.0",
     "typescript": "^3.6.3"
   },

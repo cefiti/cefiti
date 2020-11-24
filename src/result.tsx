@@ -1,11 +1,13 @@
 import React from 'react'
-import { store } from './store'
-import { uiStore } from './uistore'
-import { observer } from 'mobx-react-lite'
+import { store as state } from './store'
+import { uiStore as uiState} from './uistore'
+import { useProxy } from 'valtio'  
 
 //const search: string = '+symptoms+OR+sintomas+OR+pest+OR+praga+OR+doença+OR+disease+OR+inseto+OR+insect+OR+fungi+OR+fungi+OR+bactéria';
 
 function Result() {
+  const store = useProxy(state)
+  const uiStore = useProxy(uiState)
   return (
     <div>
       <div className={store.completed && uiStore.searched ? '' : 'hidden'}>
@@ -132,7 +134,7 @@ function Result() {
         </div>
         <div style={{ textAlign: 'center' }}>
           <button
-            onClick={uiStore.handleMenu.bind(undefined, 'Voltar')}
+            onClick={() => uiState.handleMenu('Voltar')}
             className="form-button"
             disabled={false}
           >
@@ -140,7 +142,7 @@ function Result() {
           </button>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button
-            onClick={uiStore.handleMenu.bind(undefined, 'Nova')}
+            onClick={()=>uiState.handleMenu('Nova')}
             className="form-button"
             disabled={false}
           >
@@ -152,6 +154,6 @@ function Result() {
   )
 }
 
-export default observer(Result as React.SFC)
+export default Result
 
 //                   {item.proib ? (<span className="alert"><div>TRÂNSITO PROIBIDO</div></span>) : ''}

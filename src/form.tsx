@@ -1,7 +1,7 @@
 import React from 'react'
-import { store } from './store'
-import { uiStore } from './uistore'
-import { observer } from 'mobx-react-lite'
+import { store as state } from './store'
+import { uiStore as uiState } from './uistore'
+import { useProxy } from 'valtio'
 
 interface PropsSelect {
   value: string
@@ -19,7 +19,7 @@ function Select({ value, source, name, empty }: PropsSelect) {
       className={name === 'hospSci' ? 'italic form-select' : 'form-select'}
       value={value}
       name={name}
-      onChange={store.handleChanges}
+      onChange={(e)=>state.handleChanges(e)}
     >
       {empty && <option value={''} aria-selected="true" />}
       {source.map(option => {
@@ -34,6 +34,8 @@ function Select({ value, source, name, empty }: PropsSelect) {
 }
 
 function Form() {
+  const uiStore = useProxy(uiState)
+  const store = useProxy(state)
   return uiStore.searched ? (
     <div />
   ) : (
@@ -75,7 +77,7 @@ function Form() {
           className="form-select"
           name="orig"
           value={store.dados.orig}
-          onChange={store.handleChanges}
+          onChange={(e)=> state.handleChanges(e)}
         >
           {// eslint-disable-next-line @typescript-eslint/no-unused-vars
           store.origem.map((option: Estado, i: number) => {
@@ -96,7 +98,7 @@ function Form() {
           className="form-select"
           name="dest"
           value={store.dados.dest}
-          onChange={store.handleChanges}
+          onChange={(e)=> state.handleChanges(e)}
         >
           {// eslint-disable-next-line @typescript-eslint/no-unused-vars
           store.destino.map((option: Estado, i: number) => {
@@ -121,7 +123,7 @@ function Form() {
           Fotos da Espécie Vegetal
         </a>
         <button
-          onClick={uiStore.handleSearch}
+          onClick={(e) => uiState.handleSearch(e)}
           className="form-button margin-left-100"
           disabled={false}
         >
@@ -132,4 +134,4 @@ function Form() {
   )
 }
 
-export default observer(Form as React.SFC)
+export default Form
