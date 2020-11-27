@@ -30,7 +30,7 @@
   "dependencies": {
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "valtio": "https://pkg.csb.dev/pmndrs/valtio/commit/de2c4ca7/valtio"
+    "valtio": "^0.4.2"
   },
   "devDependencies": {
     "@types/d3-array": "^2.0.0",
@@ -40,7 +40,7 @@
     "@types/react-dom": "^16.9.1",
     "d3-array": "^2.3.2",
     "jszip-cli": "^1.4.24",
-    "react-scripts": "^3.4.4",
+    "react-scripts": "^4.0.1",
     "source-map-explorer": "^2.1.0",
     "typescript": "^3.6.3"
   },
