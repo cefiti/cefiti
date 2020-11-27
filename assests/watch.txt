@@ -1,0 +1,66 @@
+#!/usr/bin/env node
+
+var fs = require('fs')
+var child_process = require('child_process')
+
+// Show usage info without arguments
+if (process.argv.length < 4) {
+  console.log('Usage: watch [path] [command]')
+  console.log('Run a command whenever a file or directory is modified.')
+  process.exit()
+}
+
+// Let the user know what will happen
+var path = process.argv[2]
+var command = process.argv.slice(3).join(' ')
+var quote = JSON.stringify
+console.log('Running', quote(command), 'when', quote(path), 'is modified...')
+
+// Recursively compute a string representing fs.stat() for every file in path
+function stat(path) {
+  try {
+    var stats = fs.statSync(path)
+  } catch (e) {
+    return '!'
+  }
+  var result = stats.mtime.getTime().toString(36)
+  if (stats.isDirectory()) {
+    result += fs
+      .readdirSync(path)
+      .map(function (file) {
+        return stat(path + '/' + file)
+      })
+      .join('')
+  }
+  return result
+}
+
+// Poll for changes and run the command if one is detected
+var prevStats = null
+setInterval(function () {
+  var stats = stat(path)
+  if (stats === prevStats) return
+  var now = new Date(),
+    time =
+      (now.getHours() % 12 || 12) +
+      ':' +
+      ('0' + now.getMinutes()).slice(-2) +
+      (now.getHours() < 12 ? ' am' : ' pm')
+  process.stdout.write('\rLast changed: ' + time + ' ')
+  var child = child_process.spawn('sh', ['-c', command], { stdio: 'inherit' })
+  child.on('close', function (code) {
+    if (code) {
+      console.log('\nCommand exited with code', code)
+    }
+  })
+  child.on('error', function () {
+    console.log('\nCommand could not be run')
+  })
+  prevStats = stats
+}, 100)
+
+// Make sure there's a newline on Ctrl+C
+process.on('SIGINT', function () {
+  process.stdout.write('\n')
+  process.exit()
+})

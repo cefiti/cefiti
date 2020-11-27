@@ -5,7 +5,7 @@ import { pragas } from './dbPragas'
 import { hospedeiros } from './dbHospedeiros'
 //import '../assests/utils'
 import * as d3 from 'd3-array'
-import 'jest'
+//import 'jest'
 
 //configure({ enforceActions: 'observed' }) //useStrict(true)
 

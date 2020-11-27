@@ -20,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "zip": "jszip ./build -o ./build/CEFiTI.zip",
     "deploy": "jszip -c package.json -o CEFiTI%npm_package_version%.zip",
@@ -43,20 +43,16 @@
     "@types/react-dom": "^16.9.1",
     "d3-array": "^2.3.2",
     "jszip-cli": "^1.4.24",
-    "react-scripts": "^4.0.1",
-    "source-map-explorer": "^2.1.0",
-    "typescript": "^3.6.3"
+    "source-map-explorer": "^2.1.0"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "eslintConfig": {
     "extends": [
       "react-app"
-    ]
+    ],
+    "rules": {
+      "react/jsx-uses-react": "off",
+      "react/react-in-jsx-scope": "off"
+    }
   },
   "eslintIgnore": [
     "/assests/**/*",
@@ -68,5 +64,10 @@
       "root": true
     },
     "./build/CEFiTI.zip"
-  ]
+  ],
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "esbuild-jest"
+    }
+  }
 }
