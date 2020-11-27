@@ -1,4 +1,3 @@
-import React from 'react'
 import { store as state } from './store'
 import { uiStore as uiState } from './uistore'
 import { useProxy } from 'valtio'

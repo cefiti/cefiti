@@ -1,4 +1,4 @@
-import React from 'react'
+//import React from 'react'
 import Base from './base'
 import Result from './result'
 import Form from './form'
