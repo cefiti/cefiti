@@ -1,7 +1,7 @@
 import React from 'react'
 import { store as state } from './store'
-import { uiStore as uiState} from './uistore'
-import { useProxy } from 'valtio'  
+import { uiStore as uiState } from './uistore'
+import { useProxy } from 'valtio'
 
 //const search: string = '+symptoms+OR+sintomas+OR+pest+OR+praga+OR+doença+OR+disease+OR+inseto+OR+insect+OR+fungi+OR+fungi+OR+bactéria';
 
@@ -40,26 +40,22 @@ function Result() {
                 target="_blank"
                 rel="noopener noreferrer"
                 href={`https://www.google.com.br/search?site=imghp&tbm=isch&q=${item.prag}`}
-                style={{ textAlign: 'right', float: 'right' }}
-              >
+                style={{ textAlign: 'right', float: 'right' }}>
                 [FOTOS DA PRAGA]
               </a>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               {'          '}
               <br />
-              {
-                // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                item.files.map((file, iii) => {
-                  return (
-                    <div key={file.link.concat(iii.toString())}>
-                      <a target="_blank" rel="noopener noreferrer" href={`leg/${file.link}`}>
-                        {file.leg}
-                      </a>
-                      <br />
-                    </div>
-                  )
-                })
-              }
+              {item.files.map((file, iii) => {
+                return (
+                  <div key={file.link.concat(iii.toString())}>
+                    <a target="_blank" rel="noopener noreferrer" href={`leg/${file.link}`}>
+                      {file.leg}
+                    </a>
+                    <br />
+                  </div>
+                )
+              })}
               <span className="small underline">{item.desc}</span>
               {item.exig.map((exig, ii) => {
                 return (
@@ -136,16 +132,14 @@ function Result() {
           <button
             onClick={() => uiState.handleMenu('Voltar')}
             className="form-button"
-            disabled={false}
-          >
+            disabled={false}>
             Voltar
           </button>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button
-            onClick={()=>uiState.handleMenu('Nova')}
+            onClick={() => uiState.handleMenu('Nova')}
             className="form-button"
-            disabled={false}
-          >
+            disabled={false}>
             Nova Consulta
           </button>
         </div>

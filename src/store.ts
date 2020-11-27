@@ -1,21 +1,17 @@
-//import { observable, computed, configure, action, runInAction } from 'mobx'
 import { proxy } from 'valtio'
-//import '../assests/utils'
 
-
-
-export class Store {
+class Store {
   dbRegras: Regra[] = []
   dbHospedeiros: Hospedeiro[] = []
   dbPragas: Praga[] = []
   db: Db[] = []
   estados: Estado[] = []
+  name: string = ''
 
   dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
 
   async getDb() {
     const { regras, pragas, hospedeiros, estados } = await import('./db')
-    //runInAction(() => {
     this.dbHospedeiros = hospedeiros
     this.dbRegras = regras
     this.dbPragas = pragas
@@ -24,7 +20,6 @@ export class Store {
       ...this.dbPragas.find((item) => item.prag === regra.prag),
       ...regra,
     })) as Db[]
-    //})
   }
 
   get hospedeirosPragas() {

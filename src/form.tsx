@@ -10,7 +10,6 @@ interface PropsSelect {
   empty: boolean
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function Select({ value, source, name, empty }: PropsSelect) {
   return (
     <select
@@ -19,10 +18,9 @@ function Select({ value, source, name, empty }: PropsSelect) {
       className={name === 'hospSci' ? 'italic form-select' : 'form-select'}
       value={value}
       name={name}
-      onChange={(e)=>state.handleChanges(e)}
-    >
+      onChange={(e) => state.handleChanges(e)}>
       {empty && <option value={''} aria-selected="true" />}
-      {source.map(option => {
+      {source.map((option) => {
         return (
           <option value={option} key={option} aria-selected="false">
             {option}
@@ -77,10 +75,8 @@ function Form() {
           className="form-select"
           name="orig"
           value={store.dados.orig}
-          onChange={(e)=> state.handleChanges(e)}
-        >
-          {// eslint-disable-next-line @typescript-eslint/no-unused-vars
-          store.origem.map((option: Estado, i: number) => {
+          onChange={(e) => state.handleChanges(e)}>
+          {store.origem.map((option: Estado, i: number) => {
             return (
               <option value={option.UF} key={i} aria-selected="false">
                 {option.estado}
@@ -98,10 +94,8 @@ function Form() {
           className="form-select"
           name="dest"
           value={store.dados.dest}
-          onChange={(e)=> state.handleChanges(e)}
-        >
-          {// eslint-disable-next-line @typescript-eslint/no-unused-vars
-          store.destino.map((option: Estado, i: number) => {
+          onChange={(e) => state.handleChanges(e)}>
+          {store.destino.map((option: Estado, i: number) => {
             return (
               <option value={option.UF} key={i} aria-selected="false">
                 {option.estado}
@@ -116,17 +110,13 @@ function Form() {
           style={{ marginBottom: '10px' }}
           target="_blank"
           rel="noopener noreferrer"
-          href={`https://www.google.com.br/search?site=imghp&tbm=isch&q=${
-            store.dados.hospSci
-          }+plant+OR+planta+ORfruto+OR+fruit+OR+flor+OR+flower`}
-        >
+          href={`https://www.google.com.br/search?site=imghp&tbm=isch&q=${store.dados.hospSci}+plant+OR+planta+ORfruto+OR+fruit+OR+flor+OR+flower`}>
           Fotos da Espécie Vegetal
         </a>
         <button
           onClick={(e) => uiState.handleSearch(e)}
           className="form-button margin-left-100"
-          disabled={false}
-        >
+          disabled={false}>
           Pesquisar
         </button>
       </div>

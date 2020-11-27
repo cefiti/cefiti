@@ -1,23 +1,14 @@
-//import { observable, action, configure } from 'mobx'
 import { proxy } from 'valtio'
 import { store } from './store'
 
-//configure({ enforceActions: 'observed' }) //useStrict(true)
-
-/* type WindowGa = Window & {
-  ga(send: string, event?: string, search?: string, category?: string, data?: string): void
-} */
-
 class UiStore {
   exibeBase: boolean = false
-  //xibeMapa: boolean = false;
   searched: boolean = false
 
   handleMenu(i: string): void {
     if (i === 'Base') {
       this.exibeBase = !this.exibeBase
     }
-    //if (i === 'Mapa') {this.exibeMapa = !this.exibeMapa; };
     if (i === 'Nova') {
       store.clean()
       this.searched = false

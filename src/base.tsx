@@ -1,7 +1,7 @@
 import React from 'react'
 import { store as state } from './store'
-import { uiStore as uiState} from './uistore'
-import { useProxy } from 'valtio'  
+import { uiStore as uiState } from './uistore'
+import { useProxy } from 'valtio'
 
 const Base = () => {
   const store = useProxy(state)
@@ -23,8 +23,7 @@ const Base = () => {
           </tr>
         </thead>
         <tbody>
-          {// eslint-disable-next-line @typescript-eslint/no-unused-vars
-          store.db.map((item: Db, i: number) => {
+          {store.db.map((item: Db, i: number) => {
             return (
               <tr key={i}>
                 <td style={{ width: '10%' }}>
@@ -43,13 +42,12 @@ const Base = () => {
                   <span>{item.dest.toString()}</span>
                 </td>
                 <td style={{ width: '15%' }}>
-                  {item.files.map(file => (
+                  {item.files.map((file) => (
                     <a
                       target="_blank"
                       rel="noopener noreferrer"
                       key={file.link}
-                      href={`leg/${file.link}`}
-                    >
+                      href={`leg/${file.link}`}>
                       {file.leg}
                     </a>
                   ))}
