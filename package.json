@@ -24,8 +24,9 @@
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "zip": "jszip ./build -o ./build/CEFiTI.zip",
     "deploy": "jszip -c package.json -o CEFiTI%npm_package_version%.zip",
-    "analyze": "source-map-explorer build/static/js/*",
-    "lint": "eslint --ignore-pattern ./assests/**/* --ext .ts,.tsx ."
+    "analyze": "source-map-explorer public/*.js",
+    "lint": "eslint --ignore-pattern ./assests/**/* --ext .ts,.tsx .",
+    "esbuild": "esbuild src/index.tsx --bundle --minify --sourcemap --outfile=public/bundle.js"
   },
   "dependencies": {
     "mobx": "^5.14.0",
@@ -40,8 +41,8 @@
     "@types/react": "^16.9.5",
     "@types/react-dom": "^16.9.1",
     "d3-array": "^2.3.2",
+    "esbuild": "^0.19.2",
     "jszip-cli": "^1.4.24",
-    "react-scripts": "^5.0.0",
     "source-map-explorer": "^2.1.0",
     "typescript": "^3.6.3"
   },

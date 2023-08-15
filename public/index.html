@@ -9,10 +9,12 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="manifest" href="./manifest.json" crossorigin="use-credentials" />
+    <link rel="shortcut icon" href="./favicon.ico" />
     <link rel="preconnect" href="//www.google-analytics.com" />
+    <link href="./index.css" rel="stylesheet">
     <title>CEFiTI</title>
+    <script type="module" src="./index.js"></script>
     <script>
       if (
         navigator.userAgent.indexOf('MSIE') !== -1 ||
@@ -22,6 +24,7 @@
           'CEFiTI\n\nO navegador Internet Explorer não é suportado.\n\nUtilize um dos navegadores a seguir: Google Chrome, Mozilla Firefox, Microsoft Edge ou Safari.'
         )
       }
+      new EventSource('/esbuild').addEventListener('change', () => location.reload())
     </script>
     <script>
       ;(function(i, s, o, g, r, a, m) {
