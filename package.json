@@ -31,15 +31,15 @@
   "dependencies": {
     "mobx": "^5.14.0",
     "mobx-react-lite": "^1.4.1",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/d3-array": "^2.0.0",
     "@types/jest": "^24.0.18",
     "@types/node": "^12.07.11",
-    "@types/react": "^16.9.5",
-    "@types/react-dom": "^16.9.1",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
     "d3-array": "^2.3.2",
     "esbuild": "^0.19.2",
     "jszip-cli": "^1.4.24",
