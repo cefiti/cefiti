@@ -3,7 +3,7 @@ import React from 'react'
 //import store from './store'
 //import { observer } from 'mobx-react-lite'
 import Menu from './menu'
-import { version } from './../package.json'
+import pkg from './../package.json'
 
 export const Head = () => (
   <>
@@ -24,7 +24,7 @@ export const Head = () => (
         <div id="identificacao-sistema" style={{ float: 'none' }}>
           <br />
           <div style={{ float: 'right', color: '#fff', padding: '5px 10px 5px 15px' }}>
-            <p>Versão {version}</p>
+            <p>Versão {pkg.version}</p>
           </div>
           <h1>CEFiTI</h1>
           <div style={{ float: 'right', color: '#fff', padding: '5px 10px 5px 15px' }}>
