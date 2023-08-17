@@ -9,7 +9,11 @@ const context = await esbuild
     outdir: "./public",
     minify: true,
     sourcemap: true,
-    target: ["chrome58", "firefox57", "safari11", "edge18"],
+    format: 'esm',
+    jsx: 'automatic',
+    //target: ["chrome58", "firefox57", "safari11", "edge18"],
+    //splitting: true,
+    //target:'es2020' ,
     define: {
       //"process.env.NODE_ENV": isDevServer ? '"development"' : '"production"',
     }

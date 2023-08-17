@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const Botton = () => (
   <div id="botton">
     <p className="small center">

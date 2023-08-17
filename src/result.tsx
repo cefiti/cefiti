@@ -1,20 +1,21 @@
-import React from 'react'
-import { store } from './store'
+import { store, Store } from './store'
 import { uiStore } from './uistore'
-import { observer } from 'mobx-react-lite'
+import { useSnapshot } from 'valtio'
 
 //const search: string = '+symptoms+OR+sintomas+OR+pest+OR+praga+OR+doença+OR+disease+OR+inseto+OR+insect+OR+fungi+OR+fungi+OR+bactéria';
 
 function Result() {
+  const uiSnap = useSnapshot(uiStore)
+  const snap = useSnapshot(store) as Store
   return (
     <div>
-      <div className={store.completed && uiStore.searched ? '' : 'hidden'}>
+      <div className={snap.completed && uiSnap.searched ? '' : 'hidden'}>
         <br />
         <h3>
-          Exigências Fitossanitárias para o trânsito de {store.dados.prod} de {store.dados.hospVul}{' '}
-          <i>({store.dados.hospSci})</i> do {store.dados.orig} para {store.dados.dest}
+          Exigências Fitossanitárias para o trânsito de {snap.dados.prod} de {snap.dados.hospVul}{' '}
+          <i>({snap.dados.hospSci})</i> do {snap.dados.orig} para {snap.dados.dest}
         </h3>
-        <div className={store.empty ? '' : 'hidden'}>
+        <div className={snap.empty ? '' : 'hidden'}>
           <br />
           <br />
           <span className="empty">
@@ -24,9 +25,9 @@ function Result() {
           </span>
           <br />
         </div>
-        <span>{uiStore.searched}</span>
+        <span>{uiSnap.searched}</span>
 
-        {store.result.map((item: Db, i: number) => {
+        {snap.result.map((item: Db, i: number)=> {
           return (
             <div key={`${item.prag}${i}`}>
               <hr />
@@ -46,7 +47,6 @@ function Result() {
               {'          '}
               <br />
               {
-                // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 item.files.map((file, iii) => {
                   return (
                     <div key={file.link.concat(iii.toString())}>
@@ -73,7 +73,7 @@ function Result() {
           )
         })}
 
-        <div className={store.empty ? 'hidden' : ''}>
+        <div className={snap.empty ? 'hidden' : ''}>
           <hr />
           <h4 className="h4">TRÂNSITO NACIONAL DE PARTIDA IMPORTADA</h4>
           <div style={{ margin: '6px' }}>
@@ -132,7 +132,7 @@ function Result() {
         </div>
         <div style={{ textAlign: 'center' }}>
           <button
-            onClick={uiStore.handleMenu.bind(undefined, 'Voltar')}
+            onClick={()=>uiStore.handleMenu('Voltar')}
             className="form-button"
             disabled={false}
           >
@@ -140,7 +140,7 @@ function Result() {
           </button>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button
-            onClick={uiStore.handleMenu.bind(undefined, 'Nova')}
+            onClick={()=>uiStore.handleMenu('Nova')}
             className="form-button"
             disabled={false}
           >
@@ -152,6 +152,6 @@ function Result() {
   )
 }
 
-export default observer(Result as React.SFC)
+export default Result
 
 //                   {item.proib ? (<span className="alert"><div>TRÂNSITO PROIBIDO</div></span>) : ''}

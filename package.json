@@ -24,13 +24,12 @@
     "deploy": "jszip -c package.json -o CEFiTI%npm_package_version%.zip",
     "analyze": "source-map-explorer public/*.js",
     "lint": "eslint --ignore-pattern ./assests/**/* --ext .ts,.tsx .",
-    "build": "esbuild src/index.tsx --bundle --minify --sourcemap --outfile=public/bundle.js"
+    "build": "esbuild src/index.tsx --bundle --minify --sourcemap --outfile=public/index.js --splitting --format=esm"
   },
   "dependencies": {
-    "mobx": "^5.14.0",
-    "mobx-react-lite": "^1.4.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "valtio": "^1.11.2"
   },
   "devDependencies": {
     "@types/d3-array": "^2.0.0",

@@ -1,5 +1,5 @@
 import { store } from './store'
-import { configure } from 'mobx'
+//import { configure } from 'mobx'
 import { regras } from './dbRegras'
 import { pragas } from './dbPragas'
 import { hospedeiros } from './dbHospedeiros'
@@ -7,7 +7,7 @@ import './utils'
 import * as d3 from 'd3-array'
 import 'jest'
 
-configure({ enforceActions: 'observed' }) //useStrict(true)
+//configure({ enforceActions: 'observed' }) //useStrict(true)
 
 const estadosSemAC = [
   { estado: '', UF: '' },

@@ -1,7 +1,6 @@
-import React from 'react'
-import { store } from './store'
+import { store, Store } from './store'
 import { uiStore } from './uistore'
-import { observer } from 'mobx-react-lite'
+import { useSnapshot } from 'valtio'
 
 interface PropsSelect {
   value: string
@@ -19,7 +18,7 @@ function Select({ value, source, name, empty }: PropsSelect) {
       className={name === 'hospSci' ? 'italic form-select' : 'form-select'}
       value={value}
       name={name}
-      onChange={store.handleChanges}
+      onChange={(e)=>store.handleChanges(e)}
     >
       {empty && <option value={''} aria-selected="true" />}
       {source.map(option => {
@@ -34,7 +33,9 @@ function Select({ value, source, name, empty }: PropsSelect) {
 }
 
 function Form() {
-  return uiStore.searched ? (
+  const uiSnap = useSnapshot(uiStore) 
+  const snap = useSnapshot(store) as Store
+  return uiSnap.searched ? (
     <div />
   ) : (
     <form>
@@ -43,9 +44,9 @@ function Form() {
           Espécie Vegetal (nome científico):
         </label>
         <Select
-          value={store.dados.hospSci}
+          value={snap.dados.hospSci}
           name="hospSci"
-          source={store.listaNomesSci}
+          source={snap.listaNomesSci} 
           empty={true}
         />
       </div>
@@ -54,9 +55,9 @@ function Form() {
           Espécie Vegetal (nome vulgar):
         </label>
         <Select
-          value={store.dados.hospVul}
+          value={snap.dados.hospVul}
           name="hospVul"
-          source={store.listaNomesVul}
+          source={snap.listaNomesVul}
           empty={true}
         />
       </div>
@@ -64,7 +65,7 @@ function Form() {
         <label className="form" htmlFor="prod">
           Parte da Planta:
         </label>
-        <Select value={store.dados.prod} name="prod" source={store.partes} empty={false} />
+        <Select value={snap.dados.prod} name="prod" source={store.partes} empty={false} />
       </div>
       <div>
         <label className="form" htmlFor="orig">
@@ -74,11 +75,11 @@ function Form() {
           id="orig"
           className="form-select"
           name="orig"
-          value={store.dados.orig}
-          onChange={store.handleChanges}
+          value={snap.dados.orig}
+          onChange={(e)=>store.handleChanges(e)}
         >
           {// eslint-disable-next-line @typescript-eslint/no-unused-vars
-          store.origem.map((option: Estado, i: number) => {
+          snap.origem.map((option: Estado, i: number) => {
             return (
               <option value={option.UF} key={i} aria-selected="false">
                 {option.estado}
@@ -96,10 +97,10 @@ function Form() {
           className="form-select"
           name="dest"
           value={store.dados.dest}
-          onChange={store.handleChanges}
+          onChange={(e)=>store.handleChanges(e)}
         >
           {// eslint-disable-next-line @typescript-eslint/no-unused-vars
-          store.destino.map((option: Estado, i: number) => {
+          snap.destino.map((option: Estado, i: number) => {
             return (
               <option value={option.UF} key={i} aria-selected="false">
                 {option.estado}
@@ -115,13 +116,13 @@ function Form() {
           target="_blank"
           rel="noopener noreferrer"
           href={`https://www.google.com.br/search?site=imghp&tbm=isch&q=${
-            store.dados.hospSci
+            snap.dados.hospSci
           }+plant+OR+planta+ORfruto+OR+fruit+OR+flor+OR+flower`}
         >
           Fotos da Espécie Vegetal
         </a>
         <button
-          onClick={uiStore.handleSearch}
+          onClick={(e)=> uiStore.handleSearch(e)}
           className="form-button margin-left-100"
           disabled={false}
         >
@@ -132,4 +133,4 @@ function Form() {
   )
 }
 
-export default observer(Form as React.SFC)
+export default Form// as React.SFC

@@ -1,77 +1,57 @@
-import { observable, computed, configure, action, runInAction } from 'mobx'
-//import './utils'
-
-configure({ enforceActions: 'observed' })
+import { proxy } from 'valtio'
+import { regras, pragas, hospedeiros, estados } from './db'
 
 export class Store {
-  @observable dbRegras: Regra[] = []
-  @observable dbHospedeiros: Hospedeiro[] = []
-  @observable dbPragas: Praga[] = []
-  @observable db: Db[] = []
-  @observable estados: Estado[] = []
-
-  @observable
+  dbRegras= regras
+  dbHospedeiros = hospedeiros
+  dbPragas = pragas
+  estados = estados
+  db: Db[] = this.dbRegras.map(regra => ({
+    ...this.dbPragas.find(item => item.prag === regra.prag),
+    ...regra,
+  })) as Db[]
   dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
 
-  async getDb() {
-    const { regras, pragas, hospedeiros, estados } = await import('./db')
-    runInAction(() => {
-      this.dbHospedeiros = hospedeiros
-      this.dbRegras = regras
-      this.dbPragas = pragas
-      this.estados = estados
-      this.db = this.dbRegras.map(regra => ({
-        ...this.dbPragas.find(item => item.prag === regra.prag),
-        ...regra,
-      })) as Db[]
-    })
-  }
-
-  @computed get hospedeirosPragas() {
+  get hospedeirosPragas() {
     return this.dbPragas.flatMap(praga => praga.hosp)
   }
 
-  @computed get hospedeirosRegulamentados() {
+  get hospedeirosRegulamentados() {
     return this.dbHospedeiros.filter(hospedeiro =>
       this.hospedeirosPragas.includes(hospedeiro.nomeSci)
     )
   }
 
-  @computed get listaNomesSci() {
+  get listaNomesSci() {
     return this.hospedeirosRegulamentados
       .map(v => v.nomeSci)
       .filter((i, x, a) => a.indexOf(i) === x)
       .sort((a, b) => a.localeCompare(b))
   }
 
-  @computed get listaNomesVul() {
+  get listaNomesVul() {
     return this.hospedeirosRegulamentados
       .map(v => v.nomeVul)
       .filter((i, x, a) => a.indexOf(i) === x)
       .sort((a, b) => a.localeCompare(b))
   }
 
-  @computed
   get empty(): boolean {
     return this.result.length === 0
   }
 
-  @computed
   get origem() {
     return this.estados.filter(estado => estado.UF !== this.dados.dest || estado.UF === '')
   }
 
-  @computed
   get destino() {
     return this.estados.filter(estado => estado.UF !== this.dados.orig || estado.UF === '')
   }
 
-  @computed
   get gender(): string {
     return this.dados.hospSci.split(' ')[0]
   }
 
-  @computed
   get completed(): boolean {
     return (
       Boolean(this.dados.hospSci) &&
@@ -82,7 +62,6 @@ export class Store {
     )
   }
 
-  @computed
   get partes(): string[] {
     return this.db
       .filter(
@@ -97,7 +76,6 @@ export class Store {
       .sort((a: string, b: string) => a.localeCompare(b))
   }
 
-  @computed
   get result() {
     return this.db.filter(exigen => {
       return (
@@ -111,8 +89,9 @@ export class Store {
     })
   }
 
-  @action
-  handleChanges = (event: React.FormEvent<HTMLSelectElement>): void => {
+  handleChanges(event: React.FormEvent<HTMLSelectElement>) {
+    console.log(this.completed);
+    
     const target = event.currentTarget
     switch (target.name) {
       case 'hospSci':
@@ -126,10 +105,10 @@ export class Store {
       default:
         break
     }
-    this.dados[target.name] = target.value
+    this.dados[target.name as keyof Dados] = target.value
+    console.log(this.dados)
   }
 
-  @action
   clean(): void {
     this.dados.hospSci = ''
     this.dados.hospVul = ''
@@ -139,6 +118,4 @@ export class Store {
   }
 }
 
-const store = new Store()
-store.getDb()
-export { store }
+export const store = proxy(new Store())
