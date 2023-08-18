@@ -16,14 +16,14 @@
     <title>CEFiTI</title>
     <script type="module" src="./index.js"></script>
     <script>
-      if (
+      /*if (
         navigator.userAgent.indexOf('MSIE') !== -1 ||
         navigator.appVersion.indexOf('Trident/') > -1
       ) {
         window.alert(
           'CEFiTI\n\nO navegador Internet Explorer não é suportado.\n\nUtilize um dos navegadores a seguir: Google Chrome, Mozilla Firefox, Microsoft Edge ou Safari.'
         )
-      }
+      }*/
       new EventSource('/esbuild').addEventListener('change', () => location.reload())
     </script>
     <script>

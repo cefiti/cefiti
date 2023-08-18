@@ -1,0 +1,282 @@
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js');
+  } 
+  
+// This optional code is used to register a service worker.
+// register() is not called by default.
+
+// This lets the app load faster on subsequent visits in production, and gives
+// it offline capabilities. However, it also means that developers (and users)
+// will only see deployed updates on subsequent visits to a page, after all the
+// existing tabs open on the page have been closed, since previously cached
+// resources are updated in the background.
+
+// To learn more about the benefits of this model and instructions on how to
+// opt-in, read http://bit.ly/CRA-PWA
+
+const isLocalhost = Boolean(
+    window.location.hostname === 'localhost' ||
+      // [::1] is the IPv6 localhost address.
+      window.location.hostname === '[::1]' ||
+      // 127.0.0.1/8 is considered localhost for IPv4.
+      window.location.hostname.match(
+        /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
+      )
+  );
+  
+  export function register(config) {
+    if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+      // The URL constructor is available in all browsers that support SW.
+      const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
+      if (publicUrl.origin !== window.location.origin) {
+        // Our service worker won't work if PUBLIC_URL is on a different origin
+        // from what our page is served on. This might happen if a CDN is used to
+        // serve assets; see https://github.com/facebook/create-react-app/issues/2374
+        return;
+      }
+  
+      window.addEventListener('load', () => {
+        const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+  
+        if (isLocalhost) {
+          // This is running on localhost. Let's check if a service worker still exists or not.
+          checkValidServiceWorker(swUrl, config);
+  
+          // Add some additional logging to localhost, pointing developers to the
+          // service worker/PWA documentation.
+          navigator.serviceWorker.ready.then(() => {
+            console.log(
+              'This web app is being served cache-first by a service ' +
+                'worker. To learn more, visit http://bit.ly/CRA-PWA'
+            );
+          });
+        } else {
+          // Is not localhost. Just register service worker
+          registerValidSW(swUrl, config);
+        }
+      });
+    }
+  }
+  
+  function registerValidSW(swUrl, config) {
+    navigator.serviceWorker
+      .register(swUrl)
+      .then(registration => {
+        registration.onupdatefound = () => {
+          const installingWorker = registration.installing;
+          if (installingWorker == null) {
+            return;
+          }
+          installingWorker.onstatechange = () => {
+            if (installingWorker.state === 'installed') {
+              if (navigator.serviceWorker.controller) {
+                // At this point, the updated precached content has been fetched,
+                // but the previous service worker will still serve the older
+                // content until all client tabs are closed.
+                console.log(
+                  'New content is available and will be used when all ' +
+                    'tabs for this page are closed. See http://bit.ly/CRA-PWA.'
+                );
+  
+                // Execute callback
+                if (config && config.onUpdate) {
+                  config.onUpdate(registration);
+                }
+              } else {
+                // At this point, everything has been precached.
+                // It's the perfect time to display a
+                // "Content is cached for offline use." message.
+                console.log('Content is cached for offline use.');
+  
+                // Execute callback
+                if (config && config.onSuccess) {
+                  config.onSuccess(registration);
+                }
+              }
+            }
+          };
+        };
+      })
+      .catch(error => {
+        console.error('Error during service worker registration:', error);
+      });
+  }
+  
+  function checkValidServiceWorker(swUrl: string, config) {
+    // Check if the service worker can be found. If it can't reload the page.
+    fetch(swUrl)
+      .then(response => {
+        // Ensure service worker exists, and that we really are getting a JS file.
+        const contentType = response.headers.get('content-type');
+        if (
+          response.status === 404 ||
+          (contentType != null && contentType.indexOf('javascript') === -1)
+        ) {
+          // No service worker found. Probably a different app. Reload the page.
+          navigator.serviceWorker.ready.then(registration => {
+            registration.unregister().then(() => {
+              window.location.reload();
+            });
+          });
+        } else {
+          // Service worker found. Proceed as normal.
+          registerValidSW(swUrl, config);
+        }
+      })
+      .catch(() => {
+        console.log(
+          'No internet connection found. App is running in offline mode.'
+        );
+      });
+  }
+  
+  export function unregister() {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.ready.then(registration => {
+        registration.unregister();
+      });
+    }
+  }
+
+
+
+  /**
+ * Cache all routes and files
+ */
+const routes = `[
+	'/',
+	${filesToString(iconFiles)},
+	${filesToString(launchScreenFiles)},
+	${filesToString(appleTouchIconFiles)},
+	${filesToString(faviconFiles)},
+	${filesToString(msTileFiles)},
+	'favicons/favicon.ico'
+]`;
+
+/**
+ * Generate a service-worker.js file
+ * @param {string} name
+ */
+
+
+const CACHE_NAME = '${name}-cache';
+const urlsToCache = ${routes};
+
+self.addEventListener('install', event => {
+	self.skipWaiting();
+
+	event.waitUntil(
+		caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
+	);
+});
+
+self.addEventListener('fetch', event => {
+	event.respondWith(
+		caches.match(event.request).then(response => {
+			if (response) {
+				return response;
+			}
+
+			const fetchRequest = event.request.clone();
+
+			return fetch(fetchRequest).then(response => {
+				if (
+					!response ||
+					response.status !== 200 ||
+					response.type !== 'basic'
+				) {
+					return response;
+				}
+
+				const responseToCache = response.clone();
+
+				event.waitUntil(
+					caches.open(CACHE_NAME).then(cache => {
+						cache.put(event.request, responseToCache);
+					})
+				);
+
+				return response;
+			});
+		})
+	);
+});
+
+
+// Incrementing OFFLINE_VERSION will kick off the install event and force
+// previously cached resources to be updated from the network.
+const OFFLINE_VERSION = 1;
+const CACHE_NAME = 'offline';
+// Customize this with a different URL if needed.
+const OFFLINE_URL = 'offline.html';
+
+self.addEventListener('install', (event) => {
+  event.waitUntil((async () => {
+    const cache = await caches.open(CACHE_NAME);
+    // Setting {cache: 'reload'} in the new request will ensure that the response
+    // isn't fulfilled from the HTTP cache; i.e., it will be from the network.
+    await cache.add(new Request(OFFLINE_URL, {cache: 'reload'}));
+  })());
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil((async () => {
+    // Enable navigation preload if it's supported.
+    // See https://developers.google.com/web/updates/2017/02/navigation-preload
+    if ('navigationPreload' in self.registration) {
+      await self.registration.navigationPreload.enable();
+    }
+  })());
+
+  // Tell the active service worker to take control of the page immediately.
+  self.clients.claim();
+});
+
+self.addEventListener('fetch', (event) => {
+  // We only want to call event.respondWith() if this is a navigation request
+  // for an HTML page.
+  if (event.request.mode === 'navigate') {
+    event.respondWith((async () => {
+      try {
+        // First, try to use the navigation preload response if it's supported.
+        const preloadResponse = await event.preloadResponse;
+        if (preloadResponse) {
+          return preloadResponse;
+        }
+
+        const networkResponse = await fetch(event.request);
+        return networkResponse;
+      } catch (error) {
+        // catch is only triggered if an exception is thrown, which is likely
+        // due to a network error.
+        // If fetch() returns a valid HTTP response with a response code in
+        // the 4xx or 5xx range, the catch() will NOT be called.
+        console.log('Fetch failed; returning offline page instead.', error);
+
+        const cache = await caches.open(CACHE_NAME);
+        const cachedResponse = await cache.match(OFFLINE_URL);
+        return cachedResponse;
+      }
+    })());
+  }
+
+  // If our if() condition is false, then this fetch handler won't intercept the
+  // request. If there are any other fetch handlers registered, they will get a
+  // chance to call event.respondWith(). If no fetch handlers call
+  // event.respondWith(), the request will be handled by the browser as if there
+  // were no service worker involvement.
+});
+
+self.addEventListener('activate', event => {
+	event.waitUntil(
+		caches
+			.keys()
+			.then(cacheNames =>
+				Promise.all(
+					cacheNames
+						.filter(cacheName => cacheName !== CACHE_NAME)
+						.map(cacheName => caches.delete(cacheName))
+				)
+			)
+	);
+});
