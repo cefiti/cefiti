@@ -3,7 +3,7 @@ import esbuild from "esbuild";
 const context = await esbuild
   .context({
     entryPoints: [
-      "./src/index.tsx"
+      "./src/index.tsx", './src/sw.js'
     ],
     bundle: true,
     outdir: "./public",
