@@ -23,9 +23,9 @@ class UiStore {
     if (i === 'Print') {
       window.print()
     }
-    if (i === 'Download') {
+/*     if (i === 'Download') {
       window.open('CEFiTI.zip')
-    }
+    } */
   }
 
   handleSearch(event: React.MouseEvent<HTMLButtonElement>) {
