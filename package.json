@@ -19,7 +19,7 @@
   "homepage": ".",
   "scripts": {
     "start": "node dev.mjs",
-    "test": "react-scripts test",
+    "test": "node --loader tsx --test",
     "zip": "jszip ./build -o ./build/CEFiTI.zip",
     "deploy": "jszip -c package.json -o CEFiTI%npm_package_version%.zip",
     "analyze": "source-map-explorer public/*.js",
@@ -33,14 +33,13 @@
   },
   "devDependencies": {
     "@types/d3-array": "^2.0.0",
-    "@types/jest": "^24.0.18",
-    "@types/node": "^12.07.11",
+    "@types/node": "^20.4.0",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "d3-array": "^2.3.2",
     "esbuild": "^0.19.2",
-    "jszip-cli": "^1.4.24",
     "source-map-explorer": "^2.1.0",
+    "tsx": "^3.12.7",
     "typescript": "^3.6.3"
   },
   "browserslist": [

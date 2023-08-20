@@ -5,7 +5,8 @@ import { pragas } from './dbPragas'
 import { hospedeiros } from './dbHospedeiros'
 import './utils'
 import * as d3 from 'd3-array'
-import 'jest'
+import { describe, it } from 'node:test'
+//import 'jest'
 
 //configure({ enforceActions: 'observed' }) //useStrict(true)
 
@@ -249,7 +250,7 @@ test('Check normalization of db ', () => {
 })
 
 test('duplicates nomeVul', () => {
-  const countDupli = Array.from(
+  const countDupli = A-rray.from(
     d3.rollup(
       hospedeiros,
       (v) => ({ countNomeVulg: v.length }),
@@ -266,3 +267,197 @@ test('should join Pragas and Regras', () => {
     expect(praga).toBeDefined()
   })
 })
+
+//`Store filtro geral Citrus sinensis mudas SP->ES 1`] = 
+const snap = [
+   {
+    "desc": "DE UF com ocorrência de Greening PARA UF reconhecida pelo MAPA como livre da ocorrência de Greening",
+    "dest":  [
+      "AC",
+      "AL",
+      "AM",
+      "AP",
+      "BA",
+      "CE",
+      "DF",
+      "ES",
+      "GO",
+      "MA",
+      "MS",
+      "MT",
+      "PA",
+      "PB",
+      "PE",
+      "PI",
+      "RJ",
+      "RN",
+      "RO",
+      "RR",
+      "RS",
+      "SC",
+      "SE",
+      "TO",
+    ],
+    "exig":  [
+      'PTV;\n Obs.: Partida apreendida pela fiscalização de defesa sanitária vegetal, em \ndesacordo com o previsto nesta Instrução Normativa, será sumariamente destruída, não cabendo ao infrator qualquer tipo de indenização, sem prejuízo das demais sanções estabelecidas pela legislação estadual e federal de defesa sanitária vegetal, conforme o art. 5º, da Instrução Normativa MAPA nº. 53, de 16 de outubro de 2010.',
+    ],
+    "files":  [
+       {
+        "leg": "Instrução Normativa nº 53, de 16 de outubro de 2008",
+        "link": "IN53-2008.pdf",
+      },
+    ],
+    "hosp":  [
+      "Citrus spp.",
+      "Fortunella spp.",
+      "Poncirus spp.",
+      "Murraya paniculata",
+    ],
+    "orig":  [
+      "MG",
+      "PR",
+      "SP",
+    ],
+    "part":  [
+      "mudas",
+      "estacas",
+      "gemas",
+      "ramas",
+      "raízes",
+      "material de propagação",
+      "plantas",
+    ],
+    "prag": "Candidatus liberibacter americanus e Candidatus liberibacter asiaticus",
+    "pragc": "GREENING",
+  },
+   {
+    "desc": "DE UF com ocorrência de Pinta-preta-dos-citros PARA UF reconhecida pelo MAPA como livre da ocorrência de Pinta-preta-dos-citros",
+    "dest":  [
+      "AC",
+      "AL",
+      "AM",
+      "AP",
+      "BA",
+      "CE",
+      "DF",
+      "ES",
+      "GO",
+      "MA",
+      "MG",
+      "MS",
+      "MT",
+      "PA",
+      "PB",
+      "PE",
+      "PI",
+      "PR",
+      "RN",
+      "RO",
+      "RR",
+      "RS",
+      "SC",
+      "SE",
+      "SP",
+      "TO",
+    ],
+    "exig":  [
+      "PTV;",
+      "A partida deve ser transportada em veículos fechados ou totalmente protegidos por lona.",
+    ],
+    "files":  [
+       {
+        "leg": "Instrução Normativa MAPA nº 3, de 8 de janeiro de 2008",
+        "link": "IN03-2008.pdf",
+      },
+    ],
+    "hosp":  [
+      "Citrus spp.",
+    ],
+    "orig":  [
+      "AM",
+      "ES",
+      "MT",
+      "MS",
+      "MG",
+      "PE",
+      "PR",
+      "RJ",
+      "RS",
+      "SC",
+      "SP",
+      "BA",
+      "GO",
+    ],
+    "part":  [
+      "mudas",
+      "estacas",
+      "gemas",
+      "material de propagação",
+      "plantas",
+    ],
+    "prag": "Phyllosticta citricarpa (Guinardia citricarpa)",
+    "pragc": "PINTA-PRETA-DOS-CITROS",
+  },
+   {
+    "desc": "DE Área de Sistema de Manejo de Risco (SMR) de Cancro Cítrico PARA qualquer UF",
+    "dest":  [
+      "AC",
+      "AL",
+      "AM",
+      "AP",
+      "BA",
+      "CE",
+      "DF",
+      "ES",
+      "GO",
+      "MA",
+      "MG",
+      "MS",
+      "MT",
+      "PA",
+      "PB",
+      "PE",
+      "PI",
+      "PR",
+      "RJ",
+      "RN",
+      "RO",
+      "RR",
+      "RS",
+      "SC",
+      "SE",
+      "SP",
+      "TO",
+    ],
+    "exig":  [
+      'PTV com a seguinte DA: \\"O material de propagação é proveniente de Área sob SMR, se encontra livre de Cancro Cítrico (Xanthomonas citri subsp. citri) e foi produzido conforme preconiza a legislação específica em vigor\\".' ,
+    ],
+    "files":  [
+       {
+        "leg": "Instrução Normativa nº 21, de 25 de abril de 2018",
+        "link": "IN21-2018.pdf",
+      },
+    ],
+    "hosp":  [
+      "Citrus spp.",
+      "Fortunella spp.",
+      "Poncirus spp.",
+    ],
+    "orig":  [
+      "MT",
+      "MS",
+      "RS",
+      "SP",
+      "SC",
+    ],
+    "part":  [
+      "material de propagação",
+      "mudas",
+      "estacas",
+      "gemas",
+      "plantas",
+    ],
+    "prag": "Xanthomonas citri subsp. citri",
+    "pragc": "CANCRO CÍTRICO",
+  },
+]
