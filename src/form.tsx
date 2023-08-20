@@ -1,4 +1,4 @@
-import { store, Store } from './store'
+import { /* store, */ Store, useState } from './store'
 import { uiStore } from './uistore'
 import { useSnapshot } from 'valtio'
 
@@ -11,6 +11,7 @@ interface PropsSelect {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function Select({ value, source, name, empty }: PropsSelect) {
+  const snap = useState()
   return (
     <select
       style={name === 'prod' ? { minWidth: '145px' } : {}}
@@ -18,7 +19,7 @@ function Select({ value, source, name, empty }: PropsSelect) {
       className={name === 'hospSci' ? 'italic form-select' : 'form-select'}
       value={value}
       name={name}
-      onChange={(e)=>store.handleChanges(e)}
+      onChange={(e)=>/* store*/snap.handleChanges(e)}
     >
       {empty && <option value={''} aria-selected="true" />}
       {source.map(option => {
@@ -34,7 +35,8 @@ function Select({ value, source, name, empty }: PropsSelect) {
 
 function Form() {
   const uiSnap = useSnapshot(uiStore) 
-  const snap = useSnapshot(store) as Store
+  //const snap = useSnapshot(store) as Store
+  const snap = useState() as Store
   return uiSnap.searched ? (
     <div />
   ) : (
@@ -65,7 +67,7 @@ function Form() {
         <label className="form" htmlFor="prod">
           Parte da Planta:
         </label>
-        <Select value={snap.dados.prod} name="prod" source={store.partes} empty={false} />
+        <Select value={snap.dados.prod} name="prod" source={snap.partes} empty={false} />
       </div>
       <div>
         <label className="form" htmlFor="orig">
@@ -76,7 +78,7 @@ function Form() {
           className="form-select"
           name="orig"
           value={snap.dados.orig}
-          onChange={(e)=>store.handleChanges(e)}
+          onChange={(e)=>/* store*/snap.handleChanges(e)}
         >
           {// eslint-disable-next-line @typescript-eslint/no-unused-vars
           snap.origem.map((option: Estado, i: number) => {
@@ -96,8 +98,8 @@ function Form() {
           id="dest"
           className="form-select"
           name="dest"
-          value={store.dados.dest}
-          onChange={(e)=>store.handleChanges(e)}
+          value={/* store*/snap.dados.dest}
+          onChange={(e)=>/* store*/snap.handleChanges(e)}
         >
           {// eslint-disable-next-line @typescript-eslint/no-unused-vars
           snap.destino.map((option: Estado, i: number) => {
