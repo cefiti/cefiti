@@ -144,7 +144,7 @@ div#moldura-topo #topo #identificacao-ministerio span #imagemGov {
 }
 
 div#moldura-topo #topo #identificacao-ministerio span #imagemGov:after {
-  content: 'Minist\E9rio da Agricultura, Pecu\E1ria e Abastecimento';
+  content: 'Minist\E9rio da Agricultura e Pecu\E1ria';
   margin-left: 40px;
   color: #606060;
   font-weight: 700;
