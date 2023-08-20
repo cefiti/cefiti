@@ -19,7 +19,9 @@
   "homepage": ".",
   "scripts": {
     "start": "node dev.mjs",
-    "test": "node --loader tsx --test",
+    "testonly": "node --test-reporter spec --test-only --test ./**/*test.cjs ",
+    "runtest": "node --test-reporter spec --test ./**/*test.cjs ",   "buildtest": "esbuild --bundle --platform=node  --format=cjs ./src/store.test.ts > ./src/store.test.cjs",
+    "test": "npm run buildtest && npm run runtest",
     "analyze": "source-map-explorer public/*.js",
     "lint": "eslint --ignore-pattern ./assests/**/* --ext .ts,.tsx .",
     "build": "esbuild src/index.tsx --bundle --minify --sourcemap --outfile=public/index.js --splitting --format=esm"
