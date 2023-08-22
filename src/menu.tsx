@@ -1,6 +1,7 @@
-import { uiStore } from './uistore'
+import { useUiStore } from './uistore'
 
 const Menu = () => {
+  const uiStore = useUiStore()
   return (
     <div id="moldura-navegacao-global">
       <div id="navegacao-global">

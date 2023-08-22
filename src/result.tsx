@@ -1,21 +1,21 @@
-import { store, Store } from './store'
-import { uiStore } from './uistore'
-import { useSnapshot } from 'valtio'
+import { useStore, Store } from './store'
+import { useUiStore } from './uistore'
+//import { useSnapshot } from 'valtio'
 
 //const search: string = '+symptoms+OR+sintomas+OR+pest+OR+praga+OR+doença+OR+disease+OR+inseto+OR+insect+OR+fungi+OR+fungi+OR+bactéria';
 
 function Result() {
-  const uiSnap = useSnapshot(uiStore)
-  const snap = useSnapshot(store) as Store
+  const uiStore = useUiStore()
+  const store = useStore()
   return (
     <div>
-      <div className={snap.completed && uiSnap.searched ? '' : 'hidden'}>
+      <div className={store.completed && uiStore.searched ? '' : 'hidden'}>
         <br />
         <h3>
-          Exigências Fitossanitárias para o trânsito de {snap.dados.prod} de {snap.dados.hospVul}{' '}
-          <i>({snap.dados.hospSci})</i> do {snap.dados.orig} para {snap.dados.dest}
+          Exigências Fitossanitárias para o trânsito de {store.dados.prod} de {store.dados.hospVul}{' '}
+          <i>({store.dados.hospSci})</i> do {store.dados.orig} para {store.dados.dest}
         </h3>
-        <div className={snap.empty ? '' : 'hidden'}>
+        <div className={store.empty ? '' : 'hidden'}>
           <br />
           <br />
           <span className="empty">
@@ -25,9 +25,9 @@ function Result() {
           </span>
           <br />
         </div>
-        <span>{uiSnap.searched}</span>
+        <span>{uiStore.searched}</span>
 
-        {snap.result.map((item: Db, i: number)=> {
+        {store.result.map((item: Db, i: number)=> {
           return (
             <div key={`${item.prag}${i}`}>
               <hr />
@@ -73,7 +73,7 @@ function Result() {
           )
         })}
 
-        <div className={snap.empty ? 'hidden' : ''}>
+        <div className={store.empty ? 'hidden' : ''}>
           <hr />
           <h4 className="h4">TRÂNSITO NACIONAL DE PARTIDA IMPORTADA</h4>
           <div style={{ margin: '6px' }}>

@@ -1,4 +1,4 @@
-import { proxy } from 'valtio'
+import { proxy, useState } from './useState.js'
 import { store } from './store'
 
 /* type WindowGa = Window & {
@@ -29,6 +29,11 @@ class UiStore {
   }
 
   handleSearch(event: React.MouseEvent<HTMLButtonElement>) {
+    if (!store.completed) {
+      alert("Finalize a seleçao dos critérios para a consulta")
+      event.preventDefault()
+      return
+    }
     if (process.env.NODE_ENV !== 'development') {
       window.ga('send', 'event', 'search', 'click', store.dados.hospSci)
       //console.log('click', process.env.NODE_ENV, store.dados.hospSci)
@@ -39,3 +44,7 @@ class UiStore {
 }
 
 export const uiStore = proxy(new UiStore())
+
+export function useUiStore(){
+  return useState(uiStore)
+}

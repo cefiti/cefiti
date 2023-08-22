@@ -1,29 +1,5 @@
-import { proxy, useSnapshot } from 'valtio'
+import { proxy, useState } from './useState.js'
 import { regras, pragas, hospedeiros, estados } from './db'
-
-
-function useStore<T extends object>(store: T) {
-  const snapshot = useSnapshot(store)
-  return new Proxy(store, {
-    set(target, prop, value, receiver) {
-      Reflect.set(target, prop, value, receiver)
-      return true
-    }, 
-    get: function (target, prop, receiver) {
-      const value = Reflect.get(snapshot, prop, receiver)
-       if (typeof value === 'function') {
-        return function (...args: any) {
-          //Reflect.apply(target, target, argumentsList) 
-          //@ts-ignore
-          return target[prop].apply(store, args) 
-        }
-      } else {
-        return value
-      } 
-    },
-  })
-}
-
 
 export class Store {
   dbRegras= regras
@@ -113,24 +89,23 @@ export class Store {
     })
   }
 
-  handleChanges(event: React.FormEvent<HTMLSelectElement>) {
-    console.log(this.completed);
-    
+  handleChanges(event: React.FormEvent<HTMLSelectElement>) {    
     const target = event.currentTarget
     switch (target.name) {
       case 'hospSci':
         const hospVulg = this.dbHospedeiros.find(hosp => hosp.nomeSci === target.value)
+        this.dados.prod = ''
         this.dados.hospVul = hospVulg ? hospVulg.nomeVul : ''
         break
       case 'hospVul':
         const hospSci = this.dbHospedeiros.find(hosp => hosp.nomeVul === target.value)
+        this.dados.prod = ''
         this.dados.hospSci = hospSci ? hospSci.nomeSci : ''
         break
       default:
         break
     }
     this.dados[target.name as keyof Dados] = target.value
-    console.log(this.dados)
   }
 
   clean(): void {
@@ -144,6 +119,6 @@ export class Store {
 
 export const store = proxy(new Store())
 
-export function useState(){
-  return useStore(store)
+export function useStore(){
+  return useState(store)
 }

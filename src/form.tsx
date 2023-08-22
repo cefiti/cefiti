@@ -1,28 +1,26 @@
-import { /* store, */ Store, useState } from './store'
-import { uiStore } from './uistore'
-import { useSnapshot } from 'valtio'
+import { memo } from 'react'
+import {  Store, useStore } from './store'
+import {  useUiStore } from './uistore'
 
 interface PropsSelect {
-  value: string
-  source: string[]
-  name: string
+  source: "listaNomesSci" | "listaNomesVul" | "partes" //  keyof Store
+  name: keyof Store["dados"]
   empty: boolean
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function Select({ value, source, name, empty }: PropsSelect) {
-  const snap = useState()
+const Select = memo(({ source, name, empty }: PropsSelect) => {
+  const store = useStore()
   return (
     <select
       style={name === 'prod' ? { minWidth: '145px' } : {}}
       id={name}
       className={name === 'hospSci' ? 'italic form-select' : 'form-select'}
-      value={value}
+      value={store.dados[name]}
       name={name}
-      onChange={(e)=>/* store*/snap.handleChanges(e)}
+      onChange={(e)=> store.handleChanges(e)}
     >
       {empty && <option value={''} aria-selected="true" />}
-      {source.map(option => {
+      {store[source].map(option => {
         return (
           <option value={option} key={option} aria-selected="false">
             {option}
@@ -31,13 +29,12 @@ function Select({ value, source, name, empty }: PropsSelect) {
       })}
     </select>
   )
-}
+})
 
 function Form() {
-  const uiSnap = useSnapshot(uiStore) 
-  //const snap = useSnapshot(store) as Store
-  const snap = useState() as Store
-  return uiSnap.searched ? (
+  const uiStore = useUiStore()
+  const store = useStore() 
+  return uiStore.searched ? (
     <div />
   ) : (
     <form>
@@ -46,9 +43,8 @@ function Form() {
           Espécie Vegetal (nome científico):
         </label>
         <Select
-          value={snap.dados.hospSci}
           name="hospSci"
-          source={snap.listaNomesSci} 
+          source="listaNomesSci"
           empty={true}
         />
       </div>
@@ -57,9 +53,8 @@ function Form() {
           Espécie Vegetal (nome vulgar):
         </label>
         <Select
-          value={snap.dados.hospVul}
           name="hospVul"
-          source={snap.listaNomesVul}
+          source="listaNomesVul"
           empty={true}
         />
       </div>
@@ -67,7 +62,7 @@ function Form() {
         <label className="form" htmlFor="prod">
           Parte da Planta:
         </label>
-        <Select value={snap.dados.prod} name="prod" source={snap.partes} empty={false} />
+        <Select name="prod" source="partes" empty={false} />
       </div>
       <div>
         <label className="form" htmlFor="orig">
@@ -77,11 +72,11 @@ function Form() {
           id="orig"
           className="form-select"
           name="orig"
-          value={snap.dados.orig}
-          onChange={(e)=>/* store*/snap.handleChanges(e)}
+          value={store.dados.orig}
+          onChange={(e)=> store.handleChanges(e)}
         >
-          {// eslint-disable-next-line @typescript-eslint/no-unused-vars
-          snap.origem.map((option: Estado, i: number) => {
+          {
+          store.origem.map((option: Estado, i: number) => {
             return (
               <option value={option.UF} key={i} aria-selected="false">
                 {option.estado}
@@ -98,11 +93,11 @@ function Form() {
           id="dest"
           className="form-select"
           name="dest"
-          value={/* store*/snap.dados.dest}
-          onChange={(e)=>/* store*/snap.handleChanges(e)}
+          value={store.dados.dest}
+          onChange={(e)=>store.handleChanges(e)}
         >
-          {// eslint-disable-next-line @typescript-eslint/no-unused-vars
-          snap.destino.map((option: Estado, i: number) => {
+          {
+          store.destino.map((option: Estado, i: number) => {
             return (
               <option value={option.UF} key={i} aria-selected="false">
                 {option.estado}
@@ -118,7 +113,7 @@ function Form() {
           target="_blank"
           rel="noopener noreferrer"
           href={`https://www.google.com.br/search?site=imghp&tbm=isch&q=${
-            snap.dados.hospSci
+            store.dados.hospSci
           }+plant+OR+planta+ORfruto+OR+fruit+OR+flor+OR+flower`}
         >
           Fotos da Espécie Vegetal

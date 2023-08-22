@@ -30,6 +30,7 @@ await context.watch();
 const serveResult = await context.serve({
   servedir: "./public",
   host: "localhost",
+  port: 3001
 });
 
 console.log(`Listening on http://${serveResult.host}:${serveResult.port}`);

@@ -1,7 +1,8 @@
-import { uiStore } from './uistore'
+import { useUiStore } from './uistore'
 import { store } from './store'
 
 const Base = () => {
+  const uiStore = useUiStore()
   return uiStore.exibeBase ? (
     <div>
       <br />
