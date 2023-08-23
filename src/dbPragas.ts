@@ -47,7 +47,7 @@ export const pragas: Praga[] = [
     files: [
       { leg: 'Instrução Normativa nº 28, de 20 de julho de 2017', link: 'IN28-2017.pdf' },
       { leg: 'Resolução nº 04, de 29 de março de 2019 [Pará]', link: 'RES04-2019.pdf' },
-      { leg: 'Resolução nº 06, de 13 de junho de 2019 [Roraima]', link: 'RES06-2019.pdf' },
+      { leg: 'Portaria SDA nº 780, de 6 de abril de 2023', link: 'PORT780-2023.pdf' },
     ],
   },
   {
@@ -100,9 +100,9 @@ export const pragas: Praga[] = [
   },
   {
     prag: 'Candidatus liberibacter americanus e Candidatus liberibacter asiaticus',
-    pragc: 'GREENING',
+    pragc: 'HLB',
     hosp: ['Citrus spp.', 'Fortunella spp.', 'Poncirus spp.', 'Murraya paniculata'],
-    files: [{ leg: 'Instrução Normativa nº 53, de 16 de outubro de 2008', link: 'IN53-2008.pdf' }],
+    files: [{ leg: 'Portaria SDA nº 317, de 21 de maio de 2021', link: 'PORT317-2021.pdf' }],
   },
   {
     prag: 'Phyllosticta citricarpa (Guinardia citricarpa)',

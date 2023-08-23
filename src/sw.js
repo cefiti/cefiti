@@ -32,11 +32,14 @@ self.addEventListener('install', (event) => {
         './leg/IN46-2010.pdf',
         './leg/IN53-2008.pdf',
         './leg/PORT125-1998.pdf',
-        './leg/RES06-2019.pdf',
+        './leg/PORT780-2023.pdf',
         './leg/RES04-2019.pdf'
       ]);
     }));
   });
+
+  //Portaria SDA nº 780, de 6 de abril de 2023
+  //Portaria 317, de 21 de maio de 2021
 
   self.addEventListener('activate', (event) => {
     event.waitUntil(caches.keys().then((keys) => {
