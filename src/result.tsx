@@ -1,11 +1,12 @@
-import React from 'react'
-import { store } from './store'
-import { uiStore } from './uistore'
-import { observer } from 'mobx-react-lite'
+import { useStore, Store } from './store'
+import { useUiStore } from './uistore'
+//import { useSnapshot } from 'valtio'
 
 //const search: string = '+symptoms+OR+sintomas+OR+pest+OR+praga+OR+doença+OR+disease+OR+inseto+OR+insect+OR+fungi+OR+fungi+OR+bactéria';
 
 function Result() {
+  const uiStore = useUiStore()
+  const store = useStore()
   return (
     <div>
       <div className={store.completed && uiStore.searched ? '' : 'hidden'}>
@@ -26,7 +27,7 @@ function Result() {
         </div>
         <span>{uiStore.searched}</span>
 
-        {store.result.map((item: Db, i: number) => {
+        {store.result.map((item: Db, i: number)=> {
           return (
             <div key={`${item.prag}${i}`}>
               <hr />
@@ -46,7 +47,6 @@ function Result() {
               {'          '}
               <br />
               {
-                // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 item.files.map((file, iii) => {
                   return (
                     <div key={file.link.concat(iii.toString())}>
@@ -132,7 +132,7 @@ function Result() {
         </div>
         <div style={{ textAlign: 'center' }}>
           <button
-            onClick={uiStore.handleMenu.bind(undefined, 'Voltar')}
+            onClick={()=>uiStore.handleMenu('Voltar')}
             className="form-button"
             disabled={false}
           >
@@ -140,7 +140,7 @@ function Result() {
           </button>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button
-            onClick={uiStore.handleMenu.bind(undefined, 'Nova')}
+            onClick={()=>uiStore.handleMenu('Nova')}
             className="form-button"
             disabled={false}
           >
@@ -152,6 +152,6 @@ function Result() {
   )
 }
 
-export default observer(Result as React.SFC)
+export default Result
 
 //                   {item.proib ? (<span className="alert"><div>TRÂNSITO PROIBIDO</div></span>) : ''}

@@ -1,9 +1,8 @@
-import React from 'react'
-import { observer } from 'mobx-react-lite'
-import { uiStore } from './uistore'
+import { useUiStore } from './uistore'
 import { store } from './store'
 
 const Base = () => {
+  const uiStore = useUiStore()
   return uiStore.exibeBase ? (
     <div>
       <br />
@@ -21,7 +20,7 @@ const Base = () => {
           </tr>
         </thead>
         <tbody>
-          {// eslint-disable-next-line @typescript-eslint/no-unused-vars
+          {
           store.db.map((item: Db, i: number) => {
             return (
               <tr key={i}>
@@ -85,7 +84,7 @@ const Base = () => {
   )
 }
 
-export default observer(Base as React.SFC)
+export default Base 
 
 /*               
             <th style={{ width: '5%' }}>Trânsito Proibido</th>

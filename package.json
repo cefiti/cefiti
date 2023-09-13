@@ -18,31 +18,28 @@
   "license": "MIT",
   "homepage": ".",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
-    "zip": "jszip ./build -o ./build/CEFiTI.zip",
-    "deploy": "jszip -c package.json -o CEFiTI%npm_package_version%.zip",
-    "analyze": "source-map-explorer build/static/js/*",
-    "lint": "eslint --ignore-pattern ./assests/**/* --ext .ts,.tsx ."
+    "start": "node dev.mjs",
+    "testonly": "node --test-reporter spec --test-only --test ./**/*test.cjs ",
+    "runtest": "node --test-reporter spec --test ./**/*test.cjs ",   "buildtest": "esbuild --bundle --platform=node  --format=cjs ./src/store.test.ts > ./src/store.test.cjs",
+    "test": "npm run buildtest && npm run runtest",
+    "analyze": "source-map-explorer public/*.js",
+    "lint": "eslint --ignore-pattern ./assests/**/* --ext .ts,.tsx .",
+    "build": "esbuild src/index.tsx --bundle --minify --sourcemap --outfile=public/index.js --format=esm --jsx=automatic"
   },
   "dependencies": {
-    "mobx": "^5.14.0",
-    "mobx-react-lite": "^1.4.1",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "valtio": "^1.11.2"
   },
   "devDependencies": {
     "@types/d3-array": "^2.0.0",
-    "@types/jest": "^24.0.18",
-    "@types/node": "^12.07.11",
-    "@types/react": "^16.9.5",
-    "@types/react-dom": "^16.9.1",
+    "@types/node": "^20.4.0",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
     "d3-array": "^2.3.2",
-    "jszip-cli": "^1.4.24",
-    "react-scripts": "^5.0.0",
+    "esbuild": "^0.19.2",
     "source-map-explorer": "^2.1.0",
+    "tsx": "^3.12.7",
     "typescript": "^3.6.3"
   },
   "browserslist": [
