@@ -495,7 +495,7 @@ export const regras: Regra[] = [
     desc: 'DE UF de status fitossanitário desconhecido para Cancro Cítrico PARA Área Sem Ocorrência, Área Livre de Praga – ALP, Área sob Sistema de Mitigação de Risco - SMR e Área sob Erradicação',
     part: ['frutos', 'material de propagação', 'mudas', 'estacas', 'gemas', 'plantas'],
     orig: ['AC', 'AL', 'AP', 'MA', 'PI'],
-    dest: ['AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PR', 'RJ', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
+    dest: ['AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'],
     prag: 'Xanthomonas citri subsp. citri',
     exig: ['Proibida a emissão de PTV. TRÂNSITO PROIBIDO.']
   }, {  //1-PR
