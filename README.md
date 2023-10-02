@@ -4,6 +4,13 @@
 
 ## **_CHANGELOG_**
 
+## 6.0.0
+
+- [db] Atualizaçao geral da legislação
+- Atualizaççao do React e React-DOM
+- Substitui Mobx por Valtio
+- Implementa PWA - Aplicativo instalável 
+
 ## 5.2.27
 
 - [db] PINTA-PRETA-DOS-CITROS - Amplia Destino para todos os estados.

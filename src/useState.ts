@@ -17,3 +17,5 @@ export function useState<T extends object>(store: T) {
     },
   })
 }
+
+export {proxy}
