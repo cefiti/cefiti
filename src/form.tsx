@@ -1,6 +1,5 @@
 import { memo } from 'react'
 import {  Store, useStore } from './store'
-import {  useUiStore } from './uistore'
 
 interface PropsSelect {
   source: "listaNomesSci" | "listaNomesVul" | "partes" //  keyof Store
@@ -32,9 +31,8 @@ const Select = memo(({ source, name, empty }: PropsSelect) => {
 })
 
 function Form() {
-  const uiStore = useUiStore()
   const store = useStore() 
-  return uiStore.searched ? (
+  return store.searched ? (
     <div />
   ) : (
     <form>
@@ -119,7 +117,7 @@ function Form() {
           Fotos da Espécie Vegetal
         </a>
         <button
-          onClick={(e)=> uiStore.handleSearch(e)}
+          onClick={(e)=> store.handleSearch(e)}
           className="form-button margin-left-100"
           disabled={false}
         >

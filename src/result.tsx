@@ -1,15 +1,12 @@
-import { useStore, Store } from './store'
-import { useUiStore } from './uistore'
-//import { useSnapshot } from 'valtio'
+import { useStore } from './store'
 
 //const search: string = '+symptoms+OR+sintomas+OR+pest+OR+praga+OR+doença+OR+disease+OR+inseto+OR+insect+OR+fungi+OR+fungi+OR+bactéria';
 
 function Result() {
-  const uiStore = useUiStore()
   const store = useStore()
   return (
     <div>
-      <div className={store.completed && uiStore.searched ? '' : 'hidden'}>
+      <div className={store.completed && store.searched ? '' : 'hidden'}>
         <br />
         <h3>
           Exigências Fitossanitárias para o trânsito de {store.dados.prod} de {store.dados.hospVul}{' '}
@@ -25,7 +22,7 @@ function Result() {
           </span>
           <br />
         </div>
-        <span>{uiStore.searched}</span>
+        <span>{store.searched}</span>
 
         {store.result.map((item: Db, i: number)=> {
           return (
@@ -132,7 +129,7 @@ function Result() {
         </div>
         <div style={{ textAlign: 'center' }}>
           <button
-            onClick={()=>uiStore.handleMenu('Voltar')}
+            onClick={()=>store.handleMenu('Voltar')}
             className="form-button"
             disabled={false}
           >
@@ -140,7 +137,7 @@ function Result() {
           </button>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button
-            onClick={()=>uiStore.handleMenu('Nova')}
+            onClick={()=>store.handleMenu('Nova')}
             className="form-button"
             disabled={false}
           >

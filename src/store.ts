@@ -13,6 +13,8 @@ export class Store {
     ...regra,
   })) as Db[]
   dados: Dados = { hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
+  exibeBase: boolean = false
+  searched: boolean = false
 
   get hospedeirosPragas() {
     return this.dbPragas.flatMap(praga => praga.hosp)
@@ -91,6 +93,14 @@ export class Store {
     })
   }
 
+  clean(): void {
+    this.dados.hospSci = ''
+    this.dados.hospVul = ''
+    this.dados.prod = ''
+    this.dados.orig = ''
+    this.dados.dest = ''
+  }
+
   handleChanges(event: React.FormEvent<HTMLSelectElement>) {    
     const target = event.currentTarget
     switch (target.name) {
@@ -110,12 +120,34 @@ export class Store {
     this.dados[target.name as keyof Dados] = target.value
   }
 
-  clean(): void {
-    this.dados.hospSci = ''
-    this.dados.hospVul = ''
-    this.dados.prod = ''
-    this.dados.orig = ''
-    this.dados.dest = ''
+  handleMenu(i: string) {
+    if (i === 'Base') {
+      this.exibeBase = !this.exibeBase
+    }
+    if (i === 'Nova') {
+      store.clean()
+      this.searched = false
+    }
+    if (i === 'Voltar') {
+      this.searched = false
+    }
+    if (i === 'Print') {
+      window.print()
+    }
+  }
+
+  handleSearch(event: React.MouseEvent<HTMLButtonElement>) {
+    if (!store.completed) {
+      alert("Finalize a seleçao dos critérios para a consulta")
+      event.preventDefault()
+      return
+    }
+    if (process.env.NODE_ENV !== 'development') {
+      window.ga('send', 'event', 'search', 'click', store.dados.hospSci)
+      //console.log('click', process.env.NODE_ENV, store.dados.hospSci)
+    }
+    this.searched = true
+    event.preventDefault()
   }
 }
 

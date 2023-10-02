@@ -1,9 +1,8 @@
-import { useUiStore } from './uistore'
-import { store } from './store'
+import { useStore } from './store'
 
 const Base = () => {
-  const uiStore = useUiStore()
-  return uiStore.exibeBase ? (
+  const store = useStore()
+  return store.exibeBase ? (
     <div>
       <br />
       <table style={{ width: '100%' }} className="table-grid">
