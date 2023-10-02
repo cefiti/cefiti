@@ -1,4 +1,6 @@
-import { proxy, useState } from './useState.js'
+import {proxy} from 'valtio'
+import {useProxy} from 'valtio/utils'
+//import { useState } from './useState.js'
 import { regras, pragas, hospedeiros, estados } from './db'
 
 export class Store {
@@ -120,5 +122,5 @@ export class Store {
 export const store = proxy(new Store())
 
 export function useStore(){
-  return useState(store)
+  return useProxy(store)
 }

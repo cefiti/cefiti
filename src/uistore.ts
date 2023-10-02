@@ -1,4 +1,6 @@
-import { proxy, useState } from './useState.js'
+import {proxy} from 'valtio'
+import {useProxy} from 'valtio/utils'
+//import { proxy, useState } from './useState.js'
 import { store } from './store'
 
 /* type WindowGa = Window & {
@@ -46,5 +48,5 @@ class UiStore {
 export const uiStore = proxy(new UiStore())
 
 export function useUiStore(){
-  return useState(uiStore)
+  return useProxy(uiStore)
 }
