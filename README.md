@@ -4,6 +4,13 @@
 
 ## **_CHANGELOG_**
 
+## 6.0.1
+
+- [db] Fix: Ajusta DA na linha 117 das regras
+- [db] Fix: Tira o Abastecimento do nome do MAPA nas regras
+- Substitui useState por valtio/utils/useProxy
+- Mescla uiStore no store principal
+
 ## 6.0.0
 
 - [db] Atualizaçao geral da legislação
